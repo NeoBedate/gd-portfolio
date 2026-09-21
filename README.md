@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Personal Website
 
-## Getting Started
+Welcome to my [personal website](https://mldangelo.com)! This is an [MIT licensed](https://github.com/mldangelo/personal-site/blob/main/LICENSE) Next.js-based Jamstack application. It offers a simple interface, easy modifications, static export capabilities, and free automatic deployments via [GitHub Pages](https://pages.github.com/).
 
-First, run the development server:
+## 🚀 Features
+
+- Built with modern TypeScript, using [Next.js 16](https://nextjs.org/), [React 19](https://react.dev/), and [Tailwind CSS v4](https://tailwindcss.com/).
+- Type-safe development with TypeScript strict mode.
+- Optimized performance with static export and automatic font optimization.
+- Dark mode support with system preference detection and manual toggle.
+- Automated workflows via [GitHub Actions](https://github.com/features/actions).
+
+## 🛠 Adapting this Project
+
+Want to create your own personal website based on this project? You can set it up in as little as 30 minutes! Follow the setup instructions below and check out the **[detailed guide and checklist](./docs/adapting-guide.md)** on adapting this project to your needs. If you encounter any challenges, don't hesitate to contact me through an issue or email at [help@mldangelo.com](mailto:help@mldangelo.com).
+
+## 🤝 Contributing
+
+Your contributions are warmly welcomed! If you wish to contribute, please review the [design goals](./docs/design-goals.md), [roadmap](./docs/roadmap.md), and [contributing guidelines](./docs/contributing.md). For any bugs or suggestions, you can reach out via email, submit a pull request (I'd be happy to get you a coffee as a thank-you!), or open an issue.
+
+## 🔧 Dependencies
+
+Ensure you have [node](https://nodejs.org/) >= v20. Optionally, use [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) to manage node versions.
+
+## 🚀 Setup and Running
+
+1. Clone the repository:
+
+   ```bash
+   git clone git://github.com/mldangelo/personal-site.git
+   cd personal-site
+   ```
+
+2. (Optional) Ensure you're on Node v20 or higher:
+
+   ```bash
+   nvm install
+   node --version
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+   By default, the application will be available at [http://localhost:3000/](http://localhost:3000/).
+
+## 🏗 Building for Production
+
+1. Build the static export:
+
+   ```bash
+   npm run build
+   ```
+
+   The build process automatically creates a static export in the `out/` directory.
+
+2. Preview the production build locally:
+
+   ```bash
+   npm run start
+   ```
+
+## 🚢 Deploying
+
+### Deploying to GitHub Pages
+
+1. Update the environment variables and Git remote URL in [`.github/workflows/github-pages.yml`](.github/workflows/github-pages.yml).
+
+2. Enable GitHub Actions and Pages for your repository.
+
+3. Push to the `main` branch to trigger automatic deployment.
+
+   ```bash
+   git add .
+   git commit -m "Deploy to GitHub Pages"
+   git push origin main
+   ```
+
+### Static Export
+
+You can export the site as static HTML to host anywhere:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The static files will be automatically generated in the `out/` directory.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔬 Testing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint          # Run Biome linter
+npm run type-check    # Run TypeScript type checking
+npm run format        # Format code with Biome and Prettier
+npm run format:check  # Check code formatting
+npm test              # Run Vitest tests
+```
 
-## Learn More
+## 🎨 Customization
 
-To learn more about Next.js, take a look at the following resources:
+- **Personal Information**: Update files in `src/data/` with your information.
+- **Images**: Replace images in `public/images/` with your own.
+- **Theme**: Modify CSS custom properties in `app/tailwind.css` or use Tailwind utility classes.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📝 License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[MIT](https://github.com/mldangelo/personal-site/blob/main/LICENSE)

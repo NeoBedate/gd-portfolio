@@ -1,7 +1,36 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: 'export',
+
+  // Allow dev server access from local network (mobile testing, etc.)
+  allowedDevOrigins: ['http://192.168.*.*:3000'],
+  images: {
+    unoptimized: true,
+  },
+  sassOptions: {
+    includePaths: ['./src/static/css'],
+    silenceDeprecations: ['import'],
+  },
+  trailingSlash: true,
+
+  // Turbopack configuration (used in development)
+  turbopack: {
+    resolveExtensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+  },
+
+  // Experimental features
+  experimental: {
+    optimizePackageImports: [
+      '@fortawesome/react-fontawesome',
+      '@fortawesome/fontawesome-svg-core',
+    ],
+  },
 };
 
-export default nextConfig;
+// Bundle analyzer for production build analysis (webpack only)
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+export default withBundleAnalyzer(nextConfig);
