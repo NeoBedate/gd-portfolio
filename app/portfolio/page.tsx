@@ -76,8 +76,4 @@ export default function ProjectsPage() {
       </BrowserRouter>
     )
   }
-
-    function Project () {
-      return <h2> Minglas </h2>
-  }
 }
