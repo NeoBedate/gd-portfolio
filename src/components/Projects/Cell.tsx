@@ -2,17 +2,17 @@ import dayjs from 'dayjs';
 import Image from 'next/image';
 import React from 'react';
 
-import type { projectDetails } from '@/data/projects';
+import type { ProjectDetails } from '@/data/projects';
 
 interface CellProps {
-  data: projectDetails;
+  data: ProjectDetails;
 }
 
 const Cell: React.FC<CellProps> = ({ data }) => {
-  const { coverImage, link, subtitle, desc, genre, publishingDate, name, studio, position, tech, featured } = data;
+  const { coverImage, url, dimensions, genre, publishingDate, name, studio, position, summary, featured } = data;
 
-  const CardWrapper = link ? 'a' : 'div';
-  const cardProps = link ? { href: link, className: 'project-card-link' } : {};
+  const CardWrapper = url ? 'a' : 'div';
+  const cardProps = url ? { href: url, className: 'project-card-link' } : {};
 
   return (
     <article
@@ -27,12 +27,14 @@ const Cell: React.FC<CellProps> = ({ data }) => {
         <div className="project-card-content">
           <header className="project-card-header">
             <h3 className="project-card-title">{name}</h3>
-            {subtitle && <p className="project-card-subtitle">{subtitle}</p>}
+            {dimensions && <p className="project-card-subtitle">{dimensions} · {genre} · <time>{dayjs(publishingDate).format('YYYY')}</time></p>}
+            <h4 className='project-card-organization'>{studio} · {position}</h4>
           </header>
 
-          <p className="project-card-desc">{desc}</p>
 
-          {tech && tech.length > 0 && (
+          <p className="project-card-desc">{summary}</p>
+
+          {/* {tech && tech.length > 0 && (
             <div className="project-card-tech">
               {tech.map((t) => (
                 <span key={t} className="tech-tag">
@@ -40,11 +42,7 @@ const Cell: React.FC<CellProps> = ({ data }) => {
                 </span>
               ))}
             </div>
-          )}
-
-          <time className="project-card-date">
-            {dayjs(publishingDate).format('YYYY')}
-          </time>
+          )} */}
         </div>
       </CardWrapper>
     </article>

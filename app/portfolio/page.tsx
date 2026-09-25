@@ -16,8 +16,8 @@ export const metadata: Metadata = {
 };
 
 export default function ProjectsPage() {
-  const featuredProjects = data.filter((p) => p.featured && !p.learning);
-  const otherProjects = data.filter((p) => !p.featured && !p.learning);
+  const featuredProjects = data.filter((p) => p.featured);
+  const otherProjects = data.filter((p) => p.other);
   const learningProjects = data.filter((p) => p.learning);
 
   return (
@@ -75,9 +75,5 @@ export default function ProjectsPage() {
           </Routes>
       </BrowserRouter>
     )
-  }
-
-    function Project () {
-      return <h2> Minglas </h2>
   }
 }

@@ -2,33 +2,35 @@ import dayjs from 'dayjs';
 import Markdown from 'markdown-to-jsx';
 import React from 'react';
 
-import type { StudioPosition } from '@/data/resume/work';
-import type { StudioProject } from '@/data/resume/work';
+import type { StudioJob } from '@/data/resume/work';
+import type { ProjectDetails } from '@/data/projects';
+import type { CompanyDetails } from '@/data/companies';
 
-import projects from '@/data/projects';
-
-interface ProjectProps {
-  data: StudioProject;
+// ALL DATA
+interface JobProps {
+  id: StudioJob;
+  projectData: ProjectProps[];
+  companyData: CompanyDetails;
 }
 
-interface JobProps {
-  data: StudioPosition;
+export interface ProjectProps {
+  data: ProjectDetails;
 }
 
 const ProjectResume: React.FC<ProjectProps> = ({ data }) => {
-  const { projectName, projectUrl, projectPosition, projectHighlights } = data;
+  const { name, url, position, highlights } = data;
   
   return (
     <section>
       <h5> 
-        <a href={projectUrl} target="_blank">{projectName}</a>
+        <a href={url} target="_blank">{name}</a>
       </h5>
       <h6>
-        {projectPosition}
+        {position}
       </h6>
-      {projectHighlights ? (
+      {highlights ? (
         <ul className="points">
-          {projectHighlights.map((highlight) => (
+          {highlights.map((highlight) => (
             <li key={highlight}>{highlight}</li>
           ))}
         </ul>
@@ -37,15 +39,17 @@ const ProjectResume: React.FC<ProjectProps> = ({ data }) => {
   );
 }
 
-const Job: React.FC<JobProps> = ({ data }) => {
-  const { compLogo, name, url, startDate, endDate, summary, projects } = data;
+const CompanyResume: React.FC<JobProps> = ({ companyData, projectData }) => {
+  const { logo, name, url, startDate, endDate, description } = companyData;
 
+  const [ data ] = projectData;
+  
   return (
     <article className="jobs-container">
       <section>
         <header>
           <h2>
-            <img className='compLogo' src={compLogo} height={64} width={64} />
+            <img className='logo' src={logo}/>
             <a href={url} target="_blank">{name} </a>
           </h2>
           <h2>            
@@ -57,14 +61,14 @@ const Job: React.FC<JobProps> = ({ data }) => {
           </h2>
         </header>
 
-        {summary ? (
+        {description ? (
           <p>
             <Markdown
               options={{
                 overrides: {
                   p: {
                     props: {
-                      className: 'summary',
+                      className: 'description',
                     },
                   },
                   code: {
@@ -76,16 +80,16 @@ const Job: React.FC<JobProps> = ({ data }) => {
                 },
               }}
             >
-              {summary}
+              {description}
             </Markdown>
           </p>
         ) : null}
       </section>
       <section className="project-container">
           <ul className="points">
-            {projects.map((item) => (
+            {projectData.map((item) => (
 
-              <ProjectResume key={item.projectName} data={item}></ProjectResume>
+              <ProjectResume key={item.data.name} data={item.data}></ProjectResume>
 
             ))}
           </ul>
@@ -94,4 +98,4 @@ const Job: React.FC<JobProps> = ({ data }) => {
   );
 };
 
-export default Job;
+export default CompanyResume;
