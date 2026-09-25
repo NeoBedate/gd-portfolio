@@ -15,6 +15,7 @@ export interface ProjectDetails {
   highlights: string[];
   tech?: string[];
   featured?: boolean;
+  other?: boolean;
   learning?: boolean;
   description?: string;
   subtitle?: string;
@@ -135,6 +136,7 @@ const data: ProjectDetails[] = [
       'Supervised previous courses to create reports on game design, UX and gameplay mechanics.',
     ],
     tech: ['SourceTree', 'GDocs', 'Photoshop', 'Excel', 'Shotgun'],
+    other: true,
   },
   {
     id: '06_merchants2',
@@ -155,6 +157,7 @@ const data: ProjectDetails[] = [
       'Performed several production tasks, filling a necessary role that will point out the need for a full-time producer.',
     ],
     tech: ['React', 'Node.js', 'Plaid API', 'MongoDB'],
+    other: true,
   },
   {
     id: '05_futbol4',
@@ -175,6 +178,7 @@ const data: ProjectDetails[] = [
       'Balanced player salaries and adjusted stat weight on player valuations.',
     ],
     tech: ['React', 'Node.js', 'Plaid API', 'MongoDB'],
+    other: true,
   },
   {
     id: '04_futbolstars',
@@ -197,6 +201,7 @@ const data: ProjectDetails[] = [
       'Led development of core evaluation framework, vulnerability scanning, and automated red-teaming capabilities.',
     ],
     tech: ['React', 'Node.js', 'Plaid API', 'MongoDB'],
+    other: true,
   },
   {
     id: '03_developers',
