@@ -49,7 +49,7 @@ const CompanyResume: React.FC<JobProps> = ({ companyData, projectData }) => {
       <section>
         <header>
           <h2>
-            <img className='logo' src={logo} height={64} width={64} />
+            <img className='logo' src={logo}/>
             <a href={url} target="_blank">{name} </a>
           </h2>
           <h2>            
