@@ -33,7 +33,7 @@ const data: CompanyDetails[] = [
     startDate: '2017-02-01',
     endDate: '2019-07-31',
     name: 'U-TAD',
-    description: `I went back to the university that got me into video games to teach several subjects on Game Design. For 3 years I worked with more than 300 students on both basics and advanced subjects, usually related to core mechanics, mobile development, game production and project management.`,
+    description: `I went back to the university that got me into video games to teach several subjects on Game Design. For 3 years I worked with more than 300 students on both basics and advanced subjects, usually related to core mechanics, mobile development, game production and project management. All the courses I taught can be found at the bottom of this page.`,
   },
   {
     id: '03_gamelearn',

@@ -1,87 +1,53 @@
 import type { Metadata } from 'next';
-import { Raleway, Source_Sans_3 } from 'next/font/google';
-import React from 'react';
+import Script from 'next/script';
 
+import { SiteSchema } from '@/components/Schema';
 import GoogleAnalytics from '@/components/Template/GoogleAnalytics';
 import Navigation from '@/components/Template/Navigation';
+import { MAIN_CONTENT_ID } from '@/components/Template/PageWrapper';
+import ScrollToTop from '@/components/Template/ScrollToTop';
+import { sharedOpenGraph } from '@/lib/metadata';
+import { AUTHOR_NAME, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/utils';
+import { bricolage, jetbrainsMono, newsreader } from './fonts';
 import './tailwind.css';
-
-const sourceSans = Source_Sans_3({
-  weight: ['400', '700'],
-  subsets: ['latin'],
-  variable: '--font-source-sans',
-  display: 'swap',
-});
-
-const raleway = Raleway({
-  weight: ['400', '800', '900'],
-  subsets: ['latin'],
-  variable: '--font-raleway',
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   title: {
-    default: "Santiago R. Bedate",
-    template: "%s | Santiago R. Bedate",
+    default: AUTHOR_NAME,
+    template: `%s | ${AUTHOR_NAME}`,
   },
-  description:
-    'Professional creative at designing several action-oriented, kid-friendly video games for all platforms.',
+  description: SITE_DESCRIPTION,
   keywords: [
-    "Santiago R. Bedate",
+    AUTHOR_NAME,
     'Game Designer',
     'Level Designer',
     'Producer',
     'Lead',
   ],
-  authors: [{ name: "Santiago R. Bedate" }],
-  creator: "Santiago R. Bedate",
-  metadataBase: new URL('https://www.santibedate.com'),
+  authors: [{ name: AUTHOR_NAME }],
+  creator: AUTHOR_NAME,
+  metadataBase: new URL(SITE_URL),
+  // The root is the origin of the share metadata, so it uses the same shared
+  // blocks as every other page. Hand-writing them here is what left the
+  // homepage advertising a different og:image:alt from the rest of the site
+  // for the identical image.
   openGraph: {
+    ...sharedOpenGraph,
     type: 'website',
     locale: 'en_US',
-    url: 'https://www.santibedate.com',
-    siteName: "Santiago Rodríguez Bedate",
-    title: "Santiago Rodríguez Bedate",
-    description:
-      'Professional creative at designing several action-oriented, kid-friendly video games for all platforms.',
-    images: [
-      {
-        url: '/images/me.jpg',
-        width: 1200,
-        height: 630,
-        alt: "Santiago Rodríguez Bedate",
-      },
-    ],
+    url: `${SITE_URL}/`,
+    siteName: SITE_NAME,
+    title: AUTHOR_NAME,
+    description: SITE_DESCRIPTION,
   },
   robots: {
-    index: true,
-    follow: true,
     googleBot: {
-      index: true,
-      follow: true,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
   },
 };
-
-// Inline script to prevent theme flash on load
-const themeInitScript = `
-(function() {
-  try {
-    var theme = localStorage.getItem('theme');
-    if (theme === 'dark' || theme === 'light') {
-      document.documentElement.setAttribute('data-theme', theme);
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-      document.documentElement.setAttribute('data-theme', 'light');
-    }
-  } catch (e) {}
-})();
-`;
 
 export default function RootLayout({
   children,
@@ -91,13 +57,24 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sourceSans.variable} ${raleway.variable}`}
+      className={`${bricolage.variable} ${newsreader.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+ <head>
+        {/* CSP-safe theme initialization - prevents flash on load */}
+        <Script id="theme-init" strategy="beforeInteractive">
+          {`(function(){try{var t=window.localStorage.getItem('theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t)}else if(window.matchMedia('(prefers-color-scheme:dark)').matches){document.documentElement.setAttribute('data-theme','dark')}else{document.documentElement.setAttribute('data-theme','light')}}catch(e){}})();`}
+        </Script>
+        <SiteSchema />
       </head>
       <body>
+        {/* First focusable element on the page. The About and Resume pages
+            are thousands of pixels long, so tabbing past the nav to reach
+            content is otherwise the only route in. */}
+        <a href={`#${MAIN_CONTENT_ID}`} className="skip-link">
+          Skip to content
+        </a>
+        <ScrollToTop />
         <div className="site-wrapper">
           <Navigation />
           {children}

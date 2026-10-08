@@ -1,0 +1,391 @@
+/* ========================================
+   CONTENT PAGE STYLES
+   About, Contact, Stats, and Not Found pages
+   ======================================== */
+
+/* ========================================
+   ABOUT PAGE
+   ======================================== */
+
+
+/* ========================================
+   ABOUT — LOG SECTIONS
+   The history and travel lists are a chronological record, so they
+   are set as log entries hanging off a spine rather than as bullets.
+   ======================================== */
+
+
+/* Ink, not amber: hovering an entry is not a live value, and spending the
+   signal colour on decoration is what stops it meaning anything elsewhere. */
+
+/* Empty for entries that carry no marker; the column still holds so the
+   spine stays straight down the list. */
+
+
+.contact-page {
+  width: 100%;
+  max-width: var(--measure-page);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.page-main--contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: var(--spacing-10);
+}
+
+.contact-header .page-title {
+  margin-bottom: 0;
+}
+
+.contact-content {
+  max-width: 100%;
+  text-align: center;
+}
+
+/* Email CTA block */
+.contact-email-block {
+  margin-bottom: var(--spacing-10);
+}
+
+.contact-email-container {
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+/* The address is the page's one instruction, so it is set as a
+   readout in mono rather than dressed up as a tinted button. */
+.contact-email-link {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  max-width: 100%;
+  padding: 0.875rem 0;
+  font-family: var(--font-mono);
+  font-size: clamp(var(--text-xl), 4vw, var(--text-3xl));
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  color: var(--color-fg-bold);
+  background: transparent;
+  background-image: none;
+  border-radius: 0;
+  border-bottom: var(--rule-strong) solid var(--color-accent);
+  text-decoration: none;
+  /* The animated alias runs long — "you-can-email-me-at-literally-anything!"
+     pushed 438px of content into a 320px viewport. It has to be allowed to
+     break, mid-token if necessary. */
+  overflow-wrap: anywhere;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.contact-email-link:hover {
+  background: transparent;
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent-hover);
+}
+
+/* Flex items default to min-width:auto and refuse to shrink below their
+   content, so the wrapping allowed on the link above never reached the long
+   animated alias. Both halves have to opt in individually. */
+.contact-email-prefix,
+.contact-email-domain {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.contact-email-prefix {
+  color: var(--color-accent);
+}
+
+.contact-email-domain {
+  color: var(--color-fg-bold);
+}
+
+.contact-hint {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-fg-light);
+  margin: 0;
+}
+
+/* Divider */
+.contact-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-fg-light);
+  font-size: var(--text-sm);
+  max-width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-divider::before,
+.contact-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+/* Social icons - inline style */
+.contact-content > .icons {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 0;
+}
+
+.contact-content > .icons li {
+  padding: 0;
+}
+
+.contact-content > .icons li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  color: var(--color-fg-light);
+  background: transparent;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.contact-content > .icons li a:hover {
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+}
+
+@media (max-width: 735px) {
+
+  .contact-email-link {
+    padding: 0.625rem 0;
+  }
+}
+
+/* ========================================
+   STATS PAGE
+   ======================================== */
+
+/* Readings, not a spreadsheet: the label annotates in mono and the
+   value is set large enough to be read off at a glance. */
+.stat-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  background: transparent;
+  border-top: var(--rule) solid var(--color-fg-bold);
+}
+
+.stat-table tr {
+  background: transparent;
+}
+
+/* Both cells, not just `td`. Labels became `th[scope="row"]` for screen
+   readers, which dropped them out of this rule and left half-width row
+   rules and mismatched alignment. */
+.stat-table th,
+.stat-table td {
+  padding: 1rem 0;
+  background: transparent;
+  border-bottom: var(--rule) solid var(--color-border);
+  vertical-align: baseline;
+}
+
+/* A row label is the information, not annotation about it, so it sits at
+   the interactive/readable size rather than the 11px annotation size. */
+.stat-table-label {
+  width: 40%;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: var(--text-ui);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-fg-light);
+}
+
+.stat-table-value {
+  width: 60%;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-medium);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-fg-bold);
+  line-height: var(--leading-tight);
+  white-space: nowrap;
+}
+
+.stat-table-value a {
+  color: var(--color-accent);
+  background-image: none;
+}
+
+.stat-table-value a:hover {
+  color: var(--color-accent-hover);
+}
+
+/* The live reading — the same rule as the hero: amber means it moves. */
+.stat-live {
+  color: var(--color-signal);
+}
+
+.stats-source-note {
+  margin: 0.75rem 0 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-fg-light);
+}
+
+/* Screen reader only - visually hidden but accessible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Stats page layout */
+.stats-page {
+  max-width: var(--measure-read);
+  margin: 0;
+}
+
+.stats-header {
+  text-align: left;
+  margin-bottom: 3rem;
+}
+
+.stats-title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-black);
+  letter-spacing: var(--tracking-display);
+  margin-bottom: 0.5rem;
+  color: var(--color-fg-bold);
+}
+
+.stats-subtitle {
+  font-size: var(--text-md);
+  color: var(--color-fg-light);
+  margin: 0;
+}
+
+.stats-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.stats-section-title {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-fg-light);
+  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .stat-table-value {
+    font-size: clamp(var(--text-md), 4vw, var(--text-xl));
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-email-link {
+    font-size: var(--text-lg);
+  }
+
+  .stat-table-value {
+    font-size: var(--text-md);
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* ========================================
+   NOT FOUND PAGE (404)
+   ======================================== */
+
+.not-found-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - var(--header-height) - 4rem);
+  padding: 2rem;
+  text-align: center;
+}
+
+.not-found-content {
+  max-width: 480px;
+}
+
+/* A 404 is a status code, so it is reported as one: mono, plain,
+   and no more prominent than the sentence explaining it. */
+.not-found-code {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-label);
+  /* A 404 is a static fact, not a live reading, so it stays in the
+     secondary ink rather than borrowing the signal colour. */
+  color: var(--color-fg-light);
+  line-height: 1;
+  background: none;
+  -webkit-text-fill-color: currentcolor;
+  margin-bottom: 1.25rem;
+}
+
+.not-found-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-black);
+  color: var(--color-fg-bold);
+  margin-bottom: 0.75rem;
+  letter-spacing: var(--tracking-display);
+}
+
+.not-found-message {
+  font-size: var(--text-md);
+  color: var(--color-fg-light);
+  line-height: var(--leading-snug);
+  margin-bottom: 2rem;
+}
+
+.not-found-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}

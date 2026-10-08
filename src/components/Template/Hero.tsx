@@ -1,52 +1,44 @@
-'use client';
-
 import Link from 'next/link';
-import React from 'react';
+
+import profile from '@/data/profile.json'
 
 import ThemePortrait from './ThemePortrait';
 
-const Hero: React.FC = () => {
+export default function Hero() {
   return (
     <section className="hero">
-      <div className="hero-content">
-        <div className="hero-avatar">
-          <ThemePortrait width={120} height={120} priority />
+      <div className="hero-grid">
+        <div className="hero-primary">
+          <h1 className="hero-title">
+            <span className="hero-name">{profile.name}</span>
+          </h1>
+          <p className="hero-tagline">
+            Professional {profile.role_01} for {profile.professionalYears} years, holding responsibilites on several different roles while delivering results steadily. I helped to create several action-oriented, kid-friendly video games for all platforms in the last 5 years.
+          </p>
         </div>
 
-        <h1 className="hero-title">
-          <span className="hero-name">Santiago R. Bedate</span>
-        </h1>
-
-        <p className="hero-tagline">
-          Professional creative at designing several action-oriented, kid-friendly video games for all platforms.
-          {/* at{' '}
-          <a href="https://promptfoo.dev" className="hero-highlight">
-           aheartfulofgames
-          </a>*/}
-          <br />
-        </p>
-
-        <div className="hero-chips">
-          <span className="hero-chip">Game Designer</span>
-          <span className="hero-chip">Level Designer</span>
-          <span className="hero-chip">Producer</span>
+        <div>
+            <div className="hero-portrait">
+              <ThemePortrait width={232} height={232} priority />
+            </div>
+          <div className="hero-chips">
+            <span className="hero-chip">{profile.role_01}</span>
+            <span className="hero-chip">{profile.role_02}</span>
+            <span className="hero-chip">{profile.role_03}</span>
+          </div>
         </div>
-
-        <div className="hero-cta">
-          <Link href="/resume" className="button button-secondary">
+        </div>
+        
+      <div className="hero-bg" aria-hidden="true" />
+            <div className="hero-cta">
+          <Link href="/about" className="button button-secondary">
             Resume
           </Link>
           <Link href="/portfolio" className="button button-primary">
             Portfolio
+             <span aria-hidden="true">→</span>
           </Link>
         </div>
-      </div>
-
-      <div className="hero-bg" aria-hidden="true">
-        <div className="hero-gradient" />
-      </div>
     </section>
   );
 };
-
-export default Hero;

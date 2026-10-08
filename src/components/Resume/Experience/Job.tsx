@@ -22,9 +22,9 @@ const ProjectResume: React.FC<ProjectProps> = ({ data }) => {
   
   return (
     <section>
-      <h5> 
+      <h3> 
         <a href={url} target="_blank">{name}</a>
-      </h5>
+      </h3>
       <h6>
         {position}
       </h6>
@@ -48,11 +48,13 @@ const CompanyResume: React.FC<JobProps> = ({ companyData, projectData }) => {
     <article className="jobs-container">
       <section>
         <header>
-          <h2>
-            <img className='logo' src={logo}/>
+          <h5 className="projects-portfolio-logo">
+            <img className='logo' src={logo} width={156} height={156}/>
+          </h5>
+          <h5 className="projects-portfolio-compName">
             <a href={url} target="_blank">{name} </a>
-          </h2>
-          <h2>            
+          </h5>
+          <h2 className="projects-portfolio-daterange">            
             <a className="daterange">
               {' '}
               {dayjs(startDate).format('MMMM YYYY')} -{' '}
@@ -60,9 +62,11 @@ const CompanyResume: React.FC<JobProps> = ({ companyData, projectData }) => {
             </a>
           </h2>
         </header>
+      </section>
 
+      <section className="projects-portfolio-container">
         {description ? (
-          <p>
+          <p className="projects-portfolio-jobDescription">
             <Markdown
               options={{
                 overrides: {
@@ -84,15 +88,13 @@ const CompanyResume: React.FC<JobProps> = ({ companyData, projectData }) => {
             </Markdown>
           </p>
         ) : null}
-      </section>
-      <section className="project-container">
-          <ul className="points">
-            {projectData.map((item) => (
+        <ul className="points">
+          {projectData.map((item) => (
 
-              <ProjectResume key={item.data.name} data={item.data}></ProjectResume>
+            <ProjectResume key={item.data.name} data={item.data}></ProjectResume>
 
-            ))}
-          </ul>
+          ))}
+        </ul>
       </section>
     </article>
   );

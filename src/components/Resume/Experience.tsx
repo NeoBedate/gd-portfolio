@@ -16,7 +16,7 @@ const Experience: React.FC<ExperienceProps> = ({ data }) => (
   <div className="experience">
     <div className="link-to" id="Experience" />
     <div className="title">
-      <h3>Curriculum Vitae</h3>
+      <h3>CV</h3>
     </div>
     {data.map((item) => (
       <RenderDataFromStudioJob key={item.companyId} companyId={item.companyId} projectIds={item.projectIds} />

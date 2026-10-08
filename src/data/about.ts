@@ -9,7 +9,7 @@ In those last 6 years I poured my efforts into a start-up that gave me the chanc
 
 Now, in the last few months I've honed my abilities and worked on my wellbeing, and I feel ready now to embark myself on the next stage of professional life.
 
-# Shenanigans, games and historical events
+# Historical shenanigans
 
 - In 1989 everything changed: one of my uncles got an Amstrad CPC 128k which showed me video games: Bobsleigh, Match Day, Pirates!, Platoon, Saboteur!, and some more that I don't even remember.
 - By 1991 me and my cousins got a Game Boy and started playing Nintendo World Cup, Battletoads, Castlevania: The Adventure, Captain Tsubasa I II and III, Super Mario Land and many more.
@@ -29,7 +29,7 @@ Of course, this is just a quick story about my relationship with video games.
 
 Would you like to know more? ;)
 
-# Not everything is games, right?
+# Non-gaming stuff
 
 - I'm an average film enjoyer, both classic and modern.
 - I left behind my otaku days, but that's always there.
@@ -43,7 +43,7 @@ Would you like to know more? ;)
 - Urbanism lover.
 - Amateur chef, but I make a mean tortilla de patatas.
 
-# Inspiration is fuel for the soul
+# Life inspirations
 
 - I discovered a bit late in my 20's that making games was my call. I'm never going to forfeit that feeling, I love entertaining people...
 - ...which got me into DJing. Creating a community around what you love is unbreakable.

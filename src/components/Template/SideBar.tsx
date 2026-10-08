@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
+import profile from '@/data/profile.json'
 
 import ContactIcons from '../Contact/ContactIcons';
 import ThemePortrait from './ThemePortrait';
@@ -19,13 +20,13 @@ const SideBar: React.FC = () => {
         <header>
           <h2>Santiago R. Bedate</h2>
           <p>
-            <a href="mailto:santiago.rodriguez.bedate@gmail.com">santiago.rodriguez.bedate@gmail.com</a>
+            <a href={"mailto:" + profile.email}>{profile.email}</a>
           </p>
         </header>
       </section>
 
       <section className="blurb">
-        <h2>About</h2>
+        <h2>About Me</h2>
         <p>
           Hi, I&apos;m Santiago.
           I am a Game Designer with 14yrs of experience

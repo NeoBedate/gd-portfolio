@@ -1,0 +1,343 @@
+/* ========================================
+   ABOUT PAGE
+   ======================================== */
+
+.about-page {
+  width: 100%;
+  max-width: var(--measure-page);
+  margin: 0 auto;
+}
+
+.about-header {
+  margin-bottom: var(--spacing-8);
+}
+
+.about-title {
+  text-align: center;
+  margin-bottom: var(--spacing-10);
+  letter-spacing: -0.04em;
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-black);
+  letter-spacing: var(--tracking-display);
+  margin-bottom: var(--spacing-10);
+}
+
+.about-intro p {
+  max-width: var(--measure-page);
+  font-size: var(--text-md);
+  line-height: 1.7;
+}
+
+.about-content {
+  max-width: var(--measure-page);
+  line-height: 1.7;
+}
+
+/* Section index — mono labels on a rule, matching the resume. */
+.about-section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.75rem;
+  margin-top: var(--spacing-8);
+  margin-bottom: var(--spacing-4);
+  position: sticky;
+  top: var(--header-height);
+  z-index: var(--z-sticky);
+  background-color: color-mix(in srgb, var(--color-bg-alt) 97%, transparent);
+  padding: 0.75rem 0;
+  border-top: var(--rule) solid var(--color-border);
+  border-bottom: var(--rule) solid var(--color-border);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.about-section-nav-link {
+  position: relative;
+  padding: 0.25rem 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-ui);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-fg-light);
+  background: transparent;
+  background-image: none;
+  border: none;
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.about-section-nav-link:hover {
+  color: var(--color-fg-bold);
+  background: transparent;
+}
+
+.about-section-nav-link.active {
+  color: var(--color-accent);
+}
+
+.about-section-nav-link.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--rule-strong);
+  background: var(--color-accent);
+}
+
+.about-section-nav-link:focus-visible {
+  outline: var(--rule-strong) solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.about-section {
+  margin-top: var(--spacing-10);
+}
+
+.about-section h2 {
+  scroll-margin-top: calc(var(--header-height) + 5.5rem);
+  margin: 0 0 var(--spacing-5);
+  padding-top: var(--spacing-5);
+  border-top: var(--rule) solid var(--color-fg-bold);
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.15;
+  letter-spacing: var(--tracking-display);
+  color: var(--color-fg-bold);
+}
+
+.about-content .about-section-heading-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.about-content .about-section-heading-link:hover,
+.about-content .about-section-heading-link:focus-visible {
+  color: var(--color-fg-bold);
+  text-decoration: none;
+}
+
+.about-section-heading-link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: var(--radius-xs);
+}
+
+.about-section-heading-hash {
+  opacity: 0;
+  color: var(--color-fg-muted);
+  transform: translateY(-1px);
+  transition:
+    opacity var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.about-section:hover .about-section-heading-hash,
+.about-content .about-section-heading-link:focus-visible .about-section-heading-hash {
+  opacity: 1;
+}
+
+.about-content p {
+  margin: 0 0 var(--spacing-5);
+  color: var(--color-fg);
+  text-wrap: pretty;
+}
+
+.about-content p:last-child {
+  margin-bottom: 0;
+}
+
+.about-content ul {
+  margin: var(--spacing-4) 0 var(--spacing-6);
+  padding-left: 1.1rem;
+}
+
+.about-content li {
+  margin-bottom: 0.65rem;
+  color: var(--color-fg);
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+.about-content li::marker {
+  color: var(--color-fg-muted);
+}
+
+.about-content a {
+  text-decoration-color: var(--color-border-alt);
+  transition:
+    text-decoration-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.about-content a:hover {
+  text-decoration-color: var(--color-accent-underline-strong);
+  color: var(--color-fg-bold);
+}
+
+/* ========================================
+   ABOUT — LOG SECTIONS
+   The history and travel lists are a chronological record, so they
+   are set as log entries hanging off a spine rather than as bullets.
+   ======================================== */
+
+.about-section--log ul {
+  list-style: none;
+  margin: var(--spacing-5) 0 var(--spacing-6);
+  padding-left: 0;
+}
+
+/* Same gutter-then-spine-then-body arrangement as the resume, so the two
+   records on the site read as one device. */
+.about-section--log .log-entry {
+  position: relative;
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: 0 1.75rem;
+  margin-bottom: 1.1rem;
+  padding-left: 0;
+}
+
+/* Drawn per entry so the spine runs unbroken through the margin gaps. */
+.about-section--log .log-entry::before {
+  content: '';
+  position: absolute;
+  left: calc(4.5rem + 0.875rem);
+  top: 0;
+  bottom: -1.1rem;
+  width: var(--rule);
+  background: var(--color-border);
+}
+
+/* The record is open-ended, so the last segment fades rather than stops. */
+.about-section--log .log-entry:last-child::before {
+  bottom: auto;
+  height: 2.5em;
+  background: linear-gradient(to bottom, var(--color-border), transparent);
+}
+
+/* One tick per entry. */
+.about-section--log .log-entry::after {
+  content: '';
+  position: absolute;
+  left: calc(4.5rem + 0.875rem);
+  top: 0.68em;
+  width: 7px;
+  height: 7px;
+  transform: translate(-50%, -50%);
+  border: var(--rule) solid var(--color-fg-light);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-full);
+}
+
+/* Ink, not amber: hovering an entry is not a live value, and spending the
+   signal colour on decoration is what stops it meaning anything elsewhere. */
+.about-section--log .log-entry:hover::after {
+  border-color: var(--color-fg-bold);
+  background: var(--color-fg-bold);
+}
+
+/* Empty for entries that carry no marker; the column still holds so the
+   spine stays straight down the list. */
+.log-entry-marker {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-fg-light);
+  text-align: right;
+  padding-top: 0.4em;
+  line-height: 1.4;
+}
+
+.log-entry-body {
+  min-width: 0;
+}
+
+@media (max-width: 735px) {
+  .about-section-nav {
+    top: var(--header-height-mobile);
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin: var(--spacing-6) 0 var(--spacing-5);
+    padding: var(--spacing-3) 0;
+    border-radius: 0;
+    scrollbar-width: thin;
+  }
+
+  .about-section h2 {
+    scroll-margin-top: calc(var(--header-height-mobile) + 4.5rem);
+    padding-top: var(--spacing-4);
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 736px) {
+  .about-header {
+    margin-bottom: var(--spacing-10);
+  }
+
+  .about-section {
+    margin-top: var(--spacing-16);
+  }
+
+  .about-section h2 {
+    margin-bottom: var(--spacing-5);
+  }
+
+  .about-section--compact ul {
+    columns: 2;
+    column-gap: var(--spacing-10);
+  }
+
+  .about-section--compact li {
+    font-size: var(--text-base);
+    line-height: 1.5;
+    margin-bottom: 0.35rem;
+    break-inside: avoid;
+  }
+
+  .about-section--links ul {
+    columns: 3;
+    column-gap: var(--spacing-8);
+  }
+
+  .about-section--links li {
+    margin-bottom: 0.5rem;
+    break-inside: avoid;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-section--log .log-entry {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.2rem;
+    padding-left: 1.5rem;
+  }
+
+  .about-section--log .log-entry::before,
+  .about-section--log .log-entry:last-child::before {
+    left: 0;
+  }
+
+  .about-section--log .log-entry::after {
+    left: 0;
+  }
+
+  .log-entry-marker {
+    text-align: left;
+    padding-top: 0;
+  }
+
+  .log-entry-marker:empty {
+    display: none;
+  }
+}

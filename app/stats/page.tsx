@@ -3,16 +3,19 @@ import type { Metadata } from 'next';
 import Personal from '@/components/Stats/Personal';
 import Site from '@/components/Stats/Site';
 
-import PageWrapper from '../components/PageWrapper';
+import PageWrapper from '@/components/Template/PageWrapper';
+import { createPageMetadata } from '@/lib/metadata';
+import { AUTHOR_NAME } from '@/lib/utils';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata ({
   title: 'Stats',
-  description: "Some statistics about Santi R. Bedate and santibedate.com",
-};
+  description: `Some statistics about ${AUTHOR_NAME} and santibedate.com`,
+  path: '/stats/',
+});
 
 export default function StatsPage() {
   return (
-    <PageWrapper>
+    <PageWrapper mainClassName='page-main--stats'>
       <section className="stats-page">
         <header className="stats-header">
           <h1 className="stats-title">Stats</h1>
