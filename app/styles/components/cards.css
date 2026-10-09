@@ -159,7 +159,7 @@
   font-family: var(--font-mono);
   font-size: var(--text-lg);
   letter-spacing: var(--tracking-tight);
-  margin: 0;
+  padding-bottom: 0.25rem;
 }
 
 .project-card-subtitle {
@@ -169,6 +169,7 @@
   text-transform: uppercase;
   color: var(--color-accent);
   font-weight: var(--font-weight-medium);
+  padding-bottom: 1rem;
 }
 
 .project-card-position {
