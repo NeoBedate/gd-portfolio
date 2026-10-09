@@ -31,7 +31,7 @@ export default function Hero() {
         
       <div className="hero-bg" aria-hidden="true" />
             <div className="hero-cta">
-          <Link href="/about" className="button button-secondary">
+          <Link href="/resume" className="button button-secondary">
             Resume
           </Link>
           <Link href="/portfolio" className="button button-primary">
