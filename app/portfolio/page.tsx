@@ -12,7 +12,7 @@ import {
   HOME_URL,
   SITE_URL,
 } from "@/lib/schema";
-import ProjectDetailWrap from '@/components/Projects/ProjectDetailWrap';
+//import ProjectDetailWrap from '@/components/Projects/ProjectDetailWrap';
 
 const PORTFOLIO_URL = `${SITE_URL}/portfolio/`;
 
