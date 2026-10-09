@@ -1,6 +1,6 @@
 {
   "name": "personal-site",
-  "version": "4.1.0",
+  "version": "2.0.0",
   "homepage": "https://santibedate.com/",
   "license": "MIT",
   "repository": {
@@ -26,6 +26,9 @@
     "analyze": "ANALYZE=true npm run build"
   },
   "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@fontsource-variable/newsreader": "^5.3.0",
     "@fortawesome/fontawesome-svg-core": "^7.1.0",
     "@fortawesome/free-brands-svg-icons": "^7.1.0",
     "@fortawesome/free-regular-svg-icons": "^7.3.1",
@@ -51,10 +54,11 @@
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^5.1.2",
     "@vitest/coverage-v8": "^4.0.16",
+    "esbuild": "0.28.2",
     "jsdom": "^27.4.0",
     "prettier": "^3.7.4",
     "typescript": "^5.9.3",
-    "vitest": "^5.0.1"
+    "vitest": "^4.0.16"
   },
   "browserslist": {
     "production": [
@@ -67,5 +71,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "allowScripts": {
+    "sharp@0.34.5": true,
+    "esbuild@0.28.2": true
   }
 }

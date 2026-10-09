@@ -1,13 +1,16 @@
+import { AUTHOR_NAME } from "@/lib/utils";
+
 export interface Route {
   label: string;
   path: string;
   index?: boolean;
+  primary?: boolean;
 }
 
 const routes: Route[] = [
   {
     index: true,
-    label: "Santiago R. Bedate",
+    label: AUTHOR_NAME,
     path: '/',
   },
   {
@@ -31,9 +34,14 @@ const routes: Route[] = [
     path: '/stats',
   },*/
   {
+    label: 'Archive',
+    path: '/archive',
+    primary: true,
+  },
+  {
     label: 'Contact',
     path: '/contact',
-  },
+  }
 ];
 
 export default routes;

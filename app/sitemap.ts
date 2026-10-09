@@ -1,53 +1,61 @@
 import { MetadataRoute } from 'next';
 
+import { getAllPosts } from '@/lib/posts';
+import { SITE_URL } from '@/lib/utils';
+
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'http://www.santibedate.com';
-  const currentDate = new Date();
+  // Generate entries for blog posts
+  const posts = getAllPosts();
+  const postEntries: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `${SITE_URL}/writing/${post.slug}/`,
+    lastModified: new Date(post.date),
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }));
 
   return [
     {
-      url: baseUrl,
-      lastModified: currentDate,
+      url: `${SITE_URL}/`,
       changeFrequency: 'monthly',
       priority: 1,
     },
     {
-      url: `${baseUrl}/about`,
-      lastModified: currentDate,
+      url: `${SITE_URL}/about`,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/resume`,
-      lastModified: currentDate,
+      url: `${SITE_URL}/resume`,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/portfolio`,
-      lastModified: currentDate,
+      url: `${SITE_URL}/portfolio`,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     /*{
-      url: `${baseUrl}/writing`,
-      lastModified: currentDate,
+      url: `${SITE_URL}/writing`,
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/stats`,
-      lastModified: currentDate,
+      url: `${SITE_URL}/stats`,
       changeFrequency: 'weekly',
       priority: 0.5,
     },*/
     {
-      url: `${baseUrl}/contact`,
-      lastModified: currentDate,
+      url: `${SITE_URL}/archive`,
       changeFrequency: 'yearly',
       priority: 0.5,
     },
+    {
+      url: `${SITE_URL}/contact`,
+      changeFrequency: 'yearly',
+      priority: 0.5,
+    },
+    ...postEntries,
   ];
 }

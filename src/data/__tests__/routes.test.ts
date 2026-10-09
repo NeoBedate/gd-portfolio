@@ -41,6 +41,7 @@ describe('routes', () => {
     expect(paths).toContain('/resume');
     expect(paths).toContain('/portfolio');
     expect(paths).toContain('/contact');
+    expect(paths).toContain('/archive');
   });
 
   it('has unique paths', () => {

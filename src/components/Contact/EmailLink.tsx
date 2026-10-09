@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useReducer, useRef } from 'react';
+import Profile from '@/data/profile.json';
 
 // Validates the first half of an email address.
 const validateText = (text: string): boolean => {
@@ -68,6 +69,8 @@ const animationReducer = (
 
       if (state.char - action.hold >= messages[state.idx].length) {
         newIdx += 1;
+        if (newIdx == messages.length)
+          newIdx = 0;
         newChar = 0;
       }
 
@@ -139,16 +142,15 @@ const EmailLink: React.FC<EmailLinkProps> = ({ loopMessage = false }) => {
     <div
       className="contact-email-container"
       onMouseEnter={() => dispatch({ type: 'PAUSE' })}
-      onMouseLeave={() => dispatch({ type: 'RESUME', maxIdx: messages.length })}
-    >
+      onMouseLeave={() => dispatch({ type: 'RESUME', maxIdx: messages.length })}>
       <a
-        href={isValid ? `mailto:${state.message}santiago.rodriguez.bedate@gmail.com` : '#'}
+        href={isValid ? `mailto:${Profile.email}` : '#'}
         className={`contact-email-link${isValid ? '' : ' contact-email-link--invalid'}`}
         onClick={handleClick}
         aria-disabled={!isValid}
       >
         <span className="contact-email-prefix">{state.message}</span>
-        <span className="contact-email-domain">santiago.rodriguez.bedate@gmail.com</span>
+        <span className="contact-email-domain">{Profile.email}</span>
       </a>
     </div>
   );

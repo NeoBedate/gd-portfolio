@@ -1,12 +1,21 @@
-'use client';
-
 import Link from 'next/link';
-import React from 'react';
 
-import ContactIcons from '../Contact/ContactIcons';
+
+import ContactIcons from '@/components/Contact/ContactIcons';
+import work from '@/data/resume/work';
+import routes from '@/data/routes';
+import { 
+  AUTHOR_NAME,
+  AUTHOR_ROLE,
+} from '@/lib/utils';
+
 import ThemePortrait from './ThemePortrait';
 
-const Footer: React.FC = () => {
+export default function Footer() {
+  const currentRole = `${AUTHOR_ROLE}`;
+  
+  // ""at ${work[0].name}`;"" si quiero añadir más tarde un rol EN UN TRABAJO.
+
   return (
     <footer className="site-footer-new">
       <div className="footer-content">
@@ -15,8 +24,8 @@ const Footer: React.FC = () => {
             <ThemePortrait width={80} height={80} />
           </Link>
           <div className="footer-info">
-            <h3>Santiago R. Bedate</h3>
-            <p className="footer-role">Game Designer</p>
+            <span className="footer-name">{AUTHOR_NAME}</span>
+            <p className="footer-role">{currentRole}</p>
             <p className="footer-copyright">
               &copy; {new Date().getFullYear()} ·{' '}
               <a
@@ -25,30 +34,43 @@ const Footer: React.FC = () => {
                 rel="noopener noreferrer"
               >
                 Source
+                <span className="sr-only"> (opens in new tab)</span>
               </a>
             </p>
           </div>
         </div>
 
         <div className="footer-right">
-          <nav className="footer-links">
-            <span className="footer-links-label">Explore</span>
+          {/* Driven from the same route registry as the header, which had
+              drifted: the footer was missing Writing and Stats entirely.
+              These are group labels, not document sections, so they are
+              spans rather than headings. */}
+          <nav className="footer-links" aria-labelledby="footer-links-heading">
+            <span id="footer-links-heading" className="footer-links-label">
+              Explore
+            </span>
             <div className="footer-links-grid">
-              <Link href="/about">About</Link>
-              <Link href="/resume">Resume</Link>
-              <Link href="/portfolio">Portfolio</Link>
-              <Link href="/contact">Contact</Link>
+              {routes
+                .filter((route) => !route.index)
+                .map((route) => (
+                  <Link key={route.path} href={route.path}>
+                    {route.label}
+                  </Link>
+                ))}
             </div>
           </nav>
 
-          <div className="footer-social">
-            <span className="footer-social-label">Connect</span>
+          <div
+            className="footer-social"
+            aria-labelledby="footer-social-heading"
+          >
+            <span id="footer-social-heading" className="footer-social-label">
+              Connect
+            </span>
             <ContactIcons />
           </div>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

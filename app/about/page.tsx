@@ -1,27 +1,54 @@
-'use client';
+import type { Metadata } from 'next';
 
-import Markdown from 'markdown-to-jsx';
-
+import AboutContent from '@/components/About/Sections';
+import { SchemaGraph } from '@/components/Schema';
+import PageWrapper from '@/components/Template/PageWrapper';
 import { aboutMarkdown } from '@/data/about';
+import profile from '@/data/profile.json'
+import { createPageMetadata } from '@/lib/metadata';
+import {
+  breadcrumbNode,
+  HOME_URL,
+  profilePageNode,
+  SITE_URL,
+} from '@/lib/schema';
+import { AUTHOR_NAME } from '@/lib/utils';
 
-import PageWrapper from '../components/PageWrapper';
+const ABOUT_URL = `${SITE_URL}/about/`;
 
-const count = (str: string) =>
-  str.split(/\s+/).filter((word) => word !== '').length;
+const ABOUT_DESCRIPTION = `Learn about ${AUTHOR_NAME} - ${profile.role_01} at ${profile.employer} and Producer. `;
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'About',
+  description: ABOUT_DESCRIPTION,
+  path: '/about/',
+});
 
 export default function AboutPage() {
   return (
-    <PageWrapper>
+    <PageWrapper mainClassName='page-main--about'>
+      <SchemaGraph
+        nodes={[
+          profilePageNode({
+            url: ABOUT_URL,
+            name: 'About',
+            description: ABOUT_DESCRIPTION,
+            hasBreadcrumb: true,
+          }),
+          breadcrumbNode(ABOUT_URL, [
+            { name: 'Home', url: HOME_URL },
+            { name: 'About', url: ABOUT_URL },
+          ]),
+        ]}
+      />
       <section className="about-page">
         <header className="about-header">
-          <h1 className="page-title">About Me</h1>
-          <p className="page-subtitle">
-            A quick intro in {count(aboutMarkdown)} words
-          </p>
+          <h1 className="about-title">About Me</h1>
         </header>
-        <article className="about-content">
-          <Markdown>{aboutMarkdown}</Markdown>
-        </article>
+        <p className="about-summary">
+           
+        </p>
+        <AboutContent markdown={aboutMarkdown} />
       </section>
     </PageWrapper>
   );

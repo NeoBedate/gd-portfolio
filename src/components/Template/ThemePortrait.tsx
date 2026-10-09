@@ -1,7 +1,4 @@
-'use client';
-
-import Image from 'next/image';
-import React from 'react';
+import { AUTHOR_NAME } from '@/lib/utils';
 
 interface ThemePortraitProps {
   width: number;
@@ -11,37 +8,30 @@ interface ThemePortraitProps {
 }
 
 /**
- * Theme-aware portrait component that swaps between light and dark mode images.
- * Uses CSS-based visibility toggling for instant switching without hydration mismatch.
+ * Portrait image component.
+ *
+ * Uses native <img> instead of next/image to:
+ * - Avoid shipping next/image runtime for static export
+ * - Reduce client-side JavaScript bundle
  */
-const ThemePortrait: React.FC<ThemePortraitProps> = ({
+
+export default function ThemePortrait({
   width,
   height,
   priority = false,
   className = '',
-}) => {
+}: ThemePortraitProps) {
   return (
-    <span className={`theme-portrait ${className}`}>
-      <Image
-        src="/images/me-light.png"
-        alt="Santiago R. Bedate"
+    <span className="theme-portrait">
+      {/* biome-ignore lint/performance/noImgElement: Using native img to avoid next/image runtime overhead for static export */}
+      <img
+        src="/images/me.png"
+        alt={AUTHOR_NAME}
         width={width}
         height={height}
-        priority={priority}
-        className="theme-portrait-light"
-        loading={priority ? undefined : 'lazy'}
-      />
-      <Image
-        src="/images/me-dark.png"
-        alt="Santiago R. Bedate"
-        width={width}
-        height={height}
-        priority={priority}
-        className="theme-portrait-dark"
-        loading={priority ? undefined : 'lazy'}
+        loading={priority ? 'eager' : 'lazy'}
+        decoding='async'
       />
     </span>
   );
-};
-
-export default ThemePortrait;
+}
