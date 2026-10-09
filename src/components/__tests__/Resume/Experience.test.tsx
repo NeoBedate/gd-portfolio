@@ -5,24 +5,12 @@ import Job from '../../Resume/Experience';
 
 const mockJobs = [
   {
-    compLogo: '',
-    name: 'Acme Corp',
-    url: 'https://acme.com',
-    startDate: '2020-01-01',
-    endDate: '2023-06-30',
-    summary: 'Led engineering team.',
-    projects: [
-      {
-        projectName: 'Built features',
-        projectPosition: 'tacatacat',
-        projectHighlights: ['patatati'],
-      },
-      {
-        projectName: 'Built features',
-        projectPosition: 'tacatacat',
-        projectHighlights: ['patatati'],
-      },
-    ],
+    companyId: 'xx_acme',
+    projectIds: [ 'x0_acmeProject', 'x1_acmeProject'],
+  },
+  {
+    companyId: 'yy_startupInc',
+    projectIds: [ 'y0_startupProject', 'y1_startupProject'],
   },
 ];
 
