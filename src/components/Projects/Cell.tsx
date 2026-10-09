@@ -27,7 +27,7 @@ const Cell: React.FC<CellProps> = ({ data }) => {
         <div className="project-card-content">
           <header className="project-card-header">
             <h4 className="project-card-title">{name}</h4>
-            {dimensions && <a className="project-card-subtitle">{dimensions} · {genre} · <time>{dayjs(publishingDate).format('YYYY')}</time></a>}
+            <a className="project-card-subtitle">{dimensions} · {genre} · <time>{dayjs(publishingDate).format('YYYY')}</time></a>
             <h3 className='project-card-position'>{position}</h3>
             <h4 className='project-card-studio'>{studio}</h4>
           </header>
