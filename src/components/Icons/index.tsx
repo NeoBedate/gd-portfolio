@@ -1,7 +1,7 @@
 interface IconProps {
   size?: number;
   className?: string;
-  style: string;
+  style?: string;
 }
 
 export function SunIcon({ size = 20, className }: IconProps) {
