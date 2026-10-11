@@ -28,7 +28,7 @@ const data: ProjectDetails[] = [
     startDate: '2022-03-15',
     endDate: '2024-08-15',
     publishingDate: '2024-11-20',
-    name: 'TMNT: Mutants Unleashed',
+    name: 'Teenage Mutant Ninja Turtles: Mutants Unleashed',
     studio: 'AHEARTFULOFGAMES',
     position: 'Lead Level Designer',
     summary: 'An action platformer where the player takes control of the four ninja turtles, battling through New York in order to uncover a conspiracy involving the `Mewbies´ and the chaos they are spreading through the city.',

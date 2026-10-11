@@ -20,6 +20,7 @@
   .icons li {
     display: block;
     padding: 0;
+    margin: 2 2 2 2;
   }
 
   .icons li a {
