@@ -3,6 +3,7 @@ import Image from 'next/image';
 import React from 'react';
 
 import type { ProjectDetails } from '@/data/projects';
+import { relative } from 'node:path';
 
 interface CellProps {
   data: ProjectDetails;
@@ -15,27 +16,27 @@ const Cell: React.FC<CellProps> = ({ data }) => {
   const cardProps = url ? { href: url, className: 'project-card-link' } : {};
 
   return (
-    <article
-      className={`project-card ${featured ? 'project-card--featured' : ''}`}
-    >
+    <article className={`project-card ${featured ? 'project-card--featured' : ''}`}>
       <CardWrapper {...cardProps}>
-        <div className="project-card-image">
-          <Image src={coverImage} alt={name} width={600} height={400} />
-          <div className="project-card-overlay" />
+        <div> 
+          <div className="project-card-content">
+            <p className="project-card-tag">{dimensions} · {genre} · <time>{dayjs(publishingDate).format('YYYY')}</time></p>
+            <p className="project-card-title">{name}</p>
+            <p className='project-card-studio'>{studio}</p>
+            <p className="project-card-description">{summary}</p>
+            <div className="project-card-details"></div>
+            <div className="project-card-background">
+              <Image className="project-card-image" src={coverImage} alt={name} width={128} height={128} />
+            <div/>
+            </div>
+          </div>
         </div>
+      </CardWrapper>
+    </article>
+  );
+};
 
-        <div className="project-card-content">
-          <header className="project-card-header">
-            <h4 className="project-card-title">{name}</h4>
-            <h4 className="project-card-subtitle">{dimensions} · {genre} · <time>{dayjs(publishingDate).format('YYYY')}</time></h4>
-            <h3 className='project-card-position'>{position}</h3>
-            <h4 className='project-card-studio'>{studio}</h4>
-          </header>
-
-
-          <p className="project-card-desc">{summary}</p>
-
-          {/* {tech && tech.length > 0 && (
+{/* {tech && tech.length > 0 && (
             <div className="project-card-tech">
               {tech.map((t) => (
                 <span key={t} className="tech-tag">
@@ -44,10 +45,5 @@ const Cell: React.FC<CellProps> = ({ data }) => {
               ))}
             </div>
           )} */}
-        </div>
-      </CardWrapper>
-    </article>
-  );
-};
 
 export default Cell;
