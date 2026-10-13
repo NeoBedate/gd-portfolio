@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-import SkillBar from '../../Resume/Skills/SkillBar';
+import SkillBar from '../../Experience/Skills/SkillBar';
 
 const mockCategories = [
   { name: 'Languages', color: '#6968b3' },

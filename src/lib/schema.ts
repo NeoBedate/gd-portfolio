@@ -1,6 +1,6 @@
 import contact from '@/data/contact';
-import degrees from '@/data/resume/degrees';
-import work from '@/data/resume/work';
+import degrees from '@/data/experience/degrees';
+import work from '@/data/experience/work';
 import type { Post } from '@/lib/posts';
 import {
   AUTHOR_NAME,

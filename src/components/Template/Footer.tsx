@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 
 import ContactIcons from '@/components/Contact/ContactIcons';
-import work from '@/data/resume/work';
+import work from '@/data/experience/work';
 import routes from '@/data/routes';
 import { 
   AUTHOR_NAME,

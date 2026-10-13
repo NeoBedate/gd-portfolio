@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import work from '../resume/work';
+import work from '../experience/work';
 
 describe('work data', () => {
   it('exports an array of positions', () => {

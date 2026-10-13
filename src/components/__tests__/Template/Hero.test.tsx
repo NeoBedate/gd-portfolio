@@ -43,9 +43,9 @@ describe('Hero', () => {
     expect(aboutButton).toHaveAttribute('href', '/about');
     expect(aboutButton).toHaveClass('button-primary');
 
-    const resumeButton = screen.getByRole('link', { name: /view resume/i });
-    expect(resumeButton).toHaveAttribute('href', '/resume');
-    expect(resumeButton).toHaveClass('button-secondary');
+    const experienceButton = screen.getByRole('link', { name: /view experience/i });
+    expect(experienceButton).toHaveAttribute('href', '/experience');
+    expect(experienceButton).toHaveClass('button-secondary');
   });
 
   it('has decorative background elements', () => {

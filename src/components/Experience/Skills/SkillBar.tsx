@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type { Category, Skill } from '@/data/resume/skills';
+import type { Category, Skill } from '@/data/experience/skills';
 
 interface SkillBarProps {
   data: Skill;

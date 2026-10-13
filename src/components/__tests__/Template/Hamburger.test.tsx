@@ -68,8 +68,9 @@ describe('Hamburger', () => {
 
     // Check for navigation links
     expect(screen.getByRole('link', { name: /about/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /resume/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /experience/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /portfolio/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /archive/i })).toBeInTheDocument();    
     expect(screen.getByRole('link', { name: /contact/i })).toBeInTheDocument();
   });
 

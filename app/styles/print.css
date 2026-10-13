@@ -53,7 +53,7 @@
   .hamburger-container,
   .theme-toggle,
   .reading-progress,
-  .resume-nav,
+  .experience-nav,
   .hero-bg,
   .writing-rss-link,
   .about-section-nav,
@@ -63,7 +63,7 @@
 
   .page-main,
   .page-main--hero,
-  .resume-page,
+  .experience-page,
   .about-page,
   .writing-page,
   .post-page {
@@ -96,7 +96,7 @@
     background-image: none;
   }
 
-  .resume-title,
+  .experience-title,
   .stats-title,
   .page-title {
     font-size: 22pt;
@@ -113,7 +113,7 @@
   }
 
   /* Keep a role and its bullets on one page wherever the page allows. */
-  .jobs-container,
+  .resume-container,
   .degree-container,
   .about-section--log li,
   .writing-item,
@@ -122,7 +122,7 @@
     page-break-inside: avoid;
   }
 
-  .jobs-container {
+  .resume-container {
     padding-bottom: 1.25rem;
     grid-template-columns: 9rem minmax(0, 1fr);
     gap: 0 1.5rem;
@@ -130,7 +130,7 @@
 
   /* The spine and its ticks are screen scaffolding; on paper the dated
      gutter already does that work, and hairlines cost toner. */
-  .jobs-container::before,
+  .resume-container::before,
   .job-marker,
   .about-section--log .log-entry::before,
   .about-section--log .log-entry::after {
@@ -164,22 +164,22 @@
     display: inline;
   }
 
-  .jobs-container--lead header h3 {
+  .resume-container--lead header h3 {
     font-size: 14pt;
   }
 
-  .jobs-container header h3 {
+  .resume-container header h3 {
     font-size: 12pt;
     margin-bottom: 0.35rem;
   }
 
-  .jobs-container .points li {
+  .resume-container .points li {
     font-size: 9.5pt;
     margin-bottom: 0.25rem;
   }
 
   .summary,
-  .jobs-container--lead .summary {
+  .resume-container--lead .summary {
     font-size: 10pt;
   }
 

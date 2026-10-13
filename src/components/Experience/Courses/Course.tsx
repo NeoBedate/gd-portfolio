@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type { Course as CourseType } from '@/data/resume/courses';
+import type { Course as CourseType } from '@/data/experience/courses';
 
 interface CourseProps {
   data: CourseType;

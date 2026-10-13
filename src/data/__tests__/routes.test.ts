@@ -38,7 +38,7 @@ describe('routes', () => {
 
     expect(paths).toContain('/');
     expect(paths).toContain('/about');
-    expect(paths).toContain('/resume');
+    expect(paths).toContain('/experience');
     expect(paths).toContain('/portfolio');
     expect(paths).toContain('/contact');
     expect(paths).toContain('/archive');

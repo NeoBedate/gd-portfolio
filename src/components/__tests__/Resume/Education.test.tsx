@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-import Education from '../../Resume/Education';
-import Degree from '../../Resume/Education/Degree';
+import Education from '../../Experience/Education';
+import Degree from '../../Experience/Education/Degree';
 
 const mockDegrees = [
   {

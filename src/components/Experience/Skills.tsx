@@ -2,7 +2,7 @@
 
 import React, { useReducer } from 'react';
 
-import type { Category, Skill } from '@/data/resume/skills';
+import type { Category, Skill } from '@/data/experience/skills';
 
 import CategoryButton from './Skills/CategoryButton';
 import SkillTag from './Skills/SkillTag';
@@ -103,7 +103,7 @@ const Skills: React.FC<SkillsProps> = ({ skills, categories }) => {
     <div className="skills">
       <div className="link-to" id="skills" />
       <div className="title">
-        <h3>Skills</h3>
+        <h2>Skills</h2>
       </div>
       <div className="skill-button-container">{getButtons()}</div>
       <div className="skill-groups">

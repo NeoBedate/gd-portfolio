@@ -105,7 +105,7 @@
   font-weight: var(--font-weight-medium);
 }
 
-.hero-resume-link {
+.hero-experience-link {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -126,13 +126,13 @@
     text-decoration-color var(--duration-fast) var(--ease-out);
 }
 
-.hero-resume-link:hover {
+.hero-experience-link:hover {
   color: var(--color-accent);
   text-decoration-color: var(--color-accent);
   background-image: none;
 }
 
-.hero-resume-link:focus-visible {
+.hero-experience-link:focus-visible {
   outline: var(--rule-strong) solid var(--color-accent);
   outline-offset: 2px;
 }
@@ -375,7 +375,7 @@
   color: var(--color-fg-light);
 }
 
-@media (max-width: 760px) {
+@media (max-width: 736px) {
   .home-writing {
     margin-top: 3.5rem;
   }
