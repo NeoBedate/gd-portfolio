@@ -6,15 +6,17 @@ import Degree from '../../Experience/Education/Degree';
 
 const mockDegrees = [
   {
-    school: 'Stanford University',
-    degree: 'M.S. Computer Science',
-    link: 'https://stanford.edu',
+    school: 'UCM',
+    degree: 'Licenciatura en Historia',
+    degreeLink:'www.licenciaturaenhistoria.com',
+    uniLink: 'https://www.ucm.es',
     year: 2020,
   },
   {
     school: 'MIT',
     degree: 'B.S. Computer Science',
-    link: 'https://mit.edu',
+    degreeLink:'',
+    uniLink: 'https://mit.edu',
     year: 2016,
   },
 ];
@@ -55,9 +57,10 @@ describe('Education', () => {
 
 describe('Degree', () => {
   const mockDegree = {
-    school: 'Stanford University',
-    degree: 'M.S. Computer Science',
-    link: 'https://stanford.edu',
+    school: 'UCM',
+    degree: 'Licenciatura en Historia',
+    degreeLink:'www.licenciaturaenhistoria.com',
+    uniLink: 'https://www.ucm.es',
     year: 2020,
   };
 
@@ -65,7 +68,7 @@ describe('Degree', () => {
     render(<Degree data={mockDegree} />);
 
     expect(screen.getByRole('heading', { level: 4 })).toHaveTextContent(
-      'M.S. Computer Science',
+      'Licenciatura en Historia',
     );
   });
 
