@@ -3,7 +3,6 @@
    ======================================== */
 
 .about-page {
-  width: 100%;
   max-width: var(--measure-page);
   margin: 0 auto;
 }
@@ -27,11 +26,13 @@
   max-width: var(--measure-page);
   font-size: var(--text-md);
   line-height: 1.7;
+  text-align: justify;
 }
 
 .about-content {
   max-width: var(--measure-page);
   line-height: 1.7;
+  text-align: justify;
 }
 
 /* Section index — mono labels on a rule, matching the resume. */
@@ -97,14 +98,26 @@
   margin-top: var(--spacing-10);
 }
 
+.experience-content .education .title h2,
+.experience-content .resume .title h2,
+.experience-content .skills .title h2,
+.experience-content .courses .title h2,
+.experience-content .references .title h2 {
+  display: block;
+  margin-bottom: 2.5rem;
+  padding-top: 0.875rem;
+}
+
+
 .about-section h2 {
   scroll-margin-top: calc(var(--header-height) + 5.5rem);
   margin: 0 0 var(--spacing-5);
   padding-top: var(--spacing-5);
-  border-top: var(--rule) solid var(--color-fg-bold);
-  font-family: var(--font-display);
+  border-bottom: var(--rule) solid var(--color-fg-light);
+  font-family: var(--font-mono);
   font-size: var(--text-xl);
   font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
   line-height: 1.15;
   letter-spacing: var(--tracking-display);
   color: var(--color-fg-bold);

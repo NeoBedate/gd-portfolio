@@ -3,17 +3,6 @@
    About, Contact, Stats, and Not Found pages
    ======================================== */
 
-/* ========================================
-   ABOUT PAGE
-   ======================================== */
-
-
-/* ========================================
-   ABOUT — LOG SECTIONS
-   The history and travel lists are a chronological record, so they
-   are set as log entries hanging off a spine rather than as bullets.
-   ======================================== */
-
 
 /* Ink, not amber: hovering an entry is not a live value, and spending the
    signal colour on decoration is what stops it meaning anything elsewhere. */
@@ -21,6 +10,12 @@
 /* Empty for entries that carry no marker; the column still holds so the
    spine stays straight down the list. */
 
+
+.page-main--contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .contact-page {
   width: 100%;
@@ -31,12 +26,6 @@
   justify-content: center;
   margin: 0 auto;
   padding: 2rem 1rem;
-}
-
-.page-main--contact {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .contact-header {
