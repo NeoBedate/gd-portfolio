@@ -34,13 +34,17 @@ describe('Footer', () => {
       'href',
       '/about',
     );
-    expect(screen.getByRole('link', { name: /resume/i })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: /experience/i })).toHaveAttribute(
       'href',
-      '/resume',
+      '/experience',
     );
     expect(screen.getByRole('link', { name: /portfolio/i })).toHaveAttribute(
       'href',
       '/portfolio',
+    );
+    expect(screen.getByRole('link', { name: /archive/i })).toHaveAttribute(
+      'href',
+      '/archive',
     );
     expect(screen.getByRole('link', { name: /contact/i })).toHaveAttribute(
       'href',

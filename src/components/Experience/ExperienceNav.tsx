@@ -3,15 +3,15 @@
 import React, { useEffect, useState } from 'react';
 
 const sections = [
-  { name: 'CV', id: 'experience' },
+  { name: 'Resume', id: 'resume' },
   { name: 'Education', id: 'education' },
   { name: 'Skills', id: 'skills' },
   { name: 'Courses', id: 'courses' },
   { name: 'References', id: 'references' },
 ];
 
-const ResumeNav: React.FC = () => {
-  const [activeSection, setActiveSection] = useState('experience');
+const ExperienceNav: React.FC = () => {
+  const [activeSection, setActiveSection] = useState('resume');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,12 +33,12 @@ const ResumeNav: React.FC = () => {
   }, []);
 
   return (
-    <nav className="resume-nav">
+    <nav className="experience-nav">
       {sections.map((section) => (
         <a
           key={section.id}
           href={`#${section.id}`}
-          className={`resume-nav-link ${activeSection === section.id ? 'active' : ''}`}
+          className={`experience-nav-link ${activeSection === section.id ? 'active' : ''}`}
         >
           {section.name}
         </a>
@@ -47,4 +47,4 @@ const ResumeNav: React.FC = () => {
   );
 };
 
-export default ResumeNav;
+export default ExperienceNav;

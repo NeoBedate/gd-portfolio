@@ -6,7 +6,7 @@ const References: React.FC = () => (
     <div className="link-to" id="references" />
     <div className="title">
       <Link href="/contact">
-        <h3>References are available upon request</h3>
+        <h2>References are available upon request</h2>
       </Link>
     </div>
   </div>

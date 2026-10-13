@@ -1,7 +1,8 @@
 export interface Degree {
   school: string;
   degree: string;
-  link: string;
+  degreeLink: string;
+  uniLink: string;
   year: number;
 }
 
@@ -9,13 +10,15 @@ const degrees: Degree[] = [
   {
     school: 'U-TAD (Centro Universitario de Tecnología y Arte Digital)',
     degree: 'M.D. in Game Design',
-    link: 'https://u-tad.com',
+    degreeLink: 'https://u-tad.com/en/studies/masters-in-game-design',
+    uniLink: 'https://u-tad.com',
     year: 2013,
   },
   {
     school: 'Universidad Autónoma de Madrid',
     degree: 'Bachelor Degree in History',
-    link: 'https://www.uam.es',
+    degreeLink: 'https://www.uam.es/uam/historia',
+    uniLink: 'https://www.uam.es',
     year: 2012,
   },
 ];

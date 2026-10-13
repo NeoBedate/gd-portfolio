@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-import Job from '../../Resume/Experience';
+import Job from '../../Experience/Resume';
 
 const mockJobs = [
   {
@@ -63,7 +63,7 @@ describe('Experience', () => {
       screen.getByRole('heading', { name: /experience/i }),
     ).toBeInTheDocument();
     // No job articles
-    const articles = document.querySelectorAll('.jobs-container');
+    const articles = document.querySelectorAll('.resume-container');
     expect(articles.length).toBe(0);
   });
 });

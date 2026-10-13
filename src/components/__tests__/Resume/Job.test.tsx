@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-import Job from '../../Resume/Experience/Job';
+import Job from '../../Experience/Resume/Job';
 
 describe('Job', () => {
   const mockJob = {
@@ -122,7 +122,7 @@ describe('Job', () => {
   it('renders as article element', () => {
     render(<Job id={mockJob.id} companyData={mockJob.companyData} projectData={mockJob.projectData} />);
 
-    const article = document.querySelector('article.jobs-container');
+    const article = document.querySelector('article.resume-container');
     expect(article).toBeInTheDocument();
   });
 });

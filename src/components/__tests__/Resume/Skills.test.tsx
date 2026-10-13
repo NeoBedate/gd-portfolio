@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-import Skills from '../../Resume/Skills';
+import Skills from '../../Experience/Skills';
 
 const mockCategories = [
   { name: 'Languages', color: '#6968b3' },

@@ -44,13 +44,13 @@ export default function ProjectsPage() {
           ])
         ]}
       />
-      <section className="projects-portfolio-page">
-        <header className="projects-portfolio-header">
+      <section className="portfolio-page">
+        <header className="portfolio-header">
           <h1 className="page-title">Portfolio</h1>
           <p className="page-subtitle">A selection of video games I helped to create.</p>
         </header>
         {featuredProjects.length > 0 && (
-          <section className="projects-portfolio">
+          <section className="portfolio-projects">
             <h2 className="projects-section-title">Featured</h2>
             <div className="projects-grid projects-grid--featured">
               {featuredProjects.map((project) => (

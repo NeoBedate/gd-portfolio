@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type { Course as CourseType } from '@/data/resume/courses';
+import type { Course as CourseType } from '@/data/experience/courses';
 
 import Course from './Courses/Course';
 
@@ -30,7 +30,7 @@ const Courses: React.FC<CoursesProps> = ({ data }) => (
   <div className="courses">
     <div className="link-to" id="courses" />
     <div className="title">
-      <h3>University Courses</h3>
+      <h2>University Courses</h2>
     </div>
     <ul className="course-list">{getRows(data)}</ul>
   </div>

@@ -1,18 +1,18 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-import ResumeNav from '../../Resume/ResumeNav';
+import ExperienceNav from '../../Experience/ExperienceNav';
 
-describe('ResumeNav', () => {
+describe('ExperienceNav', () => {
   it('renders navigation element', () => {
-    render(<ResumeNav />);
+    render(<ExperienceNav />);
 
     const nav = screen.getByRole('navigation');
     expect(nav).toBeInTheDocument();
   });
 
   it('renders links to all resume sections', () => {
-    render(<ResumeNav />);
+    render(<ExperienceNav />);
 
     expect(screen.getByRole('link', { name: /experience/i })).toHaveAttribute(
       'href',
@@ -37,21 +37,21 @@ describe('ResumeNav', () => {
   });
 
   it('renders 5 navigation links', () => {
-    render(<ResumeNav />);
+    render(<ExperienceNav />);
 
     const links = screen.getAllByRole('link');
     expect(links.length).toBe(5);
   });
 
   it('has correct CSS class', () => {
-    render(<ResumeNav />);
+    render(<ExperienceNav />);
 
-    const nav = document.querySelector('.resume-nav');
+    const nav = document.querySelector('.experience-nav');
     expect(nav).toBeInTheDocument();
   });
 
   it('experience link is active by default', () => {
-    render(<ResumeNav />);
+    render(<ExperienceNav />);
 
     const experienceLink = screen.getByRole('link', { name: /experience/i });
     expect(experienceLink).toHaveClass('active');

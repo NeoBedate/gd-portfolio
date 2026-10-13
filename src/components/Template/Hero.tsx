@@ -31,12 +31,11 @@ export default function Hero() {
         
       <div className="hero-bg" aria-hidden="true" />
             <div className="hero-cta">
-          <Link href="/resume" className="button button-secondary">
-            Resume
+          <Link href="/experience" className="button button-secondary">
+            Experience
           </Link>
           <Link href="/portfolio" className="button button-primary">
-            Portfolio
-             <span aria-hidden="true">→</span>
+            Portfolio <span aria-hidden="true">→</span>
           </Link>
         </div>
     </section>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type { Degree as DegreeType } from '@/data/resume/degrees';
+import type { Degree as DegreeType } from '@/data/experience/degrees';
 
 import Degree from './Education/Degree';
 
@@ -12,7 +12,7 @@ const Education: React.FC<EducationProps> = ({ data }) => (
   <div className="education">
     <div className="link-to" id="education" />
     <div className="title">
-      <h3>Education</h3>
+      <h2>Education</h2>
     </div>
     {data.map((degree) => (
       <Degree data={degree} key={degree.school} />

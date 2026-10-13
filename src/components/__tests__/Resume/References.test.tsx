@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-import References from '../../Resume/References';
+import References from '../../Experience/References';
 
 describe('References', () => {
   it('renders the references section', () => {

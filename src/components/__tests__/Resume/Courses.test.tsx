@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-import Courses from '../../Resume/Courses';
-import Course from '../../Resume/Courses/Course';
+import Courses from '../../Experience/Courses';
+import Course from '../../Experience/Courses/Course';
 
 const mockCourses = [
   {

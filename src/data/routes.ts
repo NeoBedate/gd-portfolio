@@ -18,8 +18,8 @@ const routes: Route[] = [
     path: '/about',
   },
   {
-    label: 'Resume',
-    path: '/resume',
+    label: 'Experience',
+    path: '/experience',
   },
   {
     label: 'Portfolio',

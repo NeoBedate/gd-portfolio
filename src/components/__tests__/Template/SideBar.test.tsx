@@ -51,18 +51,18 @@ describe('SideBar', () => {
     );
   }); */
 
-  it('shows Learn More button when not on resume page', () => {
+  it('shows Learn More button when not on experience page', () => {
     mockPathname.mockReturnValue('/about');
     render(<SideBar />);
 
     expect(screen.getByRole('link', { name: /learn more/i })).toHaveAttribute(
       'href',
-      '/resume',
+      '/experience',
     );
   });
 
-  it('shows About Me button when on resume page', () => {
-    mockPathname.mockReturnValue('/resume');
+  it('shows About Me button when on experience page', () => {
+    mockPathname.mockReturnValue('/experience');
     render(<SideBar />);
 
     expect(screen.getByRole('link', { name: /about me/i })).toHaveAttribute(

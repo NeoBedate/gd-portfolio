@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import degrees from '../resume/degrees';
+import degrees from '../experience/degrees';
 
 describe('degrees data', () => {
   it('exports an array of degrees', () => {
@@ -17,7 +17,7 @@ describe('degrees data', () => {
 
       expect(typeof degree.school).toBe('string');
       expect(typeof degree.degree).toBe('string');
-      expect(typeof degree.link).toBe('string');
+      expect(typeof degree.uniLink).toBe('string');
       expect(typeof degree.year).toBe('number');
     }
   });
@@ -35,7 +35,7 @@ describe('degrees data', () => {
     const urlRegex = /^https?:\/\/.+/;
 
     for (const degree of degrees) {
-      expect(degree.link).toMatch(urlRegex);
+      expect(degree.uniLink).toMatch(urlRegex);
     }
   });
 

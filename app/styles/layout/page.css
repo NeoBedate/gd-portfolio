@@ -23,7 +23,6 @@
 .page-main {
   flex: 1;
   width: 100%;
-  max-width: var(--measure-wide);
   margin: 0 auto;
   padding: 2rem 1.5rem;
 }
@@ -33,6 +32,23 @@
 .page-main--hero {
   max-width: var(--measure-page);
 }
+
+.page-main--about {
+  max-width: var(--measure-page);
+}
+
+.page-main--experience {
+  max-width: var(--measure-page);
+}
+
+.page-main--portfolio {
+  max-width: var(--measure-wide);
+}
+
+.page-main--archive {
+  max-width: var(--measure-wide);
+}
+
 
 @media screen and (min-width: 736px) {
   .page-main {
@@ -45,7 +61,7 @@
   text-align: center;
   font-size: var(--text-3xl);
   font-weight: var(--font-weight-black);
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--spacing-10);
 }
 
 .page-subtitle {

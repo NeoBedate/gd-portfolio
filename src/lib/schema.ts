@@ -1,6 +1,6 @@
 import contact from '@/data/contact';
-import degrees from '@/data/resume/degrees';
-import work from '@/data/resume/work';
+import degrees from '@/data/experience/degrees';
+import work from '@/data/experience/work';
 import type { Post } from '@/lib/posts';
 import {
   AUTHOR_NAME,
@@ -11,6 +11,7 @@ import {
   SITE_IMAGE_PATH,
   SITE_URL,
 } from '@/lib/utils';
+import { unlink } from 'node:fs';
 
 export { SITE_URL } from '@/lib/utils';
 
@@ -97,7 +98,9 @@ export function personNode(): SchemaNode {
     alumniOf: degrees.map((degree) => ({
       '@type': 'CollegeOrUniversity',
       name: degree.school,
-      url: degree.link,
+      url: degree.uniLink,
+      degreeName: degree.degree,
+      degreeUrl: degree.degreeLink,
     })),
   };
 }
