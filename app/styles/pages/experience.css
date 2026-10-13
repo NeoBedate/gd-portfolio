@@ -211,6 +211,7 @@
 .resume-compLogo {
   position: relative;
   justify-content: center;
+  width: 75%;
 }
 
 .resume-daterange {
@@ -351,7 +352,7 @@
   }
 
   .resume-compLogo {
-    width: 80%;
+    width: 70%;
     padding-bottom: 3rem;
   }
 
