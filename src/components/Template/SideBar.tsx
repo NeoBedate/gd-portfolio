@@ -7,6 +7,7 @@ import profile from '@/data/profile.json'
 
 import ContactIcons from '../Contact/ContactIcons';
 import ThemePortrait from './ThemePortrait';
+import { SITE_URL } from '@/lib/utils';
 
 const SideBar: React.FC = () => {
   const pathname = usePathname();
@@ -18,7 +19,7 @@ const SideBar: React.FC = () => {
           <ThemePortrait width={200} height={200} priority />
         </Link>
         <header>
-          <h2>Santiago R. Bedate</h2>
+          <h2>{profile.name}</h2>
           <p>
             <a href={"mailto:" + profile.email}>{profile.email}</a>
           </p>
@@ -36,8 +37,8 @@ const SideBar: React.FC = () => {
         </p>
         <ul className="actions">
           <li>
-            {pathname && !pathname.includes('/resume') ? (
-              <Link href="/resume" className="button">
+            {pathname && !pathname.includes('/experience') ? (
+              <Link href="/experience" className="button">
                 Learn More
               </Link>
             ) : (
@@ -52,7 +53,7 @@ const SideBar: React.FC = () => {
       <section className="site-footer">
         <ContactIcons />
         <p className="copyright">
-          &copy; Santiago R. Bedate <Link href="/">santibedate.com</Link>.
+          &copy; ${profile.name} <Link href="/">{SITE_URL}</Link>.
         </p>
       </section>
     </section>
