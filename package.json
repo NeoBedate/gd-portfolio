@@ -57,7 +57,7 @@
     "esbuild": "0.28.2",
     "jsdom": "^27.4.0",
     "prettier": "^3.7.4",
-    "typescript": "^5.9.3",
+    "typescript": "^7.0.2",
     "vitest": "^4.0.16"
   },
   "browserslist": {
