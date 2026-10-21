@@ -180,7 +180,7 @@
 }
 
 .about-content li::marker {
-  color: var(--color-fg-muted);
+  color: var(--color-accent);
 }
 
 .about-content a {
@@ -191,7 +191,7 @@
 }
 
 .about-content a:hover {
-  text-decoration-color: var(--color-accent-underline-strong);
+  text-decoration-color: var(--color-accent);
   color: var(--color-fg-bold);
 }
 
@@ -222,7 +222,7 @@
 .about-section--log .log-entry::before {
   content: '';
   position: absolute;
-  left: calc(4.5rem + 0.875rem);
+  left: calc(4.5rem + 0.855rem);
   top: 0;
   bottom: -1.1rem;
   width: var(--rule);
@@ -245,7 +245,7 @@
   width: 7px;
   height: 7px;
   transform: translate(-50%, -50%);
-  border: var(--rule) solid var(--color-fg-light);
+  border: var(--rule) solid var(--color-accent);
   background: var(--color-bg-alt);
   border-radius: var(--radius-full);
 }
@@ -309,6 +309,7 @@
   .about-section--compact ul {
     columns: 2;
     column-gap: var(--spacing-10);
+    list-style: square;
   }
 
   .about-section--compact li {

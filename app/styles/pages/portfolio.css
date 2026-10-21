@@ -31,3 +31,418 @@
     font-style: italic;
   }
 }
+
+/* ========================================
+   PROJECT DETAIL WRAP COMPONENTS
+   Project detail wrap that collapses and shows
+   different information for each project.
+   ======================================== */
+
+
+.game-detail-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s ease;
+}
+
+.game-detail-wrap.open {
+  grid-template-rows: 1fr;
+  margin-top: 3rem;
+}
+
+.game-detail {
+  overflow: hidden;
+}
+
+.game-detail-heading {
+  display: flex;
+  position: relative;
+}
+
+.game-detail-title {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+}
+
+.game-detail-studio {
+  padding-left: 0.2rem;
+  padding-top: 0.3rem;
+  font-family: var(--font-mono);
+  font-style: italic;
+  color: var(--color-accent);
+  text-transform: uppercase;
+}
+
+.game-detail-tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-accent);
+} 
+
+/* Tech tags — squared, quiet, mono. */
+.tech-tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-fg-light);
+  background: transparent;
+  border: var(--rule) solid var(--color-border-alt);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.game-detail-tech-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  padding: 0.35rem;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  color: var(--color-accent);
+  
+}
+
+.game-detail-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  margin-top: 1rem;
+  margin-bottom: -0.5rem;
+}
+
+.game-detail-responsibilities {
+  position: relative;
+  padding: 2rem 0 0;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.game-detail-screenshots {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+.game-detail-main {
+  position: relative;
+  aspect-ratio: 16/9;
+  width: 100%;
+}
+
+.game-detail-main img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+}
+
+.game-detail-play-btn {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: solid var(--color-bg);
+  transition: background 0.2s;
+}
+
+.game-detail-play-btn:hover {
+  background:  var(--color-bg);
+}
+
+.game-detail-play-btn-icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: var(--color-bg-alt);
+  border: 2px solid var(--color-fg-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: #fff;
+  transition: transform 0.15s;
+}
+
+.game-detail-play-btn:hover .game-detail-play-btn-icon {
+  transform: scale(1.1);
+}
+
+#game-detail-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: none;
+}
+
+.game-detail-img-nav {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.6rem;
+}
+
+.game-detail-img-btn {
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 2px solid var(--color-border);
+  background: var(--surface);
+  color: var(--color-accent-border);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.game-detail-img-btn:hover {
+  color: var(--color-accent);
+}
+
+.game-detail-img-btn:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.game-detail-section-imgs img {
+  cursor: pointer;
+}
+
+#game-detail-main-img {
+  cursor: pointer;
+}
+
+.game-detail-role {
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-lg);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-display);
+  color: var(--color-fg);
+  margin-bottom: 0.5rem;
+}
+
+.game-detail-overview {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  color: var(--color-fg);
+  margin-bottom: 1rem;
+}
+
+.game-detail-overview p {
+  margin-bottom: 0.85rem;
+}
+
+.game-detail-overview p:last-child {
+  margin-bottom: 0;
+}
+
+.game-detail-tasks-label {
+  font-family: var(--font-mono);
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+  color: var(--color-accent);
+}
+
+.game-detail-tasks {
+  list-style: square;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.game-detail-tasks li {
+  font-size: var(--text-base);
+  color: var(--color-fg-light);
+  letter-spacing: var(--tracking-tight);
+}
+
+.game-detail-tasks li::marker {
+  color: var(--color-accent);
+}
+
+.game-detail-quote {
+  display: none;
+  margin-top: 1.5rem;
+}
+
+#game-detail-sections {
+  display: table-footer-group;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 3rem;
+}
+
+.game-detail-section {
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+}
+
+.game-detail-section-title {
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--text-lg);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-display);
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+}
+
+.game-detail-section-body {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  color: var(--color-fg);
+  margin-bottom: 2rem;
+}
+
+.game-detail-section-imgs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.game-detail-section-nav-btn {
+  width: 2.2rem;
+  height: 2.2rem;
+  background: var(--surface);
+  color: var(--color-accent-border);
+  cursor: pointer;
+  display: flex;
+  transition: background 0.2s, color 0.2s;
+}
+
+.game-detail-section-imgs img {
+  width: 40%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+}
+
+.game-detail-section-caption {
+  font-size: 0.78rem;
+  color: var(--color-fg-light);
+  font-style: italic;
+  text-align: center;
+  margin-top: 0.5rem;
+  min-height: 1.1em;
+}
+
+.game-detail-section-imgs-nav {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 0.6rem;
+}
+
+.game-detail-section-nav-btn:hover {
+  color: var(--color-accent);
+}
+
+.game-detail-section-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+
+.game-detail-section-media {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.game-detail-section-media > .game-detail-section-imgs {
+  grid-column: span 2;
+  grid-template-columns: 1fr 1fr;
+}
+
+.game-detail-section-media > .game-detail-span-full {
+  grid-column: 1 / -1;
+}
+
+.game-detail-section-media--single {
+  grid-template-columns: 1fr 1fr;
+}
+
+.game-detail-section-media--single > .game-detail-section-imgs {
+  grid-column: span 1;
+  grid-template-columns: 1fr;
+}
+
+.game-detail-gif-player {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background:  var(--color-bg);
+}
+
+.game-detail-gif-player img {
+  width: 100%;
+  display: block;
+}
+
+.game-detail-gif-fade {
+  position: absolute;
+  inset: 0;
+  background: var(--color-bg);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.game-detail-gif-fade.fading {
+  opacity: 1;
+}
+
+.game-detail-close {
+  position: absolute;
+  right: 0;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  background: none;
+  color: var(--color-fg);
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.game-detail-close:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent-hover);
+}
+
+.game-detail-steam-link {
+  color: var(--color-fg-light);
+  font-size: 1.6rem;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+
+.game-detail-steam-link:hover {
+  color: var(--accent);
+}

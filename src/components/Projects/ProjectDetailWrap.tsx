@@ -1,37 +1,122 @@
-// "use client"
-// import dayjs from 'dayjs';
-// import Image from 'next/image';
-// import React from 'react';
+"use client"
 
-// import type { ProjectDetails } from '@/data/projects';
+import { useEffect, useState } from "react";
 
-// interface ProjectID {
-//   id: string;
-// }
+import dayjs from 'dayjs';
+import Image from 'next/image';
+import React from 'react';
 
-// const ProjectDetailWrap: React.FC<ProjectID> = ({ id }) => {
+import type { ProjectDetails, ProjectResponsibilities } from '@/data/projects';
+import { CloseChevron, LeftChevron, RightChevron } from '@/components/Icons';
+
+export interface ProjectDetailProp {
+    project: ProjectDetails | undefined;
+}
+
+const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
+
+  var screenshotIdx = 0;
+  let currentGameVideo = null;
+
+  var imageElement : HTMLImageElement;
+  var videoElement : HTMLIFrameElement;
+  var wrapElement : HTMLElement;
+  var playButtonElement : HTMLButtonElement;
+
+  var sectionsDisplayIdxs : number[] = [0,0,0,0];
+
+  ///// Call init after any props data changed (project)
+  useEffect(initialize);
+
+  ///// Get all element references and initialize image display
+  function initialize(){
+    if (videoElement == null)
+      videoElement = document.getElementById('game-detail-video');
+    if (imageElement == null)
+      imageElement = document.getElementById('game-detail-main-img');
+    if (playButtonElement == null)
+      playButtonElement = document.getElementById('game-detail-play-btn');
+    if (wrapElement == null)
+      wrapElement = document.getElementById('game-detail-wrap');
+    if (videoElement == null)
+      videoElement = document.getElementById('game-detail-video');
+    if (playButtonElement == null)
+      playButtonElement = document.getElementById('game-detail-play-btn');
+
+    var sectionsDisplayIdxs : number[] = [];
+    project?.sections?.forEach((element, idx )=> {
+      sectionsDisplayIdxs[idx] = 0;
+    });
+    
+    screenshotIdx = 0;
+    renderScreenshot();
+  }
+
+  ////// Change gifs and caption of a section to the next or previous ones
+  function stepSection(section:ProjectResponsibilities , sectionIdx:number, step:number){
+    
+    ////// Obtain current display index of section and calculate the new value
+    var currentIdx = sectionsDisplayIdxs[sectionIdx];
+    if (step > 0) {
+      currentIdx += 1;
+      if (currentIdx >= section.gifs.length)
+        currentIdx = 0;
+    }
+    else {
+      currentIdx -= 1;
+      if (currentIdx < 0)
+        currentIdx = section.gifs.length -1;
+    }
+
+    ////// Update display index of section
+    sectionsDisplayIdxs[sectionIdx] = currentIdx;
+
+    ////// Get section elements and update content with data of new index
+    var img0 : HTMLImageElement = document.getElementById("game-detail-section-"+sectionIdx+"-img-0");
+    var img1 : HTMLImageElement = document.getElementById("game-detail-section-"+sectionIdx+"-img-1");
+    var caption : HTMLElement = document.getElementById("game-detail-section-"+sectionIdx+"-caption");
+    
+    img0.src = section.gifs[currentIdx][0];
+    img1.src = section.gifs[currentIdx][1];
+    caption.innerHTML = section.captions[currentIdx];
+
+  }
 
 
-//   let screenshotIdx = 0;
-//   let currentGameVideo = null;
-//   let screenshotsData = [];
+  function startVideo(){
+    ///////// TODO Logic for playing video
+  }
 
-//   function renderScreenshot() {
-//     // const videoEl = document.getElementById('gd-video');
-//     // videoEl.src = '';
-//     // videoEl.style.display = 'none';
-//     // const img = document.getElementById('gd-main-img');
-//     // img.src = screenshotsData[screenshotIdx];
-//     // img.style.display = 'block';
-//     // document.getElementById('gd-img-prev').disabled = false;
-//     // document.getElementById('gd-img-next').disabled = false;
-//     // document.getElementById('gd-play-btn').style.display = (screenshotIdx === 0 && currentGameVideo) ? 'flex' : 'none';
-//   }
+  function renderScreenshot() {
+    // const videoEl = document.getElementById('game-detail-video');
+    // videoEl.src = '';
+    // videoEl.style.display = 'none';
 
-//   function stepScreenshot(dir) {
-//     screenshotIdx = (screenshotIdx + dir + screenshotsData.length) % screenshotsData.length;
-//     renderScreenshot();
-//   }
+    if (screenshotIdx == 0) {
+      imageElement.style.display = 'none';
+      playButtonElement.style.display = 'block';
+      videoElement.style.display = 'flex';
+    }
+    else {
+      imageElement.style.display = 'flex';
+      playButtonElement.style.display = 'none';
+      videoElement.style.display = 'none';
+      
+      if (imageElement != null && project != null && project.images != null)
+        imageElement.src = project.images[screenshotIdx];
+      // img.style.display = 'block';
+      // document.getElementById('game-detail-img-prev').disabled = false;
+      // document.getElementById('game-detail-img-next').disabled = false;
+      // document.getElementById('game-detail-play-btn').style.display = (screenshotIdx === 0 && currentGameVideo) ? 'flex' : 'none';
+    }
+  }
+
+  function stepScreenshot(dir: number) {
+    if (project != null && project.images != null){
+      screenshotIdx = (screenshotIdx + dir + project.images.length) % project.images.length;
+      renderScreenshot();
+    }
+  }
 
 //   function openGameDetail(key) {
 //     //conseguir project
@@ -41,33 +126,33 @@
 //     if (!gameData||!wrap) return;
 
 //     // rellenar datos del detalle con el project
-//     // document.getElementById('gd-tag').textContent = gameData.tag;
-//     // const steamLink = gameData.steamUrl ? `<a href="${gameData.steamUrl}" target="_blank" rel="noopener" class="gd-steam-link" onclick="event.stopPropagation()"><i class="ti ti-brand-steam"></i></a>` : '';
-//     // document.getElementById('gd-title').innerHTML = `<span>${gameData.title}</span>${steamLink}`;
-//     // document.getElementById('gd-studio').textContent = gameData.studio;
-//     // document.getElementById('gd-role').textContent = gameData.role;
-//     // document.getElementById('gd-overview').innerHTML = gameData.overview.split('\n\n').map(p => `<p>${p}</p>`).join('');
+//     // document.getElementById('game-detail-tag').textContent = gameData.tag;
+//     // const steamLink = gameData.steamUrl ? `<a href="${gameData.steamUrl}" target="_blank" rel="noopener" class="game-detail-steam-link" onclick="event.stopPropagation()"><i class="ti ti-brand-steam"></i></a>` : '';
+//     // document.getElementById('game-detail-title').innerHTML = `<span>${gameData.title}</span>${steamLink}`;
+//     // document.getElementById('game-detail-studio').textContent = gameData.studio;
+//     // document.getElementById('game-detail-role').textContent = gameData.role;
+//     // document.getElementById('game-detail-overview').innerHTML = gameData.overview.split('\n\n').map(p => `<p>${p}</p>`).join('');
 //     // currentGameVideo = gameData.video || null;
-//     // if (gameData.video) { document.getElementById('gd-video').dataset.src = gameData.video; }
+//     // if (gameData.video) { document.getElementById('game-detail-video').dataset.src = gameData.video; }
 //     // screenshotsData = gameData.imgs;
 //     // screenshotIdx = 0;
 //     // renderScreenshot();
-//     // document.getElementById('gd-tasks').innerHTML = gameData.tasks.map(t => `<li>${t}</li>`).join('');
-//     // const quoteEl = document.getElementById('gd-quote');
-//     // if (gameData.quote) { document.getElementById('gd-quote-text').textContent = gameData.quote; document.getElementById('gd-quote-cite').textContent = gameData.quoteAuthor || ''; quoteEl.style.display = 'block'; }
+//     // document.getElementById('game-detail-tasks').innerHTML = gameData.tasks.map(t => `<li>${t}</li>`).join('');
+//     // const quoteEl = document.getElementById('game-detail-quote');
+//     // if (gameData.quote) { document.getElementById('game-detail-quote-text').textContent = gameData.quote; document.getElementById('game-detail-quote-cite').textContent = gameData.quoteAuthor || ''; quoteEl.style.display = 'block'; }
 //     // else { quoteEl.style.display = 'none'; }
 //     // currentSectionsData = gameData.sections || [];
 //     // sectionImgPages = currentSectionsData.map(() => 0);
-//     // document.getElementById('gd-sections').innerHTML = currentSectionsData.map((s, i) => {
-//     //   const imgsEl = `<div class="gd-section-imgs" id="gd-section-imgs-${i}"></div>`;
-//     //   const captionEl = s.captions ? `<p class="gd-section-caption" id="gd-section-caption-${i}"></p>` : '';
-//     //   const navEl = s.imgs.length > 2 ? `<div class="gd-section-imgs-nav"><button class="gd-section-nav-btn" onclick="stepSectionImgs(${i},-1)"><i class="ti ti-chevron-left"></i></button><button class="gd-section-nav-btn" onclick="stepSectionImgs(${i},1)"><i class="ti ti-chevron-right"></i></button></div>` : '';
-//     //   const captionSpan = s.captions ? `<p class="gd-section-caption gd-span-full" id="gd-section-caption-${i}"></p>` : '';
-//     //   const navSpan = s.imgs.length > 2 ? `<div class="gd-section-imgs-nav gd-span-full"><button class="gd-section-nav-btn" onclick="stepSectionImgs(${i},-1)"><i class="ti ti-chevron-left"></i></button><button class="gd-section-nav-btn" onclick="stepSectionImgs(${i},1)"><i class="ti ti-chevron-right"></i></button></div>` : '';
+//     // document.getElementById('game-detail-sections').innerHTML = currentSectionsData.map((s, i) => {
+//     //   const imgsEl = `<div class="game-detail-section-imgs" id="game-detail-section-imgs-${i}"></div>`;
+//     //   const captionEl = s.captions ? `<p class="game-detail-section-caption" id="game-detail-section-caption-${i}"></p>` : '';
+//     //   const navEl = s.imgs.length > 2 ? `<div class="game-detail-section-imgs-nav"><button class="game-detail-section-nav-btn" onclick="stepSectionImgs(${i},-1)"><i class="ti ti-chevron-left"></i></button><button class="game-detail-section-nav-btn" onclick="stepSectionImgs(${i},1)"><i class="ti ti-chevron-right"></i></button></div>` : '';
+//     //   const captionSpan = s.captions ? `<p class="game-detail-section-caption game-detail-span-full" id="game-detail-section-caption-${i}"></p>` : '';
+//     //   const navSpan = s.imgs.length > 2 ? `<div class="game-detail-section-imgs-nav game-detail-span-full"><button class="game-detail-section-nav-btn" onclick="stepSectionImgs(${i},-1)"><i class="ti ti-chevron-left"></i></button><button class="game-detail-section-nav-btn" onclick="stepSectionImgs(${i},1)"><i class="ti ti-chevron-right"></i></button></div>` : '';
 //     //   const rightCol = s.gifs
-//     //     ? `<div class="gd-section-media${s.pageSize === 1 ? ' gd-section-media--single' : ''}"><div class="gd-gif-player" id="gd-gif-player-${i}"><img id="gd-gif-img-${i}" src="" alt=""><div class="gd-gif-fade" id="gd-gif-fade-${i}"></div></div>${imgsEl}${captionSpan}${navSpan}</div>`
+//     //     ? `<div class="game-detail-section-media${s.pageSize === 1 ? ' game-detail-section-media--single' : ''}"><div class="game-detail-gif-player" id="game-detail-gif-player-${i}"><img id="game-detail-gif-img-${i}" src="" alt=""><div class="game-detail-gif-fade" id="game-detail-gif-fade-${i}"></div></div>${imgsEl}${captionSpan}${navSpan}</div>`
 //     //     : `<div>${imgsEl}${captionEl}${navEl}</div>`;
-//     //   return `<div class="gd-section"><h4 class="gd-section-title">${s.title}</h4><div class="gd-section-body"><ul class="game-detail-tasks">${s.tasks.map(t => `<li>${t}</li>`).join('')}</ul>${rightCol}</div></div>`;
+//     //   return `<div class="game-detail-section"><h4 class="game-detail-section-title">${s.title}</h4><div class="game-detail-section-body"><ul class="game-detail-tasks">${s.tasks.map(t => `<li>${t}</li>`).join('')}</ul>${rightCol}</div></div>`;
 //     // }).join('');
 //     // currentSectionsData.forEach((_, i) => renderSectionImgs(i));
 
@@ -84,77 +169,110 @@
 //     setTimeout(() => wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 450);
 //   }
 
-//   function closeGameDetail() {
-//     //stopAllGifCycles();
-//     const wrap = document.getElementById('game-detail-wrap');
-//     if (!wrap) return;
-//     wrap.classList.remove('open');
-//     wrap.dataset.active = '';
-//     // const videoEl = document.getElementById('gd-video');
-//     // if (!videoEl) return;
-//     // videoEl.src = '';
-//     // videoEl.style.display = 'none';
-//     const btn = document.getElementById('gd-play-btn');
-//     if (btn) btn.style.display = 'none';
-//     const img = document.getElementById('gd-main-img');
-//     if (img) img.style.display = 'block';
-//     document.querySelectorAll('.game-card').forEach(c => c.classList.remove('active'));
-//   }
+
+  ////// Close detail. Hide elements data, remove 'open' classname from wrap and remove 'active' classname from cards
+  function closeGameDetail() {
+    //stopAllGifCycles();
+    
+    wrapElement.classList.remove('open');
+    // wrapElement.dataset.active = '';
+    
+    videoElement.src = '';
+    videoElement.style.display = 'none';
+    
+    playButtonElement.style.display = 'none';
+    
+    ///////// Remove 'active' classname of all cards
+    document.querySelectorAll('.game-card').forEach(c => c.classList.remove('active'));
+  }
 
 
-//   function RenderCloseGameDetailButton() {
-//     return (
-//       <button className="game-detail-close" onClick={() => closeGameDetail()}>✕</button>
-//     );
-//   }
+  function RenderCloseGameDetailButton() {
+    return (
+      <button className="game-detail-close" onClick={() => closeGameDetail()}><CloseChevron/></button>
+    );
+  }
 
+  if(project == null) return;
 
-//   return (
-//     <section>
-
-
-//         <p>{id}</p>
-
-//         <div className="game-detail-wrap" id="game-detail-wrap">
-//           <div className="game-detail">
-//             <div className="game-detail-inner">
-//               <button className="game-detail-close" onClick={() => closeGameDetail()}>✕</button>
-//               <div className="game-detail-screenshots">
-//                 <div className="game-detail-main">
-//                   <img id="gd-main-img" alt=""></img>
-//                   <div id="gd-play-btn" className="gd-play-btn">
-//                     <div className="gd-play-btn-icon"><i className="ti ti-player-play-filled"></i></div>
-//                   </div>
-//                   <iframe id="gd-video" allow="autoplay; fullscreen; encrypted-media" allowFullScreen={true}></iframe>
-//                   <div className="gd-img-nav">
-//                     <button className="gd-img-btn" id="gd-img-prev" onClick={stepScreenshot(-1)}><i className="ti ti-chevron-left"></i></button>
-//                     <button className="gd-img-btn" id="gd-img-next" onClick={stepScreenshot(1)}><i className="ti ti-chevron-right"></i></button>
-//                   </div>
-//                 </div>
-//               </div>
-//               <div className="game-detail-info">
-//                 <p className="game-detail-tag" id="gd-tag"></p>
-//                 <h3 className="game-detail-title" id="gd-title"></h3>
-//                 <p className="game-detail-studio" id="gd-studio"></p>
-//                 <p className="game-detail-role" id="gd-role"></p>
-//                 <div className="game-detail-overview" id="gd-overview"></div>
-//                 <div>
-//                   <p className="game-detail-tasks-label">Responsibilities</p>
-//                   <ul className="game-detail-tasks" id="gd-tasks"></ul>
-//                 </div>
-//                 <blockquote className="about-quote" id="gd-quote" style={{display:"none", marginTop:"1.5rem"}}>
-//                   <p id="gd-quote-text"></p>
-//                   <cite id="gd-quote-cite"></cite>
-//                 </blockquote>
-//               </div>
-//             </div>
-//             <div id="gd-sections"></div>
-//           </div>
-//         </div>
-//       </section>
-//   );
+  
+  return (
+    <section>
+      <div className="game-detail-wrap" id="game-detail-wrap">
+        <div className="game-detail">
+          <div className="game-detail-heading">
+            <h3 className="game-detail-title" id="game-detail-title" >{project.name}</h3>
+            <p className="game-detail-studio" id="game-detail-studio">|{project.studio}</p>
+            <button className="game-detail-close" onClick={closeGameDetail}><CloseChevron/></button>
+          </div>
+          <p className="game-detail-tag" id="game-detail-tag">{project.dimensions} · {project.genre} · Publishing Date: {project.publishingDate}</p>
+          <div className="game-detail-tech"><p className="game-detail-tech-label">Tech:</p>
+            {project.tech?.map((t) => (
+            <span key={t} className="tech-tag">
+              {t}
+            </span>
+            ))}
+          </div>
+          <div className="game-detail-responsibilities">
+              <div className="game-detail-screenshots">
+                <div className="game-detail-main">
+                  <img id="game-detail-main-img" alt=""></img>
+                  <div id="game-detail-play-btn" className="game-detail-play-btn">
+                    <div className="game-detail-play-btn-icon"><i className="ti ti-player-play-filled"></i></div>
+                  </div>
+                  <iframe id="game-detail-video" width="560" height="315" src={project.trailer} allow="autoplay; clipboard-write; encrypted-media;" referrerPolicy="strict-origin-when-cross-origin"></iframe>
+                  <div className="game-detail-img-nav">
+                    <span className="game-detail-img-btn" id="game-detail-img-prev" onClick={() => stepScreenshot(-1)}><LeftChevron/></span>
+                    <span className="game-detail-img-btn" id="game-detail-img-next" onClick={() => stepScreenshot(1)}><RightChevron/></span>
+                  </div>
+                </div>
+              </div>
+            <div>
+              <p className="game-detail-role" id="game-detail-role">{project.position}</p>
+              <p className="game-detail-overview" id="game-detail-overview">{project.summary}</p>
+              <div>
+                <p className="game-detail-tasks-label">Responsibilities</p>
+                <ul className="game-detail-tasks" id="game-detail-tasks">
+                  {project.highlights.map((highlight, idx) => (
+                    <li key={idx}>{highlight}</li>))}
+                </ul>
+              </div>
+              {/* <blockquote className="about-quote" id="game-detail-quote">
+                  <p id="game-detail-quote-text">{project.quote}</p> 
+                <cite id="game-detail-quote-cite"></cite>
+              </blockquote> */}
+            </div>
+          </div>
+            { 
+          ////////// Render ALL sections (map)
+          project.sections?.map((section, sectionIdx) => (            
+            ////////// Render EACH section
+            <div className="game-detail-section" key={sectionIdx}>
+              <h2 className="game-detail-section-title">{section.department}</h2>
+              <div>
+                <p className="game-detail-section-body">{section.tasks}</p>
+                <div>
+                  <div className="game-detail-section-imgs" id={`game-detail-section-imgs-${sectionIdx}`}>
+                    <span className="game-detail-section-nav-btn" onClick={() => stepSection(section, sectionIdx, -1)}><LeftChevron/></span>
+                    <img id={`game-detail-section-${sectionIdx}-img-0`} src={section.gifs[sectionsDisplayIdxs[sectionIdx]][0]}></img>
+                    <img id={`game-detail-section-${sectionIdx}-img-1`} src={section.gifs[sectionsDisplayIdxs[sectionIdx]][1]}></img>
+                    <span className="game-detail-section-nav-btn" onClick={() => stepSection(section, sectionIdx, 1)}><RightChevron/></span>
+                  </div>
+                  <h4 className="game-detail-section-caption" id={`game-detail-section-${sectionIdx}-caption`}>{section.captions[sectionsDisplayIdxs[sectionIdx]]}</h4>
+                </div>
+              </div>
+              <div>
+                <div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 // // style={{marginRight: spacing + 'em'}}
 // // display:none, margin-top:1.5rem
-// };
+};
 
-// export default ProjectDetailWrap;
+export default ProjectDetailWrap;

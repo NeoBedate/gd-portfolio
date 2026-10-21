@@ -89,9 +89,7 @@ const CompanyExperience: React.FC<JobProps> = ({ companyData, projectData }) => 
               ) : null}
           <ul className="points">
           {projectData.map((item) => (
-
             <ProjectExperience key={item.data.name} data={item.data}></ProjectExperience>
-
             ))}
           </ul>
         </div>

@@ -1,6 +1,7 @@
 export interface ProjectDetails {
   id: string;
   url?: string;
+  steamUrl?: string;
   coverImage: string;
   dimensions?: string;
   genre?: string;
@@ -9,20 +10,35 @@ export interface ProjectDetails {
   publishingDate?: string;
   name: string;
   studio?: string;
+  overview: string;
   position: string;
   summary?: string;
   highlights: string[];
+  quote?: string;
+  images?: string[];
+  trailer?: string;
+  sections?: ProjectResponsibilities[];
   tech?: string[];
   featured?: boolean;
   other?: boolean;
   learning?: boolean;
 }
 
+export interface ProjectResponsibilities {
+  department: string;
+  tasks: string[];
+  pageSize: number;
+  imgs: string[];
+  captions: string[];
+  gifs: string[][];
+}
+
 const data: ProjectDetails[] = [
   {
     id: '12_tmnt',
-    url: 'https://store.steampowered.com/app/2460130/Teenage_Mutant_Ninja_Turtles_Mutants_Unleashed/',
-    coverImage: '/images/projects/image_10_tmnt.jpg',
+    url: '#game-detail-wrap',
+    steamUrl: 'https://store.steampowered.com/app/2460130/Teenage_Mutant_Ninja_Turtles_Mutants_Unleashed/',
+    coverImage: '/images/projects/projectCard_10_tmnt.png',
     dimensions: '3D',
     genre: 'Action platformer',
     startDate: '2022-03-15',
@@ -30,21 +46,69 @@ const data: ProjectDetails[] = [
     publishingDate: '2024-11-20',
     name: 'Teenage Mutant Ninja Turtles: Mutants Unleashed',
     studio: 'AHEARTFULOFGAMES',
+    overview: 'An action platformer where the player takes control of the four ninja turtles, battling through New York in order to uncover a conspiracy involving the `Mewbies´ and the chaos they are spreading through the city.',
     position: 'Lead Level Designer',
-    summary: 'An action platformer where the player takes control of the four ninja turtles, battling through New York in order to uncover a conspiracy involving the `Mewbies´ and the chaos they are spreading through the city.',
+    summary: 'As a Lead, I was tasked with providing action-focused game spaces for a +10h game. Given the nature of the gameplay, spaces needed to be tightly designed for several traversal feats and combat abilities.',
     highlights: [
       'Led a team of 4 level designers and a scale-up in production workflows to produce 40 levels.',
       'Assumed authorship of 30% of the game levels, plus direct supervision over the rest.',
       'Developed a documentation system to increase feedback quality between internal and external clients, and the Level Design team.',
       'Supported Production and QA through a successful Jira implementation of our Production schedule and level creation pipeline.',
     ],
+    images: [
+      'https://www.youtube.com/embed/8XZhhctEr9s?si=MENWcazhr_6P71aW',
+      '/images/projects/12_tmnt/tmnt_01.png',
+      '/images/projects/12_tmnt/tmnt_02.png',
+      '/images/projects/12_tmnt/tmnt_03.png',
+      '/images/projects/12_tmnt/tmnt_04.png',
+    ],
+    sections: [
+      {
+        department: 'Level Design',
+        tasks: [
+          'Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem ', 'Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum '
+        ],
+        pageSize: 1,
+        imgs: [
+          '/images/projects/12_tmnt/tmnt_01.png',
+        ],
+        captions: [
+          'Lorem Ipsum', 'Dolor', 'sit amet'
+        ],
+        gifs:[
+          ['/images/projects/12_tmnt/tmnt_01.png', '/images/projects/12_tmnt/tmnt_01.png'],
+          ['/images/projects/12_tmnt/tmnt_01.png', '/images/projects/12_tmnt/tmnt_02.png'],
+          ['/images/projects/12_tmnt/tmnt_02.png', '/images/projects/12_tmnt/tmnt_02.png']
+        ]
+      },
+      {
+        department: 'Combat Design',
+        tasks: [
+          'Lorem Lorem Lorem', 'Ipsum Ipsum Ipsum'
+        ],
+        pageSize: 1,
+        imgs: [
+          '/images/projects/12_tmnt/tmnt_04.png',
+        ],
+        captions: [
+          'Lorem Ipsum', 'Dolor', 'sit amet'
+        ],
+        gifs:[
+          ['/images/projects/12_tmnt/tmnt_03.png', '/images/projects/12_tmnt/tmnt_03.png'],
+          ['/images/projects/12_tmnt/tmnt_03.png', '/images/projects/12_tmnt/tmnt_04.png'],
+          ['/images/projects/12_tmnt/tmnt_04.png', '/images/projects/12_tmnt/tmnt_04.png']
+        ]
+      },
+    ],
+    trailer: 'https://www.youtube.com/watch?v=8XZhhctEr9s',
     tech: ['Unity', 'Plastic SCM', 'Jira', 'Confluence', 'GDocs', 'Excel', 'Draw.io'],
     featured: true,
   },
   {
     id: '11_dragons',
-    url: 'https://store.steampowered.com/app/1721440/DreamWorks_Dragons_Legends_of_The_Nine_Realms/',
-    coverImage: '/images/projects/image_09_dragons.jpg',
+    url: '#game-detail-wrap',
+    steamUrl: 'https://store.steampowered.com/app/1721440/DreamWorks_Dragons_Legends_of_The_Nine_Realms/',
+    coverImage: '/images/projects/projectCard_09_dragons.png',
     dimensions: '3D',
     genre: 'Action',
     startDate: '2021-02-15',
@@ -52,21 +116,49 @@ const data: ProjectDetails[] = [
     publishingDate: '2022-09-23',
     name: 'DreamWorks Dragons: Legends of the Nine Realms ',
     studio: 'AHEARTFULOFGAMES',
+    overview: 'A 3D platformer with isometric(ish) view where we take control of Thunder and explore vastly different realms while collecting new allies and fighting powerful dragons.',
     position: 'Senior Level Designer',
-    summary: 'A 3D platformer with isometric(ish) view where we take control dragon and explore while collecting and fighting its kind. I took responsibility of Level Design while still retaining some production responsibilities.',
+    summary: 'I took responsibility of Level Design while still retaining some production responsibilities.',
     highlights: [
       'Focused my professional path on the design aspect, assuming more responsibilities on level design.',
       'Assumed authorship of 60% of the game levels as well as integrated its gameplay content.',
       'Support to the creation of main game mechanics and development tools for its integration of levels.',
       'Built and maintained battle arenas, as well as iterated interactive gameplay elements within levels.',
     ],
+    images: [
+      '/images/projects/11_dragons/dragons_01.png',
+      '/images/projects/11_dragons/dragons_02.png',
+      '/images/projects/11_dragons/dragons_03.png',
+      '/images/projects/11_dragons/dragons_04.png',
+    ],
+    sections: [
+      {
+        department:'',
+        tasks: [
+          '',
+        ],
+        pageSize: 0,
+        imgs: [
+          '',
+        ],
+        captions: [
+          '',
+        ],
+        gifs:[
+          [],
+          [],
+          []
+        ]
+      },
+    ],
+    trailer: '',
     tech: ['Unity', 'Plastic SCM', 'SourceTree', 'Hack N Plan', 'GDocs', 'Excel'],
     featured: true,
   },
   {
     id: '10_spirit',
-    url: 'https://store.steampowered.com/app/1270720/DreamWorks_Spirit_Luckys_Big_Adventure/',
-    coverImage: '/images/projects/image_08_spirit.jpg',
+    steamUrl: 'https://store.steampowered.com/app/1270720/DreamWorks_Spirit_Luckys_Big_Adventure/',
+    coverImage: '/images/projects/projectCard_08_spirit.png',
     dimensions: '3D',
     genre: 'Open World',
     startDate: '2019-12-15',
@@ -74,14 +166,42 @@ const data: ProjectDetails[] = [
     publishingDate: '2021-06-01',
     name: 'DreamWorks Spirit: Lucky´s Big Adventure',
     studio: 'AHEARTFULOFGAMES',
+    overview: 'A narrative, open world chill game on the universe of Spirit where players have the opportunity to explore the wildlife of a valley and uncover the secrets of an old treasure map.',
     position: 'Producer & Level Designer',
-    summary: 'A narrative, open world chill game on the universe of Spirit. I doubled as Game Designer and Producer as we shipped a game through the COVID Pandemic with financial success. ',
+    summary: ' I doubled as Game Designer and Producer while taking the production home and pushing through the COVID Pandemic with financial success.',
     highlights: [
       'Built production workflows and led day to day operations within the team, managing milestones and reporting to internal and external stakeholders.',
       'Mentored several game designers and took direct responsibility of a level designer.',
       'Took full ownership of the world map, designing and implementing it fully.',
       'Created several traversal puzzles and collectibles, integrating its gameplay with the world.',
     ],
+    images: [
+      '/images/projects/10_spirit/spirit_01.png',
+      '/images/projects/10_spirit/spirit_02.png',
+      '/images/projects/10_spirit/spirit_03.png',
+      '/images/projects/10_spirit/spirit_04.png',
+    ],
+    sections: [
+      {
+        department:'',
+        tasks: [
+          '',
+        ],
+        pageSize: 0,
+        imgs: [
+          '',
+        ],
+        captions: [
+          '',
+        ],
+        gifs:[
+          [],
+          [],
+          []
+        ]
+      },
+    ],
+    trailer: '',
     tech: ['Unity', 'Tortoise', 'SourceTree', 'Hack N Plan', 'GDocs', 'Excel', 'Photoshop','C#'],
     featured: true,
   },
@@ -91,6 +211,7 @@ const data: ProjectDetails[] = [
     startDate: '2022-09-19',
     endDate: '2024-01-12',
     name: 'M. D. in Virtual Reality',
+    overview: '',
     position: 'Associate Professor',
     highlights: [
       'Taught Advanced Experiences and Game Design, centered around VR video games and their interactions with real and virtual environments.',
@@ -103,6 +224,7 @@ const data: ProjectDetails[] = [
     startDate: '2017-02-01',
     endDate: '2019-07-31',
     name: 'B.A. in Game Design',
+    overview: '',
     position: 'Associate Professor',
     highlights: [
       'Built production workflows and led day to day operations within the team, managing milestones and reporting to internal and external stakeholders.',
@@ -114,7 +236,7 @@ const data: ProjectDetails[] = [
   {
     id: '07_2100',
     url: 'https://gamestrategies.io/en/catalog/2100-a-customer-service-course-for-companies/',
-    coverImage: '/images/projects/image_07_2100.png',
+    coverImage: '/images/projects/projectCard_07_2100.png',
     dimensions: '2D',
     genre: 'Training course',
     startDate: '',
@@ -122,8 +244,8 @@ const data: ProjectDetails[] = [
     publishingDate: '2017-05-30',
     name: '2100',
     studio: 'Gamelearn',
+    overview: 'A training course with some progression sprinkled over it. Tailored to teach how to engage in public spaces as an employee.',
     position: 'Game Designer',
-    summary: 'A training course with some progression sprinkled over it. Tailored to teach how to engage in public spaces as an employee.',
     highlights: [
       'Transitioned to a more holistic role and led artists and customer success agents into the fold of game development.',
       'Supervised previous courses to create reports on game design, UX and gameplay mechanics.',
@@ -134,7 +256,7 @@ const data: ProjectDetails[] = [
   {
     id: '06_merchants2',
     url: 'https://gamestrategies.io/en/catalog/merchants-mastering-negotiation-and-closing-deals/',
-    coverImage: '/images/projects/image_06_merchants.png',
+    coverImage: '/images/projects/projectCard_06_merchants.png',
     dimensions: '2D',
     genre: 'Graphic Adventure / Training course',
     startDate: '',
@@ -142,8 +264,8 @@ const data: ProjectDetails[] = [
     publishingDate: '2016-11-01',
     name: 'Merchants',
     studio: 'Gamelearn',
+    overview: 'A 10h experience on how to negotiate on various instances, from tactics to overall strategy. My role was supervising the remake as a Product Manager and improving UX as a Game Designer.',
     position: 'Game Designer',
-    summary: 'A 10h experience on how to negotiate on various instances, from tactics to overall strategy. My role was supervising the remake as a Product Manager and improving UX as a Game Designer.',
     highlights: [
       'Helped to port Merchants into modern web technologies, streamlining UX and setting the bases for different projects.',
       'Performed several production tasks, filling a necessary role that will point out the need for a full-time producer.',
@@ -153,7 +275,7 @@ const data: ProjectDetails[] = [
   },
   {
     id: '05_futbol4',
-    coverImage: '/images/projects/image_05_futbolcuatro.png',
+    coverImage: '/images/projects/projectCard_05_futbolcuatro.png',
     dimensions: '3D',
     genre: 'Fantasy Sport',
     startDate: '2014-12-10',
@@ -161,8 +283,8 @@ const data: ProjectDetails[] = [
     publishingDate: '2016-12-16',
     name: 'Fútbol Cuatro Fantasy',
     studio: 'Unusual Wonder',
+    overview: 'Also called Epic Eleven during development, this project was meant to be one of the first football fantasy games in Spain.',
     position: 'Junior Game Designer',
-    summary: 'Also called Epic Eleven during development, this project was meant to be one of the first football fantasy games in Spain.',
     highlights: [
       'Developed the core gameplay along with the CEO.',
       'Balanced player salaries and adjusted stat weight on player valuations.',
@@ -173,16 +295,16 @@ const data: ProjectDetails[] = [
   {
     id: '04_futbolstars',
     url: 'https://vimeo.com/87581171',
-    coverImage: '/images/projects/image_04_futbolstars.png',
+    coverImage: '/images/projects/projectCard_04_futbolstars.png',
     dimensions: '3D',
     genre: 'Sports Puzzle',
     startDate: '',
     endDate: '',
     publishingDate: '2014-11-20',
     name: 'Fútbol Stars',
+    overview: 'My first professional project, were I churned out levels like crazy and got acquainted with Unity while being surrounded by 20y+ veterans.',
     studio: 'Unusual Wonder',
     position: 'Intern',
-    summary: 'My first professional project, were I churned out levels like crazy and got acquainted with Unity while being surrounded by 20y+ veterans.',
     highlights: [
       'Developed nearly 280 levels in 6 months using Unity 4.6. 68 ended up in the final product.',
       'Performed QA duties during the release phase of the game.',
@@ -195,7 +317,7 @@ const data: ProjectDetails[] = [
   {
     id: '03_developers',
     url: '',
-    coverImage: '/images/projects/image_03_developers.png',
+    coverImage: '/images/projects/projectCard_03_developers.png',
     dimensions: '3D',
     genre: 'Game Tycoon',
     startDate: '2017-06-09',
@@ -203,8 +325,8 @@ const data: ProjectDetails[] = [
     publishingDate: '',
     name: 'The Developers',
     studio: 'Pelta Games',
+    overview: 'Our shot at developing a game with an actual budget, creating a concept in an attempt to win an European grant. As we did not get the grant, the project was shelved indefinitely.',
     position: 'Planner',
-    summary: 'Our shot at developing a game with an actual budget, creating a concept in an attempt to win an European grant. As we did not get the grant, the project was shelved indefinitely.',
     highlights: [
       'Created the whole game concept and GDD.',
       'Documented every game system.',
@@ -215,7 +337,7 @@ const data: ProjectDetails[] = [
   {
     id: '02_mercenaries',
     url: '',
-    coverImage: '/images/projects/image_02_mercenaries.png',
+    coverImage: '/images/projects/projectCard_02_daredevils.png',
     dimensions: '3D',
     genre: 'Strategy RPG',
     startDate: '2014-08-15',
@@ -223,8 +345,8 @@ const data: ProjectDetails[] = [
     publishingDate: '',
     name: 'Daredevils: Mercenaries of Hadronia',
     studio: 'Pelta Games',
+    overview: 'Our second try was an adaptation of Crownless to the mobile market, in order to hone our skillset for mobile games.',
     position: 'Planner',
-    summary: 'Our second try was an adaptation of Crownless to the mobile market, in order to hone our skillset for mobile games.',
     highlights: [
       'Created character arquetypes and game economy.',
       'Set up the economy as a F2P.',
@@ -235,7 +357,7 @@ const data: ProjectDetails[] = [
   {
     id: '01_crownless',
     url: '',
-    coverImage: '/images/projects/image_01_crownless.jpg',
+    coverImage: '/images/projects/projectCard_01_crownless.png',
     dimensions: '3D',
     genre: 'Action RPG',
     startDate: '2012-09-14',
@@ -243,8 +365,8 @@ const data: ProjectDetails[] = [
     publishingDate: '',
     name: 'Crownless: Knights of Hadronia',
     studio: 'Pelta Games',
+    overview: 'Our first game ever tried was a JRPG focused on replicating PSX classic vibes.',
     position: 'Planner',
-    summary: 'Our first game ever tried was a JRPG focused on replicating PSX classic vibes.',
     highlights: [
       'Wrote a script treatment for the whole adventure.',
       'Designed the main mechanics around the 7 playable characters.',
