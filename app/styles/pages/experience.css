@@ -185,18 +185,18 @@
 }
 
 .resume-container .points {
-  list-style: none;
-  padding-left: 0;
-  margin-bottom: 2rem;
+  list-style: square;
 }
 
-.resume-container .points li {
-  position: relative;
+.resume-container li {
   font-size: var(--text-base);
-  line-height: var(--leading-normal);
-  margin-bottom: 0.25rem;
-  padding-left: 1.25rem;
+  padding-left: 0;
   color: var(--color-fg-light);
+  letter-spacing: var(--tracking-tight);
+}
+
+.resume-container li::marker {
+  color: var(--color-accent);
 }
 
 .resume-company {
@@ -211,6 +211,7 @@
 .resume-compLogo {
   position: relative;
   justify-content: center;
+  width: 75%;
 }
 
 .resume-daterange {
@@ -327,16 +328,6 @@
   min-width: 0;
 }
 
-.resume-container .points li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.72em;
-  width: 7px;
-  height: var(--rule);
-  background: var(--color-border-alt);
-}
-
 @media (max-width: 736px) {
 
   .resume-container {
@@ -351,7 +342,7 @@
   }
 
   .resume-compLogo {
-    width: 80%;
+    width: 70%;
     padding-bottom: 3rem;
   }
 
@@ -451,4 +442,15 @@
   font-weight: var(--font-weight-normal);
   color: var(--color-fg);
   line-height: var(--leading-snug);
+}
+
+.course-dot::before{
+  content: '';
+  display: block;
+  position: relative;
+  left: 7.5rem;
+  top: 1.25em;
+  width: 4px;
+  height: 4px;
+  background: var(--color-accent);
 }

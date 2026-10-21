@@ -1,7 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
 
-import Cell from '@/components/Projects/Cell';
 import { SchemaGraph } from '@/components/Schema';
 import PageWrapper from '@/components/Template/PageWrapper';
 import data from '@/data/projects';
@@ -12,7 +11,9 @@ import {
   HOME_URL,
   SITE_URL,
 } from "@/lib/schema";
-//import ProjectDetailWrap from '@/components/Projects/ProjectDetailWrap';
+
+
+import ProjectList from '@/components/Projects/ProjectList';
 
 const PORTFOLIO_URL = `${SITE_URL}/portfolio/`;
 
@@ -23,7 +24,6 @@ export const metadata: Metadata = createPageMetadata ({
   description: PORTFOLIO_DESCRIPTION,
 });
 
-var selectedProjectId : string = "12_tmnt";
 
 export default function ProjectsPage() {
   const featuredProjects = data.filter((p) => p.featured);
@@ -44,23 +44,11 @@ export default function ProjectsPage() {
           ])
         ]}
       />
-      <section className="portfolio-page">
-        <header className="portfolio-header">
-          <h1 className="page-title">Portfolio</h1>
-          <p className="page-subtitle">A selection of video games I helped to create.</p>
-        </header>
-        {featuredProjects.length > 0 && (
-          <section className="portfolio-projects">
-            <h2 className="projects-section-title">Featured</h2>
-            <div className="projects-grid projects-grid--featured">
-              {featuredProjects.map((project) => (
-                <Cell data={project} key={project.name} />
-              ))}
-            </div>
-          </section>
-        )}
-      </section>
-      {/* <ProjectDetailWrap id = {selectedProjectId}/> */}
+
+      <ProjectList projects={featuredProjects}/>
+
     </PageWrapper>
   );
 }
+
+

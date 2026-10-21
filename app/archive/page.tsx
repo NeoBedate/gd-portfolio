@@ -12,6 +12,7 @@ import {
   SITE_URL,
 } from '@/lib/schema';
 import { AUTHOR_NAME } from '@/lib/utils';
+import ArchiveList from '@/components/Archive/ArchiveList';
 
 const ARCHIVE_URL = `${SITE_URL}/archive/`;
 
@@ -52,27 +53,8 @@ export default function ProjectsPage() {
           </p>
         </header>
 
-        {otherProjects.length > 0 && (
-          <section className="projects-other">
-            <h2 className="projects-section-title">Other Projects</h2>
-            <div className="projects-grid">
-              {otherProjects.map((project) => (
-                <Cell data={project} key={project.name} />
-              ))}
-            </div>
-          </section>
-        )}
+        <ArchiveList otherProjects={otherProjects} learningProjects={learningProjects}/>
 
-        {learningProjects.length > 0 && (
-          <section className="projects-learning">
-            <h2 className="projects-section-title">Learning Projects</h2>
-            <div className="projects-grid">
-              {learningProjects.map((project) => (
-                <Cell data={project} key={project.name} />
-              ))}
-            </div>
-          </section>
-        )}
       </section>
     </PageWrapper>
   );
