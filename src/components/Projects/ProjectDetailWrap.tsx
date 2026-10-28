@@ -70,23 +70,31 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
 
 
   function startVideo(){
-    ///////// TODO Logic for playing video
+    imageElement.current!.style.display = 'none';
+    videoElement.current!.src = project!.trailer!;
+    videoElement.current!.style.display = 'flex';
+    playButtonElement.current!.style.display = 'none';
   }
 
+  function stopVideo(){
+    imageElement.current!.style.display = 'flex';
+    videoElement.current!.style.display = 'none';
+    videoElement.current!.src = "";
+  }
+
+
   function renderScreenshot() {
+    imageElement.current!.style.display = 'flex';
+    videoElement.current!.style.display = 'none';
     if (screenshotIdx == 0) {
-      imageElement.current!.style.display = 'none';
       playButtonElement.current!.style.display = 'block';
-      videoElement.current!.style.display = 'flex';
     }
     else {
-      imageElement.current!.style.display = 'flex';
+      stopVideo();
       playButtonElement.current!.style.display = 'none';
-      videoElement.current!.style.display = 'none';
-      
-      if (project != null && project.images != null)
-        imageElement.current!.src = project.images[screenshotIdx];
     }
+    if (project != null && project.images != null)
+      imageElement.current!.src = project.images[screenshotIdx];
   }
 
   function stepScreenshot(dir: number) {
@@ -150,10 +158,7 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
 
   ////// Close detail. Hide elements data, remove 'open' classname from wrap and remove 'active' classname from cards
   function closeGameDetail() {
-    //stopAllGifCycles();
-
     wrapElement.current!.classList.remove('open');
-    // wrapElement.dataset.active = '';
     
     videoElement.current!.src = '';
     videoElement.current!.style.display = 'none';
@@ -194,15 +199,15 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
           <div className="game-detail-responsibilities">
               <div className="game-detail-screenshots">
                 <div className="game-detail-main">
-                  <img id="game-detail-main-img" ref={imageElement} alt=""></img>
-                  <button id="game-detail-play-btn" ref={playButtonElement} className="game-detail-play-btn">
-                    <div className="game-detail-play-btn-icon"><i className="ti ti-player-play-filled"></i></div>
-                  </button>
-                  <iframe id="game-detail-video" ref={videoElement} width="560" height="315" src={project.trailer} allow="autoplay; clipboard-write; encrypted-media;" referrerPolicy="strict-origin-when-cross-origin"></iframe>
+                  <img id="game-detail-main-img" ref={imageElement} alt=""></img>                  
+                  <iframe id="game-detail-video" ref={videoElement} width="560" height="315" allow="autoplay; clipboard-write; encrypted-media;" referrerPolicy="strict-origin-when-cross-origin"></iframe>
                   <div className="game-detail-img-nav">
                     <span className="game-detail-img-btn" id="game-detail-img-prev" onClick={() => stepScreenshot(-1)}><LeftChevron/></span>
                     <span className="game-detail-img-btn" id="game-detail-img-next" onClick={() => stepScreenshot(1)}><RightChevron/></span>
                   </div>
+                  <button id="game-detail-play-btn" ref={playButtonElement} className="game-detail-play-btn" onClick={startVideo}>
+                    <div className="game-detail-play-btn-icon"><i className="ti ti-player-play-filled"></i></div>
+                  </button>
                 </div>
               </div>
             <div>

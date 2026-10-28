@@ -57,7 +57,7 @@ const data: ProjectDetails[] = [
       'Supported Production and QA through a successful Jira implementation of our Production schedule and level creation pipeline.',
     ],
     images: [
-      'https://www.youtube.com/embed/8XZhhctEr9s?si=MENWcazhr_6P71aW',
+      '/images/projects/12_tmnt/tmnt_03.png',
       '/images/projects/12_tmnt/tmnt_01.png',
       '/images/projects/12_tmnt/tmnt_02.png',
       '/images/projects/12_tmnt/tmnt_03.png',
@@ -100,7 +100,7 @@ const data: ProjectDetails[] = [
         ],
       },
     ],
-    trailer: 'https://www.youtube.com/watch?v=8XZhhctEr9s',
+    trailer: 'https://www.youtube.com/embed/8XZhhctEr9s?si=MENWcazhr_6P71aW',
     tech: ['Unity', 'Plastic SCM', 'Jira', 'Confluence', 'GDocs', 'Excel', 'Draw.io'],
     featured: true,
   },
