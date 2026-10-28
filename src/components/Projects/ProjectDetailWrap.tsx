@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 
 import dayjs from 'dayjs';
 import Image from 'next/image';
@@ -18,10 +18,14 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
   var screenshotIdx = 0;
   let currentGameVideo = null;
 
-  var imageElement : HTMLImageElement;
-  var videoElement : HTMLIFrameElement;
-  var wrapElement : HTMLElement;
-  var playButtonElement : HTMLButtonElement;
+  const imageElement = useRef<HTMLImageElement>(null);
+  const videoElement = useRef<HTMLIFrameElement>(null);
+  const wrapElement = useRef<HTMLElement>(null);
+  const playButtonElement = useRef<HTMLButtonElement>(null);
+
+  // const sectionImages = useRef<HTMLImageElement[]>([]);
+  const sectionImages = useRef<(HTMLImageElement|null)[]>([]);
+  const sectionCaption = useRef<HTMLDivElement[]>([]);
 
   var sectionsDisplayIdxs : number[] = [0,0,0,0];
 
@@ -30,18 +34,6 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
 
   ///// Get all element references and initialize image display
   function initialize(){
-    if (videoElement == null)
-      videoElement = document.getElementById('game-detail-video');
-    if (imageElement == null)
-      imageElement = document.getElementById('game-detail-main-img');
-    if (playButtonElement == null)
-      playButtonElement = document.getElementById('game-detail-play-btn');
-    if (wrapElement == null)
-      wrapElement = document.getElementById('game-detail-wrap');
-    if (videoElement == null)
-      videoElement = document.getElementById('game-detail-video');
-    if (playButtonElement == null)
-      playButtonElement = document.getElementById('game-detail-play-btn');
 
     var sectionsDisplayIdxs : number[] = [];
     project?.sections?.forEach((element, idx )=> {
@@ -71,15 +63,9 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
     ////// Update display index of section
     sectionsDisplayIdxs[sectionIdx] = currentIdx;
 
-    ////// Get section elements and update content with data of new index
-    var img0 : HTMLImageElement = document.getElementById("game-detail-section-"+sectionIdx+"-img-0");
-    var img1 : HTMLImageElement = document.getElementById("game-detail-section-"+sectionIdx+"-img-1");
-    var caption : HTMLElement = document.getElementById("game-detail-section-"+sectionIdx+"-caption");
-    
-    img0.src = section.gifs[currentIdx][0];
-    img1.src = section.gifs[currentIdx][1];
-    caption.innerHTML = section.captions[currentIdx];
-
+    sectionImages.current[sectionIdx*2]!.src = section.gifs[currentIdx][0];
+    sectionImages.current[(sectionIdx*2) + 1]!.src = section.gifs[currentIdx][0];
+    sectionCaption.current[sectionIdx].innerHTML = section.captions[currentIdx];
   }
 
 
@@ -88,26 +74,18 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
   }
 
   function renderScreenshot() {
-    // const videoEl = document.getElementById('game-detail-video');
-    // videoEl.src = '';
-    // videoEl.style.display = 'none';
-
     if (screenshotIdx == 0) {
-      imageElement.style.display = 'none';
-      playButtonElement.style.display = 'block';
-      videoElement.style.display = 'flex';
+      imageElement.current!.style.display = 'none';
+      playButtonElement.current!.style.display = 'block';
+      videoElement.current!.style.display = 'flex';
     }
     else {
-      imageElement.style.display = 'flex';
-      playButtonElement.style.display = 'none';
-      videoElement.style.display = 'none';
+      imageElement.current!.style.display = 'flex';
+      playButtonElement.current!.style.display = 'none';
+      videoElement.current!.style.display = 'none';
       
-      if (imageElement != null && project != null && project.images != null)
-        imageElement.src = project.images[screenshotIdx];
-      // img.style.display = 'block';
-      // document.getElementById('game-detail-img-prev').disabled = false;
-      // document.getElementById('game-detail-img-next').disabled = false;
-      // document.getElementById('game-detail-play-btn').style.display = (screenshotIdx === 0 && currentGameVideo) ? 'flex' : 'none';
+      if (project != null && project.images != null)
+        imageElement.current!.src = project.images[screenshotIdx];
     }
   }
 
@@ -173,14 +151,14 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
   ////// Close detail. Hide elements data, remove 'open' classname from wrap and remove 'active' classname from cards
   function closeGameDetail() {
     //stopAllGifCycles();
-    
-    wrapElement.classList.remove('open');
+
+    wrapElement.current!.classList.remove('open');
     // wrapElement.dataset.active = '';
     
-    videoElement.src = '';
-    videoElement.style.display = 'none';
+    videoElement.current!.src = '';
+    videoElement.current!.style.display = 'none';
     
-    playButtonElement.style.display = 'none';
+    playButtonElement.current!.style.display = 'none';
     
     ///////// Remove 'active' classname of all cards
     document.querySelectorAll('.game-card').forEach(c => c.classList.remove('active'));
@@ -216,11 +194,11 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
           <div className="game-detail-responsibilities">
               <div className="game-detail-screenshots">
                 <div className="game-detail-main">
-                  <img id="game-detail-main-img" alt=""></img>
-                  <div id="game-detail-play-btn" className="game-detail-play-btn">
+                  <img id="game-detail-main-img" ref={imageElement} alt=""></img>
+                  <button id="game-detail-play-btn" ref={playButtonElement} className="game-detail-play-btn">
                     <div className="game-detail-play-btn-icon"><i className="ti ti-player-play-filled"></i></div>
-                  </div>
-                  <iframe id="game-detail-video" width="560" height="315" src={project.trailer} allow="autoplay; clipboard-write; encrypted-media;" referrerPolicy="strict-origin-when-cross-origin"></iframe>
+                  </button>
+                  <iframe id="game-detail-video" ref={videoElement} width="560" height="315" src={project.trailer} allow="autoplay; clipboard-write; encrypted-media;" referrerPolicy="strict-origin-when-cross-origin"></iframe>
                   <div className="game-detail-img-nav">
                     <span className="game-detail-img-btn" id="game-detail-img-prev" onClick={() => stepScreenshot(-1)}><LeftChevron/></span>
                     <span className="game-detail-img-btn" id="game-detail-img-next" onClick={() => stepScreenshot(1)}><RightChevron/></span>
@@ -263,11 +241,11 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
               <div>
                 <div className="game-detail-section-gifs" id={`game-detail-section-gifs-${sectionIdx}`}>
                   <span className="game-detail-section-nav-btn" onClick={() => stepSection(section, sectionIdx, -1)}><LeftChevron/></span>
-                  <img id={`game-detail-section-${sectionIdx}-img-0`} src={section.gifs[sectionsDisplayIdxs[sectionIdx]][0]}></img>
-                  <img id={`game-detail-section-${sectionIdx}-img-1`} src={section.gifs[sectionsDisplayIdxs[sectionIdx]][1]}></img>
+                  <img id={`game-detail-section-${sectionIdx}-img-0`} ref={(el) => {sectionImages.current[sectionIdx * 2] = el!}} src={section.gifs[sectionsDisplayIdxs[sectionIdx]][0]}></img>
+                  <img id={`game-detail-section-${sectionIdx}-img-1`} ref={(el) => {sectionImages.current[(sectionIdx * 2) + 1] = el!}} src={section.gifs[sectionsDisplayIdxs[sectionIdx]][1]}></img>
                   <span className="game-detail-section-nav-btn" onClick={() => stepSection(section, sectionIdx, 1)}><RightChevron/></span>
                 </div>
-                <h4 className="game-detail-section-caption" id={`game-detail-section-${sectionIdx}-caption`}>{section.captions[sectionsDisplayIdxs[sectionIdx]]}</h4>
+                <h4 className="game-detail-section-caption" id={`game-detail-section-${sectionIdx}-caption`} ref={(el) => {sectionCaption.current[sectionIdx] = el!}}>{section.captions[sectionsDisplayIdxs[sectionIdx]]}</h4>
               </div>
             </div>
           ))}
