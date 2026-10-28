@@ -248,22 +248,26 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
           project.sections?.map((section, sectionIdx) => (            
             ////////// Render EACH section
             <div className="game-detail-section" key={sectionIdx}>
-              <h2 className="game-detail-section-title">{section.department}</h2>
-              <div>
-                <p className="game-detail-section-body">{section.tasks}</p>
-                <div>
-                  <div className="game-detail-section-imgs" id={`game-detail-section-imgs-${sectionIdx}`}>
-                    <span className="game-detail-section-nav-btn" onClick={() => stepSection(section, sectionIdx, -1)}><LeftChevron/></span>
-                    <img id={`game-detail-section-${sectionIdx}-img-0`} src={section.gifs[sectionsDisplayIdxs[sectionIdx]][0]}></img>
-                    <img id={`game-detail-section-${sectionIdx}-img-1`} src={section.gifs[sectionsDisplayIdxs[sectionIdx]][1]}></img>
-                    <span className="game-detail-section-nav-btn" onClick={() => stepSection(section, sectionIdx, 1)}><RightChevron/></span>
-                  </div>
-                  <h4 className="game-detail-section-caption" id={`game-detail-section-${sectionIdx}-caption`}>{section.captions[sectionsDisplayIdxs[sectionIdx]]}</h4>
+              <h2 className="game-detail-section-title">{section.task}</h2>
+              <div className="game-detail-section-body">
+                <div className="game-detail-section-taskText">
+                  {section.taskExecution.map((taskExecution, idx) => (
+                    <p className="game-detail-section-task" key={idx}>{taskExecution}</p>
+                ))}
+                </div>
+                <div className="game-detail-section-taskImage">
+                  <img id={`game-detail-section-${sectionIdx}-taskImage`} src={section.taskImage} width={512} height={512} className="game-detail-section-taskImage-image"></img>
+                  <h4 id={`game-detail-section-${sectionIdx}-taskCaption`} className="game-detail-section-caption">{section.taskCaption}</h4>
                 </div>
               </div>
               <div>
-                <div>
+                <div className="game-detail-section-gifs" id={`game-detail-section-gifs-${sectionIdx}`}>
+                  <span className="game-detail-section-nav-btn" onClick={() => stepSection(section, sectionIdx, -1)}><LeftChevron/></span>
+                  <img id={`game-detail-section-${sectionIdx}-img-0`} src={section.gifs[sectionsDisplayIdxs[sectionIdx]][0]}></img>
+                  <img id={`game-detail-section-${sectionIdx}-img-1`} src={section.gifs[sectionsDisplayIdxs[sectionIdx]][1]}></img>
+                  <span className="game-detail-section-nav-btn" onClick={() => stepSection(section, sectionIdx, 1)}><RightChevron/></span>
                 </div>
+                <h4 className="game-detail-section-caption" id={`game-detail-section-${sectionIdx}-caption`}>{section.captions[sectionsDisplayIdxs[sectionIdx]]}</h4>
               </div>
             </div>
           ))}
