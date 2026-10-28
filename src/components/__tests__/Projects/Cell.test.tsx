@@ -10,6 +10,7 @@ describe('Cell', () => {
     coverImage:'/images/test.jpg',
     publishingDate:'2026',
     name:'Test Project',
+    overview: 'Test-Overview',
     position:'Test Position',
     summary:'Test summary for a game',
     highlights:['Test Array of Highlights'],

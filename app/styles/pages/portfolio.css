@@ -221,7 +221,7 @@
   pointer-events: none;
 }
 
-.game-detail-section-imgs img {
+.game-detail-section-gifs img {
   cursor: pointer;
 }
 
@@ -244,6 +244,7 @@
   font-size: var(--text-md);
   color: var(--color-fg);
   margin-bottom: 1rem;
+  padding-left: 1rem;
 }
 
 .game-detail-overview p {
@@ -289,7 +290,7 @@
 }
 
 .game-detail-section {
-  padding: 2.5rem 0;
+  padding: 1rem 0;
   border-top: 1px solid var(--border);
   display: flex;
   flex-direction: column;
@@ -306,17 +307,45 @@
 }
 
 .game-detail-section-body {
+  display: flex;
   font-family: var(--font-body);
   font-size: var(--text-md);
   color: var(--color-fg);
   margin-bottom: 2rem;
 }
 
-.game-detail-section-imgs {
+.game-detail-section-gifs {
   display: flex;
   justify-content: center;
   align-items: center;
   grid-template-rows: repeat(2, 1fr);
+}
+
+.game-detail-section-task {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  color: var(--color-fg);
+  margin-bottom: 1.25rem;
+}
+
+.game-detail-section-taskImage {
+  position: relative;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  align-items: center;
+}
+
+.game-detail-section-taskImage-image{
+  height: auto;
+  width: auto;
+  padding: 1rem;
+}
+
+.game-detail-section-taskText {
+  width: 100%;
+  padding: 1rem;
 }
 
 .game-detail-section-nav-btn {
@@ -329,23 +358,24 @@
   transition: background 0.2s, color 0.2s;
 }
 
-.game-detail-section-imgs img {
+.game-detail-section-gifs img {
   width: 40%;
   aspect-ratio: 16/9;
   object-fit: cover;
   display: block;
+  padding: 0.5rem;  
 }
 
 .game-detail-section-caption {
-  font-size: 0.78rem;
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
   color: var(--color-fg-light);
   font-style: italic;
   text-align: center;
-  margin-top: 0.5rem;
-  min-height: 1.1em;
+  padding: 0.5rem;
 }
 
-.game-detail-section-imgs-nav {
+.game-detail-section-gifs-nav {
   display: flex;
   gap: 0.5rem;
   justify-content: center;
@@ -369,7 +399,7 @@
   align-items: start;
 }
 
-.game-detail-section-media > .game-detail-section-imgs {
+.game-detail-section-media > .game-detail-section-gifs {
   grid-column: span 2;
   grid-template-columns: 1fr 1fr;
 }
@@ -382,7 +412,7 @@
   grid-template-columns: 1fr 1fr;
 }
 
-.game-detail-section-media--single > .game-detail-section-imgs {
+.game-detail-section-media--single > .game-detail-section-gifs {
   grid-column: span 1;
   grid-template-columns: 1fr;
 }
