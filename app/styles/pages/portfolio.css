@@ -47,7 +47,8 @@
 
 .game-detail-wrap.open {
   grid-template-rows: 1fr;
-  margin-top: 3rem;
+  padding-top: 3rem;
+  scroll-margin-top: calc(var(--header-height))
 }
 
 .game-detail {

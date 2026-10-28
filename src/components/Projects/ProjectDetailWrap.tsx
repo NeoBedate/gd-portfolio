@@ -16,14 +16,12 @@ export interface ProjectDetailProp {
 const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
 
   var screenshotIdx = 0;
-  let currentGameVideo = null;
 
   const imageElement = useRef<HTMLImageElement>(null);
   const videoElement = useRef<HTMLIFrameElement>(null);
-  const wrapElement = useRef<HTMLElement>(null);
+  const wrapElement = useRef<HTMLDivElement>(null);
   const playButtonElement = useRef<HTMLButtonElement>(null);
 
-  // const sectionImages = useRef<HTMLImageElement[]>([]);
   const sectionImages = useRef<(HTMLImageElement|null)[]>([]);
   const sectionCaption = useRef<HTMLDivElement[]>([]);
 
@@ -181,7 +179,7 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
   
   return (
     <section>
-      <div className="game-detail-wrap" id="game-detail-wrap">
+      <div className="game-detail-wrap" id="game-detail-wrap" ref={wrapElement}>
         <div className="game-detail">
           <div className="game-detail-heading">
             <h3 className="game-detail-title" id="game-detail-title" >{project.name}</h3>

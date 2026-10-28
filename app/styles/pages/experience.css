@@ -16,7 +16,7 @@
 .skills-section,
 .courses-section,
 .references-section {
-  scroll-margin-top: calc(var(--header-height) + 5.5rem);
+  scroll-margin-top: calc(var(--header-height) * 2);
 }
 
 .experience-content .education .title h2,
