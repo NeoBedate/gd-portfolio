@@ -7,7 +7,7 @@ import Image from 'next/image';
 import React from 'react';
 
 import type { ProjectDetails, ProjectResponsibilities } from '@/data/projects';
-import { CloseChevron, LeftChevron, RightChevron } from '@/components/Icons';
+import { CloseChevron, LeftChevron, PlayChevron, RightChevron } from '@/components/Icons';
 
 export interface ProjectDetailProp {
     project: ProjectDetails | undefined;
@@ -204,7 +204,7 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
                     <span className="game-detail-img-btn" id="game-detail-img-next" onClick={() => stepScreenshot(1)}><RightChevron/></span>
                   </div>
                   <button id="game-detail-play-btn" ref={playButtonElement} className="game-detail-play-btn" onClick={startVideo}>
-                    <div className="game-detail-play-btn-icon"><i className="ti ti-player-play-filled"></i></div>
+                    <div className="game-detail-play-btn-icon"><PlayChevron/></div>
                   </button>
                 </div>
               </div>
