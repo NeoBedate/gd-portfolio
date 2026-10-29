@@ -1,13 +1,13 @@
 "use client"
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 
 import dayjs from 'dayjs';
 import Image from 'next/image';
 import React from 'react';
 
 import type { ProjectDetails, ProjectResponsibilities } from '@/data/projects';
-import { CloseChevron, LeftChevron, RightChevron } from '@/components/Icons';
+import { CloseChevron, LeftChevron, PlayChevron, RightChevron } from '@/components/Icons';
 
 export interface ProjectDetailProp {
     project: ProjectDetails | undefined;
@@ -16,12 +16,14 @@ export interface ProjectDetailProp {
 const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
 
   var screenshotIdx = 0;
-  let currentGameVideo = null;
 
-  var imageElement : HTMLImageElement;
-  var videoElement : HTMLIFrameElement;
-  var wrapElement : HTMLElement;
-  var playButtonElement : HTMLButtonElement;
+  const imageElement = useRef<HTMLImageElement>(null);
+  const videoElement = useRef<HTMLIFrameElement>(null);
+  const wrapElement = useRef<HTMLDivElement>(null);
+  const playButtonElement = useRef<HTMLButtonElement>(null);
+
+  const sectionImages = useRef<(HTMLImageElement|null)[]>([]);
+  const sectionCaption = useRef<HTMLDivElement[]>([]);
 
   var sectionsDisplayIdxs : number[] = [0,0,0,0];
 
@@ -30,18 +32,6 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
 
   ///// Get all element references and initialize image display
   function initialize(){
-    if (videoElement == null)
-      videoElement = document.getElementById('game-detail-video');
-    if (imageElement == null)
-      imageElement = document.getElementById('game-detail-main-img');
-    if (playButtonElement == null)
-      playButtonElement = document.getElementById('game-detail-play-btn');
-    if (wrapElement == null)
-      wrapElement = document.getElementById('game-detail-wrap');
-    if (videoElement == null)
-      videoElement = document.getElementById('game-detail-video');
-    if (playButtonElement == null)
-      playButtonElement = document.getElementById('game-detail-play-btn');
 
     var sectionsDisplayIdxs : number[] = [];
     project?.sections?.forEach((element, idx )=> {
@@ -71,44 +61,38 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
     ////// Update display index of section
     sectionsDisplayIdxs[sectionIdx] = currentIdx;
 
-    ////// Get section elements and update content with data of new index
-    var img0 : HTMLImageElement = document.getElementById("game-detail-section-"+sectionIdx+"-img-0");
-    var img1 : HTMLImageElement = document.getElementById("game-detail-section-"+sectionIdx+"-img-1");
-    var caption : HTMLElement = document.getElementById("game-detail-section-"+sectionIdx+"-caption");
-    
-    img0.src = section.gifs[currentIdx][0];
-    img1.src = section.gifs[currentIdx][1];
-    caption.innerHTML = section.captions[currentIdx];
-
+    sectionImages.current[sectionIdx*2]!.src = section.gifs[currentIdx][0];
+    sectionImages.current[(sectionIdx*2) + 1]!.src = section.gifs[currentIdx][0];
+    sectionCaption.current[sectionIdx].innerHTML = section.captions[currentIdx];
   }
 
 
   function startVideo(){
-    ///////// TODO Logic for playing video
+    imageElement.current!.style.display = 'none';
+    videoElement.current!.src = project!.trailer!;
+    videoElement.current!.style.display = 'flex';
+    playButtonElement.current!.style.display = 'none';
   }
 
-  function renderScreenshot() {
-    // const videoEl = document.getElementById('game-detail-video');
-    // videoEl.src = '';
-    // videoEl.style.display = 'none';
+  function stopVideo(){
+    imageElement.current!.style.display = 'flex';
+    videoElement.current!.style.display = 'none';
+    videoElement.current!.src = "";
+  }
 
+
+  function renderScreenshot() {
+    imageElement.current!.style.display = 'flex';
+    videoElement.current!.style.display = 'none';
     if (screenshotIdx == 0) {
-      imageElement.style.display = 'none';
-      playButtonElement.style.display = 'block';
-      videoElement.style.display = 'flex';
+      playButtonElement.current!.style.display = 'block';
     }
     else {
-      imageElement.style.display = 'flex';
-      playButtonElement.style.display = 'none';
-      videoElement.style.display = 'none';
-      
-      if (imageElement != null && project != null && project.images != null)
-        imageElement.src = project.images[screenshotIdx];
-      // img.style.display = 'block';
-      // document.getElementById('game-detail-img-prev').disabled = false;
-      // document.getElementById('game-detail-img-next').disabled = false;
-      // document.getElementById('game-detail-play-btn').style.display = (screenshotIdx === 0 && currentGameVideo) ? 'flex' : 'none';
+      stopVideo();
+      playButtonElement.current!.style.display = 'none';
     }
+    if (project != null && project.images != null)
+      imageElement.current!.src = project.images[screenshotIdx];
   }
 
   function stepScreenshot(dir: number) {
@@ -172,15 +156,12 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
 
   ////// Close detail. Hide elements data, remove 'open' classname from wrap and remove 'active' classname from cards
   function closeGameDetail() {
-    //stopAllGifCycles();
+    wrapElement.current!.classList.remove('open');
     
-    wrapElement.classList.remove('open');
-    // wrapElement.dataset.active = '';
+    videoElement.current!.src = '';
+    videoElement.current!.style.display = 'none';
     
-    videoElement.src = '';
-    videoElement.style.display = 'none';
-    
-    playButtonElement.style.display = 'none';
+    playButtonElement.current!.style.display = 'none';
     
     ///////// Remove 'active' classname of all cards
     document.querySelectorAll('.game-card').forEach(c => c.classList.remove('active'));
@@ -198,7 +179,7 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
   
   return (
     <section>
-      <div className="game-detail-wrap" id="game-detail-wrap">
+      <div className="game-detail-wrap" id="game-detail-wrap" ref={wrapElement}>
         <div className="game-detail">
           <div className="game-detail-heading">
             <h3 className="game-detail-title" id="game-detail-title" >{project.name}</h3>
@@ -216,15 +197,15 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
           <div className="game-detail-responsibilities">
               <div className="game-detail-screenshots">
                 <div className="game-detail-main">
-                  <img id="game-detail-main-img" alt=""></img>
-                  <div id="game-detail-play-btn" className="game-detail-play-btn">
-                    <div className="game-detail-play-btn-icon"><i className="ti ti-player-play-filled"></i></div>
-                  </div>
-                  <iframe id="game-detail-video" width="560" height="315" src={project.trailer} allow="autoplay; clipboard-write; encrypted-media;" referrerPolicy="strict-origin-when-cross-origin"></iframe>
+                  <img id="game-detail-main-img" ref={imageElement} alt=""></img>                  
+                  <iframe id="game-detail-video" ref={videoElement} width="560" height="315" allow="autoplay; clipboard-write; encrypted-media;" referrerPolicy="strict-origin-when-cross-origin"></iframe>
                   <div className="game-detail-img-nav">
                     <span className="game-detail-img-btn" id="game-detail-img-prev" onClick={() => stepScreenshot(-1)}><LeftChevron/></span>
                     <span className="game-detail-img-btn" id="game-detail-img-next" onClick={() => stepScreenshot(1)}><RightChevron/></span>
                   </div>
+                  <button id="game-detail-play-btn" ref={playButtonElement} className="game-detail-play-btn" onClick={startVideo}>
+                    <div className="game-detail-play-btn-icon"><PlayChevron/></div>
+                  </button>
                 </div>
               </div>
             <div>
@@ -248,22 +229,26 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
           project.sections?.map((section, sectionIdx) => (            
             ////////// Render EACH section
             <div className="game-detail-section" key={sectionIdx}>
-              <h2 className="game-detail-section-title">{section.department}</h2>
-              <div>
-                <p className="game-detail-section-body">{section.tasks}</p>
-                <div>
-                  <div className="game-detail-section-imgs" id={`game-detail-section-imgs-${sectionIdx}`}>
-                    <span className="game-detail-section-nav-btn" onClick={() => stepSection(section, sectionIdx, -1)}><LeftChevron/></span>
-                    <img id={`game-detail-section-${sectionIdx}-img-0`} src={section.gifs[sectionsDisplayIdxs[sectionIdx]][0]}></img>
-                    <img id={`game-detail-section-${sectionIdx}-img-1`} src={section.gifs[sectionsDisplayIdxs[sectionIdx]][1]}></img>
-                    <span className="game-detail-section-nav-btn" onClick={() => stepSection(section, sectionIdx, 1)}><RightChevron/></span>
-                  </div>
-                  <h4 className="game-detail-section-caption" id={`game-detail-section-${sectionIdx}-caption`}>{section.captions[sectionsDisplayIdxs[sectionIdx]]}</h4>
+              <h2 className="game-detail-section-title">{section.task}</h2>
+              <div className="game-detail-section-body">
+                <div className="game-detail-section-taskText">
+                  {section.taskExecution.map((taskExecution, idx) => (
+                    <p className="game-detail-section-task" key={idx}>{taskExecution}</p>
+                ))}
+                </div>
+                <div className="game-detail-section-taskImage">
+                  <img id={`game-detail-section-${sectionIdx}-taskImage`} src={section.taskImage} width={512} height={512} className="game-detail-section-taskImage-image"></img>
+                  <h4 id={`game-detail-section-${sectionIdx}-taskCaption`} className="game-detail-section-caption">{section.taskCaption}</h4>
                 </div>
               </div>
               <div>
-                <div>
+                <div className="game-detail-section-gifs" id={`game-detail-section-gifs-${sectionIdx}`}>
+                  <span className="game-detail-section-nav-btn" onClick={() => stepSection(section, sectionIdx, -1)}><LeftChevron/></span>
+                  <img id={`game-detail-section-${sectionIdx}-img-0`} ref={(el) => {sectionImages.current[sectionIdx * 2] = el!}} src={section.gifs[sectionsDisplayIdxs[sectionIdx]][0]}></img>
+                  <img id={`game-detail-section-${sectionIdx}-img-1`} ref={(el) => {sectionImages.current[(sectionIdx * 2) + 1] = el!}} src={section.gifs[sectionsDisplayIdxs[sectionIdx]][1]}></img>
+                  <span className="game-detail-section-nav-btn" onClick={() => stepSection(section, sectionIdx, 1)}><RightChevron/></span>
                 </div>
+                <h4 className="game-detail-section-caption" id={`game-detail-section-${sectionIdx}-caption`} ref={(el) => {sectionCaption.current[sectionIdx] = el!}}>{section.captions[sectionsDisplayIdxs[sectionIdx]]}</h4>
               </div>
             </div>
           ))}

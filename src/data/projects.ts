@@ -25,12 +25,13 @@ export interface ProjectDetails {
 }
 
 export interface ProjectResponsibilities {
-  department: string;
-  tasks: string[];
+  task: string;
+  taskExecution: string[];
   pageSize: number;
-  imgs: string[];
-  captions: string[];
+  taskImage: string;
+  taskCaption: string;
   gifs: string[][];
+  captions: string[];
 }
 
 const data: ProjectDetails[] = [
@@ -56,51 +57,51 @@ const data: ProjectDetails[] = [
       'Supported Production and QA through a successful Jira implementation of our Production schedule and level creation pipeline.',
     ],
     images: [
-      'https://www.youtube.com/embed/8XZhhctEr9s?si=MENWcazhr_6P71aW',
-      '/images/projects/12_tmnt/tmnt_01.png',
-      '/images/projects/12_tmnt/tmnt_02.png',
-      '/images/projects/12_tmnt/tmnt_03.png',
-      '/images/projects/12_tmnt/tmnt_04.png',
+      '/images/projects/12_tmnt/mutants_pc_20240122-131957x4.png',
+      '/images/projects/12_tmnt/mutants_pc_20240125-164412x4.png',
+      '/images/projects/12_tmnt/mutants_pc_20240119-173550x4.png',
+      '/images/projects/12_tmnt/mutants_pc_20240119-175746x4.png',
+      '/images/projects/12_tmnt/mutants_pc_20240119-200232x4.png',
+      '/images/projects/12_tmnt/mutants_pc_20240122-140023x4.png',
     ],
     sections: [
       {
-        department: 'Level Design',
-        tasks: [
-          'Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem ', 'Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum '
-        ],
+        task: 'Level Design guidelines',
+        taskExecution: [
+          'Our main focus was to keep upping the quality in terms of level design. However, the turtles presented a more complex challenge to tackle than Dragons.',
+          'Levels where initially set to be much more open: 2 minute traversal plus 3 minute combat tops; several paths converging onto intersections; and wide arenas designed to combat multiple enemy waves. Also, camera was envisioned to move around the scenery to support action and spectacular enemy take downs.',
+          'This approach provided anticipation in terms of narrative and fitted gameplay constrains; however, it put us in front of to extensive levels that needed much iteration by several departments, which led to clogs on the level pipeline.',
+          'Ultimately we pivoted to smaller, more contained levels with less intertwined paths. This allowed us to iterate faster on level blocking and correct camera work and enemy placing before art passes. Polishing was up to production feedback and artistic needs after that.'],
         pageSize: 1,
-        imgs: [
-          '/images/projects/12_tmnt/tmnt_01.png',
-        ],
-        captions: [
-          'Lorem Ipsum', 'Dolor', 'sit amet'
-        ],
+        taskImage: '/images/projects/12_tmnt/BK_02_a.png',
+        taskCaption: 'One of the first iterations of Brooklyn streets (blue=combat arena)',
         gifs:[
-          ['/images/projects/12_tmnt/tmnt_01.png', '/images/projects/12_tmnt/tmnt_01.png'],
+          ['/images/projects/12_tmnt/BK_02 - upview.png', '/images/projects/12_tmnt/BK_02 - Proposal.png'],
           ['/images/projects/12_tmnt/tmnt_01.png', '/images/projects/12_tmnt/tmnt_02.png'],
           ['/images/projects/12_tmnt/tmnt_02.png', '/images/projects/12_tmnt/tmnt_02.png']
-        ]
-      },
-      {
-        department: 'Combat Design',
-        tasks: [
-          'Lorem Lorem Lorem', 'Ipsum Ipsum Ipsum'
-        ],
-        pageSize: 1,
-        imgs: [
-          '/images/projects/12_tmnt/tmnt_04.png',
         ],
         captions: [
-          'Lorem Ipsum', 'Dolor', 'sit amet'
+          'We cut some corners on geometry to accommodate simpler paths (red=external bounds; yellow=specific cameras; blue=traslated geometry)', 'Dolor', 'sit amet'
+        ],      },
+      {
+        task: 'Camera work',
+        taskExecution: [
+          'We took an hibrid approach to cameras, making them more cinematic while providing a sense of sturdiness needed for quick-pace action. Up to 15 entities could be on screen competing for player attention, so cameras had a pivot that anchor the center of the screen while we handcrafted camera angles, soft edges for panning and zoom levels.',
         ],
+        pageSize: 1,
+        taskImage: '/images/projects/12_tmnt/tmnt_04.png',
+        taskCaption: 'TaskCaption TaskCaption',
         gifs:[
           ['/images/projects/12_tmnt/tmnt_03.png', '/images/projects/12_tmnt/tmnt_03.png'],
           ['/images/projects/12_tmnt/tmnt_03.png', '/images/projects/12_tmnt/tmnt_04.png'],
-          ['/images/projects/12_tmnt/tmnt_04.png', '/images/projects/12_tmnt/tmnt_04.png']
-        ]
+          ['/images/projects/12_tmnt/tmnt_04.png', '/images/projects/12_tmnt/tmnt_04.png'],
+        ],
+        captions: [
+          'Lorem Ipsum', 'Dolor', 'sit amet'
+        ],
       },
     ],
-    trailer: 'https://www.youtube.com/watch?v=8XZhhctEr9s',
+    trailer: 'https://www.youtube.com/embed/8XZhhctEr9s?si=MENWcazhr_6P71aW',
     tech: ['Unity', 'Plastic SCM', 'Jira', 'Confluence', 'GDocs', 'Excel', 'Draw.io'],
     featured: true,
   },
@@ -118,12 +119,13 @@ const data: ProjectDetails[] = [
     studio: 'AHEARTFULOFGAMES',
     overview: 'A 3D platformer with isometric(ish) view where we take control of Thunder and explore vastly different realms while collecting new allies and fighting powerful dragons.',
     position: 'Senior Level Designer',
-    summary: 'I took responsibility of Level Design while still retaining some production responsibilities.',
+    summary: 'Focused my professional path within the company on design, assuming all level design responsibilities with a junior level designer, while still carrying part of the production.',
     highlights: [
-      'Focused my professional path on the design aspect, assuming more responsibilities on level design.',
-      'Assumed authorship of 60% of the game levels as well as integrated its gameplay content.',
-      'Support to the creation of main game mechanics and development tools for its integration of levels.',
-      'Built and maintained battle arenas, as well as iterated interactive gameplay elements within levels.',
+      'Used a modular system to tackle level design and maintain an agile production system, creating 10 minute levels in less than 2 weeks.',
+      'Took charge of localization efforts, working as nexus between our outsourcers and external client, as well as taking care of its implementation.',
+      'Assumed authorship of 60% of the game levels as well as integrated its gameplay content such as arenas, puzzles and cameras.',
+      'Support to the creation of main game mechanics and development workflows for its integration of levels.',
+      'Built and maintained battle arenas, iterating enemy placing, trap placing and camera placing.',
     ],
     images: [
       '/images/projects/11_dragons/dragons_01.png',
@@ -133,14 +135,13 @@ const data: ProjectDetails[] = [
     ],
     sections: [
       {
-        department:'',
-        tasks: [
-          '',
+        task:'Interactivity on levels',
+        taskExecution: [
+          'We introduced there a key aspect of gameplay: interactables. ',
         ],
         pageSize: 0,
-        imgs: [
-          '',
-        ],
+        taskImage: '',
+        taskCaption: '',
         captions: [
           '',
         ],
@@ -166,14 +167,14 @@ const data: ProjectDetails[] = [
     publishingDate: '2021-06-01',
     name: 'DreamWorks Spirit: Lucky´s Big Adventure',
     studio: 'AHEARTFULOFGAMES',
-    overview: 'A narrative, open world chill game on the universe of Spirit where players have the opportunity to explore the wildlife of a valley and uncover the secrets of an old treasure map.',
-    position: 'Producer & Level Designer',
+    overview: 'A narrative, chill open world game based on the universe of Spirit where players have the opportunity to explore the wildlife of a valley while riding Spirit and uncover the secrets of an old treasure map related to Lucky´s mom.',
+    position: 'Producer & Game Designer',
     summary: ' I doubled as Game Designer and Producer while taking the production home and pushing through the COVID Pandemic with financial success.',
     highlights: [
       'Built production workflows and led day to day operations within the team, managing milestones and reporting to internal and external stakeholders.',
-      'Mentored several game designers and took direct responsibility of a level designer.',
-      'Took full ownership of the world map, designing and implementing it fully.',
-      'Created several traversal puzzles and collectibles, integrating its gameplay with the world.',
+      'Mentored several game designers and took direct responsibility of level design.',
+      'Took full ownership of the world map, carrying the process from concept design to Unity implementation.',
+      'Created several traversal puzzles and collectibles, and later integrated all of them on the world map.',
     ],
     images: [
       '/images/projects/10_spirit/spirit_01.png',
@@ -183,14 +184,13 @@ const data: ProjectDetails[] = [
     ],
     sections: [
       {
-        department:'',
-        tasks: [
+        task:'',
+        taskExecution: [
           '',
         ],
         pageSize: 0,
-        imgs: [
-          '',
-        ],
+        taskImage: '',
+        taskCaption: '',
         captions: [
           '',
         ],

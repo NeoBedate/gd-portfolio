@@ -37,7 +37,7 @@ export const SHARE_IMAGE_DIMENSIONS = {
 
 // Canonical one-line bio, shared across page metadata, OpenGraph, and JSON-LD.
 export const SITE_DESCRIPTION =
-  'Design lead with 14+ years of experience working with Unity, both in academic and professional environments.';
+  'Design lead with 13+ years of experience working with Unity, both in academic and professional environments.';
 
 // Image dimension constants
 export const PROJECT_IMAGE = {

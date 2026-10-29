@@ -59,9 +59,9 @@ export function LeftChevron({ size = 36, className }: IconProps) {
       width={size}
       height={size}
       viewBox="0 0 24 24"
-      fill="currentColor"
-      stroke="currentColor"
-      strokeWidth="2"
+      fill="var(--color-accent-dim)"
+      stroke= "var(--color-accent)"
+      strokeWidth="1"
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -79,9 +79,9 @@ export function RightChevron({ size = 36, className }: IconProps) {
       width={size}
       height={size}
       viewBox="0 0 24 24"
-      fill="currentColor"
-      stroke="currentColor"
-      strokeWidth="2"
+      fill="var(--color-accent-dim)"
+      stroke= "var(--color-accent)"
+      strokeWidth="1"
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -96,10 +96,10 @@ export function CloseChevron({ size = 36, className }: IconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="32"
-      height="32"
+      width={size}
+      height={size}
       viewBox="0 0 24 24"
-      fill="none"
+      fill="var(--color-accent-dim)"
       stroke= "var(--color-accent)"
       strokeWidth="1"
       strokeLinecap="round"
@@ -110,5 +110,26 @@ export function CloseChevron({ size = 36, className }: IconProps) {
       <path d="M18 6l-12 12" />
       <path d="M6 6l12 12" />
     </svg>
+  )
+}
+
+export function PlayChevron({ size = 48, className }: IconProps) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="var(--color-accent-dim)"
+      stroke= "var(--color-accent)"
+      strokeWidth="1"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" />
+    </svg>
+
   )
 }

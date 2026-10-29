@@ -30,7 +30,7 @@ const SideBar: React.FC = () => {
         <h2>About Me</h2>
         <p>
           Hi, I&apos;m Santiago.
-          I am a Game Designer with 14yrs of experience
+          I am a Game Designer with 13yrs of experience
           making games and teaching at university.
           I&apos;ve specialized myself in Level Design as
           well as several aspects of production.

@@ -47,7 +47,8 @@
 
 .game-detail-wrap.open {
   grid-template-rows: 1fr;
-  margin-top: 3rem;
+  padding-top: 3rem;
+  scroll-margin-top: calc(var(--header-height))
 }
 
 .game-detail {
@@ -131,7 +132,6 @@
   flex-direction: column;
   gap: 0.75rem;
   padding: 1rem;
-  margin-top: 2rem;
 }
 
 .game-detail-main {
@@ -149,17 +149,15 @@
 
 .game-detail-play-btn {
   position: absolute;
+  width: 64px;
+  height: 64px;
   inset: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-self: center;
+  justify-self: center;
   cursor: pointer;
   background: solid var(--color-bg);
   transition: background 0.2s;
-}
-
-.game-detail-play-btn:hover {
-  background:  var(--color-bg);
 }
 
 .game-detail-play-btn-icon {
@@ -177,7 +175,7 @@
 }
 
 .game-detail-play-btn:hover .game-detail-play-btn-icon {
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
 #game-detail-video {
@@ -193,26 +191,27 @@
   position: absolute;
   inset: 0;
   display: flex;
-  align-items: center;
+  align-self: center;
   justify-content: space-between;
   padding: 0 0.6rem;
+  pointer-events: none
 }
 
 .game-detail-img-btn {
-  width: 2.2rem;
-  height: 2.2rem;
-  border: 2px solid var(--color-border);
+  width: 4rem;
+  height: 4rem;
   background: var(--surface);
   color: var(--color-accent-border);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.85rem;
   transition: background 0.2s, color 0.2s;
+  pointer-events: all
 }
 
 .game-detail-img-btn:hover {
+  transform: scale(1.2);
   color: var(--color-accent);
 }
 
@@ -221,7 +220,7 @@
   pointer-events: none;
 }
 
-.game-detail-section-imgs img {
+.game-detail-section-gifs img {
   cursor: pointer;
 }
 
@@ -244,6 +243,7 @@
   font-size: var(--text-md);
   color: var(--color-fg);
   margin-bottom: 1rem;
+  padding-left: 1rem;
 }
 
 .game-detail-overview p {
@@ -289,7 +289,7 @@
 }
 
 .game-detail-section {
-  padding: 2.5rem 0;
+  padding: 1rem 0;
   border-top: 1px solid var(--border);
   display: flex;
   flex-direction: column;
@@ -306,17 +306,45 @@
 }
 
 .game-detail-section-body {
+  display: flex;
   font-family: var(--font-body);
   font-size: var(--text-md);
   color: var(--color-fg);
   margin-bottom: 2rem;
 }
 
-.game-detail-section-imgs {
+.game-detail-section-gifs {
   display: flex;
   justify-content: center;
   align-items: center;
   grid-template-rows: repeat(2, 1fr);
+}
+
+.game-detail-section-task {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  color: var(--color-fg);
+  margin-bottom: 1.25rem;
+}
+
+.game-detail-section-taskImage {
+  position: relative;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  align-items: center;
+}
+
+.game-detail-section-taskImage-image{
+  height: auto;
+  width: auto;
+  padding: 1rem;
+}
+
+.game-detail-section-taskText {
+  width: 100%;
+  padding: 1rem;
 }
 
 .game-detail-section-nav-btn {
@@ -329,23 +357,24 @@
   transition: background 0.2s, color 0.2s;
 }
 
-.game-detail-section-imgs img {
+.game-detail-section-gifs img {
   width: 40%;
   aspect-ratio: 16/9;
   object-fit: cover;
   display: block;
+  padding: 0.5rem;  
 }
 
 .game-detail-section-caption {
-  font-size: 0.78rem;
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
   color: var(--color-fg-light);
   font-style: italic;
   text-align: center;
-  margin-top: 0.5rem;
-  min-height: 1.1em;
+  padding: 0.5rem;
 }
 
-.game-detail-section-imgs-nav {
+.game-detail-section-gifs-nav {
   display: flex;
   gap: 0.5rem;
   justify-content: center;
@@ -353,6 +382,7 @@
 }
 
 .game-detail-section-nav-btn:hover {
+  transform: scale(1.2);
   color: var(--color-accent);
 }
 
@@ -369,7 +399,7 @@
   align-items: start;
 }
 
-.game-detail-section-media > .game-detail-section-imgs {
+.game-detail-section-media > .game-detail-section-gifs {
   grid-column: span 2;
   grid-template-columns: 1fr 1fr;
 }
@@ -382,7 +412,7 @@
   grid-template-columns: 1fr 1fr;
 }
 
-.game-detail-section-media--single > .game-detail-section-imgs {
+.game-detail-section-media--single > .game-detail-section-gifs {
   grid-column: span 1;
   grid-template-columns: 1fr;
 }
@@ -415,14 +445,12 @@
 .game-detail-close {
   position: absolute;
   right: 0;
-  margin-right: 0.5rem;
-  margin-top: 0.5rem;
   background: none;
   color: var(--color-fg);
-  width: 2rem;
-  height: 2rem;
+  width: 2.6rem;
+  height: 2.6rem;
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -430,6 +458,7 @@
 }
 
 .game-detail-close:hover {
+  transform: scale(1.2);
   border-color: var(--color-accent);
   color: var(--color-accent-hover);
 }
@@ -444,5 +473,6 @@
 }
 
 .game-detail-steam-link:hover {
+  transform: scale(1.2);
   color: var(--accent);
 }

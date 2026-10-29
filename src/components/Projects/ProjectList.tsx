@@ -16,14 +16,22 @@ const ProjectList: React.FC<ProjectsListWrap> = ({projects}) => {
   const [selectedProject, setSelectedProject] = useState (
                 data.find(p => p.id == "12_tmnt")
         );
-
-
+        
   function UpdateProjectFromID(id:string) {
     var project = data.find(p => p.id == id);
     const wrap = document.getElementById('game-detail-wrap');
     if (!wrap) return;
     if (!wrap.classList.contains('open'))
       wrap.classList.add('open');
+    
+    ///// Scroll to game detail
+    var interval = setInterval(() => {
+      wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+    }, 2);
+
+    setTimeout(() => {
+      clearInterval(interval);
+    }, 300);
     
     setSelectedProject(project);
   }
