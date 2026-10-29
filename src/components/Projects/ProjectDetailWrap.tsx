@@ -62,8 +62,14 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
     sectionsDisplayIdxs[sectionIdx] = currentIdx;
 
     sectionImages.current[sectionIdx*2]!.src = section.gifs[currentIdx][0];
-    sectionImages.current[(sectionIdx*2) + 1]!.src = section.gifs[currentIdx][0];
+    sectionImages.current[(sectionIdx*2) + 1]!.src = section.gifs[currentIdx][1];
     sectionCaption.current[sectionIdx].innerHTML = section.captions[currentIdx];
+
+    var imageLink0 : HTMLLinkElement = sectionImages.current[sectionIdx*2]!.parentElement as HTMLLinkElement;
+    var imageLink1 : HTMLLinkElement = sectionImages.current[(sectionIdx*2) + 1]!.parentElement as HTMLLinkElement;
+    if (imageLink0 == null || imageLink1 == null) return;
+    imageLink0.href = section.gifs[currentIdx][0];
+    imageLink1.href = section.gifs[currentIdx][1];
   }
 
 
@@ -91,8 +97,19 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
       stopVideo();
       playButtonElement.current!.style.display = 'none';
     }
-    if (project != null && project.images != null)
+    if (project != null && project.images != null){
       imageElement.current!.src = project.images[screenshotIdx];
+      var imageLink : HTMLLinkElement = imageElement.current!.parentElement as HTMLLinkElement;
+      if (imageLink != null){
+        // if (screenshotIdx == 0) {
+        //   imageLink.href = "";
+        // }
+        // else 
+        {
+          imageLink.href = project.images[screenshotIdx];
+        }
+      }
+    }
   }
 
   function stepScreenshot(dir: number) {
@@ -237,15 +254,21 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
                 ))}
                 </div>
                 <div className="game-detail-section-taskImage">
-                  <img id={`game-detail-section-${sectionIdx}-taskImage`} src={section.taskImage} width={512} height={512} className="game-detail-section-taskImage-image"></img>
+                  {/* <a href={section.taskImage} target="_blank" > */}
+                    <img id={`game-detail-section-${sectionIdx}-taskImage`} src={section.taskImage} width={512} height={512} className="game-detail-section-taskImage-image"></img>
+                  {/* </a> */}
                   <h4 id={`game-detail-section-${sectionIdx}-taskCaption`} className="game-detail-section-caption">{section.taskCaption}</h4>
                 </div>
               </div>
               <div>
                 <div className="game-detail-section-gifs" id={`game-detail-section-gifs-${sectionIdx}`}>
                   <span className="game-detail-section-nav-btn" onClick={() => stepSection(section, sectionIdx, -1)}><LeftChevron/></span>
-                  <img id={`game-detail-section-${sectionIdx}-img-0`} ref={(el) => {sectionImages.current[sectionIdx * 2] = el!}} src={section.gifs[sectionsDisplayIdxs[sectionIdx]][0]}></img>
-                  <img id={`game-detail-section-${sectionIdx}-img-1`} ref={(el) => {sectionImages.current[(sectionIdx * 2) + 1] = el!}} src={section.gifs[sectionsDisplayIdxs[sectionIdx]][1]}></img>
+                  {/* <a href={section.gifs[sectionsDisplayIdxs[sectionIdx]][0]} target="_blank"> */}
+                    <img id={`game-detail-section-${sectionIdx}-img-0`} ref={(el) => {sectionImages.current[sectionIdx * 2] = el!}} src={section.gifs[sectionsDisplayIdxs[sectionIdx]][0]}></img>
+                  {/* </a> */}
+                  {/* <a href={section.gifs[sectionsDisplayIdxs[sectionIdx]][1]} target="_blank"> */}
+                    <img id={`game-detail-section-${sectionIdx}-img-1`} ref={(el) => {sectionImages.current[(sectionIdx * 2) + 1] = el!}} src={section.gifs[sectionsDisplayIdxs[sectionIdx]][1]}></img>
+                  {/* </a> */}
                   <span className="game-detail-section-nav-btn" onClick={() => stepSection(section, sectionIdx, 1)}><RightChevron/></span>
                 </div>
                 <h4 className="game-detail-section-caption" id={`game-detail-section-${sectionIdx}-caption`} ref={(el) => {sectionCaption.current[sectionIdx] = el!}}>{section.captions[sectionsDisplayIdxs[sectionIdx]]}</h4>
