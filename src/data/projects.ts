@@ -57,11 +57,12 @@ const data: ProjectDetails[] = [
       'Supported Production and QA through a successful Jira implementation of our Production schedule and level creation pipeline.',
     ],
     images: [
-      '/images/projects/12_tmnt/tmnt_03.png',
-      '/images/projects/12_tmnt/tmnt_01.png',
-      '/images/projects/12_tmnt/tmnt_02.png',
-      '/images/projects/12_tmnt/tmnt_03.png',
-      '/images/projects/12_tmnt/tmnt_04.png',
+      '/images/projects/12_tmnt/mutants_pc_20240122-131957x4.png',
+      '/images/projects/12_tmnt/mutants_pc_20240125-164412x4.png',
+      '/images/projects/12_tmnt/mutants_pc_20240119-173550x4.png',
+      '/images/projects/12_tmnt/mutants_pc_20240119-175746x4.png',
+      '/images/projects/12_tmnt/mutants_pc_20240119-200232x4.png',
+      '/images/projects/12_tmnt/mutants_pc_20240122-140023x4.png',
     ],
     sections: [
       {
