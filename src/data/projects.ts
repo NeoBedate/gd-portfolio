@@ -57,6 +57,7 @@ const data: ProjectDetails[] = [
       'Supported Production and QA through a successful Jira implementation of our Production schedule and level creation pipeline.',
     ],
     images: [
+      '/images/projects/12_tmnt/TMNT_MU-Title-RGB PNG.png',
       '/images/projects/12_tmnt/mutants_pc_20240122-131957x4.png',
       '/images/projects/12_tmnt/mutants_pc_20240125-164412x4.png',
       '/images/projects/12_tmnt/mutants_pc_20240119-173550x4.png',
@@ -73,16 +74,38 @@ const data: ProjectDetails[] = [
           'This approach provided anticipation in terms of narrative and fitted gameplay constrains; however, it put us in front of to extensive levels that needed much iteration by several departments, which led to clogs on the level pipeline.',
           'Ultimately we pivoted to smaller, more contained levels with less intertwined paths. This allowed us to iterate faster on level blocking and correct camera work and enemy placing before art passes. Polishing was up to production feedback and artistic needs after that.'],
         pageSize: 1,
-        taskImage: '/images/projects/12_tmnt/BK_02_a.png',
-        taskCaption: 'One of the first iterations of Brooklyn streets (blue=combat arena)',
+        taskImage: '/images/projects/12_tmnt/MT_04_pre.png',
+        taskCaption: 'Planning for Midtown metro level.',
         gifs:[
+          ['/images/projects/12_tmnt/Map_01.png', '/images/projects/12_tmnt/Map_02.png'],
+          ['/images/projects/12_tmnt/Map_03.png', '/images/projects/12_tmnt/BK_02 - upview.png'],
           ['/images/projects/12_tmnt/BK_02 - upview.png', '/images/projects/12_tmnt/BK_02 - Proposal.png'],
-          ['/images/projects/12_tmnt/tmnt_01.png', '/images/projects/12_tmnt/tmnt_02.png'],
-          ['/images/projects/12_tmnt/tmnt_02.png', '/images/projects/12_tmnt/tmnt_02.png']
+          ['/images/projects/12_tmnt/BK_02_a.png', '/images/projects/12_tmnt/BK_02_e.png'],
         ],
         captions: [
-          'We cut some corners on geometry to accommodate simpler paths (red=external bounds; yellow=specific cameras; blue=traslated geometry)', 'Dolor', 'sit amet'
+          'Levels were first envisioned as part of the city and its boroughs.','After we decide how the level connects to others, we placed an early layout with placeholder buildings.','We cut some corners on geometry to accommodate simpler paths (red=external bounds; yellow=specific cameras; blue=traslated geometry)', 'Then we start the proper process of blockout',
         ],      },
+      {
+        task: 'Level Design composition & iteration',
+        taskExecution: [
+          'With clear guidelines, my focus was to set up a workflow for the other level designers. We took a 3-pass approach to make it easier to remember, as we had to quickly try and discard ideas.',
+          '1st pass for contrains: biome selection, blockout and camera set-up (more on this later). With these basics, we could start placing traversal challenges and their cameras. Narrative passes could place their first iterations of story bits or tutorials, and artists could make a pass on environment feel and camera issues that may arise.',
+          '2nd pass for arenas: once the basic blockout of the level is done, we place arenas on the selected spaces and start to tweak both enemy selection and cameras to serve the story. We later ditched the enemy selection part, as the dynamic difficulty system could change enemies depending on player performance during the game.',
+          '3rd pass for art & gameplay corrections: once the level is sound on gameplay, goes straight for art dressing and lighting work. Then it comes back to level design for camera corrections, collision checks and narrative adjustments.',
+          'After these passes, the level is done and goes to testing. This usually took us between 2-3 weeks, depending on client feedback.',
+        ],
+        pageSize: 1,
+        taskImage: '/images/projects/12_tmnt/tmnt_04.png',
+        taskCaption: 'TaskCaption TaskCaption',
+        gifs:[
+          ['/images/projects/12_tmnt/tmnt_03.png', '/images/projects/12_tmnt/tmnt_03.png'],
+          ['/images/projects/12_tmnt/tmnt_03.png', '/images/projects/12_tmnt/tmnt_04.png'],
+          ['/images/projects/12_tmnt/tmnt_04.png', '/images/projects/12_tmnt/tmnt_04.png'],
+        ],
+        captions: [
+          'Lorem Ipsum', 'Dolor', 'sit amet'
+        ],
+      },
       {
         task: 'Camera work',
         taskExecution: [
@@ -128,19 +151,36 @@ const data: ProjectDetails[] = [
       'Built and maintained battle arenas, iterating enemy placing, trap placing and camera placing.',
     ],
     images: [
-      '/images/projects/11_dragons/dragons_01.png',
-      '/images/projects/11_dragons/dragons_02.png',
-      '/images/projects/11_dragons/dragons_03.png',
-      '/images/projects/11_dragons/dragons_04.png',
+      '/images/projects/11_dragons/Dragons_GameCore_Splash_2048x1021.png',
+      '/images/projects/11_dragons/FireRealm.png',
+      '/images/projects/11_dragons/IceRealm.png',
+      '/images/projects/11_dragons/CrystalRealm.png',
     ],
     sections: [
+      {
+        task:'Level Design guidelines',
+        taskExecution: [
+          'Unlike in Spirit, the world of Dragons was now divided into several Realms with 5 contained levels each. ',
+        ],
+        pageSize: 0,
+        taskImage: '/images/projects/11_dragons/world_01_level_03.png',
+        taskCaption: '',
+        captions: [
+          '',
+        ],
+        gifs:[
+          [],
+          [],
+          []
+        ]
+      },
       {
         task:'Interactivity on levels',
         taskExecution: [
           'We introduced there a key aspect of gameplay: interactables. ',
         ],
         pageSize: 0,
-        taskImage: '',
+        taskImage: '/images/projects/11_dragons/world_01_level_03.png',
         taskCaption: '',
         captions: [
           '',
@@ -152,7 +192,7 @@ const data: ProjectDetails[] = [
         ]
       },
     ],
-    trailer: '',
+    trailer: 'https://www.youtube.com/embed/BQY01xBqb1o?si=Ok8Fn9os5_xFJmMj',
     tech: ['Unity', 'Plastic SCM', 'SourceTree', 'Hack N Plan', 'GDocs', 'Excel'],
     featured: true,
   },
@@ -177,6 +217,7 @@ const data: ProjectDetails[] = [
       'Created several traversal puzzles and collectibles, and later integrated all of them on the world map.',
     ],
     images: [
+      '/images/projects/10_spirit/Spirit_Logo.png',
       '/images/projects/10_spirit/spirit_01.png',
       '/images/projects/10_spirit/spirit_02.png',
       '/images/projects/10_spirit/spirit_03.png',
@@ -201,7 +242,7 @@ const data: ProjectDetails[] = [
         ]
       },
     ],
-    trailer: '',
+    trailer: 'https://www.youtube.com/embed/imX-1wNppog?si=FFlZjFhrAk8fmB4L',
     tech: ['Unity', 'Tortoise', 'SourceTree', 'Hack N Plan', 'GDocs', 'Excel', 'Photoshop','C#'],
     featured: true,
   },
