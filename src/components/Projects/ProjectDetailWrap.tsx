@@ -264,10 +264,10 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
                 <div className="game-detail-section-gifs" id={`game-detail-section-gifs-${sectionIdx}`}>
                   <span className="game-detail-section-nav-btn" onClick={() => stepSection(section, sectionIdx, -1)}><LeftChevron/></span>
                   <a href={section.gifs[sectionsDisplayIdxs[sectionIdx]][0]} target="_blank">
-                    <img id={`game-detail-section-${sectionIdx}-img-0`} ref={(el) => {sectionImages.current[sectionIdx * 2] = el!}} src={section.gifs[sectionsDisplayIdxs[sectionIdx]][0]}></img>
+                    <img width={640} height={640} id={`game-detail-section-${sectionIdx}-img-0`} ref={(el) => {sectionImages.current[sectionIdx * 2] = el!}} src={section.gifs[sectionsDisplayIdxs[sectionIdx]][0]}></img>
                   </a>
                   <a href={section.gifs[sectionsDisplayIdxs[sectionIdx]][1]} target="_blank">
-                    <img id={`game-detail-section-${sectionIdx}-img-1`} ref={(el) => {sectionImages.current[(sectionIdx * 2) + 1] = el!}} src={section.gifs[sectionsDisplayIdxs[sectionIdx]][1]}></img>
+                    <img width={640} height={640} id={`game-detail-section-${sectionIdx}-img-1`} ref={(el) => {sectionImages.current[(sectionIdx * 2) + 1] = el!}} src={section.gifs[sectionsDisplayIdxs[sectionIdx]][1]}></img>
                   </a>
                   <span className="game-detail-section-nav-btn" onClick={() => stepSection(section, sectionIdx, 1)}><RightChevron/></span>
                 </div>
