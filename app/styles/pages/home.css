@@ -20,7 +20,7 @@
   z-index: 1;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 3rem;
+  gap: 1.5rem;
   align-items: start;
 }
 
@@ -30,7 +30,7 @@
 
 /* Name */
 .hero-title {
-  margin: 0 0 1.25rem;
+  margin: 0 0 1rem;
 }
 
 .hero-name {
@@ -52,7 +52,7 @@
   color: var(--color-fg);
   max-width: 72ch;
   margin: 0 0 0;
-  line-height: var(--leading-snug);
+  line-height: var(--leading-normal);
   font-weight: var(--font-weight-normal);
   text-wrap: pretty;
 }
@@ -90,7 +90,6 @@
 
 .hero-chips {
   display: grid;
-  gap: 0.5rem;
   flex-wrap: wrap;
   margin-top: 0.5rem;
 }
@@ -100,7 +99,9 @@
   color: var(--color-fg-light);
   padding: 0.375rem 1.275rem;
   background: var(--color-border-bg);
+  border: var(--rule) solid var(--color-border);
   border-radius: 2px;
+  border-width: 1px;
   text-align: center;
   font-weight: var(--font-weight-medium);
 }
@@ -141,7 +142,7 @@
    layout cannot use without reading as a profile card. */
 .hero-portrait {
   position: relative;
-  width: 248px;
+  width: 320px;
   max-width: 100%;
   border: var(--rule) solid var(--color-border);
   background: var(--color-bg);
@@ -239,9 +240,13 @@
 }
 
 /* Stacked — below this the two columns genuinely stop fitting. */
-@media (max-width: 640px) {
+@media (max-width: 736px) {
   .hero {
     padding-top: 3rem;
+  }
+
+  .hero-title {
+    font-size: var(--text-xl);
   }
 
   .hero-grid {
@@ -250,9 +255,14 @@
   }
 
   .hero-chips {
-    margin: 0 auto;
-    margin-top: 2rem;
-    width: 50%;
+    margin: auto;
+    margin-top: 0.5rem;
+    width: 80%;
+  }
+
+  .hero-chip {
+    display: grid;
+    padding: 0.25rem;
   }
 
   .hero-cta {
@@ -262,7 +272,7 @@
 
   .hero-portrait {
     order: -1;
-    width: 180px;
+    width: 280px;
   }
 
   .hero-name {

@@ -19,12 +19,10 @@ export default function Hero() {
 
         <div>
             <div className="hero-portrait">
-              <ThemePortrait width={232} height={232} priority />
+              <ThemePortrait width={256} height={256} priority />
             </div>
           <div className="hero-chips">
-            <span className="hero-chip">{profile.role_01}</span>
-            <span className="hero-chip">{profile.role_02}</span>
-            <span className="hero-chip">{profile.role_03}</span>
+            <span className="hero-chip">{profile.role_01} / {profile.role_02} / {profile.role_03}</span>
           </div>
         </div>
         </div>

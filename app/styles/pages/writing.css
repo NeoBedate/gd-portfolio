@@ -136,7 +136,7 @@
   line-height: var(--leading-snug);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 736px) {
   .writing-item {
     grid-template-columns: minmax(0, 1fr);
   }

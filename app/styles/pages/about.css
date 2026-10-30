@@ -275,7 +275,7 @@
   min-width: 0;
 }
 
-@media (max-width: 735px) {
+@media (max-width: 736px) {
   .about-section-nav {
     top: var(--header-height-mobile);
     flex-wrap: nowrap;
@@ -285,9 +285,15 @@
     border-radius: 0;
     scrollbar-width: thin;
   }
+  
+  .about-section-nav-link {
+    font-size: var(--text-2xs);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
   .about-section h2 {
-    scroll-margin-top: calc(var(--header-height-mobile) + 4.5rem);
+    scroll-margin-top: calc(var(--header-height-mobile) + 5.5rem);
     padding-top: var(--spacing-4);
     font-size: 1.25rem;
   }
@@ -330,7 +336,7 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 736px) {
   .about-section--log .log-entry {
     grid-template-columns: minmax(0, 1fr);
     gap: 0.2rem;

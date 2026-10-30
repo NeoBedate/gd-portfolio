@@ -254,9 +254,9 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
                 ))}
                 </div>
                 <div className="game-detail-section-taskImage">
-                  {/* <a href={section.taskImage} target="_blank" > */}
+                  <a href={section.taskImage} target="_blank" >
                     <img id={`game-detail-section-${sectionIdx}-taskImage`} src={section.taskImage} width={512} height={512} className="game-detail-section-taskImage-image"></img>
-                  {/* </a> */}
+                  </a>
                   <h4 id={`game-detail-section-${sectionIdx}-taskCaption`} className="game-detail-section-caption">{section.taskCaption}</h4>
                 </div>
               </div>
