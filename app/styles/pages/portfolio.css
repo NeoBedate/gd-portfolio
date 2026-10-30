@@ -220,10 +220,6 @@
   pointer-events: none;
 }
 
-.game-detail-section-gifs img {
-  cursor: pointer;
-}
-
 #game-detail-main-img {
   cursor: pointer;
 }
@@ -357,12 +353,13 @@
   transition: background 0.2s, color 0.2s;
 }
 
-.game-detail-section-gifs img {
+.game-detail-section-gifs a {
   width: 45%;
   aspect-ratio: 16/9;
   object-fit: cover;
   display: block;
   padding: 0.5rem;  
+  cursor: pointer;
 }
 
 .game-detail-section-caption {
