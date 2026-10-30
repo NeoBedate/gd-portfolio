@@ -78,49 +78,56 @@ const data: ProjectDetails[] = [
         taskCaption: 'Planning for Midtown metro level.',
         gifs:[
           ['/images/projects/12_tmnt/Map_01.png', '/images/projects/12_tmnt/Map_02.png'],
-          ['/images/projects/12_tmnt/Map_03.png', '/images/projects/12_tmnt/BK_02 - upview.png'],
-          ['/images/projects/12_tmnt/BK_02 - upview.png', '/images/projects/12_tmnt/BK_02 - Proposal.png'],
+          ['/images/projects/12_tmnt/Map_03.png', '/images/projects/12_tmnt/Map_04.png'],
+          ['/images/projects/12_tmnt/BK_02 - upview.png', '/images/projects/12_tmnt/BK_02_Final.png'],
           ['/images/projects/12_tmnt/BK_02_a.png', '/images/projects/12_tmnt/BK_02_e.png'],
         ],
         captions: [
-          'Levels were first envisioned as part of the city and its boroughs.','After we decide how the level connects to others, we placed an early layout with placeholder buildings.','We cut some corners on geometry to accommodate simpler paths (red=external bounds; yellow=specific cameras; blue=traslated geometry)', 'Then we start the proper process of blockout',
+          'Levels were first envisioned as part of the city and its boroughs.','After we decide how the level connects to others, we placed an early layout with portals to other levels and we ran through all the quests that will cross the level.','We cut some corners on geometry to accommodate simpler paths (red=mission path on final geometry)', 'Then we start the proper process of blockout, marking potential spots for arenas (blue), narrative and traversal puzzles.',
         ],      },
       {
         task: 'Level Design composition & iteration',
         taskExecution: [
           'With clear guidelines, my focus was to set up a workflow for the other level designers. We took a 3-pass approach to make it easier to remember, as we had to quickly try and discard ideas.',
-          '1st pass for contrains: biome selection, blockout and camera set-up (more on this later). With these basics, we could start placing traversal challenges and their cameras. Narrative passes could place their first iterations of story bits or tutorials, and artists could make a pass on environment feel and camera issues that may arise.',
+          '1st pass for constrains: biome selection, blockout and camera set-up (more on this later). With these basics, we could start placing traversal challenges and their cameras. Narrative passes could place their first iterations of story bits or tutorials, and artists could make a pass on environment feel and camera issues that may arise.',
           '2nd pass for arenas: once the basic blockout of the level is done, we place arenas on the selected spaces and start to tweak both enemy selection and cameras to serve the story. We later ditched the enemy selection part, as the dynamic difficulty system could change enemies depending on player performance during the game.',
           '3rd pass for art & gameplay corrections: once the level is sound on gameplay, goes straight for art dressing and lighting work. Then it comes back to level design for camera corrections, collision checks and narrative adjustments.',
           'After these passes, the level is done and goes to testing. This usually took us between 2-3 weeks, depending on client feedback.',
         ],
         pageSize: 1,
-        taskImage: '/images/projects/12_tmnt/tmnt_04.png',
-        taskCaption: 'TaskCaption TaskCaption',
+        taskImage: '/images/projects/12_tmnt/Layout_A_MT_04.png',
+        taskCaption: 'After 1st and 2nd pass, this level sports 3 arenas that could be used on different quests that traverse it.',
         gifs:[
-          ['/images/projects/12_tmnt/tmnt_03.png', '/images/projects/12_tmnt/tmnt_03.png'],
-          ['/images/projects/12_tmnt/tmnt_03.png', '/images/projects/12_tmnt/tmnt_04.png'],
-          ['/images/projects/12_tmnt/tmnt_04.png', '/images/projects/12_tmnt/tmnt_04.png'],
+          ['/images/projects/12_tmnt/BK_05 - Screenshot 2023-02-28 174057.png', '/images/projects/12_tmnt/BK_05 - Screenshot 2023-02-28 174119.png'],
+          ['/images/projects/12_tmnt/BX_03 - JokerStairs.png', '/images/projects/12_tmnt/BX_03 - SkatingJoker.png'],
+          ['/images/projects/12_tmnt/BX_05 - Blockout.png', '/images/projects/12_tmnt/BX_05 - cenital.png'],
+          ['/images/projects/12_tmnt/Bridge-01.png', '/images/projects/12_tmnt/Bridge-02.png'],
         ],
         captions: [
-          'Lorem Ipsum', 'Dolor', 'sit amet'
+          'Some screenshots of BK_05, later known in-game as The Mall, with a circular structure that was hard to honor with camera work and had to be ditched.', 'We recreated several iconic places from NY City, such as the West 167th Street Stairs (or "Joker Stairs")...', '...the Yankee Stadium...', '...and Brooklyn´s bridge, a level in which I take special pride as it is my very own reinterpretation of the famous bridge. Here we can see it fully dressed.',
         ],
       },
       {
         task: 'Camera work',
         taskExecution: [
           'We took an hibrid approach to cameras, making them more cinematic while providing a sense of sturdiness needed for quick-pace action. Up to 15 entities could be on screen competing for player attention, so cameras had a pivot that anchor the center of the screen while we handcrafted camera angles, soft edges for panning and zoom levels.',
+          'On small spaces this proved to be a challenge, as the need to keep the camera close to avoid out-of-bounds shenanigans was paramount. We resolved this by playing with the aperture of the lenses, less camera movement and having some latitude on black planes that cover empty spaces.',
+          'Lastly, cameras were always thought with forward action in mind. Painting invisible lines that guide the player towards the next place was of utmost importance, as we prioritize a natural pathfinding by camera rather than extradiegetic help.'
         ],
         pageSize: 1,
-        taskImage: '/images/projects/12_tmnt/tmnt_04.png',
-        taskCaption: 'TaskCaption TaskCaption',
+        taskImage: '/images/projects/12_tmnt/SUB - Start.gif',
+        taskCaption: 'In this instance, the camera takes us from the bottom left to the upper right of the screen.',
         gifs:[
-          ['/images/projects/12_tmnt/tmnt_03.png', '/images/projects/12_tmnt/tmnt_03.png'],
-          ['/images/projects/12_tmnt/tmnt_03.png', '/images/projects/12_tmnt/tmnt_04.png'],
-          ['/images/projects/12_tmnt/tmnt_04.png', '/images/projects/12_tmnt/tmnt_04.png'],
+          ['/images/projects/12_tmnt/BK_02 - High.gif', '/images/projects/12_tmnt/BK_02 - Battle.gif'],
+          ['/images/projects/12_tmnt/BX_05 - Run.gif', '/images/projects/12_tmnt/BX_05 - Battle.gif'],
+          ['/images/projects/12_tmnt/BX_05 - Run_02.gif', '/images/projects/12_tmnt/BX_05 - Battle_02.gif'],
+          ['/images/projects/12_tmnt/MT_04 - Combat.gif', '/images/projects/12_tmnt/AIRSHIP - Grind.gif'],
         ],
         captions: [
-          'Lorem Ipsum', 'Dolor', 'sit amet'
+          'While we tried to preserve vector movement on screen, sometimes we went for a more cinematic feel on combat',
+          'One of the first decisions was to have some cameras from behind to support reveals. Our first pass was crude...',
+          '...but the second played better on the following cutscene.',
+          'And of course, to power some special movements and situations like high stakes combats or dangerous grinds.'
         ],
       },
     ],
