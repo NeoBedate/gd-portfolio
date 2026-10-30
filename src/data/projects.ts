@@ -158,7 +158,7 @@ const data: ProjectDetails[] = [
       'Built and maintained battle arenas, iterating enemy placing, trap placing and camera placing.',
     ],
     images: [
-      '/images/projects/11_dragons/Dragons_GameCore_Splash_2048x1021.png',
+      '/images/projects/11_dragons/Dragons_Logo_1.png',
       '/images/projects/11_dragons/FireRealm.png',
       '/images/projects/11_dragons/IceRealm.png',
       '/images/projects/11_dragons/CrystalRealm.png',
