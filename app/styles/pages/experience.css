@@ -333,6 +333,7 @@
   .resume-container {
     grid-template-columns: minmax(0, 1fr);
     gap: 0.5rem;
+    
   }
 
   .resume-container::before,

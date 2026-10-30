@@ -303,7 +303,7 @@
   margin-bottom: 0.75rem;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 736px) {
   .stat-table-value {
     font-size: clamp(var(--text-md), 4vw, var(--text-xl));
   }
