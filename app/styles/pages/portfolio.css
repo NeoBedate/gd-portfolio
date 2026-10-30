@@ -354,12 +354,13 @@
 }
 
 .game-detail-section-gifs a {
-  width: 45%;
+  width: 46%;
   aspect-ratio: 16/9;
   object-fit: cover;
   display: block;
   padding: 0.5rem;  
   cursor: pointer;
+  border: 2px solid var(--color-accent-border);
 }
 
 .game-detail-section-caption {
