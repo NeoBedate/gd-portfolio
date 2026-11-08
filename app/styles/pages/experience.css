@@ -30,7 +30,7 @@
   line-height: 1.15;
   letter-spacing: var(--tracking-display);
   text-transform: uppercase;
-  color: var(--color-fg-bold);
+  color: var(--color-text-dim);
   display: block;
   margin-bottom: 2.5rem;
   padding-top: var(--spacing-5);
@@ -69,7 +69,7 @@
   .experience-content .skills .title h2,
   .experience-content .courses .title h2,
   .experience-content .references .title h2 {
-      text-align: center;
+    text-align: center;
   }
 }
 
@@ -232,7 +232,7 @@
   font-family: var(--font-body);
   font-size: var(--text-md);
   line-height: var(--leading-snug);
-  color: var(--color-fg);
+  color: var(--color-text);
   margin: 0;
   line-height: 1.7;
   margin-bottom: 1.5rem;
@@ -441,7 +441,7 @@
   font-family: var(--font-body);
   font-size: var(--text-sm);
   font-weight: var(--font-weight-normal);
-  color: var(--color-fg);
+  color: var(--color-text);
   line-height: var(--leading-snug);
 }
 

@@ -25,7 +25,7 @@ describe('Job', () => {
       summary:'Test summary for a game',
       highlights: ['Pretty cool, huh', 'Yeah, pretty cool'],
       tech: ['Cool Engine', 'Great Processor'],
-      featured: true,
+      selected: true,
       other: false,
       learning: false,
     }}],

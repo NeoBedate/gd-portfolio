@@ -6,7 +6,7 @@
 @layer base {
   /* Modern link styling with animated underline */
   a {
-    color: var(--color-fg);
+    color: var(--color-text);
     text-decoration: none;
     background-image: linear-gradient(var(--color-accent), var(--color-accent));
     background-size: 0% 1.5px;

@@ -108,7 +108,7 @@
   background: transparent;
   border: none;
   border-radius: var(--radius-sm);
-  color: var(--color-fg);
+  color: var(--color-text);
   cursor: pointer;
   transition:
     color var(--duration-fast) var(--ease-out),

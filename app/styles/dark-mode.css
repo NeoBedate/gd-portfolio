@@ -14,10 +14,10 @@
   --color-fg-bold:                #f2f4f7;
   --color-fg-light:               #b0b8c5;
 
-  --color-text:                   rgba(232, 228, 220, 1);
-  --color-text-muted:             rgba(232, 228, 220, 0.85);
-  --color-text-dim:               rgba(232, 228, 220, 0.60);
-  --color-text-faint:             rgba(232, 228, 220, 0.22);  
+  --color-text:                   #f5f3fa;
+  --color-text-muted:             #c8c6cc;
+  --color-text-dim:               #969499;
+  --color-text-faint:             #39393b;  
 
   /* Overlay colors for dark mode */
   --color-overlay-darker:         rgba(0, 0, 0, 0.6);

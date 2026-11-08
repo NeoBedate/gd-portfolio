@@ -49,7 +49,7 @@
 
   body {
     background-color: var(--color-bg-alt);
-    color: var(--color-fg);
+    color: var(--color-text);
     font-family: var(--font-body);
     font-size: var(--text-md);
     font-weight: var(--font-weight-normal);
