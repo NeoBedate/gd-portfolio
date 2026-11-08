@@ -35,13 +35,13 @@ export const metadata: Metadata = {
 };
 
 interface WritingItemProps {
-  featured?: boolean;
+  selected?: boolean;
   item: Item;
   showDate?: boolean;
 }
 
 function WritingItem({
-  featured = false,
+  selected = false,
   item,
   showDate = true,
 }: WritingItemProps) {
@@ -71,7 +71,7 @@ function WritingItem({
     </>
   );
 
-  const className = ['writing-item', featured ? 'writing-item--featured' : '']
+  const className = ['writing-item', selected ? 'writing-item-selected' : '']
     .filter(Boolean)
     .join(' ');
 
@@ -145,7 +145,7 @@ export default function WritingPage() {
               <WritingItem
                 key={item.url}
                 item={item}
-                featured={item.url === latestDatedItem?.url}
+                selected={item.url === latestDatedItem?.url}
               />
             ))}
           </div>
@@ -160,7 +160,7 @@ export default function WritingPage() {
               <WritingItem
                 key={item.url}
                 item={item}
-                featured={item.url === latestDatedItem?.url}
+                selected={item.url === latestDatedItem?.url}
               />
             ))}
           </div>

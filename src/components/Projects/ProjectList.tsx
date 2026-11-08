@@ -47,8 +47,8 @@ const ProjectList: React.FC<ProjectsListWrap> = ({projects}) => {
 
        {projects.length > 0 && (
           <section className="portfolio-projects">
-            <h2 className="projects-section-title">Featured</h2>
-            <div className="projects-grid projects-grid--featured">
+            <h2 className="projects-section-title">Selected Projects</h2>
+            <div className="projects-grid projects-grid-selected">
               {projects.map((project) => (
                 <Cell data={project} key={project.name}
                       callback={ (id:string) => UpdateProjectFromID(id) }/>

@@ -65,7 +65,7 @@
   transition: background-color var(--duration-instant) var(--ease-out);
 }
 
-.writing-item--featured {
+.writing-item-selected {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
@@ -122,7 +122,7 @@
   transition: color var(--duration-instant) var(--ease-out);
 }
 
-.writing-item--featured .writing-title {
+.writing-item-selected .writing-title {
   font-size: var(--text-xl);
   line-height: var(--leading-tight);
 }
@@ -161,7 +161,7 @@
     grid-row: 3;
   }
 
-  .writing-item--featured .writing-title {
+  .writing-item-selected .writing-title {
     font-size: var(--text-lg);
   }
 }
@@ -279,7 +279,7 @@
   font-family: var(--font-body);
   font-size: var(--text-md);
   line-height: var(--leading-normal);
-  color: var(--color-fg);
+  color: var(--color-text);
 }
 
 .prose h2 {

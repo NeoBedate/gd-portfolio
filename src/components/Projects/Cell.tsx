@@ -21,14 +21,14 @@ function CardClicked(project : ProjectDetails, callback : Function | undefined){
 
 
 const Cell: React.FC<CellProps> = ({ data, callback }) => {
-  const { id, url, coverImage, dimensions, genre, publishingDate, name, studio, overview, featured } = data;
+  const { id, url, coverImage, dimensions, genre, publishingDate, name, studio, overview, selected } = data;
 
   const CardWrapper = url ? 'a' : 'div';
   const cardProps = url ? { href: url, className: 'project-card-link' } : {};
 
 
   return (
-    <article id={`project-card-${data.id}`} className={`project-card ${featured ? 'project-card--featured' : ''}`}>
+    <article id={`project-card-${data.id}`} className={`project-card ${selected ? 'project-card-selected' : ''}`}>
       <CardWrapper {...cardProps} onClick={() => { CardClicked(data, callback); }}>
         <div className="project-card-content">
           <p className="project-card-tag">{dimensions} · {genre} · <time>{dayjs(publishingDate).format('YYYY')}</time></p>
