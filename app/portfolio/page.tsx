@@ -17,7 +17,7 @@ import ProjectList from '@/components/Projects/ProjectList';
 
 const PORTFOLIO_URL = `${SITE_URL}/portfolio/`;
 
-const PORTFOLIO_DESCRIPTION = `Featured video games where I contributed.`;
+const PORTFOLIO_DESCRIPTION = `Selected video games where I contributed.`;
 
 export const metadata: Metadata = createPageMetadata ({
   title: 'Portfolio',
@@ -26,7 +26,7 @@ export const metadata: Metadata = createPageMetadata ({
 
 
 export default function ProjectsPage() {
-  const featuredProjects = data.filter((p) => p.featured);
+  const selectedProjects = data.filter((p) => p.selected);
 
   return (
     <PageWrapper mainClassName="page-main--portfolio">
@@ -45,7 +45,7 @@ export default function ProjectsPage() {
         ]}
       />
 
-      <ProjectList projects={featuredProjects}/>
+      <ProjectList projects={selectedProjects}/>
 
     </PageWrapper>
   );
