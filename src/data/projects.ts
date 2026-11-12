@@ -49,7 +49,7 @@ const data: ProjectDetails[] = [
     studio: 'AHEARTFULOFGAMES',
     overview: 'An action platformer where the player takes control of the four ninja turtles, battling through New York in order to uncover a conspiracy involving the `Mewbies´ and the chaos they are spreading through the city.',
     position: 'Lead Level Designer',
-    summary: 'As a Lead, I was tasked with providing action-focused game spaces for a +10h game. Given the nature of the gameplay, spaces needed to be tightly designed for several traversal feats and combat abilities.',
+    summary: 'As a Lead, I was tasked with providing action-focused game spaces for a +10h game. Given the nature of the gameplay, spaces needed to be tightly designed for several traversal feats and combat abilities, so I nurtured my team with clear guidelines, processes, deadlines and expectations. Additionally, I helped the Production team to create our Jira project and processes for the whole production, a key step into an 18 months project for 31 people.',
     highlights: [
       'Led a team of 4 level designers and a scale-up in production workflows to produce 40 levels.',
       'Assumed authorship of 30% of the game levels, plus direct supervision over the rest.',
@@ -67,54 +67,12 @@ const data: ProjectDetails[] = [
     ],
     sections: [
       {
-        task: 'Level Design guidelines',
+        task: 'Traversal and combat solutions',
         taskExecution: [
-          'Our main focus was to <b>streamline level design</b> and be able to produce at least x2 to x3 levels more than needed to provide Creative Direction a selection of ideas, so we worked at 3 levels of depth.',
-          '<b>At high level</b>, we were given a target ("40 to 50 levels total, plus set-pieces and bosses: most of them interconnected for quests"), so we created a <b>map of the boroughs</b> (which eventually became the game´s map) and searched for interesting places on each of them. We also looked at common environments (rooftops, streets, sewers and subway tunnels) to help art and gameplay production schedules.',
-          '<b>At mid level</b>, we took a 3-pass approach designed to quickly iterate: biome and gameplay focus; camera and arena placing; and art & collision corrections. These passes, with the second being the most crucial but time consuming, helped us find a theme for each level while keeping overall cohesion between playable spaces.',
-          '<b>At low level</b>, we focused on resolving action-blocks at first (traversal challenges, arenas design and narrative beats), giving space for art integration due to the unique visual identity of the franchise. Blockouts were switched for finished assets and surfaces for textures via replacing tool.',
-        ],
-        pageSize: 1,
-        taskImage: '/images/projects/12_tmnt/Map_HUD_04.png',
-        taskCaption: 'The Five Boroughs, with Manhattan partitioned into several recognizable pieces.',
-        gifs:[
-          ['/images/projects/12_tmnt/Map_01.png', '/images/projects/12_tmnt/Map_02.png'],
-          ['/images/projects/12_tmnt/Map_03.png', '/images/projects/12_tmnt/Map_04.png'],
-        ],
-        captions: [
-          '1. Levels were first envisioned as part of the city and its boroughs.',
-          '2. After we decide how the level connects to others, we placed an early layout with portals to other levels and all the quests that will cross the level.'
-        ],
-      },
-      {
-        task: 'Creative challenges',
-        taskExecution: [
-          'Portals, cameras and art dressing were the main challenges on the level design workflow.',
-          'Early on development, each portal was meant to function as both entry and exit to give freedom to the Narrative Department. However, as the narrative changed from a "rogue-likesque" structure to a more linear one, we came to a point where portals were rarely used for both purposes at all. Quests demanded: one point of entry; one path; one point of exit.',
-          'While this approach provided anticipation in terms of narrative and fitted gameplay constrains, the transition to a linear structure came with a hidden cost: production oversee rose, specially for levels heavy on narrative beats, so our first assesment for camera placing and blockout polishing was insufficient. Cameras needed to convey a strong sense of direction and anticipation, which increased iteration times.',
-          'Lastly, level design had to implement gameplay props for traversal challenges and combat arenas, as well as dress some corners to make levels feel alive. All these aspects are where most of the iteration time was alocated.',
-        ],
-        pageSize: 1,
-        taskImage: '/images/projects/12_tmnt/MT_04_pre.png',
-        taskCaption: 'Planning for Midtown metro level, with portals marked and quests running through the level highlighted.',
-        gifs:[
-          ['/images/projects/12_tmnt/BK_02 - upview.png', '/images/projects/12_tmnt/BK_02_Final.png'],
-          ['/images/projects/12_tmnt/BK_02 - High.gif', '/images/projects/12_tmnt/BK_02 - Battle.gif'],
-          ['/images/projects/12_tmnt/BK_02 - LastArc_01.gif', '/images/projects/12_tmnt/BK_02 - LastArc_02.gif'],
-        ],
-        captions: [
-          '1. After we decide how the level connects to others, we placed an early layout with portals to other levels and we ran through all the quests that will cross the level.',
-          '2. While we tried to preserve vector movement on screen, sometimes we went for a more cinematic feel during combat',
-          '3. Aside from art dressing, Level Design populated traversal sections and arenas with interactive props to keep a vibrant picture of a New York on a crisis',
-        ],
-      },
-      {
-        task: 'Intertwined solutions',
-        taskExecution: [
-          'With guidelines and challenges laid out, we tested and delivered levels as <b>proof of concept for traversal and combat</b> mainly. That led us to approach the production differently.',
+          'We tested and delivered levels as proof of concept for <b>traversal and combat</b> mainly. That led us to think of levels as solitary entities mostly, instead of connecting them, leaving traces of that interconnection only at the portals.',
           'We divided levels among ourselves, to maximize output and hit the number of 40 levels as soon as possible. Next, everyone took care of features present on every level: that way everyone knows the whole scope of the game but also each can rely on their strenghts: camera work, blockouts, arena creation, set pieces, etc...',
-          'At the same time, I took care of some level renovations from the ground up (some levels were far off from the quality expected) and started communicating every day with QA: documenting level layouts; expected results on traversal and combat abilities and interactive props; and critical errors on the game flow.',
-          'After a year and a half, this mixed approach of responsibilities made us a very flexible team, focused on glueing the studio together both on features and content, and a powerhouse of reliability within our corporate structure. We delivered way more, and way better, than expected.'
+          'At the same time, I personally took care of some level renovations from the ground up (some levels were far off from the quality expected after initial passes) and started communicating every day with QA: documenting level layouts; expected results on traversal and combat abilities and interactive props; and critical errors on the game flow.',
+          'After a year and a half, this mixed approach of responsibilities within the department made our team very flexible, focused on bringing the studio together both on features and content, and a powerhouse of reliability within our corporate structure. We delivered way more, and way better, than expected during production and post-production.'
         ],
         pageSize: 1,
         taskImage: '/images/projects/12_tmnt/Layout_A_MT_04.png',
@@ -134,6 +92,48 @@ const data: ProjectDetails[] = [
           '4. We recreated several iconic places from NY City, such as the West 167th Street Stairs (or "Joker Stairs")...',
           '5. ...the Yankee Stadium...',
           '6. ...and Brooklyn´s bridge, a level in which I take special pride as it is my very own reinterpretation of the famous bridge. Here we can see it fully dressed.',
+        ],
+      },
+      {
+        task: 'Creative challenges',
+        taskExecution: [
+          'Portals, cameras and art dressing were the main challenges on the level design workflow.',
+          'Early on development, each portal was meant to function as both entry and exit to give freedom to the Narrative Department. However, as the narrative changed from a "rogue-likesque" structure to a more linear one, we came to a point where portals were rarely used for both purposes at all. Quests demanded: one point of entry; one path; one point of exit.',
+          'While this approach provided anticipation in terms of narrative and fitted gameplay constrains, the transition to a linear structure came with a hidden cost: production oversee rose, specially for levels heavy on narrative beats, so our first assesment for camera placing and blockout polishing was insufficient. Cameras needed to convey a strong sense of direction and anticipation, which increased iteration times.',
+          'Lastly, level design had to implement gameplay props for traversal challenges and combat arenas, as well as dress some corners to make levels feel alive. All these aspects are where most of the iteration time was alocated.',
+        ],
+        pageSize: 1,
+        taskImage: '/images/projects/12_tmnt/MT_04_pre.png',
+        taskCaption: 'Planning for Midtown metro level, with portals marked and quests running through the level highlighted.',
+        gifs:[
+          ['/images/projects/12_tmnt/BK_02 - High.gif', '/images/projects/12_tmnt/BK_02 - Battle.gif'],
+          ['/images/projects/12_tmnt/BK_02 - LastArc_01.gif', '/images/projects/12_tmnt/BK_02 - LastArc_02.gif'],
+          ['/images/projects/12_tmnt/BK_02 - upview.png', '/images/projects/12_tmnt/BK_02_Final.png'],
+        ],
+        captions: [
+          '1. While we tried to preserve vector movement on screen, sometimes we went for a more cinematic feel during combat',
+          '2. Aside from art dressing, Level Design populated traversal sections and arenas with interactive props to keep a vibrant picture of a New York on a crisis',
+          '3. After we decide how the level connects to others, we placed an early layout with portals to other levels and we ran through all the quests that will cross the level.',
+        ],
+      },
+      {
+        task: 'Level Guidelines',
+        taskExecution: [
+          'Our main focus was to <b>streamline level design</b> and be able to produce at least x2 to x3 levels more than needed to provide Creative Direction a selection of ideas, so we worked at 3 levels of depth.',
+          '<b>At high level</b>, we were given a target ("40 to 50 levels total, plus set-pieces and bosses: most of them interconnected for quests"), so we created a <b>map of the boroughs</b> (which eventually became the game´s map) and searched for interesting places on each of them. We also looked at common environments (rooftops, streets, sewers and subway tunnels) to help art and gameplay production schedules.',
+          '<b>At mid level</b>, we took a 3-pass approach designed to quickly iterate: biome and gameplay focus; camera and arena placing; and art & collision corrections. These passes, with the second being the most crucial but time consuming, helped us find a theme for each level while keeping overall cohesion between playable spaces.',
+          '<b>At low level</b>, we focused on resolving action-blocks at first (traversal challenges, arenas design and narrative beats), giving space for art integration due to the unique visual identity of the franchise. Blockouts were switched for finished assets and surfaces for textures via replacing tool.',
+        ],
+        pageSize: 1,
+        taskImage: '/images/projects/12_tmnt/Map_HUD_04.png',
+        taskCaption: 'The Five Boroughs, with Manhattan partitioned into several recognizable pieces.',
+        gifs:[
+          ['/images/projects/12_tmnt/Map_01.png', '/images/projects/12_tmnt/Map_02.png'],
+          ['/images/projects/12_tmnt/Map_03.png', '/images/projects/12_tmnt/Map_04.png'],
+        ],
+        captions: [
+          '1. Levels were first envisioned as part of the city and its boroughs.',
+          '2. After we decide how the level connects to others, we placed an early layout with portals to other levels and all the quests that will cross the level.'
         ],
       },
       // {
@@ -182,13 +182,13 @@ const data: ProjectDetails[] = [
     studio: 'AHEARTFULOFGAMES',
     overview: 'A 3D platformer with isometric(ish) view where we take control of Thunder and explore vastly different realms while collecting new allies and fighting powerful dragons.',
     position: 'Senior Level Designer',
-    summary: 'Focused my professional path within the company on design, assuming all level design responsibilities with a junior level designer, while still carrying part of the production.',
+    summary: 'Focused my professional path within the company on level design, assuming those responsibilities along with mentoring a junior level designer, while still carrying some aspects of project production. Furthermore, I took charge of localization efforts and coordinated with external Production to bring the game to +20 languages.',
     highlights: [
-      'Used a modular system to tackle level design and maintain an agile production system, creating 10 minute levels in less than 2 weeks.',
-      'Took charge of localization efforts, working as nexus between our outsourcers and external client, as well as taking care of its implementation.',
       'Assumed authorship of 60% of the game levels as well as integrated its gameplay content such as arenas, puzzles and cameras.',
-      'Support to the creation of main game mechanics and development workflows for its integration of levels.',
-      'Built and maintained battle arenas, iterating enemy placing, trap placing and camera placing.',
+      'Used a modular system to tackle level design and maintain an agile production system, creating 10 minute levels in less than 2 weeks.',
+      'Built and maintained battle arenas: enemy placing, trap placing and camera placing.',
+      'Supported the creation of core mechanics and development workflows for its integration within levels.',
+      'Took charge of localization efforts, working as nexus between our outsourcers and the external client, as well as taking care of its game implementation.',
     ],
     images: [
       '/images/projects/11_dragons/Dragons_Logo_1.png',
@@ -198,38 +198,41 @@ const data: ProjectDetails[] = [
     ],
     sections: [
       {
-        task:'Level Design guidelines',
+        task:'Camera work & set pieces',
         taskExecution: [
-          'Unlike in Spirit, the world of Dragons was now divided into several Realms with 5 contained levels each. ',
+          'For the first time we had to work with hand-placed cameras, with an isometric view that favors quick-paced action with multiple dragons on screen.',
+          'Along the way we wanted to avoid camera cuts as much as possible to help readability and avoid headaches with many camera movements. With this in mind, we created a main camera that follow the player around, showing always the path forward but turning around when necessary.',
+          'When puzzles, arenas and secrets are on the front view, the camera usually conveys that something is going on in different ways. By tilting the camera slightly to put keys and locks on frame, we made puzzles easier to understand for kids.',
         ],
         pageSize: 0,
-        taskImage: '/images/projects/11_dragons/world_01_level_03.png',
+        taskImage: '/images/projects/11_dragons/Traversal_mix.gif',
         taskCaption: '',
-        captions: [
-          '',
+        gifs: [
+          ['/images/projects/11_dragons/dragons_set-piece_01.gif', '/images/projects/11_dragons/dragons_set-piece_02.gif'],
         ],
-        gifs:[
-          [],
-          [],
-          []
+        captions: [
+          '1. Set pieces with several gimmicks like lava or debris chasing the player, or freezing winds trying to stop them, were introduced to shake up the pacing.',
         ]
       },
       {
-        task:'Interactivity on levels',
+        task:'Level Guidelines & modularization',
         taskExecution: [
-          'We introduced there a key aspect of gameplay: interactables. ',
+          'The world of Dragons is divided into 5 realms with 5 levels each, making a total of 25 levels. On detail, each realm has: 3 core levels (exploration, combat & narrative); 1 set piece with special mechanics; and 1 boss fight.',
+          'A distribution that enhanced the adventure aspect of the game, with leaner levels at the beginning encouraging exploration. As the player progresses through the story discovering new mechanics, enemies and completing its own squad of dragons, new paths become unlockable on previous levels. To get all crystals, the player has to backtrack and use the four dragons.',
+          'Along with a wide array of interactables (explosive crystals, gusts of wind, lava pits, spikes, ice walls...) we introduced a plugin to create levels modularly. This gave us the flexibility to create precise geometries without worrying much about traversal abilities getting bugged: with an array of geometry modules, we adapted to pre-stablished rules of level design, and closed traversal and combat sections much quicker.',
+          'This modularization gave us time to rethink environments along with art. Every realm is underground by diegesis so we worked on several layers of visualization to match the camera FOV, with details suggesting that we were in big, complex caverns. Adjusting that to the need of clear gameplay was tricky but satisfactory.',
         ],
         pageSize: 0,
         taskImage: '/images/projects/11_dragons/world_01_level_03.png',
         taskCaption: '',
-        captions: [
-          '',
-        ],
         gifs:[
-          [],
-          [],
-          []
-        ]
+          ['/images/projects/11_dragons/W01_01 - chasm.gif', '/images/projects/11_dragons/W01_01 - fly_01.gif'],
+          ['/images/projects/11_dragons/W01_02 - puzzle_01.gif', '/images/projects/11_dragons/W03_01 - puzzle_01.gif'],
+        ],
+        captions: [
+          '1. We pulled back on the camera every time we could in order to make the levels feel bigger and richer.',
+          '2. Traversal puzzles imply tracking blocks and the crystals involved in activating/unlocking them.',
+        ],
       },
     ],
     trailer: 'https://www.youtube.com/embed/BQY01xBqb1o?si=Ok8Fn9os5_xFJmMj',
