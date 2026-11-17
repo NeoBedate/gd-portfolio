@@ -37,7 +37,6 @@ const skills: Skill[] = [
     competency: 5,
     category: ['Version Control'],
   },
-  // Web Development
   {
     title: 'Tortoise',
     competency: 3,
@@ -85,7 +84,12 @@ const skills: Skill[] = [
     competency: 3,
     category: ['Art'],
   },
-  // Infrastructure
+  // Productivity
+  {
+    title: 'Claude Code',
+    competency: 3,
+    category: ['Productivity'],
+  },
   {
     title: 'GDocs',
     competency: 5,

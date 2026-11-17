@@ -28,8 +28,8 @@ export interface ProjectResponsibilities {
   task: string;
   taskExecution: string[];
   pageSize: number;
-  taskImage: string;
-  taskCaption: string;
+  taskImage?: string;
+  taskCaption?: string;
   gifs: string[][];
   captions: string[];
 }
@@ -75,8 +75,6 @@ const data: ProjectDetails[] = [
           'After a year and a half, this mixed approach of responsibilities within the department made our team very flexible, focused on bringing the studio together both on features and content, and a powerhouse of reliability within our corporate structure. We delivered way more, and way better, than expected during production and post-production.'
         ],
         pageSize: 1,
-        taskImage: '/images/projects/12_tmnt/Layout_A_MT_04.png',
-        taskCaption: 'After 1st and 2nd pass, this level sports 3 arenas that could be used on different quests that traverse it.',
         gifs:[
           ['/images/projects/12_tmnt/BK_06 - Wind_01.gif', '/images/projects/12_tmnt/BK_06 - Wind_02.gif'],
           ['/images/projects/12_tmnt/BK_05 - Screenshot 2023-02-28 174057.png', '/images/projects/12_tmnt/BK_05 - Screenshot 2023-02-28 174119.png'],
@@ -200,13 +198,12 @@ const data: ProjectDetails[] = [
       {
         task:'Camera work & set pieces',
         taskExecution: [
-          'For the first time we had to work with hand-placed cameras, with an isometric view that favors quick-paced action with multiple dragons on screen.',
+          'For this project we needed to work with hand-placed cameras, with an isometric view that favors quick-paced action with multiple dragons on screen.',
           'Along the way we wanted to avoid camera cuts as much as possible to help readability and avoid headaches with many camera movements. With this in mind, we created a main camera that follow the player around, showing always the path forward but turning around when necessary.',
           'When puzzles, arenas and secrets are on the front view, the camera usually conveys that something is going on in different ways. By tilting the camera slightly to put keys and locks on frame, we made puzzles easier to understand for kids.',
         ],
         pageSize: 0,
         taskImage: '/images/projects/11_dragons/Traversal_mix.gif',
-        taskCaption: '',
         gifs: [
           ['/images/projects/11_dragons/dragons_set-piece_01.gif', '/images/projects/11_dragons/dragons_set-piece_02.gif'],
         ],
@@ -223,8 +220,6 @@ const data: ProjectDetails[] = [
           'This modularization gave us time to rethink environments along with art. Every realm is underground by diegesis so we worked on several layers of visualization to match the camera FOV, with details suggesting that we were in big, complex caverns. Adjusting that to the need of clear gameplay was tricky but satisfactory.',
         ],
         pageSize: 0,
-        taskImage: '/images/projects/11_dragons/world_01_level_03.png',
-        taskCaption: '',
         gifs:[
           ['/images/projects/11_dragons/W01_01 - chasm.gif', '/images/projects/11_dragons/W01_01 - fly_01.gif'],
           ['/images/projects/11_dragons/W01_02 - puzzle_01.gif', '/images/projects/11_dragons/W03_01 - puzzle_01.gif'],
@@ -245,44 +240,45 @@ const data: ProjectDetails[] = [
     coverImage: '/images/projects/projectCard_08_spirit.png',
     dimensions: '3D',
     genre: 'Open World',
-    startDate: '2019-12-15',
+    startDate: '2019-12-04',
     endDate: '2021-03-15',
     publishingDate: '2021-06-01',
     name: 'DreamWorks Spirit: Lucky´s Big Adventure',
     studio: 'AHEARTFULOFGAMES',
     overview: 'A narrative, chill open world game based on the universe of Spirit where players have the opportunity to explore the wildlife of a valley while riding Spirit and uncover the secrets of an old treasure map related to Lucky´s mom.',
     position: 'Producer & Game Designer',
-    summary: ' I doubled as Game Designer and Producer while taking the production home and pushing through the COVID Pandemic with financial success.',
+    summary: ' I doubled as Game Designer and Producer while taking the production home and pushing through the COVID Pandemic with financial success. I handled localization, project tasks, external client meetings, UI tasks and level design as a whole.',
     highlights: [
       'Built production workflows and led day to day operations within the team, managing milestones and reporting to internal and external stakeholders.',
-      'Mentored several game designers and took direct responsibility of level design.',
-      'Took full ownership of the world map, carrying the process from concept design to Unity implementation.',
-      'Created several traversal puzzles and collectibles, and later integrated all of them on the world map.',
+      'Mentored artists and game designers alike, built trust with the Art & Code teams and helped to nurture a healthy culture within the company.',
+      'Assumed direct control of Level Design, taking full ownership of the world map: developed the feature from concept to final implementation.',
+      'Created several traversal puzzles, animals and collectibles, populating the world map.',
     ],
     images: [
       '/images/projects/10_spirit/Spirit_Logo.png',
-      '/images/projects/10_spirit/spirit_01.png',
-      '/images/projects/10_spirit/spirit_02.png',
-      '/images/projects/10_spirit/spirit_03.png',
-      '/images/projects/10_spirit/spirit_04.png',
+      '/images/projects/10_spirit/Showcase_01.png',
+      '/images/projects/10_spirit/Showcase_02.png',
+      '/images/projects/10_spirit/Showcase_03.png',
+      '/images/projects/10_spirit/Showcase_04.png',
     ],
     sections: [
       {
-        task:'',
+        task:'The World Map',
         taskExecution: [
-          '',
+          'Spirit has 25km^2 of map, which was one of the main challenges of the project. I was in charge of the feature, and decided this size because one of the mandates from the external client was that riding Spirit had to be an experience within nature, with sightseeing and enough space to roam. After some tests, we where very happy with the feeling of going through a real region with different biomes and cute corners, so we went with that.',
+          'However, this did not came for free: the Code team had to go for a partition of the map that loads and unloads chunks of terrain in real time. It ended up working on all platforms and allowed for better detailing but was a hindrance for some time. This was a very humbling lesson about the dangers of being very ambitious in pre-production.',
         ],
         pageSize: 0,
-        taskImage: '',
-        taskCaption: '',
-        captions: [
+        gifs:[
+          ['/images/projects/10_spirit/SpiritRun_01.gif','/images/projects/10_spirit/SpiritRun_02.gif'],
+          ['/images/projects/10_spirit/SpiritRun_03.gif','/images/projects/10_spirit/SpiritRun_04.gif'],
+          ['/images/projects/10_spirit/EarlyCorner_01.png','/images/projects/10_spirit/EarlyCorner_02.png'],
+        ],
+        captions:[
+          '',
+          'The lake was a central element in the game, as every biome envelops the lake from one side or another, providing very different sceneries.',
           '',
         ],
-        gifs:[
-          [],
-          [],
-          []
-        ]
       },
     ],
     trailer: 'https://www.youtube.com/embed/imX-1wNppog?si=FFlZjFhrAk8fmB4L',

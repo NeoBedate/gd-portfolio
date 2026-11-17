@@ -72,6 +72,11 @@ export default function ExperiencePage() {
         <ExperienceNav />
 
         <div className="experience-content">
+
+          <section id="skills" className="skills-section">
+            <Skills skills={skills} categories={categories} />
+          </section>
+
           <section id="resume" className="resume-section">
             <Resume data={work} />
           </section>
@@ -80,17 +85,13 @@ export default function ExperiencePage() {
             <Education data={degrees} />
           </section>
 
-          <section id="skills" className="skills-section">
-            <Skills skills={skills} categories={categories} />
-          </section>
-
           <section id="courses" className="courses-section">
             <Courses data={courses} />
           </section>
 
-          <section id="references" className="references-section">
+          {/* <section id="references" className="references-section">
             <References />
-          </section>
+          </section> */}
         </div>
       </section>
     </PageWrapper>

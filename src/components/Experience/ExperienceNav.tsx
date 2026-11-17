@@ -3,11 +3,10 @@
 import React, { useEffect, useState } from 'react';
 
 const sections = [
+  { name: 'Skills', id: 'skills' },
   { name: 'Resume', id: 'resume' },
   { name: 'Education', id: 'education' },
-  { name: 'Skills', id: 'skills' },
   { name: 'Courses', id: 'courses' },
-  { name: 'References', id: 'references' },
 ];
 
 const ExperienceNav: React.FC = () => {
