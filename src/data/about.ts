@@ -75,6 +75,7 @@ Would you like to know more? ;)
 # Websites from People I Admire
 
 - TO KEEP [Damjan Jovanovic](https://worldmakingproject.substack.com)
+- TO KEEP [Prof. Ethan Mollick] (https://www.oneusefulthing.org)
 - [Chris Lengerich](http://www.chrislengerich.com/)
 - [Chris Saad](https://www.chrissaad.com/)
 - [Duncan Tomlin](http://duncantomlin.com/)
