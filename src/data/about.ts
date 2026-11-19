@@ -3,11 +3,11 @@ export const aboutMarkdown =
 `
 # Intro
 
-I've been developing video games for more than 13 years, during which time I've involved myself in several environments associated with the industry since the very beginning: started as an indie developer (with more will than knowledge); got a formal education in Game Design; entered the industry and worked as a professional for 4 years; went back to the same university that saw me grow into a professional and taught Game Design for 3 years, while keeping in touch with development teams; then went back to the industry to develop my career further for the last 6 years.
+I've involved myself in several environments associated with the industry since the very beginning of my carrer (2012): started as an indie developer (with more will than knowledge); got a formal education in Game Design; entered the industry and worked as a professional for 4 years; went back to the same university that saw me grow into a professional and taught Game Design for 3 years, while keeping in touch with development teams; then went back to the industry to develop my career further for the last 6 years.
 
 In those last 6 years I poured my efforts into a start-up that gave me the chance to work a double role, both as Producer and Game Designer. During that time I had the chance to create a work environment where people mattered, creativity was at the front and sustainability was paramount, as the industry got hit by the Pandemic and the subsequent economic crisis. During those years I've helped to develop 3 games, several pitches and a creative context that resulted in one of the most stable studios I've known, even as it grew from 6 people in 2020 to 31 in 2025.
 
-Now, in the last few months I've honed my abilities and worked on my wellbeing, and I feel ready now to embark myself on the next stage of professional life.
+Now, in the last few months I've honed my abilities and worked as consultant for several traditional and AI developments, and I'm ready now to embark on the next stage of my professional life.
 
 # Historical shenanigans
 
