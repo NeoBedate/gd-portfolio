@@ -275,9 +275,9 @@ const data: ProjectDetails[] = [
           ['/images/projects/10_spirit/EarlyCorner_01.png','/images/projects/10_spirit/EarlyCorner_02.png'],
         ],
         captions:[
-          '',
-          'The lake was a central element in the game, as every biome envelops the lake from one side or another, providing very different sceneries.',
-          '',
+          '1. We wanted to provide a very smooth sensation of riding Spirit, so the camera leaned back to allow players to appreciate the scenery.',
+          '2. The lake was a central element in the game, as every biome envelops the lake from one side or another, providing very different sceneries.',
+          '3. We worked alongside environmental artist to create cute corners on several key places that the player would traverse often.',
         ],
       },
     ],
