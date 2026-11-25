@@ -1,13 +1,14 @@
 'use client';
 
 import dayjs from 'dayjs';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   CloseChevron,
   LeftChevron,
   PlayChevron,
   RightChevron,
 } from '@/components/Icons';
+import ProjectMedia from '@/components/Projects/ProjectMedia';
 import type { ProjectDetails, ProjectResponsibilities } from '@/data/projects';
 
 export interface ProjectDetailProp {
@@ -15,63 +16,47 @@ export interface ProjectDetailProp {
 }
 
 const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
-  var screenshotIdx = 0;
+  // A ref, not a plain variable, so re-renders don't reset it.
+  const screenshotIdx = useRef(0);
+  const initializedProjectId = useRef<string | undefined>(undefined);
 
   const imageElement = useRef<HTMLImageElement>(null);
   const videoElement = useRef<HTMLIFrameElement>(null);
   const wrapElement = useRef<HTMLDivElement>(null);
   const playButtonElement = useRef<HTMLButtonElement>(null);
 
-  const sectionImages = useRef<(HTMLImageElement | null)[]>([]);
-  const sectionCaption = useRef<HTMLDivElement[]>([]);
+  // Which pair each section's carousel shows. Rendered from state so a slot
+  // can switch between a still (<img>) and a clip (<video>). Scoped to the
+  // project, so opening another project starts every carousel at 0.
+  const [carousel, setCarousel] = useState<{
+    projectId: string | undefined;
+    idxs: number[];
+  }>({ projectId: undefined, idxs: [] });
+  const sectionIdxs = carousel.projectId === project?.id ? carousel.idxs : [];
 
-  var sectionsDisplayIdxs: number[] = [0, 0, 0, 0];
+  ///// Initialize the screenshot viewer when the project changes (not on
+  ///// every render: stepping a section carousel must not reset it).
+  useEffect(() => {
+    if (initializedProjectId.current === project?.id) return;
+    initializedProjectId.current = project?.id;
+    initialize();
+  });
 
-  ///// Call init after any props data changed (project)
-  useEffect(initialize);
-
-  ///// Get all element references and initialize image display
   function initialize() {
-    var sectionsDisplayIdxs: number[] = [];
-    project?.sections?.forEach((element, idx) => {
-      sectionsDisplayIdxs[idx] = 0;
-    });
-
-    screenshotIdx = 0;
+    screenshotIdx.current = 0;
     renderScreenshot();
   }
 
-  ////// Change gifs and caption of a section to the next or previous ones
+  ////// Show the next or previous pair of a section, wrapping around
   function stepSection(
     section: ProjectResponsibilities,
     sectionIdx: number,
     step: number,
   ) {
-    ////// Obtain current display index of section and calculate the new value
-    var currentIdx = sectionsDisplayIdxs[sectionIdx];
-    if (step > 0) {
-      currentIdx += 1;
-      if (currentIdx >= section.gifs.length) currentIdx = 0;
-    } else {
-      currentIdx -= 1;
-      if (currentIdx < 0) currentIdx = section.gifs.length - 1;
-    }
-
-    ////// Update display index of section
-    sectionsDisplayIdxs[sectionIdx] = currentIdx;
-
-    sectionImages.current[sectionIdx * 2]!.src = section.gifs[currentIdx][0];
-    sectionImages.current[sectionIdx * 2 + 1]!.src =
-      section.gifs[currentIdx][1];
-    sectionCaption.current[sectionIdx].innerHTML = section.captions[currentIdx];
-
-    var imageLink0: HTMLLinkElement = sectionImages.current[sectionIdx * 2]!
-      .parentElement as HTMLLinkElement;
-    var imageLink1: HTMLLinkElement = sectionImages.current[sectionIdx * 2 + 1]!
-      .parentElement as HTMLLinkElement;
-    if (imageLink0 == null || imageLink1 == null) return;
-    imageLink0.href = section.gifs[currentIdx][0];
-    imageLink1.href = section.gifs[currentIdx][1];
+    const count = section.gifs.length;
+    const next = [...sectionIdxs];
+    next[sectionIdx] = ((sectionIdxs[sectionIdx] ?? 0) + step + count) % count;
+    setCarousel({ projectId: project?.id, idxs: next });
   }
 
   function startVideo() {
@@ -90,14 +75,14 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
   function renderScreenshot() {
     imageElement.current!.style.display = 'flex';
     videoElement.current!.style.display = 'none';
-    if (screenshotIdx == 0) {
+    if (screenshotIdx.current == 0) {
       playButtonElement.current!.style.display = 'block';
     } else {
       stopVideo();
       playButtonElement.current!.style.display = 'none';
     }
     if (project != null && project.images != null) {
-      imageElement.current!.src = project.images[screenshotIdx];
+      imageElement.current!.src = project.images[screenshotIdx.current];
       var imageLink: HTMLLinkElement = imageElement.current!
         .parentElement as HTMLLinkElement;
       if (imageLink != null) {
@@ -106,7 +91,7 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
         // }
         // else
         {
-          imageLink.href = project.images[screenshotIdx];
+          imageLink.href = project.images[screenshotIdx.current];
         }
       }
     }
@@ -114,8 +99,9 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
 
   function stepScreenshot(dir: number) {
     if (project != null && project.images != null) {
-      screenshotIdx =
-        (screenshotIdx + dir + project.images.length) % project.images.length;
+      screenshotIdx.current =
+        (screenshotIdx.current + dir + project.images.length) %
+        project.images.length;
       renderScreenshot();
     }
   }
@@ -292,96 +278,81 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
           </div>
           {
             ////////// Render ALL sections (map)
-            project.sections?.map((section, sectionIdx) => (
+            project.sections?.map((section, sectionIdx) => {
+              const pairIdx = sectionIdxs[sectionIdx] ?? 0;
+              const pair = section.gifs[pairIdx];
               ////////// Render EACH section
-              <div className="game-detail-section" key={sectionIdx}>
-                <h2 className="game-detail-section-title">{section.task}</h2>
-                <div className="game-detail-section-body">
-                  <div className="game-detail-section-taskText">
-                    {section.taskExecution.map((taskExecution, idx) => (
-                      <p
-                        className="game-detail-section-task"
-                        key={idx}
-                        dangerouslySetInnerHTML={CreateMarkup(taskExecution)}
-                      ></p>
-                    ))}
+              return (
+                <div className="game-detail-section" key={sectionIdx}>
+                  <h2 className="game-detail-section-title">{section.task}</h2>
+                  <div className="game-detail-section-body">
+                    <div className="game-detail-section-taskText">
+                      {section.taskExecution.map((taskExecution, idx) => (
+                        <p
+                          className="game-detail-section-task"
+                          key={idx}
+                          dangerouslySetInnerHTML={CreateMarkup(taskExecution)}
+                        ></p>
+                      ))}
+                    </div>
+                    {section.taskImage && (
+                      <div className="game-detail-section-taskImage">
+                        <a href={section.taskImage} target="_blank">
+                          <ProjectMedia
+                            id={`game-detail-section-${sectionIdx}-taskImage`}
+                            src={section.taskImage}
+                            width={512}
+                            height={512}
+                            className="game-detail-section-taskImage-image"
+                          />
+                        </a>
+                        <h4
+                          id={`game-detail-section-${sectionIdx}-taskCaption`}
+                          className="game-detail-section-caption"
+                        >
+                          {section.taskCaption}
+                        </h4>
+                      </div>
+                    )}
                   </div>
-                  <div className="game-detail-section-taskImage">
-                    <a href={section.taskImage} target="_blank">
-                      <img
-                        id={`game-detail-section-${sectionIdx}-taskImage`}
-                        src={section.taskImage}
-                        width={512}
-                        height={512}
-                        className="game-detail-section-taskImage-image"
-                      ></img>
-                    </a>
-                    <h4
-                      id={`game-detail-section-${sectionIdx}-taskCaption`}
-                      className="game-detail-section-caption"
+                  <div>
+                    <div
+                      className="game-detail-section-gifs"
+                      id={`game-detail-section-gifs-${sectionIdx}`}
                     >
-                      {section.taskCaption}
+                      <span
+                        className="game-detail-section-nav-btn"
+                        onClick={() => stepSection(section, sectionIdx, -1)}
+                      >
+                        <LeftChevron />
+                      </span>
+                      {pair.map((src, slot) => (
+                        <a href={src} target="_blank" key={slot}>
+                          <ProjectMedia
+                            width={640}
+                            height={640}
+                            id={`game-detail-section-${sectionIdx}-img-${slot}`}
+                            src={src}
+                          />
+                        </a>
+                      ))}
+                      <span
+                        className="game-detail-section-nav-btn"
+                        onClick={() => stepSection(section, sectionIdx, 1)}
+                      >
+                        <RightChevron />
+                      </span>
+                    </div>
+                    <h4
+                      className="game-detail-section-caption"
+                      id={`game-detail-section-${sectionIdx}-caption`}
+                    >
+                      {section.captions[pairIdx]}
                     </h4>
                   </div>
                 </div>
-                <div>
-                  <div
-                    className="game-detail-section-gifs"
-                    id={`game-detail-section-gifs-${sectionIdx}`}
-                  >
-                    <span
-                      className="game-detail-section-nav-btn"
-                      onClick={() => stepSection(section, sectionIdx, -1)}
-                    >
-                      <LeftChevron />
-                    </span>
-                    <a
-                      href={section.gifs[sectionsDisplayIdxs[sectionIdx]][0]}
-                      target="_blank"
-                    >
-                      <img
-                        width={640}
-                        height={640}
-                        id={`game-detail-section-${sectionIdx}-img-0`}
-                        ref={(el) => {
-                          sectionImages.current[sectionIdx * 2] = el!;
-                        }}
-                        src={section.gifs[sectionsDisplayIdxs[sectionIdx]][0]}
-                      ></img>
-                    </a>
-                    <a
-                      href={section.gifs[sectionsDisplayIdxs[sectionIdx]][1]}
-                      target="_blank"
-                    >
-                      <img
-                        width={640}
-                        height={640}
-                        id={`game-detail-section-${sectionIdx}-img-1`}
-                        ref={(el) => {
-                          sectionImages.current[sectionIdx * 2 + 1] = el!;
-                        }}
-                        src={section.gifs[sectionsDisplayIdxs[sectionIdx]][1]}
-                      ></img>
-                    </a>
-                    <span
-                      className="game-detail-section-nav-btn"
-                      onClick={() => stepSection(section, sectionIdx, 1)}
-                    >
-                      <RightChevron />
-                    </span>
-                  </div>
-                  <h4
-                    className="game-detail-section-caption"
-                    id={`game-detail-section-${sectionIdx}-caption`}
-                    ref={(el) => {
-                      sectionCaption.current[sectionIdx] = el!;
-                    }}
-                  >
-                    {section.captions[sectionsDisplayIdxs[sectionIdx]]}
-                  </h4>
-                </div>
-              </div>
-            ))
+              );
+            })
           }
         </div>
       </div>

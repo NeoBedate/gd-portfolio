@@ -40,7 +40,7 @@ const data: ProjectDetails[] = [
     url: '#game-detail-wrap',
     steamUrl:
       'https://store.steampowered.com/app/2460130/Teenage_Mutant_Ninja_Turtles_Mutants_Unleashed/',
-    coverImage: '/images/projects/projectCard_10_tmnt.png',
+    coverImage: '/images/projects/project-card-10-tmnt.webp',
     dimensions: '3D',
     genre: 'Action platformer',
     startDate: '2022-03-15',
@@ -60,13 +60,13 @@ const data: ProjectDetails[] = [
       'Supported Production and QA through a successful Jira implementation of our Production schedule and level creation pipeline.',
     ],
     images: [
-      '/images/projects/12_tmnt/TMNT_MU-Title-RGB PNG.png',
-      '/images/projects/12_tmnt/mutants_pc_20240122-131957x4.png',
-      '/images/projects/12_tmnt/mutants_pc_20240125-164412x4.png',
-      '/images/projects/12_tmnt/mutants_pc_20240119-173550x4.png',
-      '/images/projects/12_tmnt/mutants_pc_20240119-175746x4.png',
-      '/images/projects/12_tmnt/mutants_pc_20240119-200232x4.png',
-      '/images/projects/12_tmnt/mutants_pc_20240122-140023x4.png',
+      '/images/projects/12_tmnt/tmnt-mu-title.webp',
+      '/images/projects/12_tmnt/mutants-pc-20240122-131957x4.webp',
+      '/images/projects/12_tmnt/mutants-pc-20240125-164412x4.webp',
+      '/images/projects/12_tmnt/mutants-pc-20240119-173550x4.webp',
+      '/images/projects/12_tmnt/mutants-pc-20240119-175746x4.webp',
+      '/images/projects/12_tmnt/mutants-pc-20240119-200232x4.webp',
+      '/images/projects/12_tmnt/mutants-pc-20240122-140023x4.webp',
     ],
     sections: [
       {
@@ -80,28 +80,28 @@ const data: ProjectDetails[] = [
         pageSize: 1,
         gifs: [
           [
-            '/images/projects/12_tmnt/BK_06 - Wind_01.gif',
-            '/images/projects/12_tmnt/BK_06 - Wind_02.gif',
+            '/images/projects/12_tmnt/bk-06-wind-01.mp4',
+            '/images/projects/12_tmnt/bk-06-wind-02.mp4',
           ],
           [
-            '/images/projects/12_tmnt/BK_05 - Screenshot 2023-02-28 174057.png',
-            '/images/projects/12_tmnt/BK_05 - Screenshot 2023-02-28 174119.png',
+            '/images/projects/12_tmnt/bk-05-screenshot-2023-02-28-174057.webp',
+            '/images/projects/12_tmnt/bk-05-screenshot-2023-02-28-174119.webp',
           ],
           [
-            '/images/projects/12_tmnt/BK_05 - Stairs_01.gif',
-            '/images/projects/12_tmnt/BK_05 - Stairs_02.gif',
+            '/images/projects/12_tmnt/bk-05-stairs-01.mp4',
+            '/images/projects/12_tmnt/bk-05-stairs-02.mp4',
           ],
           [
-            '/images/projects/12_tmnt/BX_03 - JokerStairs_01.gif',
-            '/images/projects/12_tmnt/BX_03 - JokerStairs_02.gif',
+            '/images/projects/12_tmnt/bx-03-joker-stairs-01.mp4',
+            '/images/projects/12_tmnt/bx-03-joker-stairs-02.mp4',
           ],
           [
-            '/images/projects/12_tmnt/BX_05 - Battle.gif',
-            '/images/projects/12_tmnt/BX_05 - Battle_02.gif',
+            '/images/projects/12_tmnt/bx-05-battle.mp4',
+            '/images/projects/12_tmnt/bx-05-battle-02.mp4',
           ],
           [
-            '/images/projects/12_tmnt/Bridge-01.png',
-            '/images/projects/12_tmnt/Bridge_Jumps.gif',
+            '/images/projects/12_tmnt/bridge-01.webp',
+            '/images/projects/12_tmnt/bridge-jumps.mp4',
           ],
         ],
         captions: [
@@ -122,21 +122,21 @@ const data: ProjectDetails[] = [
           'Lastly, level design had to implement gameplay props for traversal challenges and combat arenas, as well as dress some corners to make levels feel alive. All these aspects are where most of the iteration time was allocated.',
         ],
         pageSize: 1,
-        taskImage: '/images/projects/12_tmnt/MT_04_pre.png',
+        taskImage: '/images/projects/12_tmnt/mt-04-pre.webp',
         taskCaption:
           'Planning for Midtown metro level, with portals marked and quests running through the level highlighted.',
         gifs: [
           [
-            '/images/projects/12_tmnt/BK_02 - High.gif',
-            '/images/projects/12_tmnt/BK_02 - Battle.gif',
+            '/images/projects/12_tmnt/bk-02-high.mp4',
+            '/images/projects/12_tmnt/bk-02-battle.mp4',
           ],
           [
-            '/images/projects/12_tmnt/BK_02 - LastArc_01.gif',
-            '/images/projects/12_tmnt/BK_02 - LastArc_02.gif',
+            '/images/projects/12_tmnt/bk-02-last-arc-01.mp4',
+            '/images/projects/12_tmnt/bk-02-last-arc-02.mp4',
           ],
           [
-            '/images/projects/12_tmnt/BK_02 - upview.png',
-            '/images/projects/12_tmnt/BK_02_Final.png',
+            '/images/projects/12_tmnt/bk-02-upview.webp',
+            '/images/projects/12_tmnt/bk-02-final.webp',
           ],
         ],
         captions: [
@@ -154,17 +154,17 @@ const data: ProjectDetails[] = [
           '<b>At low level</b>, we focused on resolving action-blocks at first (traversal challenges, arenas design and narrative beats), giving space for art integration due to the unique visual identity of the franchise. Blockouts were switched for finished assets and surfaces for textures via replacing tool.',
         ],
         pageSize: 1,
-        taskImage: '/images/projects/12_tmnt/Map_HUD_04.png',
+        taskImage: '/images/projects/12_tmnt/map-hud-04.webp',
         taskCaption:
           'The Five Boroughs, with Manhattan partitioned into several recognizable pieces.',
         gifs: [
           [
-            '/images/projects/12_tmnt/Map_01.png',
-            '/images/projects/12_tmnt/Map_02.png',
+            '/images/projects/12_tmnt/map-01.webp',
+            '/images/projects/12_tmnt/map-02.webp',
           ],
           [
-            '/images/projects/12_tmnt/Map_03.png',
-            '/images/projects/12_tmnt/Map_04.png',
+            '/images/projects/12_tmnt/map-03.webp',
+            '/images/projects/12_tmnt/map-04.webp',
           ],
         ],
         captions: [
@@ -185,12 +185,12 @@ const data: ProjectDetails[] = [
       //     /////////////'Now, levels weren´t built on the air. Well except for the Airship. Ehem.',
       //   ],
       //   pageSize: 1,
-      //   taskImage: '/images/projects/12_tmnt/SUB - Start.gif',
+      //   taskImage: '/images/projects/12_tmnt/sub-start.mp4',
       //   taskCaption: 'In this instance, the camera takes us from the bottom left to the upper right of the screen.',
       //   gifs:[
-      //     ['/images/projects/12_tmnt/BX_05 - Run.gif', '/images/projects/12_tmnt/BX_05 - Run_02.gif'],
-      //     ['/images/projects/12_tmnt/BX_05 - Battle.gif', '/images/projects/12_tmnt/BX_05 - Battle_02.gif'],
-      //     ['/images/projects/12_tmnt/MT_04 - Combat.gif', '/images/projects/12_tmnt/AIRSHIP - Grind.gif'],
+      //     ['/images/projects/12_tmnt/bx-05-run.mp4', '/images/projects/12_tmnt/bx-05-run-02.mp4'],
+      //     ['/images/projects/12_tmnt/bx-05-battle.mp4', '/images/projects/12_tmnt/bx-05-battle-02.mp4'],
+      //     ['/images/projects/12_tmnt/mt-04-combat.mp4', '/images/projects/12_tmnt/airship-grind.mp4'],
       //   ],
       //   captions: [
       //     'While we tried to preserve vector movement on screen, sometimes we went for a more cinematic feel during combat',
@@ -217,7 +217,7 @@ const data: ProjectDetails[] = [
     url: '#game-detail-wrap',
     steamUrl:
       'https://store.steampowered.com/app/1721440/DreamWorks_Dragons_Legends_of_The_Nine_Realms/',
-    coverImage: '/images/projects/projectCard_09_dragons.png',
+    coverImage: '/images/projects/project-card-09-dragons.webp',
     dimensions: '3D',
     genre: 'Action',
     startDate: '2021-02-15',
@@ -238,10 +238,10 @@ const data: ProjectDetails[] = [
       'Took charge of localization efforts, working as nexus between our outsourcers and the external client, as well as taking care of its game implementation.',
     ],
     images: [
-      '/images/projects/11_dragons/Dragons_Logo_1.png',
-      '/images/projects/11_dragons/FireRealm.png',
-      '/images/projects/11_dragons/IceRealm.png',
-      '/images/projects/11_dragons/CrystalRealm.png',
+      '/images/projects/11_dragons/dragons-logo-1.webp',
+      '/images/projects/11_dragons/fire-realm.webp',
+      '/images/projects/11_dragons/ice-realm.webp',
+      '/images/projects/11_dragons/crystal-realm.webp',
     ],
     sections: [
       {
@@ -252,11 +252,11 @@ const data: ProjectDetails[] = [
           'When puzzles, arenas and secrets are on the front view, the camera usually conveys that something is going on in different ways. By tilting the camera slightly to put keys and locks on frame, we made puzzles easier to understand for kids.',
         ],
         pageSize: 0,
-        taskImage: '/images/projects/11_dragons/Traversal_mix.gif',
+        taskImage: '/images/projects/11_dragons/traversal-mix.mp4',
         gifs: [
           [
-            '/images/projects/11_dragons/dragons_set-piece_01.gif',
-            '/images/projects/11_dragons/dragons_set-piece_02.gif',
+            '/images/projects/11_dragons/dragons-set-piece-01.mp4',
+            '/images/projects/11_dragons/dragons-set-piece-02.mp4',
           ],
         ],
         captions: [
@@ -274,12 +274,12 @@ const data: ProjectDetails[] = [
         pageSize: 0,
         gifs: [
           [
-            '/images/projects/11_dragons/W01_01 - chasm.gif',
-            '/images/projects/11_dragons/W01_01 - fly_01.gif',
+            '/images/projects/11_dragons/w01-01-chasm.mp4',
+            '/images/projects/11_dragons/w01-01-fly-01.mp4',
           ],
           [
-            '/images/projects/11_dragons/W01_02 - puzzle_01.gif',
-            '/images/projects/11_dragons/W03_01 - puzzle_01.gif',
+            '/images/projects/11_dragons/w01-02-puzzle-01.mp4',
+            '/images/projects/11_dragons/w03-01-puzzle-01.mp4',
           ],
         ],
         captions: [
@@ -303,7 +303,7 @@ const data: ProjectDetails[] = [
     id: '10_spirit',
     steamUrl:
       'https://store.steampowered.com/app/1270720/DreamWorks_Spirit_Luckys_Big_Adventure/',
-    coverImage: '/images/projects/projectCard_08_spirit.png',
+    coverImage: '/images/projects/project-card-08-spirit.webp',
     dimensions: '3D',
     genre: 'Open World',
     startDate: '2019-12-04',
@@ -323,11 +323,11 @@ const data: ProjectDetails[] = [
       'Created several traversal puzzles, animals and collectibles, populating the world map.',
     ],
     images: [
-      '/images/projects/10_spirit/Spirit_Logo.png',
-      '/images/projects/10_spirit/Showcase_01.png',
-      '/images/projects/10_spirit/Showcase_02.png',
-      '/images/projects/10_spirit/Showcase_03.png',
-      '/images/projects/10_spirit/Showcase_04.png',
+      '/images/projects/10_spirit/spirit-logo.webp',
+      '/images/projects/10_spirit/showcase-01.webp',
+      '/images/projects/10_spirit/showcase-02.webp',
+      '/images/projects/10_spirit/showcase-03.webp',
+      '/images/projects/10_spirit/showcase-04.webp',
     ],
     sections: [
       {
@@ -339,16 +339,16 @@ const data: ProjectDetails[] = [
         pageSize: 0,
         gifs: [
           [
-            '/images/projects/10_spirit/SpiritRun_01.gif',
-            '/images/projects/10_spirit/SpiritRun_02.gif',
+            '/images/projects/10_spirit/spirit-run-01.mp4',
+            '/images/projects/10_spirit/spirit-run-02.mp4',
           ],
           [
-            '/images/projects/10_spirit/SpiritRun_03.gif',
-            '/images/projects/10_spirit/SpiritRun_04.gif',
+            '/images/projects/10_spirit/spirit-run-03.mp4',
+            '/images/projects/10_spirit/spirit-run-04.mp4',
           ],
           [
-            '/images/projects/10_spirit/EarlyCorner_01.png',
-            '/images/projects/10_spirit/EarlyCorner_02.png',
+            '/images/projects/10_spirit/early-corner-01.webp',
+            '/images/projects/10_spirit/early-corner-02.webp',
           ],
         ],
         captions: [
@@ -401,7 +401,7 @@ const data: ProjectDetails[] = [
   {
     id: '07_2100',
     url: 'https://gamestrategies.io/en/catalog/2100-a-customer-service-course-for-companies/',
-    coverImage: '/images/projects/projectCard_07_2100.png',
+    coverImage: '/images/projects/project-card-07-2100.webp',
     dimensions: '2D',
     genre: 'Training course',
     startDate: '',
@@ -422,7 +422,7 @@ const data: ProjectDetails[] = [
   {
     id: '06_merchants2',
     url: 'https://gamestrategies.io/en/catalog/merchants-mastering-negotiation-and-closing-deals/',
-    coverImage: '/images/projects/projectCard_06_merchants.png',
+    coverImage: '/images/projects/project-card-06-merchants.webp',
     dimensions: '2D',
     genre: 'Graphic Adventure / Training course',
     startDate: '',
@@ -441,7 +441,7 @@ const data: ProjectDetails[] = [
   },
   {
     id: '05_futbol4',
-    coverImage: '/images/projects/projectCard_05_futbolcuatro.png',
+    coverImage: '/images/projects/project-card-05-futbolcuatro.webp',
     dimensions: '3D',
     genre: 'Fantasy Sport',
     startDate: '2014-12-10',
@@ -461,7 +461,7 @@ const data: ProjectDetails[] = [
   {
     id: '04_futbolstars',
     url: 'https://vimeo.com/87581171',
-    coverImage: '/images/projects/projectCard_04_futbolstars.png',
+    coverImage: '/images/projects/project-card-04-futbolstars.webp',
     dimensions: '3D',
     genre: 'Sports Puzzle',
     startDate: '',
@@ -483,7 +483,7 @@ const data: ProjectDetails[] = [
   {
     id: '03_developers',
     url: '',
-    coverImage: '/images/projects/projectCard_03_developers.png',
+    coverImage: '/images/projects/project-card-03-developers.webp',
     dimensions: '3D',
     genre: 'Game Tycoon',
     startDate: '2017-06-09',
@@ -504,7 +504,7 @@ const data: ProjectDetails[] = [
   {
     id: '02_mercenaries',
     url: '',
-    coverImage: '/images/projects/projectCard_02_daredevils.png',
+    coverImage: '/images/projects/project-card-02-daredevils.webp',
     dimensions: '3D',
     genre: 'Strategy RPG',
     startDate: '2014-08-15',
@@ -525,7 +525,7 @@ const data: ProjectDetails[] = [
   {
     id: '01_crownless',
     url: '',
-    coverImage: '/images/projects/projectCard_01_crownless.png',
+    coverImage: '/images/projects/project-card-01-crownless.webp',
     dimensions: '3D',
     genre: 'Action RPG',
     startDate: '2012-09-14',

@@ -3,6 +3,8 @@ import path from 'node:path';
 
 import { describe, expect, it } from 'vitest';
 
+import { isVideo, posterFor } from '@/components/Projects/ProjectMedia';
+
 import companies from '../companies';
 import projects from '../projects';
 
@@ -92,6 +94,29 @@ describe('projects data', () => {
     const missing = mediaPaths().filter((p) => !existsWithExactCase(p));
 
     expect(missing).toEqual([]);
+  });
+
+  it('media is served as WebP stills or MP4 clips, never GIF or PNG', () => {
+    // A single GIF here weighed up to 40 MB; see the media conversion PR.
+    const heavy = mediaPaths().filter((p) => !/\.(webp|mp4)$/.test(p));
+
+    expect(heavy).toEqual([]);
+  });
+
+  it('media filenames are lowercase-kebab-case', () => {
+    const badNames = mediaPaths().filter(
+      (p) => !/^[a-z0-9]+(-[a-z0-9]+)*\.[a-z0-9]+$/.test(path.basename(p)),
+    );
+
+    expect(badNames).toEqual([]);
+  });
+
+  it('every clip has a poster next to it', () => {
+    const withoutPoster = mediaPaths()
+      .filter(isVideo)
+      .filter((p) => !existsWithExactCase(posterFor(p)));
+
+    expect(withoutPoster).toEqual([]);
   });
 
   it('each section pairs gifs with captions', () => {
