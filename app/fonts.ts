@@ -50,4 +50,4 @@ export const newsreaderItalic = localFont({
   preload: false,
   fallback: ['Georgia', 'Times New Roman'],
   adjustFontFallback: 'Times New Roman',
-}); 
+});

@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-
-import Cell from '@/components/Projects/Cell';
+import ArchiveList from '@/components/Archive/ArchiveList';
 import { SchemaGraph } from '@/components/Schema';
 import PageWrapper from '@/components/Template/PageWrapper';
 import data from '@/data/projects';
@@ -12,7 +11,6 @@ import {
   SITE_URL,
 } from '@/lib/schema';
 import { AUTHOR_NAME } from '@/lib/utils';
-import ArchiveList from '@/components/Archive/ArchiveList';
 
 const ARCHIVE_URL = `${SITE_URL}/archive/`;
 
@@ -28,9 +26,8 @@ export default function ProjectsPage() {
   const otherProjects = data.filter((p) => p.other);
   const learningProjects = data.filter((p) => p.learning);
 
-
   return (
-    <PageWrapper mainClassName='page-main--archive'>
+    <PageWrapper mainClassName="page-main--archive">
       <SchemaGraph
         nodes={[
           collectionPageNode({
@@ -53,8 +50,10 @@ export default function ProjectsPage() {
           </p>
         </header>
 
-        <ArchiveList otherProjects={otherProjects} learningProjects={learningProjects}/>
-
+        <ArchiveList
+          otherProjects={otherProjects}
+          learningProjects={learningProjects}
+        />
       </section>
     </PageWrapper>
   );

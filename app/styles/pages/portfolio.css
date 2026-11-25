@@ -12,8 +12,8 @@
   position: relative;
 }
 
-.portfolio-projects-logo img{
-  margin: 0 auto;  
+.portfolio-projects-logo img {
+  margin: 0 auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
@@ -22,7 +22,7 @@
   margin-top: 2rem;
   height: 7.5rem;
   font-style: italic;
-  }
+}
 
 @media (max-width: 736px) {
   .portfolio-projects-jobDescription {
@@ -38,7 +38,6 @@
    different information for each project.
    ======================================== */
 
-
 .game-detail-wrap {
   display: grid;
   grid-template-rows: 0fr;
@@ -48,7 +47,7 @@
 .game-detail-wrap.open {
   grid-template-rows: 1fr;
   padding-top: 3rem;
-  scroll-margin-top: calc(var(--header-height))
+  scroll-margin-top: calc(var(--header-height));
 }
 
 .game-detail {
@@ -82,7 +81,7 @@
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--color-accent);
-} 
+}
 
 /* Tech tags — squared, quiet, mono. */
 .tech-tag {
@@ -193,7 +192,7 @@
   align-self: center;
   justify-content: space-between;
   padding: 0 0.6rem;
-  pointer-events: none
+  pointer-events: none;
 }
 
 .game-detail-img-btn {
@@ -205,8 +204,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s, color 0.2s;
-  pointer-events: all
+  transition:
+    background 0.2s,
+    color 0.2s;
+  pointer-events: all;
 }
 
 .game-detail-img-btn:hover {
@@ -332,7 +333,7 @@
   align-items: center;
 }
 
-.game-detail-section-taskImage-image{
+.game-detail-section-taskImage-image {
   height: auto;
   width: auto;
   padding: 1rem;
@@ -350,7 +351,9 @@
   color: var(--color-accent-border);
   cursor: pointer;
   display: flex;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 
 .game-detail-section-gifs a {
@@ -358,7 +361,7 @@
   aspect-ratio: 16/9;
   object-fit: cover;
   display: block;
-  padding: 0.5rem;  
+  padding: 0.5rem;
   cursor: pointer;
   border: 2px solid var(--color-accent-border);
 }
@@ -419,7 +422,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  background:  var(--color-bg);
+  background: var(--color-bg);
 }
 
 .game-detail-gif-player img {

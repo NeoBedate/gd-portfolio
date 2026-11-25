@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import profile from '@/data/profile.json';
+
 import SideBar from '../../Template/SideBar';
 
 const mockPathname = vi.fn();
@@ -23,33 +25,24 @@ describe('SideBar', () => {
   it('displays the name', () => {
     render(<SideBar />);
 
-    expect(screen.getByText("Santiago R. Bedate")).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: profile.name }),
+    ).toBeInTheDocument();
   });
 
   it('displays email link', () => {
     render(<SideBar />);
 
-    const emailLink = screen.getByRole('link', {
-      name: /santiago.rodriguez.bedate@gmail.com\.com/i,
-    });
-    expect(emailLink).toHaveAttribute('href', 'mailto:santiago.rodriguez.bedate@gmail.com');
+    const emailLink = screen.getByRole('link', { name: profile.email });
+    expect(emailLink).toHaveAttribute('href', `mailto:${profile.email}`);
   });
 
   it('renders about section with bio', () => {
     render(<SideBar />);
 
     expect(screen.getByRole('heading', { name: /about/i })).toBeInTheDocument();
-    expect(screen.getByText(/Stanford ICME/)).toBeInTheDocument();
+    expect(screen.getByText(/Game Designer/)).toBeInTheDocument();
   });
-
-  /* it('renders external links', () => {
-    render(<SideBar />);
-
-    expect(screen.getByRole('link', { name: /promptfoo/i })).toHaveAttribute(
-      'href',
-      'https://promptfoo.dev',
-    );
-  }); */
 
   it('shows Learn More button when not on experience page', () => {
     mockPathname.mockReturnValue('/about');
@@ -81,7 +74,8 @@ describe('SideBar', () => {
   it('renders copyright notice', () => {
     render(<SideBar />);
 
-    expect(screen.getByText(/© Santiago R. Bedate/)).toBeInTheDocument();
+    const copyright = document.querySelector('.copyright');
+    expect(copyright).toHaveTextContent(`© ${profile.name}`);
   });
 
   it('has logo link to home', () => {

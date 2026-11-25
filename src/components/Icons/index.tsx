@@ -60,7 +60,7 @@ export function LeftChevron({ size = 36, className }: IconProps) {
       height={size}
       viewBox="0 0 24 24"
       fill="var(--color-accent-dim)"
-      stroke= "var(--color-accent)"
+      stroke="var(--color-accent)"
       strokeWidth="1"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -69,7 +69,7 @@ export function LeftChevron({ size = 36, className }: IconProps) {
     >
       <path d="M17 6h-6a1 1 0 0 0 -.78 .375l-4 5a1 1 0 0 0 0 1.25l4 5a1 1 0 0 0 .78 .375h6l.112 -.006a1 1 0 0 0 .669 -1.619l-3.501 -4.375l3.5 -4.375a1 1 0 0 0 -.78 -1.625z" />
     </svg>
-  )
+  );
 }
 
 export function RightChevron({ size = 36, className }: IconProps) {
@@ -80,7 +80,7 @@ export function RightChevron({ size = 36, className }: IconProps) {
       height={size}
       viewBox="0 0 24 24"
       fill="var(--color-accent-dim)"
-      stroke= "var(--color-accent)"
+      stroke="var(--color-accent)"
       strokeWidth="1"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -89,7 +89,7 @@ export function RightChevron({ size = 36, className }: IconProps) {
     >
       <path d="M7 6l-.112 .006a1 1 0 0 0 -.669 1.619l3.501 4.375l-3.5 4.375a1 1 0 0 0 .78 1.625h6a1 1 0 0 0 .78 -.375l4 -5a1 1 0 0 0 0 -1.25l-4 -5a1 1 0 0 0 -.78 -.375h-6z" />
     </svg>
-  )
+  );
 }
 
 export function CloseChevron({ size = 36, className }: IconProps) {
@@ -100,7 +100,7 @@ export function CloseChevron({ size = 36, className }: IconProps) {
       height={size}
       viewBox="0 0 24 24"
       fill="var(--color-accent-dim)"
-      stroke= "var(--color-accent)"
+      stroke="var(--color-accent)"
       strokeWidth="1"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -110,7 +110,7 @@ export function CloseChevron({ size = 36, className }: IconProps) {
       <path d="M18 6l-12 12" />
       <path d="M6 6l12 12" />
     </svg>
-  )
+  );
 }
 
 export function PlayChevron({ size = 48, className }: IconProps) {
@@ -121,7 +121,7 @@ export function PlayChevron({ size = 48, className }: IconProps) {
       height={size}
       viewBox="0 0 24 24"
       fill="var(--color-accent-dim)"
-      stroke= "var(--color-accent)"
+      stroke="var(--color-accent)"
       strokeWidth="1"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -130,6 +130,5 @@ export function PlayChevron({ size = 48, className }: IconProps) {
     >
       <path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" />
     </svg>
-
-  )
+  );
 }

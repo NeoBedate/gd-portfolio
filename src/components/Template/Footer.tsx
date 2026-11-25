@@ -1,19 +1,14 @@
 import Link from 'next/link';
 
-
 import ContactIcons from '@/components/Contact/ContactIcons';
-import work from '@/data/experience/work';
 import routes from '@/data/routes';
-import { 
-  AUTHOR_NAME,
-  AUTHOR_ROLE,
-} from '@/lib/utils';
+import { AUTHOR_NAME, AUTHOR_ROLE } from '@/lib/utils';
 
 import ThemePortrait from './ThemePortrait';
 
 export default function Footer() {
   const currentRole = `${AUTHOR_ROLE}`;
-  
+
   // ""at ${work[0].name}`;"" si quiero añadir más tarde un rol EN UN TRABAJO.
 
   return (

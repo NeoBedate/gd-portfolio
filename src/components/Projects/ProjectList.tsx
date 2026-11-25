@@ -1,71 +1,67 @@
-"use client"
+'use client';
 
-import { useState } from "react";
-import type { ProjectDetails } from '@/data/projects';
+import { useState } from 'react';
 import Cell from '@/components/Projects/Cell';
 import ProjectDetailWrap from '@/components/Projects/ProjectDetailWrap';
+import type { ProjectDetails } from '@/data/projects';
 import data from '@/data/projects';
 
-export interface ProjectsListWrap{
+export interface ProjectsListWrap {
   projects: ProjectDetails[];
 }
 
+const ProjectList: React.FC<ProjectsListWrap> = ({ projects }) => {
+  const [selectedProject, setSelectedProject] = useState(
+    data.find((p) => p.id == '12_tmnt'),
+  );
 
-const ProjectList: React.FC<ProjectsListWrap> = ({projects}) => {
-    
-  const [selectedProject, setSelectedProject] = useState (
-                data.find(p => p.id == "12_tmnt")
-        );
-        
-  function UpdateProjectFromID(id:string) {
-    var project = data.find(p => p.id == id);
+  function UpdateProjectFromID(id: string) {
+    var project = data.find((p) => p.id == id);
     const wrap = document.getElementById('game-detail-wrap');
     if (!wrap) return;
-    if (!wrap.classList.contains('open'))
-      wrap.classList.add('open');
-    
+    if (!wrap.classList.contains('open')) wrap.classList.add('open');
+
     ///// Scroll to game detail
     var interval = setInterval(() => {
-      wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+      wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }, 2);
 
     setTimeout(() => {
       clearInterval(interval);
     }, 300);
-    
+
     setSelectedProject(project);
   }
 
   return (
     <div>
-        <section className="portfolio-page">
+      <section className="portfolio-page">
         <header className="portfolio-header">
           <h1 className="page-title">Portfolio</h1>
-          <p className="page-subtitle">A selection of video games I helped to create.</p>
+          <p className="page-subtitle">
+            A selection of video games I helped to create.
+          </p>
         </header>
-       
 
-       {projects.length > 0 && (
+        {projects.length > 0 && (
           <section className="portfolio-projects">
             <h2 className="projects-section-title">Selected Projects</h2>
             <div className="projects-grid projects-grid-selected">
               {projects.map((project) => (
-                <Cell data={project} key={project.name}
-                      callback={ (id:string) => UpdateProjectFromID(id) }/>
+                <Cell
+                  data={project}
+                  key={project.name}
+                  callback={(id: string) => UpdateProjectFromID(id)}
+                />
               ))}
             </div>
           </section>
         )}
-
       </section>
-      
-      <ProjectDetailWrap project = {selectedProject}/>
 
+      <ProjectDetailWrap project={selectedProject} />
     </div>
-    
   );
-
-}
-
+};
 
 export default ProjectList;

@@ -12,12 +12,14 @@ describe('degrees data', () => {
     for (const degree of degrees) {
       expect(degree).toHaveProperty('school');
       expect(degree).toHaveProperty('degree');
-      expect(degree).toHaveProperty('link');
+      expect(degree).toHaveProperty('uniLink');
+      expect(degree).toHaveProperty('degreeLink');
       expect(degree).toHaveProperty('year');
 
       expect(typeof degree.school).toBe('string');
       expect(typeof degree.degree).toBe('string');
       expect(typeof degree.uniLink).toBe('string');
+      expect(typeof degree.degreeLink).toBe('string');
       expect(typeof degree.year).toBe('number');
     }
   });
@@ -36,6 +38,14 @@ describe('degrees data', () => {
 
     for (const degree of degrees) {
       expect(degree.uniLink).toMatch(urlRegex);
+      expect(degree.degreeLink).toMatch(urlRegex);
+    }
+  });
+
+  // "M.D." reads as Doctor of Medicine in English.
+  it('does not abbreviate degree titles as M.D.', () => {
+    for (const degree of degrees) {
+      expect(degree.degree).not.toMatch(/M\.\s?D\./);
     }
   });
 

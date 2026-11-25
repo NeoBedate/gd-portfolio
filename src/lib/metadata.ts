@@ -1,12 +1,6 @@
 import type { Metadata } from 'next';
 
-import profile from '@/data/profile.json';
-import {
-  AUTHOR_NAME,
-  SHARE_IMAGE_DIMENSIONS,
-  SHARE_IMAGE_PATH,
-  SITE_URL,
-} from './utils';
+import { AUTHOR_NAME, SITE_URL } from './utils';
 
 interface PageMetadataOptions {
   title: string;
@@ -15,34 +9,21 @@ interface PageMetadataOptions {
 }
 
 /**
- * The share card is a fixed design that does not render the page title, so
- * the alt text describes the card rather than claiming the title appears in
- * the image. Role and employer come from the profile so they change in one
- * place, just as the stats page and OG script read shared profile facts.
- */
-export const SHARE_IMAGE_ALT = `${AUTHOR_NAME} — ${profile.role_01} at ${profile.employer}`;
-
-/**
- * The OpenGraph and Twitter blocks every page needs.
+ * The OpenGraph block every page needs (the title and description that
+ * LinkedIn, WhatsApp, Slack… show when a link is shared).
+ *
+ * No share image is set: none exists in `public/`, and pointing at a missing
+ * file gives a broken preview. Add an `images` entry here if one is made.
  *
  * A route-level `openGraph` object replaces the inherited one wholesale
  * rather than merging, so anything omitted here vanishes from that page.
- * Callers that build their own metadata (blog posts) should spread these.
  */
 export const sharedOpenGraph: Metadata['openGraph'] = {
   locale: 'en_US',
   siteName: AUTHOR_NAME,
-  images: [
-    {
-      url: SHARE_IMAGE_PATH,
-      width: SHARE_IMAGE_DIMENSIONS.width,
-      height: SHARE_IMAGE_DIMENSIONS.height,
-      alt: SHARE_IMAGE_ALT,
-    },
-  ],
 };
 
-export function createPageMetadata ({
+export function createPageMetadata({
   title,
   description,
   path,

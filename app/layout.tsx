@@ -7,7 +7,12 @@ import Navigation from '@/components/Template/Navigation';
 import { MAIN_CONTENT_ID } from '@/components/Template/PageWrapper';
 import ScrollToTop from '@/components/Template/ScrollToTop';
 import { sharedOpenGraph } from '@/lib/metadata';
-import { AUTHOR_NAME, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/utils';
+import {
+  AUTHOR_NAME,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+} from '@/lib/utils';
 import { bricolage, jetbrainsMono, newsreader } from './fonts';
 import './tailwind.css';
 
@@ -60,7 +65,7 @@ export default function RootLayout({
       className={`${bricolage.variable} ${newsreader.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
- <head>
+      <head>
         {/* CSP-safe theme initialization - prevents flash on load */}
         <Script id="theme-init" strategy="beforeInteractive">
           {`(function(){try{var t=window.localStorage.getItem('theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t)}else if(window.matchMedia('(prefers-color-scheme:dark)').matches){document.documentElement.setAttribute('data-theme','dark')}else{document.documentElement.setAttribute('data-theme','light')}}catch(e){}})();`}

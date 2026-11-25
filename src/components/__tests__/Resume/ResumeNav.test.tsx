@@ -3,6 +3,8 @@ import { describe, expect, it } from 'vitest';
 
 import ExperienceNav from '../../Experience/ExperienceNav';
 
+const SECTIONS = ['Skills', 'Resume', 'Education', 'Courses'];
+
 describe('ExperienceNav', () => {
   it('renders navigation element', () => {
     render(<ExperienceNav />);
@@ -11,36 +13,21 @@ describe('ExperienceNav', () => {
     expect(nav).toBeInTheDocument();
   });
 
-  it('renders links to all resume sections', () => {
+  it('renders links to all experience sections', () => {
     render(<ExperienceNav />);
 
-    expect(screen.getByRole('link', { name: /experience/i })).toHaveAttribute(
-      'href',
-      '#experience',
-    );
-    expect(screen.getByRole('link', { name: /education/i })).toHaveAttribute(
-      'href',
-      '#education',
-    );
-    expect(screen.getByRole('link', { name: /skills/i })).toHaveAttribute(
-      'href',
-      '#skills',
-    );
-    expect(screen.getByRole('link', { name: /courses/i })).toHaveAttribute(
-      'href',
-      '#courses',
-    );
-    expect(screen.getByRole('link', { name: /references/i })).toHaveAttribute(
-      'href',
-      '#references',
-    );
+    for (const name of SECTIONS) {
+      expect(screen.getByRole('link', { name })).toHaveAttribute(
+        'href',
+        `#${name.toLowerCase()}`,
+      );
+    }
   });
 
-  it('renders 5 navigation links', () => {
+  it('renders one link per section', () => {
     render(<ExperienceNav />);
 
-    const links = screen.getAllByRole('link');
-    expect(links.length).toBe(5);
+    expect(screen.getAllByRole('link')).toHaveLength(SECTIONS.length);
   });
 
   it('has correct CSS class', () => {
@@ -50,10 +37,9 @@ describe('ExperienceNav', () => {
     expect(nav).toBeInTheDocument();
   });
 
-  it('experience link is active by default', () => {
+  it('resume link is active by default', () => {
     render(<ExperienceNav />);
 
-    const experienceLink = screen.getByRole('link', { name: /experience/i });
-    expect(experienceLink).toHaveClass('active');
+    expect(screen.getByRole('link', { name: 'Resume' })).toHaveClass('active');
   });
 });

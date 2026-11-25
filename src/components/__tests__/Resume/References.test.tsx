@@ -31,7 +31,7 @@ describe('References', () => {
   it('wraps text in a heading', () => {
     render(<References />);
 
-    const heading = screen.getByRole('heading', { level: 3 });
+    const heading = screen.getByRole('heading', { level: 2 });
     expect(heading).toHaveTextContent('References are available upon request');
   });
 });

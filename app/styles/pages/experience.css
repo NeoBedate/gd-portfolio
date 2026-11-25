@@ -162,7 +162,6 @@
   text-align: center;
 }
 
-
 .jobs-container {
   position: relative;
   display: grid;
@@ -216,13 +215,13 @@
 
 .resume-daterange {
   justify-content: center;
-  margin: 0 auto; 
+  margin: 0 auto;
   text-wrap-mode: nowrap;
 }
 
 .resume-compName {
   font-family: var(--font-mono);
-  margin: 0 auto;  
+  margin: 0 auto;
   text-align: left;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -271,7 +270,6 @@
 .resume-print-contact {
   display: none;
 }
-
 
 /* ========================================
    EXPERIENCE SPINE
@@ -329,11 +327,9 @@
 }
 
 @media (max-width: 736px) {
-
   .resume-container {
     grid-template-columns: minmax(0, 1fr);
     gap: 0.5rem;
-    
   }
 
   .resume-container::before,
@@ -445,7 +441,7 @@
   line-height: var(--leading-snug);
 }
 
-.course-dot::before{
+.course-dot::before {
   content: '';
   display: block;
   position: relative;

@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-
 import routes from '../../data/routes';
 import { isActiveRoute } from '../../lib/routes';
 import SlideMenu from './SlideMenu';

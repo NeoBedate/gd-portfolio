@@ -8,59 +8,59 @@
    only colour permitted to carry a live value. */
 [data-theme='dark'] {
   /* Core colors */
-  --color-bg:                     #131313;
-  --color-bg-alt:                 #0d0d0d;
-  --color-fg:                     #d8dbe0;
-  --color-fg-bold:                #f2f4f7;
-  --color-fg-light:               #b0b8c5;
+  --color-bg: #131313;
+  --color-bg-alt: #0d0d0d;
+  --color-fg: #d8dbe0;
+  --color-fg-bold: #f2f4f7;
+  --color-fg-light: #b0b8c5;
 
-  --color-text:                   #f2f2f2;
-  --color-text-muted:             #c8c6cc;
-  --color-text-dim:               #969499;
-  --color-text-faint:             #39393b;  
+  --color-text: #f2f2f2;
+  --color-text-muted: #c8c6cc;
+  --color-text-dim: #969499;
+  --color-text-faint: #39393b;
 
   /* Overlay colors for dark mode */
-  --color-overlay-darker:         rgba(0, 0, 0, 0.6);
+  --color-overlay-darker: rgba(0, 0, 0, 0.6);
 
   /* Accent — fucsia lifted to hold contrast on ink.
      This value is for text and rules on the page background; it is far too
      light to sit behind white text (2.67:1), so filled controls keep a deep
      fill and light text of their own. */
-  --color-accent:                 #c56ec8ad;
-  --color-accent-hover:           #f56ef5;
-  --color-accent-dim:             rgba(197, 110, 200, 0.16);
-  --color-accent-border:          rgba(197, 110, 200, 0.35);
-  --color-accent-faint:           rgba(200, 110, 192, 0.08);  
+  --color-accent: #c56ec8ad;
+  --color-accent-hover: #f56ef5;
+  --color-accent-dim: rgba(197, 110, 200, 0.16);
+  --color-accent-border: rgba(197, 110, 200, 0.35);
+  --color-accent-faint: rgba(200, 110, 192, 0.08);
 
   /* #2a3ad4 behind #f2f4f7 is 7.2:1; hover holds at 5.8:1. */
-  --color-accent-fill:            #a42ad4;
-  --color-accent-fill-hover:      #ba3de0;
-  --color-on-accent:              #f6f2f7;
-  --color-accent-light:             color-mix(in srgb, var(--color-accent) 18%, transparent);
-  --color-accent-underline:         color-mix(in srgb, var(--color-accent) 40%, transparent);
-  --color-accent-underline-strong:  color-mix(in srgb, var(--color-accent) 55%, transparent);
+  --color-accent-fill: #a42ad4;
+  --color-accent-fill-hover: #ba3de0;
+  --color-on-accent: #f6f2f7;
+  --color-accent-light: color-mix(in srgb, var(--color-accent) 18%, transparent);
+  --color-accent-underline: color-mix(in srgb, var(--color-accent) 40%, transparent);
+  --color-accent-underline-strong: color-mix(in srgb, var(--color-accent) 55%, transparent);
 
-  --color-line:                   rgba(255, 255, 255, 0.08);
-  --color-line-strong:            rgba(255, 255, 255, 0.14);
+  --color-line: rgba(255, 255, 255, 0.08);
+  --color-line-strong: rgba(255, 255, 255, 0.14);
 
-  --grid-line:                    rgba(200, 110, 188, 0.04);
+  --grid-line: rgba(200, 110, 188, 0.04);
 
   /* Signal — amber needs no correction against ink */
-  --color-signal:                 #f0a202;
-  --color-signal-mark:            #f0a202;
+  --color-signal: #f0a202;
+  --color-signal-mark: #f0a202;
 
   /* 3:1 against the dark page, matching the light-mode control border. */
-  --color-control-border:         rgba(197, 110, 200, 0.35);
+  --color-control-border: rgba(197, 110, 200, 0.35);
 
   /* Borders */
-  --color-border:                 rgba(255, 255, 255, 0.12);
-  --color-border-bg:              rgba(255, 255, 255, 0.07);
-  --color-border-alt:             rgba(255, 255, 255, 0.2);
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-border-bg: rgba(255, 255, 255, 0.07);
+  --color-border-alt: rgba(255, 255, 255, 0.2);
 
   /* Semantic surface tokens */
-  --color-surface-subtle:         rgba(255, 255, 255, 0.04);
-  --color-surface-hover:          rgba(255, 255, 255, 0.07);
-  --color-fg-muted:               rgba(255, 255, 255, 0.5);
+  --color-surface-subtle: rgba(255, 255, 255, 0.04);
+  --color-surface-hover: rgba(255, 255, 255, 0.07);
+  --color-fg-muted: rgba(255, 255, 255, 0.5);
 
   /* Shadows */
 }

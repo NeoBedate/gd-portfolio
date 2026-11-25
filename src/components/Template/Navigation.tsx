@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import profile from '@/data/profile.json'
+import profile from '@/data/profile.json';
 import routes from '@/data/routes';
 import { isActiveRoute } from '@/lib/routes';
 import { AUTHOR_NAME } from '@/lib/utils';
@@ -27,14 +27,14 @@ export default function Navigation() {
             const active = isActiveRoute(pathname, l.path);
 
             return (
-            <Link
-              key={l.label}
-              href={l.path}
-              className={`nav-link ${active ? 'active' : ''}`}
-              aria-current={active ? 'page' : undefined}
-            >
-              {l.label}
-            </Link>
+              <Link
+                key={l.label}
+                href={l.path}
+                className={`nav-link ${active ? 'active' : ''}`}
+                aria-current={active ? 'page' : undefined}
+              >
+                {l.label}
+              </Link>
             );
           })}
       </nav>
@@ -45,4 +45,4 @@ export default function Navigation() {
       </div>
     </header>
   );
-};
+}

@@ -1,129 +1,95 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
+import type { CompanyDetails } from '@/data/companies';
+import type { ProjectDetails } from '@/data/projects';
+
 import Job from '../../Experience/Resume/Job';
 
+const project: ProjectDetails = {
+  id: 'xx_test',
+  coverImage: '/images/test.jpg',
+  name: 'Test Project',
+  overview: 'Testview',
+  position: 'Test Position',
+  highlights: ['Pretty cool, huh', 'Yeah, pretty cool'],
+};
+
+const company: CompanyDetails = {
+  id: 'xx_acme',
+  url: 'https://www.coolcompany.com',
+  logo: '/images/test.jpg',
+  startDate: '2020-01-15',
+  endDate: '2023-06-15',
+  name: 'Acme Studio',
+  description: 'Acme is such a **cool** company.',
+};
+
+function renderJob(
+  overrides: {
+    company?: Partial<CompanyDetails>;
+    project?: Partial<ProjectDetails>;
+  } = {},
+) {
+  return render(
+    <Job
+      id={{ companyId: company.id, projectIds: [project.id] }}
+      companyData={{ ...company, ...overrides.company }}
+      projectData={[{ data: { ...project, ...overrides.project } }]}
+    />,
+  );
+}
+
 describe('Job', () => {
-  const mockJob = {
-    id:{
-      companyId:'xx_acme',
-      projectIds:['x0_acmeProject', 'x1_acmeProject'],
-    },
-    projectData:[{data:{
-      id: 'xx_test',
-      url: 'https://www.as.com',
-      coverImage: '/images/test.jpg',
-      dimensions: '3D',
-      genre: 'action',
-      startDate: '0001-01-01',
-      endDate: '2026-01-11',
-      publishingDate: '2011-11-11',
-      name:'Test Project',
-      studio: 'Testudio',
-      overview: 'Testview',
-      position:'Test Position',
-      summary:'Test summary for a game',
-      highlights: ['Pretty cool, huh', 'Yeah, pretty cool'],
-      tech: ['Cool Engine', 'Great Processor'],
-      selected: true,
-      other: false,
-      learning: false,
-    }}],
-    companyData:{
-      id: 'xx_acme',
-      url: 'https://www.coolcompany.com',
-      logo: '/images/test.jpg',
-      startDate: '2020-01-01',
-      endDate: '2005-08-15',
-      name: 'x0_acmeProject',
-      description: 'Acme is such a cool company.',
-    }
-  };
-
   it('renders company name with link', () => {
-    render(<Job id={mockJob.id} companyData={mockJob.companyData} projectData={mockJob.projectData} />);
+    renderJob();
 
-    const link = screen.getByRole('link', { name: /acme corp/i });
-    expect(link).toHaveAttribute('href', 'https://acme.com');
+    const link = screen.getByRole('link', { name: /acme studio/i });
+    expect(link).toHaveAttribute('href', company.url);
   });
 
-  it('renders position title', () => {
-    render(<Job id={mockJob.id} companyData={mockJob.companyData} projectData={mockJob.projectData} />);
+  it('renders the position and project name', () => {
+    renderJob();
 
-    expect(screen.getByRole('heading', { level: 4 })).toHaveTextContent(
-      'Senior Engineer',
-    );
+    expect(screen.getByText('Test Position')).toBeInTheDocument();
+    expect(screen.getByText('Test Project')).toBeInTheDocument();
   });
 
   it('formats date range correctly', () => {
-    render(<Job id={mockJob.id} companyData={mockJob.companyData} projectData={mockJob.projectData} />);
+    renderJob();
 
-    expect(screen.getByText(/january 2020/i)).toBeInTheDocument();
-    expect(screen.getByText(/june 2023/i)).toBeInTheDocument();
+    expect(screen.getByText(/january 2020 - june 2023/i)).toBeInTheDocument();
   });
 
-  it('shows Present for current job (no end date)', () => {
-    const currentJob = {
-      ...mockJob,
-      endDate: undefined,
-    };
-
-    // Missing a 'currentJob' in the code. Looks like this was made for the next
-    // version of the page. Maybe I can get back to it in the future.
-    render(<Job id={mockJob.id} companyData={mockJob.companyData} projectData={mockJob.projectData} />);
+  it('shows Present when the company has no end date', () => {
+    renderJob({ company: { endDate: '' } });
 
     expect(screen.getByText(/present/i)).toBeInTheDocument();
   });
 
-  it('renders summary with markdown', () => {
-    render(<Job id={mockJob.id} companyData={mockJob.companyData} projectData={mockJob.projectData} />);
+  it('renders the company description as markdown', () => {
+    renderJob();
 
-    // Summary text should be present
-    expect(screen.getByText(/led development of/i)).toBeInTheDocument();
+    expect(screen.getByText('cool').tagName).toBe('STRONG');
   });
 
-  it('renders highlights as list items', () => {
-    render(<Job id={mockJob.id} companyData={mockJob.companyData} projectData={mockJob.projectData} />);
+  it('renders project highlights as list items', () => {
+    renderJob();
 
-    expect(screen.getByText('Shipped feature X')).toBeInTheDocument();
-    expect(screen.getByText('Improved performance by 50%')).toBeInTheDocument();
-
-    const listItems = document.querySelectorAll('.points li');
-    expect(listItems.length).toBe(2);
+    expect(screen.getByText('Pretty cool, huh')).toBeInTheDocument();
+    expect(screen.getByText('Yeah, pretty cool')).toBeInTheDocument();
   });
 
-  it('handles missing summary gracefully', () => {
-    const jobWithoutSummary = {
-      ...mockJob,
-      summary: undefined,
-    };
+  it('handles a missing description gracefully', () => {
+    renderJob({ company: { description: '' } });
 
-    // Same as in line 56.
-    render(<Job id={mockJob.id} companyData={mockJob.companyData} projectData={mockJob.projectData} />);
-
-    // Should not crash, highlights should still render
-    expect(screen.getByText('Shipped feature X')).toBeInTheDocument();
+    expect(document.querySelector('.resume-summary')).not.toBeInTheDocument();
+    expect(screen.getByText('Pretty cool, huh')).toBeInTheDocument();
   });
 
-  it('handles missing highlights gracefully', () => {
-    const jobWithoutHighlights = {
-      ...mockJob,
-      highlights: undefined,
-    };
+  it('renders the resume container', () => {
+    renderJob();
 
-    render(<Job id={mockJob.id} companyData={mockJob.companyData} projectData={mockJob.projectData} />);
-
-    // Should not crash, summary should still render
-    expect(screen.getByText(/led development/i)).toBeInTheDocument();
-
-    const list = document.querySelector('.points');
-    expect(list).not.toBeInTheDocument();
-  });
-
-  it('renders as article element', () => {
-    render(<Job id={mockJob.id} companyData={mockJob.companyData} projectData={mockJob.projectData} />);
-
-    const article = document.querySelector('article.resume-container');
-    expect(article).toBeInTheDocument();
+    expect(document.querySelector('.resume-container')).toBeInTheDocument();
   });
 });

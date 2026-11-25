@@ -1,12 +1,11 @@
 import type { Metadata } from 'next';
 
-import ContactIcons from '@/components/Contact/ContactIcons';
 import EmailLink from '@/components/Contact/EmailLink';
 import PageWrapper from '@/components/Template/PageWrapper';
 import profile from '@/data/profile.json';
 import { createPageMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = createPageMetadata ({
+export const metadata: Metadata = createPageMetadata({
   title: 'Contact',
   description: `Contact ${profile.name} via email at ${profile.email}.`,
   path: '/contact/',
@@ -19,7 +18,7 @@ export default function ContactPage() {
         <header className="contact-header">
           <h1 className="page-title">Get in Touch</h1>
         </header>
-        
+
         <h3 className="contact-hello"></h3>
 
         <div className="contact-content">

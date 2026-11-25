@@ -6,17 +6,17 @@ import Degree from '../../Experience/Education/Degree';
 
 const mockDegrees = [
   {
-    school: 'UCM',
-    degree: 'Licenciatura en Historia',
-    degreeLink:'www.licenciaturaenhistoria.com',
-    uniLink: 'https://www.ucm.es',
+    school: 'Test University',
+    degree: "Master's Degree in Testing",
+    degreeLink: 'https://test.edu/masters',
+    uniLink: 'https://test.edu',
     year: 2020,
   },
   {
-    school: 'MIT',
-    degree: 'B.S. Computer Science',
-    degreeLink:'',
-    uniLink: 'https://mit.edu',
+    school: 'Other College',
+    degree: "Bachelor's Degree in History",
+    degreeLink: 'https://other.edu/history',
+    uniLink: 'https://other.edu',
     year: 2016,
   },
 ];
@@ -33,50 +33,48 @@ describe('Education', () => {
   it('renders all degrees', () => {
     render(<Education data={mockDegrees} />);
 
-    expect(screen.getByText('M.S. Computer Science')).toBeInTheDocument();
-    expect(screen.getByText('B.S. Computer Science')).toBeInTheDocument();
+    expect(screen.getByText("Master's Degree in Testing")).toBeInTheDocument();
+    expect(
+      screen.getByText("Bachelor's Degree in History"),
+    ).toBeInTheDocument();
   });
 
   it('renders school links', () => {
     render(<Education data={mockDegrees} />);
 
-    const stanfordLink = screen.getByRole('link', { name: /stanford/i });
-    expect(stanfordLink).toHaveAttribute('href', 'https://stanford.edu');
-
-    const mitLink = screen.getByRole('link', { name: /mit/i });
-    expect(mitLink).toHaveAttribute('href', 'https://mit.edu');
+    expect(
+      screen.getByRole('link', { name: 'Test University' }),
+    ).toHaveAttribute('href', 'https://test.edu');
+    expect(screen.getByRole('link', { name: 'Other College' })).toHaveAttribute(
+      'href',
+      'https://other.edu',
+    );
   });
 
   it('has anchor link for navigation', () => {
     render(<Education data={mockDegrees} />);
 
-    const anchor = document.getElementById('education');
-    expect(anchor).toBeInTheDocument();
+    expect(document.getElementById('education')).toBeInTheDocument();
   });
 });
 
 describe('Degree', () => {
-  const mockDegree = {
-    school: 'UCM',
-    degree: 'Licenciatura en Historia',
-    degreeLink:'www.licenciaturaenhistoria.com',
-    uniLink: 'https://www.ucm.es',
-    year: 2020,
-  };
+  const [mockDegree] = mockDegrees;
 
-  it('renders degree title', () => {
+  it('renders degree title linked to the programme page', () => {
     render(<Degree data={mockDegree} />);
 
-    expect(screen.getByRole('heading', { level: 4 })).toHaveTextContent(
-      'Licenciatura en Historia',
-    );
+    expect(
+      screen.getByRole('link', { name: mockDegree.degree }),
+    ).toHaveAttribute('href', mockDegree.degreeLink);
   });
 
   it('renders school name with link', () => {
     render(<Degree data={mockDegree} />);
 
-    const link = screen.getByRole('link', { name: /stanford/i });
-    expect(link).toHaveAttribute('href', 'https://stanford.edu');
+    expect(
+      screen.getByRole('link', { name: mockDegree.school }),
+    ).toHaveAttribute('href', mockDegree.uniLink);
   });
 
   it('displays year', () => {
@@ -85,10 +83,9 @@ describe('Degree', () => {
     expect(screen.getByText(/2020/)).toBeInTheDocument();
   });
 
-  it('renders as article element', () => {
+  it('renders the degree container', () => {
     render(<Degree data={mockDegree} />);
 
-    const article = document.querySelector('article.degree-container');
-    expect(article).toBeInTheDocument();
+    expect(document.querySelector('.degree-container')).toBeInTheDocument();
   });
 });

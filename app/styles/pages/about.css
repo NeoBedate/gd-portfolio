@@ -108,7 +108,6 @@
   padding-top: 0.875rem;
 }
 
-
 .about-section h2 {
   scroll-margin-top: calc(var(--header-height) * 2);
   margin: 0 0 var(--spacing-5);
@@ -285,7 +284,7 @@
     border-radius: 0;
     scrollbar-width: thin;
   }
-  
+
   .about-section-nav-link {
     font-size: var(--text-2xs);
     overflow: hidden;

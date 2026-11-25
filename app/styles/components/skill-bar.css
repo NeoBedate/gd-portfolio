@@ -25,7 +25,7 @@
       border-color var(--duration-fast) ease,
       color var(--duration-fast) ease;
   }
- 
+
   .skillbutton:hover {
     border-color: var(--color-fg-light);
     color: var(--color-fg-bold);

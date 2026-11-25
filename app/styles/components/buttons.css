@@ -56,12 +56,12 @@
    ======================================== */
 
   .button-primary {
-  background: var(--color-accent);
-  color: #ffffff;
+    background: var(--color-accent);
+    color: #ffffff;
   }
 
   .button-primary:hover {
-  background: color-mix(in srgb, var(--color-accent) 80%, black);
+    background: color-mix(in srgb, var(--color-accent) 80%, black);
   }
 
   /* Secondary — the same switch, unlit. */

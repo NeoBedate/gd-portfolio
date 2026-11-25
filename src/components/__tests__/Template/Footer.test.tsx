@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
+import { AUTHOR_NAME, AUTHOR_ROLE } from '@/lib/utils';
+
 import Footer from '../../Template/Footer';
 
 describe('Footer', () => {
@@ -14,8 +16,8 @@ describe('Footer', () => {
   it('displays the name and role', () => {
     render(<Footer />);
 
-    expect(screen.getByText("Santiago R. Bedate")).toBeInTheDocument();
-    expect(screen.getByText('Game Designer')).toBeInTheDocument();
+    expect(screen.getByText(AUTHOR_NAME)).toBeInTheDocument();
+    expect(screen.getByText(AUTHOR_ROLE)).toBeInTheDocument();
   });
 
   it('displays the current year in copyright', () => {

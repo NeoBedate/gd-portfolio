@@ -3,13 +3,11 @@
    About, Contact, Stats, and Not Found pages
    ======================================== */
 
-
 /* Ink, not amber: hovering an entry is not a live value, and spending the
    signal colour on decoration is what stops it meaning anything elsewhere. */
 
 /* Empty for entries that carry no marker; the column still holds so the
    spine stays straight down the list. */
-
 
 .page-main--contact {
   display: flex;
@@ -72,9 +70,8 @@
   border-radius: 0;
   border-bottom: var(--rule-strong) solid var(--color-accent);
   text-decoration: none;
-  /* The animated alias runs long — "you-can-email-me-at-literally-anything!"
-     pushed 438px of content into a 320px viewport. It has to be allowed to
-     break, mid-token if necessary. */
+  /* A long address can overflow a 320px viewport, so it has to be allowed
+     to break, mid-token if necessary. */
   overflow-wrap: anywhere;
   transition:
     color var(--duration-fast) var(--ease-out),
@@ -88,19 +85,10 @@
 }
 
 /* Flex items default to min-width:auto and refuse to shrink below their
-   content, so the wrapping allowed on the link above never reached the long
-   animated alias. Both halves have to opt in individually. */
-.contact-email-prefix,
+   content, so the address has to opt in to the wrapping allowed above. */
 .contact-email-domain {
   min-width: 0;
   overflow-wrap: anywhere;
-}
-
-.contact-email-prefix {
-  color: var(--color-accent);
-}
-
-.contact-email-domain {
   color: var(--color-fg-bold);
 }
 
@@ -165,7 +153,6 @@
 }
 
 @media (max-width: 735px) {
-
   .contact-email-link {
     padding: 0.625rem 0;
   }

@@ -9,14 +9,12 @@ interface CourseProps {
 
 const Course: React.FC<CourseProps> = ({ data, last = false }) => (
   <li className="course-container">
-
-      <div className="course-dot">
-          <a href={data.link}>
-            <h4 className="course-number">{data.number}:</h4>
+    <div className="course-dot">
+      <a href={data.link}>
+        <h4 className="course-number">{data.number}:</h4>
         <p className="course-name">{data.title}</p>
-          </a>
-      </div>
-    
+      </a>
+    </div>
   </li>
 );
 

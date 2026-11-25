@@ -5,15 +5,15 @@ import Cell from '../../Projects/Cell';
 
 describe('Cell', () => {
   const mockProject = {
-    id:'xx_test',
+    id: 'xx_test',
     url: 'https://www.coolcompany.com',
-    coverImage:'/images/test.jpg',
-    publishingDate:'2026',
-    name:'Test Project',
+    coverImage: '/images/test.jpg',
+    publishingDate: '2026',
+    name: 'Test Project',
     overview: 'Test-Overview',
-    position:'Test Position',
-    summary:'Test summary for a game',
-    highlights:['Test Array of Highlights'],
+    position: 'Test Position',
+    summary: 'Test summary for a game',
+    highlights: ['Test Array of Highlights'],
   };
 
   it('renders project as a clickable card with link', () => {
@@ -23,9 +23,9 @@ describe('Cell', () => {
     expect(link).toHaveClass('project-card-link');
   });
 
-  it('renders project description', () => {
+  it('renders the project overview on the card', () => {
     render(<Cell data={mockProject} />);
-    expect(screen.getByText(mockProject.summary)).toBeInTheDocument();
+    expect(screen.getByText(mockProject.overview)).toBeInTheDocument();
   });
 
   it('renders project date in correct format', () => {
