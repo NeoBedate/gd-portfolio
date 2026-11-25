@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Cell from '@/components/Projects/Cell';
+import { openProjectDetail } from '@/components/Projects/openProjectDetail';
 import ProjectDetailWrap from '@/components/Projects/ProjectDetailWrap';
 import type { ProjectDetails } from '@/data/projects';
 import data from '@/data/projects';
@@ -19,16 +20,7 @@ const ProjectList: React.FC<ProjectsListWrap> = ({ projects }) => {
     var project = data.find((p) => p.id == id);
     const wrap = document.getElementById('game-detail-wrap');
     if (!wrap) return;
-    if (!wrap.classList.contains('open')) wrap.classList.add('open');
-
-    ///// Scroll to game detail
-    var interval = setInterval(() => {
-      wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }, 2);
-
-    setTimeout(() => {
-      clearInterval(interval);
-    }, 300);
+    openProjectDetail(wrap);
 
     setSelectedProject(project);
   }

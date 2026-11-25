@@ -117,8 +117,21 @@
 }
 
 .project-card-content {
-  padding: 1.5rem;
+  --project-card-padding: var(--spacing-6);
+  padding: var(--project-card-padding);
   position: relative;
+}
+
+/* The cover art sits behind the card and fades in from the right (see
+   .project-card-background::after, opaque up to 60%). Every text row is
+   capped to that opaque band. A fixed padding on the overview alone left
+   the title free to run across the art, and on narrow cards squeezed the
+   overview to one word per line. */
+.project-card-tag,
+.project-card-name,
+.project-card-studio,
+.project-card-overview {
+  max-width: 60%;
 }
 
 .project-card-affordance {
@@ -193,7 +206,6 @@
   color: var(--color-text);
   line-height: var(--leading-normal);
   position: relative;
-  padding-right: 28rem;
   z-index: 1;
   pointer-events: none;
 }
@@ -212,6 +224,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* The banners hold their art in the right half; a taller card crops
+     the sides, so keep the art rather than the empty left edge. */
+  object-position: right center;
   top: auto;
   overflow: hidden;
   background: var(--color-surface-subtle);
@@ -229,6 +244,38 @@
 @media (hover: none) {
   .project-card-image img {
     filter: none;
+  }
+}
+
+/* Phones: a card is too narrow to share its width between art and text,
+   so the cover becomes a banner above the text instead of a backdrop
+   behind it. */
+@media (max-width: 640px) {
+  .project-card-content {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-bg);
+  }
+
+  .project-card-tag,
+  .project-card-name,
+  .project-card-studio,
+  .project-card-overview {
+    max-width: none;
+  }
+
+  .project-card-background {
+    position: relative;
+    order: -1;
+    aspect-ratio: 5 / 2;
+    margin: calc(-1 * var(--project-card-padding));
+    margin-bottom: var(--spacing-5);
+    border-bottom: var(--rule) solid var(--color-border);
+    filter: none;
+  }
+
+  .project-card-background::after {
+    content: none;
   }
 }
 
