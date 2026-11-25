@@ -38,7 +38,8 @@ const data: ProjectDetails[] = [
   {
     id: '12_tmnt',
     url: '#game-detail-wrap',
-    steamUrl: 'https://store.steampowered.com/app/2460130/Teenage_Mutant_Ninja_Turtles_Mutants_Unleashed/',
+    steamUrl:
+      'https://store.steampowered.com/app/2460130/Teenage_Mutant_Ninja_Turtles_Mutants_Unleashed/',
     coverImage: '/images/projects/projectCard_10_tmnt.png',
     dimensions: '3D',
     genre: 'Action platformer',
@@ -47,9 +48,11 @@ const data: ProjectDetails[] = [
     publishingDate: '2024-11-20',
     name: 'Teenage Mutant Ninja Turtles: Mutants Unleashed',
     studio: 'AHEARTFULOFGAMES',
-    overview: 'An action platformer where the player takes control of the four ninja turtles, battling through New York in order to uncover a conspiracy involving the `Mewbies´ and the chaos they are spreading through the city.',
+    overview:
+      'An action platformer where the player takes control of the four ninja turtles, battling through New York in order to uncover a conspiracy involving the `Mewbies´ and the chaos they are spreading through the city.',
     position: 'Lead Level Designer',
-    summary: 'As a Lead, I was tasked with providing action-focused game spaces for a +10h game. Given the nature of the gameplay, spaces needed to be tightly designed for several traversal feats and combat abilities, so I nurtured my team with clear guidelines, processes, deadlines and expectations. Additionally, I helped the Production team to create our Jira project and processes for the whole production, a key step into an 18 months project for 31 people.',
+    summary:
+      'As a Lead, I was tasked with providing action-focused game spaces for a +10h game. Given the nature of the gameplay, spaces needed to be tightly designed for several traversal feats and combat abilities, so I nurtured my team with clear guidelines, processes, deadlines and expectations. Additionally, I helped the Production team to create our Jira project and processes for the whole production, a key step into an 18 months project for 31 people.',
     highlights: [
       'Led a team of 4 level designers and a scale-up in production workflows to produce 40 levels.',
       'Assumed authorship of 30% of the game levels, plus direct supervision over the rest.',
@@ -72,16 +75,34 @@ const data: ProjectDetails[] = [
           'We tested and delivered levels as proof of concept for <b>traversal and combat</b> mainly. That led us to think of levels as solitary entities mostly, instead of connecting them, leaving traces of that interconnection only at the portals.',
           'We divided levels among ourselves, to maximize output and hit the number of 40 levels as soon as possible. Next, everyone took care of features present on every level: that way everyone knows the whole scope of the game but also each can rely on their strenghts: camera work, blockouts, arena creation, set pieces, etc...',
           'At the same time, I personally took care of some level renovations from the ground up (some levels were far off from the quality expected after initial passes) and started communicating every day with QA: documenting level layouts; expected results on traversal and combat abilities and interactive props; and critical errors on the game flow.',
-          'After a year and a half, this mixed approach of responsibilities within the department made our team very flexible, focused on bringing the studio together both on features and content, and a powerhouse of reliability within our corporate structure. We delivered way more, and way better, than expected during production and post-production.'
+          'After a year and a half, this mixed approach of responsibilities within the department made our team very flexible, focused on bringing the studio together both on features and content, and a powerhouse of reliability within our corporate structure. We delivered way more, and way better, than expected during production and post-production.',
         ],
         pageSize: 1,
-        gifs:[
-          ['/images/projects/12_tmnt/BK_06 - Wind_01.gif', '/images/projects/12_tmnt/BK_06 - Wind_02.gif'],
-          ['/images/projects/12_tmnt/BK_05 - Screenshot 2023-02-28 174057.png', '/images/projects/12_tmnt/BK_05 - Screenshot 2023-02-28 174119.png'],
-          ['/images/projects/12_tmnt/BK_05 - Stairs_01.gif', '/images/projects/12_tmnt/BK_05 - Stairs_02.gif',],
-          ['/images/projects/12_tmnt/BX_03 - JokerStairs_01.gif', '/images/projects/12_tmnt/BX_03 - JokerStairs_02.gif'],
-          ['/images/projects/12_tmnt/BX_05 - Battle.gif', '/images/projects/12_tmnt/BX_05 - Battle_02.gif'],
-          ['/images/projects/12_tmnt/Bridge-01.png', '/images/projects/12_tmnt/Bridge_Jumps.gif'],
+        gifs: [
+          [
+            '/images/projects/12_tmnt/BK_06 - Wind_01.gif',
+            '/images/projects/12_tmnt/BK_06 - Wind_02.gif',
+          ],
+          [
+            '/images/projects/12_tmnt/BK_05 - Screenshot 2023-02-28 174057.png',
+            '/images/projects/12_tmnt/BK_05 - Screenshot 2023-02-28 174119.png',
+          ],
+          [
+            '/images/projects/12_tmnt/BK_05 - Stairs_01.gif',
+            '/images/projects/12_tmnt/BK_05 - Stairs_02.gif',
+          ],
+          [
+            '/images/projects/12_tmnt/BX_03 - JokerStairs_01.gif',
+            '/images/projects/12_tmnt/BX_03 - JokerStairs_02.gif',
+          ],
+          [
+            '/images/projects/12_tmnt/BX_05 - Battle.gif',
+            '/images/projects/12_tmnt/BX_05 - Battle_02.gif',
+          ],
+          [
+            '/images/projects/12_tmnt/Bridge-01.png',
+            '/images/projects/12_tmnt/Bridge_Jumps.gif',
+          ],
         ],
         captions: [
           '1. Our blockout process let us model traversal puzzles quickly, which helped the pacing of levels.',
@@ -102,11 +123,21 @@ const data: ProjectDetails[] = [
         ],
         pageSize: 1,
         taskImage: '/images/projects/12_tmnt/MT_04_pre.png',
-        taskCaption: 'Planning for Midtown metro level, with portals marked and quests running through the level highlighted.',
-        gifs:[
-          ['/images/projects/12_tmnt/BK_02 - High.gif', '/images/projects/12_tmnt/BK_02 - Battle.gif'],
-          ['/images/projects/12_tmnt/BK_02 - LastArc_01.gif', '/images/projects/12_tmnt/BK_02 - LastArc_02.gif'],
-          ['/images/projects/12_tmnt/BK_02 - upview.png', '/images/projects/12_tmnt/BK_02_Final.png'],
+        taskCaption:
+          'Planning for Midtown metro level, with portals marked and quests running through the level highlighted.',
+        gifs: [
+          [
+            '/images/projects/12_tmnt/BK_02 - High.gif',
+            '/images/projects/12_tmnt/BK_02 - Battle.gif',
+          ],
+          [
+            '/images/projects/12_tmnt/BK_02 - LastArc_01.gif',
+            '/images/projects/12_tmnt/BK_02 - LastArc_02.gif',
+          ],
+          [
+            '/images/projects/12_tmnt/BK_02 - upview.png',
+            '/images/projects/12_tmnt/BK_02_Final.png',
+          ],
         ],
         captions: [
           '1. While we tried to preserve vector movement on screen, sometimes we went for a more cinematic feel during combat',
@@ -124,14 +155,21 @@ const data: ProjectDetails[] = [
         ],
         pageSize: 1,
         taskImage: '/images/projects/12_tmnt/Map_HUD_04.png',
-        taskCaption: 'The Five Boroughs, with Manhattan partitioned into several recognizable pieces.',
-        gifs:[
-          ['/images/projects/12_tmnt/Map_01.png', '/images/projects/12_tmnt/Map_02.png'],
-          ['/images/projects/12_tmnt/Map_03.png', '/images/projects/12_tmnt/Map_04.png'],
+        taskCaption:
+          'The Five Boroughs, with Manhattan partitioned into several recognizable pieces.',
+        gifs: [
+          [
+            '/images/projects/12_tmnt/Map_01.png',
+            '/images/projects/12_tmnt/Map_02.png',
+          ],
+          [
+            '/images/projects/12_tmnt/Map_03.png',
+            '/images/projects/12_tmnt/Map_04.png',
+          ],
         ],
         captions: [
           '1. Levels were first envisioned as part of the city and its boroughs.',
-          '2. After we decide how the level connects to others, we placed an early layout with portals to other levels and all the quests that will cross the level.'
+          '2. After we decide how the level connects to others, we placed an early layout with portals to other levels and all the quests that will cross the level.',
         ],
       },
       // {
@@ -163,13 +201,22 @@ const data: ProjectDetails[] = [
       // },
     ],
     trailer: 'https://www.youtube.com/embed/8XZhhctEr9s?si=MENWcazhr_6P71aW',
-    tech: ['Unity', 'Plastic SCM', 'Jira', 'Confluence', 'GDocs', 'Excel', 'Draw.io'],
+    tech: [
+      'Unity',
+      'Plastic SCM',
+      'Jira',
+      'Confluence',
+      'GDocs',
+      'Excel',
+      'Draw.io',
+    ],
     selected: true,
   },
   {
     id: '11_dragons',
     url: '#game-detail-wrap',
-    steamUrl: 'https://store.steampowered.com/app/1721440/DreamWorks_Dragons_Legends_of_The_Nine_Realms/',
+    steamUrl:
+      'https://store.steampowered.com/app/1721440/DreamWorks_Dragons_Legends_of_The_Nine_Realms/',
     coverImage: '/images/projects/projectCard_09_dragons.png',
     dimensions: '3D',
     genre: 'Action',
@@ -178,9 +225,11 @@ const data: ProjectDetails[] = [
     publishingDate: '2022-09-23',
     name: 'DreamWorks Dragons: Legends of the Nine Realms ',
     studio: 'AHEARTFULOFGAMES',
-    overview: 'A 3D platformer with isometric(ish) view where we take control of Thunder and explore vastly different realms while collecting new allies and fighting powerful dragons.',
+    overview:
+      'A 3D platformer with isometric(ish) view where we take control of Thunder and explore vastly different realms while collecting new allies and fighting powerful dragons.',
     position: 'Senior Level Designer',
-    summary: 'Focused my professional path within the company on level design, assuming those responsibilities along with mentoring a junior level designer, while still carrying some aspects of project production. Furthermore, I took charge of localization efforts and coordinated with external Production to bring the game to +20 languages.',
+    summary:
+      'Focused my professional path within the company on level design, assuming those responsibilities along with mentoring a junior level designer, while still carrying some aspects of project production. Furthermore, I took charge of localization efforts and coordinated with external Production to bring the game to +20 languages.',
     highlights: [
       'Assumed authorship of 60% of the game levels as well as integrated its gameplay content such as arenas, puzzles and cameras.',
       'Used a modular system to tackle level design and maintain an agile production system, creating 10 minute levels in less than 2 weeks.',
@@ -196,7 +245,7 @@ const data: ProjectDetails[] = [
     ],
     sections: [
       {
-        task:'Camera work & set pieces',
+        task: 'Camera work & set pieces',
         taskExecution: [
           'For this project we needed to work with hand-placed cameras, with an isometric view that favors quick-paced action with multiple dragons on screen.',
           'Along the way we wanted to avoid camera cuts as much as possible to help readability and avoid headaches with many camera movements. With this in mind, we created a main camera that follow the player around, showing always the path forward but turning around when necessary.',
@@ -205,14 +254,17 @@ const data: ProjectDetails[] = [
         pageSize: 0,
         taskImage: '/images/projects/11_dragons/Traversal_mix.gif',
         gifs: [
-          ['/images/projects/11_dragons/dragons_set-piece_01.gif', '/images/projects/11_dragons/dragons_set-piece_02.gif'],
+          [
+            '/images/projects/11_dragons/dragons_set-piece_01.gif',
+            '/images/projects/11_dragons/dragons_set-piece_02.gif',
+          ],
         ],
         captions: [
           '1. Set pieces with several gimmicks like lava or debris chasing the player, or freezing winds trying to stop them, were introduced to shake up the pacing.',
-        ]
+        ],
       },
       {
-        task:'Level Guidelines & modularization',
+        task: 'Level Guidelines & modularization',
         taskExecution: [
           'The world of Dragons is divided into 5 realms with 5 levels each, making a total of 25 levels. On detail, each realm has: 3 core levels (exploration, combat & narrative); 1 set piece with special mechanics; and 1 boss fight.',
           'A distribution that enhanced the adventure aspect of the game, with leaner levels at the beginning encouraging exploration. As the player progresses through the story discovering new mechanics, enemies and completing its own squad of dragons, new paths become unlockable on previous levels. To get all crystals, the player has to backtrack and use the four dragons.',
@@ -220,9 +272,15 @@ const data: ProjectDetails[] = [
           'This modularization gave us time to rethink environments along with art. Every realm is underground by diegesis so we worked on several layers of visualization to match the camera FOV, with details suggesting that we were in big, complex caverns. Adjusting that to the need of clear gameplay was tricky but satisfactory.',
         ],
         pageSize: 0,
-        gifs:[
-          ['/images/projects/11_dragons/W01_01 - chasm.gif', '/images/projects/11_dragons/W01_01 - fly_01.gif'],
-          ['/images/projects/11_dragons/W01_02 - puzzle_01.gif', '/images/projects/11_dragons/W03_01 - puzzle_01.gif'],
+        gifs: [
+          [
+            '/images/projects/11_dragons/W01_01 - chasm.gif',
+            '/images/projects/11_dragons/W01_01 - fly_01.gif',
+          ],
+          [
+            '/images/projects/11_dragons/W01_02 - puzzle_01.gif',
+            '/images/projects/11_dragons/W03_01 - puzzle_01.gif',
+          ],
         ],
         captions: [
           '1. We pulled back on the camera every time we could in order to make the levels feel bigger and richer.',
@@ -231,12 +289,20 @@ const data: ProjectDetails[] = [
       },
     ],
     trailer: 'https://www.youtube.com/embed/BQY01xBqb1o?si=Ok8Fn9os5_xFJmMj',
-    tech: ['Unity', 'Plastic SCM', 'SourceTree', 'Hack N Plan', 'GDocs', 'Excel'],
+    tech: [
+      'Unity',
+      'Plastic SCM',
+      'SourceTree',
+      'Hack N Plan',
+      'GDocs',
+      'Excel',
+    ],
     selected: true,
   },
   {
     id: '10_spirit',
-    steamUrl: 'https://store.steampowered.com/app/1270720/DreamWorks_Spirit_Luckys_Big_Adventure/',
+    steamUrl:
+      'https://store.steampowered.com/app/1270720/DreamWorks_Spirit_Luckys_Big_Adventure/',
     coverImage: '/images/projects/projectCard_08_spirit.png',
     dimensions: '3D',
     genre: 'Open World',
@@ -245,9 +311,11 @@ const data: ProjectDetails[] = [
     publishingDate: '2021-06-01',
     name: 'DreamWorks Spirit: Lucky´s Big Adventure',
     studio: 'AHEARTFULOFGAMES',
-    overview: 'A narrative, chill open world game based on the universe of Spirit where players have the opportunity to explore the wildlife of a valley while riding Spirit and uncover the secrets of an old treasure map related to Lucky´s mom.',
+    overview:
+      'A narrative, chill open world game based on the universe of Spirit where players have the opportunity to explore the wildlife of a valley while riding Spirit and uncover the secrets of an old treasure map related to Lucky´s mom.',
     position: 'Producer & Game Designer',
-    summary: ' I doubled as Game Designer and Producer while taking the production home and pushing through the COVID Pandemic with financial success. I handled localization, project tasks, external client meetings, UI tasks and level design as a whole.',
+    summary:
+      ' I doubled as Game Designer and Producer while taking the production home and pushing through the COVID Pandemic with financial success. I handled localization, project tasks, external client meetings, UI tasks and level design as a whole.',
     highlights: [
       'Built production workflows and led day to day operations within the team, managing milestones and reporting to internal and external stakeholders.',
       'Mentored artists and game designers alike, built trust with the Art & Code teams and helped to nurture a healthy culture within the company.',
@@ -263,18 +331,27 @@ const data: ProjectDetails[] = [
     ],
     sections: [
       {
-        task:'The World Map',
+        task: 'The World Map',
         taskExecution: [
           'Spirit has 25km^2 of map, which was one of the main challenges of the project. I was in charge of the feature, and decided this size because one of the mandates from the external client was that riding Spirit had to be an experience within nature, with sightseeing and enough space to roam. After some tests, we where very happy with the feeling of going through a real region with different biomes and cute corners, so we went with that.',
           'However, this did not came for free: the Code team had to go for a partition of the map that loads and unloads chunks of terrain in real time. It ended up working on all platforms and allowed for better detailing but was a hindrance for some time. This was a very humbling lesson about the dangers of being very ambitious in pre-production.',
         ],
         pageSize: 0,
-        gifs:[
-          ['/images/projects/10_spirit/SpiritRun_01.gif','/images/projects/10_spirit/SpiritRun_02.gif'],
-          ['/images/projects/10_spirit/SpiritRun_03.gif','/images/projects/10_spirit/SpiritRun_04.gif'],
-          ['/images/projects/10_spirit/EarlyCorner_01.png','/images/projects/10_spirit/EarlyCorner_02.png'],
+        gifs: [
+          [
+            '/images/projects/10_spirit/SpiritRun_01.gif',
+            '/images/projects/10_spirit/SpiritRun_02.gif',
+          ],
+          [
+            '/images/projects/10_spirit/SpiritRun_03.gif',
+            '/images/projects/10_spirit/SpiritRun_04.gif',
+          ],
+          [
+            '/images/projects/10_spirit/EarlyCorner_01.png',
+            '/images/projects/10_spirit/EarlyCorner_02.png',
+          ],
         ],
-        captions:[
+        captions: [
           '1. We wanted to provide a very smooth sensation of riding Spirit, so the camera leaned back to allow players to appreciate the scenery.',
           '2. The lake was a central element in the game, as every biome envelops the lake from one side or another, providing very different sceneries.',
           '3. We worked alongside environmental artist to create cute corners on several key places that the player would traverse often.',
@@ -282,15 +359,24 @@ const data: ProjectDetails[] = [
       },
     ],
     trailer: 'https://www.youtube.com/embed/imX-1wNppog?si=FFlZjFhrAk8fmB4L',
-    tech: ['Unity', 'Tortoise', 'SourceTree', 'Hack N Plan', 'GDocs', 'Excel', 'Photoshop','C#'],
+    tech: [
+      'Unity',
+      'Tortoise',
+      'SourceTree',
+      'Hack N Plan',
+      'GDocs',
+      'Excel',
+      'Photoshop',
+      'C#',
+    ],
     selected: true,
   },
   {
     id: '09_ceuProject',
-    coverImage : '',
+    coverImage: '',
     startDate: '2022-09-19',
     endDate: '2024-01-12',
-    name: 'M. D. in Virtual Reality',
+    name: "Master's Degree in Virtual Reality",
     overview: '',
     position: 'Associate Professor',
     highlights: [
@@ -300,19 +386,18 @@ const data: ProjectDetails[] = [
   },
   {
     id: '08_utadProject',
-    coverImage : '',
+    coverImage: '',
     startDate: '2017-02-01',
     endDate: '2019-07-31',
     name: 'B.A. in Game Design',
     overview: '',
     position: 'Associate Professor',
     highlights: [
-      'Built production workflows and led day to day operations within the team, managing milestones and reporting to internal and external stakeholders.',
-      'Mentored several game designers and took direct responsibility of a level designer.',
-      'Took full ownership of the world map, designing and implementing it fully.',
-      'Created several traversal puzzles and collectibles, integrating its gameplay with the world.',
+      'Taught Game Mechanics (I), Design for New Platforms, Projects II and VI, A.I. for Designers and several Unity workshops.',
+      'Responsible for grading assignments such as GDDs, preparing academic materials and arranging tutorships for these courses.',
+      'Fostered several role-playing activities as producer, helping students to develop projects on real industry-like conditions.',
     ],
-  },  
+  },
   {
     id: '07_2100',
     url: 'https://gamestrategies.io/en/catalog/2100-a-customer-service-course-for-companies/',
@@ -324,7 +409,8 @@ const data: ProjectDetails[] = [
     publishingDate: '2017-05-30',
     name: '2100',
     studio: 'Gamelearn',
-    overview: 'A training course with some progression sprinkled over it. Tailored to teach how to engage in public spaces as an employee.',
+    overview:
+      'A training course with some progression sprinkled over it. Tailored to teach how to engage in public spaces as an employee.',
     position: 'Game Designer',
     highlights: [
       'Transitioned to a more holistic role and led artists and customer success agents into the fold of game development.',
@@ -344,13 +430,13 @@ const data: ProjectDetails[] = [
     publishingDate: '2016-11-01',
     name: 'Merchants',
     studio: 'Gamelearn',
-    overview: 'A 10h experience on how to negotiate on various instances, from tactics to overall strategy. My role was supervising the remake as a Product Manager and improving UX as a Game Designer.',
+    overview:
+      'A 10h experience on how to negotiate on various instances, from tactics to overall strategy. My role was supervising the remake as a Product Manager and improving UX as a Game Designer.',
     position: 'Game Designer',
     highlights: [
       'Helped to port Merchants into modern web technologies, streamlining UX and setting the bases for different projects.',
       'Performed several production tasks, filling a necessary role that will point out the need for a full-time producer.',
     ],
-    tech: ['React', 'Node.js', 'Plaid API', 'MongoDB'],
     other: true,
   },
   {
@@ -363,13 +449,13 @@ const data: ProjectDetails[] = [
     publishingDate: '2016-12-16',
     name: 'Fútbol Cuatro Fantasy',
     studio: 'Unusual Wonder',
-    overview: 'Also called Epic Eleven during development, this project was meant to be one of the first football fantasy games in Spain.',
+    overview:
+      'Also called Epic Eleven during development, this project was meant to be one of the first football fantasy games in Spain.',
     position: 'Junior Game Designer',
     highlights: [
       'Developed the core gameplay along with the CEO.',
       'Balanced player salaries and adjusted stat weight on player valuations.',
     ],
-    tech: ['React', 'Node.js', 'Plaid API', 'MongoDB'],
     other: true,
   },
   {
@@ -382,16 +468,16 @@ const data: ProjectDetails[] = [
     endDate: '',
     publishingDate: '2014-11-20',
     name: 'Fútbol Stars',
-    overview: 'My first professional project, were I churned out levels like crazy and got acquainted with Unity while being surrounded by 20y+ veterans.',
+    overview:
+      'My first professional project, were I churned out levels like crazy and got acquainted with Unity while being surrounded by 20y+ veterans.',
     studio: 'Unusual Wonder',
     position: 'Intern',
     highlights: [
       'Developed nearly 280 levels in 6 months using Unity 4.6. 68 ended up in the final product.',
       'Performed QA duties during the release phase of the game.',
       'Game published on Play Store and App Store on 2014. No longer available.',
-      'Led development of core evaluation framework, vulnerability scanning, and automated red-teaming capabilities.',
     ],
-    tech: ['React', 'Node.js', 'Plaid API', 'MongoDB'],
+    tech: ['Unity'],
     other: true,
   },
   {
@@ -405,7 +491,8 @@ const data: ProjectDetails[] = [
     publishingDate: '',
     name: 'The Developers',
     studio: 'Pelta Games',
-    overview: 'Our shot at developing a game with an actual budget, creating a concept in an attempt to win an European grant. As we did not get the grant, the project was shelved indefinitely.',
+    overview:
+      'Our shot at developing a game with an actual budget, creating a concept in an attempt to win an European grant. As we did not get the grant, the project was shelved indefinitely.',
     position: 'Planner',
     highlights: [
       'Created the whole game concept and GDD.',
@@ -425,7 +512,8 @@ const data: ProjectDetails[] = [
     publishingDate: '',
     name: 'Daredevils: Mercenaries of Hadronia',
     studio: 'Pelta Games',
-    overview: 'Our second try was an adaptation of Crownless to the mobile market, in order to hone our skillset for mobile games.',
+    overview:
+      'Our second try was an adaptation of Crownless to the mobile market, in order to hone our skillset for mobile games.',
     position: 'Planner',
     highlights: [
       'Created character arquetypes and game economy.',
@@ -445,7 +533,8 @@ const data: ProjectDetails[] = [
     publishingDate: '',
     name: 'Crownless: Knights of Hadronia',
     studio: 'Pelta Games',
-    overview: 'Our first game ever tried was a JRPG focused on replicating PSX classic vibes.',
+    overview:
+      'Our first game ever tried was a JRPG focused on replicating PSX classic vibes.',
     position: 'Planner',
     highlights: [
       'Wrote a script treatment for the whole adventure.',

@@ -27,9 +27,9 @@ export default function PageWrapper({
         id={MAIN_CONTENT_ID}
         tabIndex={-1}
         className={['page-main', mainClassName].filter(Boolean).join(' ')}
-        >
-          {children}
-        </main>
+      >
+        {children}
+      </main>
       {!hideFooter && <Footer />}
     </div>
   );

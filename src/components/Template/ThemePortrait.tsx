@@ -30,7 +30,7 @@ export default function ThemePortrait({
         width={width}
         height={height}
         loading={priority ? 'eager' : 'lazy'}
-        decoding='async'
+        decoding="async"
       />
     </span>
   );

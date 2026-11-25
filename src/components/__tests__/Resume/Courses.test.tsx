@@ -30,7 +30,7 @@ describe('Courses', () => {
     render(<Courses data={mockCourses} />);
 
     expect(
-      screen.getByRole('heading', { name: /selected courses/i }),
+      screen.getByRole('heading', { name: /university courses/i }),
     ).toBeInTheDocument();
   });
 
@@ -99,19 +99,11 @@ describe('Course', () => {
     expect(link).toHaveAttribute('href', mockCourse.link);
   });
 
-  it('renders bullet separator when not last', () => {
-    render(<Course data={mockCourse} last={false} />);
-
-    // Should have the dot separator
-    const dot = document.querySelector('.course-dot');
-    expect(dot).toBeInTheDocument();
-  });
-
-  it('does not render bullet when last', () => {
-    render(<Course data={mockCourse} last={true} />);
+  it('wraps the course link in its timeline dot', () => {
+    render(<Course data={mockCourse} />);
 
     const dot = document.querySelector('.course-dot');
-    expect(dot).not.toBeInTheDocument();
+    expect(dot).toContainElement(screen.getByRole('link'));
   });
 
   it('renders as list item', () => {

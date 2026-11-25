@@ -14,7 +14,7 @@ export default function ThemeToggle() {
     } else {
       setIsDark(window.matchMedia('(prefers-color-scheme: dark)').matches);
     }
-  },[]);
+  }, []);
 
   useEffect(() => {
     if (isDark === null) return;
@@ -47,4 +47,3 @@ export default function ThemeToggle() {
     </button>
   );
 }
-

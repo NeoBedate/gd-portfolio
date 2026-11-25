@@ -1,4 +1,4 @@
-import { AUTHOR_NAME } from "@/lib/utils";
+import { AUTHOR_NAME } from '@/lib/utils';
 
 export interface Route {
   label: string;
@@ -41,7 +41,7 @@ const routes: Route[] = [
   {
     label: 'Contact',
     path: '/contact',
-  }
+  },
 ];
 
 export default routes;

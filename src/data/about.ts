@@ -1,6 +1,4 @@
-export const aboutMarkdown = 
-
-`
+export const aboutMarkdown = `
 # Intro
 
 I've involved myself in several environments associated with the industry since the very beginning of my carrer (2012): started as an indie developer (with more will than knowledge); got a formal education in Game Design; entered the industry and worked as a professional for 4 years; went back to the same university that saw me grow into a professional and taught Game Design for 3 years, while keeping in touch with development teams; then went back to the industry to develop my career further for the last 6 years.
@@ -48,10 +46,8 @@ Would you like to know more? ;)
 - I discovered a bit late in my 20's that making games was my call. I'm never going to forfeit that feeling, I love entertaining people...
 - ...which got me into DJing. Creating a community around what you love is unbreakable.
 - I miss my long hair :_)
-- I recently lost my gallbladder, so I'm still balancing my diet. I miss eating lebanese kebab.
 - I bicycle at any chance I get.
 - I got a duck for every birthday since I was 21. It doesn't make any sense, yet everyone around identifies me as some sort of Duck King.
-- I love that this template has this page so I can ramble about me here instead of doing it so on my CV.
 
 # I get around
 
@@ -59,10 +55,10 @@ Would you like to know more? ;)
 - Lived abroad for a year (2010-2011) in Exeter, United Kingdom, thanks to [Erasmus](https://erasmus-plus.ec.europa.eu).
 - Since then I've went to the perfidious Albion more times than I can count, up to the point of officiating the wedding of one of my best friends.
 - I've gone around Europe (Paris, Amsterdam, Berlin, Lisbon, etc) by train a lot, and I expect to keep doing so: Rome, Vienna, Budapest, Prague... I'm looking at you.
-- A week after my 40 I went to Japan for three weeks. The experience of a lifetime. Just remember that if you go on April like me, you don't need to take your furries with you.
+- A week after my 40 I went to Japan for three weeks. The experience of a lifetime.
 
 
-`
+`;
 /*# I Dream Of
 
 - Inspiring and feeling inspired.
@@ -94,5 +90,3 @@ Would you like to know more? ;)
 
 If we are friends and you feel like you belong on this list, you're probably right. Submit a PR, or ask me, and I'll add you.
 */
-
-;

@@ -1,6 +1,46 @@
+import fs from 'node:fs';
+import path from 'node:path';
+
 import { describe, expect, it } from 'vitest';
 
+import companies from '../companies';
 import projects from '../projects';
+
+const PUBLIC_DIR = path.join(process.cwd(), 'public');
+
+/**
+ * True only when the file exists with exactly this casing. Windows and macOS
+ * ignore case, but the Linux host serving the site does not, so
+ * `FireRealm.PNG` on disk and `FireRealm.png` in code works locally and 404s
+ * in production. Comparing against the directory listing catches that.
+ */
+function existsWithExactCase(publicPath: string): boolean {
+  const segments = publicPath.split('/').filter(Boolean);
+  let dir = PUBLIC_DIR;
+  for (const segment of segments) {
+    if (!fs.existsSync(dir) || !fs.readdirSync(dir).includes(segment)) {
+      return false;
+    }
+    dir = path.join(dir, segment);
+  }
+  return true;
+}
+
+function mediaPaths(): string[] {
+  const paths: string[] = [];
+  for (const project of projects) {
+    if (project.coverImage) paths.push(project.coverImage);
+    paths.push(...(project.images ?? []));
+    for (const section of project.sections ?? []) {
+      if (section.taskImage) paths.push(section.taskImage);
+      for (const group of section.gifs) paths.push(...group);
+    }
+  }
+  for (const company of companies) {
+    if (company.logo) paths.push(company.logo);
+  }
+  return paths;
+}
 
 describe('projects data', () => {
   it('exports an array of projects', () => {
@@ -8,56 +48,61 @@ describe('projects data', () => {
     expect(projects.length).toBeGreaterThan(0);
   });
 
-  it('each project has required properties', () => {
+  it('each project has the required properties', () => {
     for (const project of projects) {
-      expect(project).toHaveProperty('title');
-      expect(project).toHaveProperty('image');
-      expect(project).toHaveProperty('date');
-      expect(project).toHaveProperty('summary');
-
+      expect(typeof project.id).toBe('string');
       expect(typeof project.name).toBe('string');
+      expect(typeof project.position).toBe('string');
       expect(typeof project.coverImage).toBe('string');
-      expect(typeof project.publishingDate).toBe('string');
-      expect(typeof project.summary).toBe('string');
+      expect(Array.isArray(project.highlights)).toBe(true);
     }
   });
 
-  it('project titles are non-empty', () => {
+  it('has unique ids and names', () => {
+    const ids = projects.map((p) => p.id);
+    const names = projects.map((p) => p.name);
+
+    expect(new Set(ids).size).toBe(ids.length);
+    expect(new Set(names).size).toBe(names.length);
+  });
+
+  it('project names are non-empty', () => {
     for (const project of projects) {
       expect(project.name.trim().length).toBeGreaterThan(0);
     }
   });
 
-  // it('project descriptions are non-empty', () => {
-  //   for (const project of projects) {
-  //     expect(project.desc.trim().length).toBeGreaterThan(0);
-  //   }
-  // });
-
-  it('image paths start with /', () => {
+  it('links are absolute URLs or in-page anchors when present', () => {
     for (const project of projects) {
-      expect(project.coverImage.startsWith('/')).toBe(true);
-    }
-  });
-
-  // it('dates are valid date strings', () => {
-  //   for (const project of projects) {
-  //     const date = new Date(project.publishingDate);
-  //     expect(date.toString()).not.toBe('Invalid Date');
-  //   }
-  // });
-
-  it('links are valid URLs when present', () => {
-    const urlRegex = /^https?:\/\/.+/;
-
-    for (const project of projects) {
-      if (project.url) {
-        expect(project.url).toMatch(urlRegex);
+      for (const link of [project.url, project.steamUrl, project.trailer]) {
+        if (link) {
+          expect(link).toMatch(/^(https?:\/\/.+|#.+)$/);
+        }
       }
     }
   });
 
-  it('tech is an array when present', () => {
+  it('media paths are root-relative', () => {
+    for (const mediaPath of mediaPaths()) {
+      expect(mediaPath.startsWith('/')).toBe(true);
+    }
+  });
+
+  it('every media file exists in public/ with matching case', () => {
+    const missing = mediaPaths().filter((p) => !existsWithExactCase(p));
+
+    expect(missing).toEqual([]);
+  });
+
+  it('each section pairs gifs with captions', () => {
+    for (const project of projects) {
+      for (const section of project.sections ?? []) {
+        expect(section.captions.length).toBe(section.gifs.length);
+      }
+    }
+  });
+
+  it('tech is a non-empty array when present', () => {
     for (const project of projects) {
       if (project.tech) {
         expect(Array.isArray(project.tech)).toBe(true);
@@ -66,23 +111,15 @@ describe('projects data', () => {
     }
   });
 
-  it('has unique project titles', () => {
-    const titles = projects.map((p) => p.name);
-    const uniqueTitles = new Set(titles);
-
-    expect(uniqueTitles.size).toBe(titles.length);
-  });
-
-  it('selected is boolean when present', () => {
-    for (const project of projects) {
-      if (project.selected !== undefined) {
-        expect(typeof project.selected).toBe('boolean');
-      }
-    }
-  });
-
   it('has at least one selected project', () => {
-    const selected = projects.filter((p) => p.selected);
-    expect(selected.length).toBeGreaterThanOrEqual(1);
+    expect(projects.some((p) => p.selected)).toBe(true);
+  });
+
+  it('contains no text left over from the site template', () => {
+    const text = JSON.stringify(projects);
+
+    for (const leftover of ['red-teaming', 'Plaid API', 'MongoDB']) {
+      expect(text).not.toContain(leftover);
+    }
   });
 });

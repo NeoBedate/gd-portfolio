@@ -1,69 +1,55 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-import Job from '../../Experience/Resume';
+import companies from '@/data/companies';
+import work from '@/data/experience/work';
 
-const mockJobs = [
-  {
-    companyId: 'xx_acme',
-    projectIds: [ 'x0_acmeProject', 'x1_acmeProject'],
-  },
-  {
-    companyId: 'yy_startupInc',
-    projectIds: [ 'y0_startupProject', 'y1_startupProject'],
-  },
-];
+import Resume from '../../Experience/Resume';
 
-describe('Experience', () => {
-  it('renders the experience section with title', () => {
-    render(<Job data={mockJobs} />);
+// Resume looks companies and projects up by id in the real data files, so
+// these tests render the real work history rather than mocks.
+describe('Resume', () => {
+  it('renders the section with its title', () => {
+    render(<Resume data={work} />);
 
     expect(
-      screen.getByRole('heading', { name: /experience/i }),
+      screen.getByRole('heading', { name: /resume/i, level: 2 }),
     ).toBeInTheDocument();
   });
 
-  it('renders all jobs', () => {
-    render(<Job data={mockJobs} />);
+  it('renders one entry per company', () => {
+    render(<Resume data={work} />);
 
-    expect(screen.getByText('Acme Corp')).toBeInTheDocument();
-    expect(screen.getByText('Startup Inc')).toBeInTheDocument();
+    expect(document.querySelectorAll('.resume-container')).toHaveLength(
+      work.length,
+    );
   });
 
-  it('renders job positions', () => {
-    render(<Job data={mockJobs} />);
+  it('renders every company in the work history', () => {
+    render(<Resume data={work} />);
 
-    expect(screen.getByText(/Senior Engineer/)).toBeInTheDocument();
-    expect(screen.getByText(/Software Engineer/)).toBeInTheDocument();
+    // Not every company has a url, so match the name text rather than a link.
+    const names = [...document.querySelectorAll('.resume-compName')].map((el) =>
+      el.textContent?.trim(),
+    );
+    for (const job of work) {
+      const company = companies.find((c) => c.id === job.companyId);
+      expect(names).toContain(company?.name);
+    }
   });
 
   it('has anchor link for navigation', () => {
-    render(<Job data={mockJobs} />);
+    render(<Resume data={work} />);
 
-    const anchor = document.getElementById('experience');
-    expect(anchor).toBeInTheDocument();
-  });
-
-  it('renders jobs with company links', () => {
-    render(<Job data={mockJobs} />);
-
-    const links = screen.getAllByRole('link');
-    expect(
-      links.some((l) => l.getAttribute('href') === 'https://acme.com'),
-    ).toBe(true);
-    expect(
-      links.some((l) => l.getAttribute('href') === 'https://startup.com'),
-    ).toBe(true);
+    expect(document.getElementById('resume')).toBeInTheDocument();
   });
 
   it('handles empty jobs array', () => {
-    render(<Job data={[]} />);
+    render(<Resume data={[]} />);
 
     expect(
-      screen.getByRole('heading', { name: /experience/i }),
+      screen.getByRole('heading', { name: /resume/i }),
     ).toBeInTheDocument();
-    // No job articles
-    const articles = document.querySelectorAll('.resume-container');
-    expect(articles.length).toBe(0);
+    expect(document.querySelectorAll('.resume-container')).toHaveLength(0);
   });
 });

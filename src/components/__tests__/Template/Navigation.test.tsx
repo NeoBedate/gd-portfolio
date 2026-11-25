@@ -31,7 +31,7 @@ describe('Navigation', () => {
 
   it('renders the logo link to home', () => {
     render(<Navigation />);
-    const logo = screen.getByRole('link', { name: /md/i });
+    const logo = screen.getByRole('link', { name: /home/i });
     expect(logo).toHaveAttribute('href', '/');
   });
 
@@ -40,8 +40,12 @@ describe('Navigation', () => {
 
     // Should have links for About, Experience, Portfolio, Archive, Contact
     expect(screen.getByRole('link', { name: /about/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /experience/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /portfolio/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: /experience/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: /portfolio/i }),
+    ).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /archive/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /contact/i })).toBeInTheDocument();
   });

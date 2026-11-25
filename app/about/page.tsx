@@ -4,7 +4,7 @@ import AboutContent from '@/components/About/Sections';
 import { SchemaGraph } from '@/components/Schema';
 import PageWrapper from '@/components/Template/PageWrapper';
 import { aboutMarkdown } from '@/data/about';
-import profile from '@/data/profile.json'
+import profile from '@/data/profile.json';
 import { createPageMetadata } from '@/lib/metadata';
 import {
   breadcrumbNode,
@@ -16,7 +16,7 @@ import { AUTHOR_NAME } from '@/lib/utils';
 
 const ABOUT_URL = `${SITE_URL}/about/`;
 
-const ABOUT_DESCRIPTION = `Learn about ${AUTHOR_NAME} - ${profile.role_01} at ${profile.employer} and Producer. `;
+const ABOUT_DESCRIPTION = `Learn about ${AUTHOR_NAME}: ${profile.role_01}, ${profile.role_02} and ${profile.role_03} based in ${profile.currentCity}.`;
 
 export const metadata: Metadata = createPageMetadata({
   title: 'About',
@@ -26,7 +26,7 @@ export const metadata: Metadata = createPageMetadata({
 
 export default function AboutPage() {
   return (
-    <PageWrapper mainClassName='page-main--about'>
+    <PageWrapper mainClassName="page-main--about">
       <SchemaGraph
         nodes={[
           profilePageNode({
@@ -45,9 +45,7 @@ export default function AboutPage() {
         <header className="about-header">
           <h1 className="about-title">About Me</h1>
         </header>
-        <p className="about-summary">
-           
-        </p>
+        <p className="about-summary"></p>
         <AboutContent markdown={aboutMarkdown} />
       </section>
     </PageWrapper>

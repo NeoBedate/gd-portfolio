@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'About',
-  description: "Learn about Santiago R. Bedate",
+  description: 'Learn about Santiago R. Bedate',
 };
 
 export default function AboutLayout({

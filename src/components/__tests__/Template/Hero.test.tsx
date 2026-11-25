@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
+import profile from '@/data/profile.json';
+
 import Hero from '../../Template/Hero';
 
 describe('Hero', () => {
@@ -15,35 +17,27 @@ describe('Hero', () => {
     render(<Hero />);
 
     const heading = screen.getByRole('heading', { level: 1 });
-    expect(heading).toHaveTextContent("Santiago R. Bedate");
+    expect(heading).toHaveTextContent(profile.name);
   });
 
-  /* it('renders the tagline with Promptfoo link', () => {
+  it('displays the roles chip', () => {
     render(<Hero />);
 
-    const promptfooLink = screen.getByRole('link', { name: /promptfoo/i });
-    expect(promptfooLink).toHaveAttribute('href', 'https://promptfoo.dev');
-    expect(promptfooLink).toHaveClass('hero-highlight');
-  }); 
-
-  it('displays hero chips for credentials', () => {
-    render(<Hero />);
-
-    expect(screen.getByText('YC Alum')).toBeInTheDocument();
-    expect(screen.getByText('Stanford ICME')).toBeInTheDocument();
     expect(
-      screen.getByText('Co-founded Arthena & Matroid'),
+      screen.getByText(
+        `${profile.role_01} / ${profile.role_02} / ${profile.role_03}`,
+      ),
     ).toBeInTheDocument();
-  }); */
+  });
 
   it('renders CTA buttons with correct links', () => {
     render(<Hero />);
 
-    const aboutButton = screen.getByRole('link', { name: /about me/i });
-    expect(aboutButton).toHaveAttribute('href', '/about');
-    expect(aboutButton).toHaveClass('button-primary');
+    const portfolioButton = screen.getByRole('link', { name: /portfolio/i });
+    expect(portfolioButton).toHaveAttribute('href', '/portfolio');
+    expect(portfolioButton).toHaveClass('button-primary');
 
-    const experienceButton = screen.getByRole('link', { name: /view experience/i });
+    const experienceButton = screen.getByRole('link', { name: /experience/i });
     expect(experienceButton).toHaveAttribute('href', '/experience');
     expect(experienceButton).toHaveClass('button-secondary');
   });

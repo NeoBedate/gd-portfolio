@@ -8,55 +8,37 @@ describe('about data', () => {
     expect(aboutMarkdown.length).toBeGreaterThan(0);
   });
 
-  it('contains the intro section', () => {
-    expect(aboutMarkdown).toContain('# Intro');
-    expect(aboutMarkdown).toContain('Promptfoo');
-  });
-
-  it('contains the history section', () => {
-    expect(aboutMarkdown).toContain('# Some History');
-    expect(aboutMarkdown).toContain('MS-DOS');
-  });
-
-  it('contains the likes section', () => {
-    expect(aboutMarkdown).toContain('# I Like');
-    expect(aboutMarkdown).toContain('Running');
-    expect(aboutMarkdown).toContain('Skiing');
-  });
-
-  it('contains the travel section', () => {
-    expect(aboutMarkdown).toContain('# Travel / Geography');
-    expect(aboutMarkdown).toContain('Buffalo, New York');
-  });
-
-  it('contains the fun facts section', () => {
-    expect(aboutMarkdown).toContain('# Fun Facts');
-  });
-
-  it('contains the dreams section', () => {
-    expect(aboutMarkdown).toContain('# I Dream Of');
-    expect(aboutMarkdown).toContain('Staying curious');
-  });
-
-  it('contains the admired websites section', () => {
-    expect(aboutMarkdown).toContain('# Websites from People I Admire');
-  });
-
-  it('contains valid markdown links', () => {
-    // Check for markdown link format [text](url)
-    const linkRegex = /\[.+?\]\(.+?\)/g;
-    const links = aboutMarkdown.match(linkRegex);
-
-    expect(links).not.toBeNull();
-    expect(links!.length).toBeGreaterThan(10);
+  it('contains the expected sections', () => {
+    for (const heading of [
+      '# Intro',
+      '# Historical shenanigans',
+      '# Non-gaming stuff',
+      '# Life inspirations',
+      '# I get around',
+    ]) {
+      expect(aboutMarkdown).toContain(heading);
+    }
   });
 
   it('contains properly formatted headers', () => {
-    // Check for markdown headers
-    const headerRegex = /^#+ .+$/gm;
-    const headers = aboutMarkdown.match(headerRegex);
+    const headers = aboutMarkdown.match(/^#+ .+$/gm);
 
     expect(headers).not.toBeNull();
-    expect(headers!.length).toBeGreaterThan(5);
+    expect(headers?.length).toBeGreaterThanOrEqual(5);
+  });
+
+  it('markdown links point to absolute URLs', () => {
+    const links = [...aboutMarkdown.matchAll(/\[[^\]]+\]\(([^)]+)\)/g)];
+
+    expect(links.length).toBeGreaterThan(0);
+    for (const [, url] of links) {
+      expect(url).toMatch(/^https?:\/\/\S+$/);
+    }
+  });
+
+  it('contains no lines that were removed on purpose', () => {
+    for (const removed of ['gallbladder', 'furries', 'this template']) {
+      expect(aboutMarkdown).not.toContain(removed);
+    }
   });
 });
