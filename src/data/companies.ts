@@ -1,14 +1,22 @@
 export interface CompanyDetails {
   id: string;
   url?: string;
-  logo: string;
+  /** Omit for roles with no company logo, such as freelance work. */
+  logo?: string;
   startDate: string;
-  endDate: string;
+  /** Omit while the role is ongoing; the résumé shows "Present". */
+  endDate?: string;
   name: string;
   description: string;
 }
 
 const data: CompanyDetails[] = [
+  {
+    id: '07_freelance',
+    startDate: '2025-12-01',
+    name: 'Freelance',
+    description: 'Consulting on an unannounced 3D action game under NDA.',
+  },
   {
     id: '06_ahog',
     logo: '/images/complogo/aheartfulofgames-complogo.webp',

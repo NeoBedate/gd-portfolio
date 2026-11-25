@@ -9,6 +9,10 @@ export interface StudioJob {
 
 const work: StudioJob[] = [
   {
+    companyId: '07_freelance',
+    projectIds: ['13_freelanceNda'],
+  },
+  {
     companyId: '06_ahog',
     projectIds: ['12_tmnt', '11_dragons', '10_spirit'],
   },
