@@ -137,6 +137,32 @@
   color: var(--color-accent);
 }
 
+/* Ownership notice for the game media shown on the site. Spans the footer
+   under both columns, aligned with them. */
+.footer-legal {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--measure-page);
+  margin: 2rem auto 0;
+  padding-inline: 2rem;
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  color: var(--color-fg-light);
+  text-align: center;
+}
+
+@media screen and (max-width: 735px) {
+  .footer-legal {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .footer-legal {
+    text-align: left;
+  }
+}
+
 /* Footer links section */
 .footer-links {
   display: flex;
