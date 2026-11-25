@@ -49,13 +49,13 @@ const data: ProjectDetails[] = [
     name: 'Teenage Mutant Ninja Turtles: Mutants Unleashed',
     studio: 'AHEARTFULOFGAMES',
     overview:
-      'An action platformer where the player takes control of the four ninja turtles, battling through New York in order to uncover a conspiracy involving the `Mewbies´ and the chaos they are spreading through the city.',
+      'An action platformer where the player takes control of the four ninja turtles, battling through New York in order to uncover a conspiracy involving the "Mewbies" and the chaos they are spreading through the city.',
     position: 'Lead Level Designer',
     summary:
-      'As a Lead, I was tasked with providing action-focused game spaces for a +10h game. Given the nature of the gameplay, spaces needed to be tightly designed for several traversal feats and combat abilities, so I nurtured my team with clear guidelines, processes, deadlines and expectations. Additionally, I helped the Production team to create our Jira project and processes for the whole production, a key step into an 18 months project for 31 people.',
+      'As a Lead, I was tasked with providing action-focused game spaces for a 10+ hour game. Given the nature of the gameplay, spaces needed to be tightly designed for several traversal feats and combat abilities, so I nurtured my team with clear guidelines, processes, deadlines and expectations. Additionally, I helped the Production team to create our Jira project and processes for the whole production, a key step in an 18-month project for 31 people.',
     highlights: [
       'Led a team of 4 level designers and a scale-up in production workflows to produce 40 levels.',
-      'Assumed authorship of 30% of the game levels, plus direct supervision over the rest.',
+      "Authored 30% of the game's levels and directly supervised the rest.",
       'Developed a documentation system to increase feedback quality between internal and external clients, and the Level Design team.',
       'Supported Production and QA through a successful Jira implementation of our Production schedule and level creation pipeline.',
     ],
@@ -73,7 +73,7 @@ const data: ProjectDetails[] = [
         task: 'Traversal and combat solutions',
         taskExecution: [
           'We tested and delivered levels as proof of concept for <b>traversal and combat</b> mainly. That led us to think of levels as solitary entities mostly, instead of connecting them, leaving traces of that interconnection only at the portals.',
-          'We divided levels among ourselves, to maximize output and hit the number of 40 levels as soon as possible. Next, everyone took care of features present on every level: that way everyone knows the whole scope of the game but also each can rely on their strenghts: camera work, blockouts, arena creation, set pieces, etc...',
+          'We divided levels among ourselves, to maximize output and hit the number of 40 levels as soon as possible. Next, everyone took care of features present on every level: that way everyone knows the whole scope of the game but also each can rely on their strengths: camera work, blockouts, arena creation, set pieces, etc...',
           'At the same time, I personally took care of some level renovations from the ground up (some levels were far off from the quality expected after initial passes) and started communicating every day with QA: documenting level layouts; expected results on traversal and combat abilities and interactive props; and critical errors on the game flow.',
           'After a year and a half, this mixed approach of responsibilities within the department made our team very flexible, focused on bringing the studio together both on features and content, and a powerhouse of reliability within our corporate structure. We delivered way more, and way better, than expected during production and post-production.',
         ],
@@ -110,7 +110,7 @@ const data: ProjectDetails[] = [
           '3. After the rebuild, we see here one of the spaces from The Mall which worked better on camera and traversal.',
           '4. We recreated several iconic places from NY City, such as the West 167th Street Stairs (or "Joker Stairs")...',
           '5. ...the Yankee Stadium...',
-          '6. ...and Brooklyn´s bridge, a level in which I take special pride as it is my very own reinterpretation of the famous bridge. Here we can see it fully dressed.',
+          "6. ...and Brooklyn's bridge, a level in which I take special pride as it is my very own reinterpretation of the famous bridge. Here we can see it fully dressed.",
         ],
       },
       {
@@ -118,8 +118,8 @@ const data: ProjectDetails[] = [
         taskExecution: [
           'Portals, cameras and art dressing were the main challenges on the level design workflow.',
           'Early on development, each portal was meant to function as both entry and exit to give freedom to the Narrative Department. However, as the narrative changed from a "rogue-likesque" structure to a more linear one, we came to a point where portals were rarely used for both purposes at all. Quests demanded: one point of entry; one path; one point of exit.',
-          'While this approach provided anticipation in terms of narrative and fitted gameplay constrains, the transition to a linear structure came with a hidden cost: production oversee rose, specially for levels heavy on narrative beats, so our first assesment for camera placing and blockout polishing was insufficient. Cameras needed to convey a strong sense of direction and anticipation, which increased iteration times.',
-          'Lastly, level design had to implement gameplay props for traversal challenges and combat arenas, as well as dress some corners to make levels feel alive. All these aspects are where most of the iteration time was alocated.',
+          'While this approach provided anticipation in terms of narrative and fitted gameplay constraints, the transition to a linear structure came with a hidden cost: production overhead rose, especially for levels heavy on narrative beats, so our first assessment of camera placement and blockout polishing was insufficient. Cameras needed to convey a strong sense of direction and anticipation, which increased iteration times.',
+          'Lastly, level design had to implement gameplay props for traversal challenges and combat arenas, as well as dress some corners to make levels feel alive. All these aspects are where most of the iteration time was allocated.',
         ],
         pageSize: 1,
         taskImage: '/images/projects/12_tmnt/MT_04_pre.png',
@@ -149,7 +149,7 @@ const data: ProjectDetails[] = [
         task: 'Level Guidelines',
         taskExecution: [
           'Our main focus was to <b>streamline level design</b> and be able to produce at least x2 to x3 levels more than needed to provide Creative Direction a selection of ideas, so we worked at 3 levels of depth.',
-          '<b>At high level</b>, we were given a target ("40 to 50 levels total, plus set-pieces and bosses: most of them interconnected for quests"), so we created a <b>map of the boroughs</b> (which eventually became the game´s map) and searched for interesting places on each of them. We also looked at common environments (rooftops, streets, sewers and subway tunnels) to help art and gameplay production schedules.',
+          '<b>At high level</b>, we were given a target ("40 to 50 levels total, plus set-pieces and bosses: most of them interconnected for quests"), so we created a <b>map of the boroughs</b> (which eventually became the game\'s map) and searched for interesting places on each of them. We also looked at common environments (rooftops, streets, sewers and subway tunnels) to help art and gameplay production schedules.',
           '<b>At mid level</b>, we took a 3-pass approach designed to quickly iterate: biome and gameplay focus; camera and arena placing; and art & collision corrections. These passes, with the second being the most crucial but time consuming, helped us find a theme for each level while keeping overall cohesion between playable spaces.',
           '<b>At low level</b>, we focused on resolving action-blocks at first (traversal challenges, arenas design and narrative beats), giving space for art integration due to the unique visual identity of the franchise. Blockouts were switched for finished assets and surfaces for textures via replacing tool.',
         ],
@@ -229,9 +229,9 @@ const data: ProjectDetails[] = [
       'A 3D platformer with isometric(ish) view where we take control of Thunder and explore vastly different realms while collecting new allies and fighting powerful dragons.',
     position: 'Senior Level Designer',
     summary:
-      'Focused my professional path within the company on level design, assuming those responsibilities along with mentoring a junior level designer, while still carrying some aspects of project production. Furthermore, I took charge of localization efforts and coordinated with external Production to bring the game to +20 languages.',
+      'Focused my professional path within the company on level design, assuming those responsibilities along with mentoring a junior level designer, while still carrying some aspects of project production. Furthermore, I took charge of localization efforts and coordinated with external Production to bring the game to 20+ languages.',
     highlights: [
-      'Assumed authorship of 60% of the game levels as well as integrated its gameplay content such as arenas, puzzles and cameras.',
+      "Authored 60% of the game's levels and integrated their gameplay content, such as arenas, puzzles and cameras.",
       'Used a modular system to tackle level design and maintain an agile production system, creating 10 minute levels in less than 2 weeks.',
       'Built and maintained battle arenas: enemy placing, trap placing and camera placing.',
       'Supported the creation of core mechanics and development workflows for its integration within levels.',
@@ -268,7 +268,7 @@ const data: ProjectDetails[] = [
         taskExecution: [
           'The world of Dragons is divided into 5 realms with 5 levels each, making a total of 25 levels. On detail, each realm has: 3 core levels (exploration, combat & narrative); 1 set piece with special mechanics; and 1 boss fight.',
           'A distribution that enhanced the adventure aspect of the game, with leaner levels at the beginning encouraging exploration. As the player progresses through the story discovering new mechanics, enemies and completing its own squad of dragons, new paths become unlockable on previous levels. To get all crystals, the player has to backtrack and use the four dragons.',
-          'Along with a wide array of interactables (explosive crystals, gusts of wind, lava pits, spikes, ice walls...) we introduced a plugin to create levels modularly. This gave us the flexibility to create precise geometries without worrying much about traversal abilities getting bugged: with an array of geometry modules, we adapted to pre-stablished rules of level design, and closed traversal and combat sections much quicker.',
+          'Along with a wide array of interactables (explosive crystals, gusts of wind, lava pits, spikes, ice walls...) we introduced a plugin to create levels modularly. This gave us the flexibility to create precise geometries without worrying much about traversal abilities getting bugged: with an array of geometry modules, we adapted to pre-established rules of level design, and closed traversal and combat sections much quicker.',
           'This modularization gave us time to rethink environments along with art. Every realm is underground by diegesis so we worked on several layers of visualization to match the camera FOV, with details suggesting that we were in big, complex caverns. Adjusting that to the need of clear gameplay was tricky but satisfactory.',
         ],
         pageSize: 0,
@@ -309,10 +309,10 @@ const data: ProjectDetails[] = [
     startDate: '2019-12-04',
     endDate: '2021-03-15',
     publishingDate: '2021-06-01',
-    name: 'DreamWorks Spirit: Lucky´s Big Adventure',
+    name: "DreamWorks Spirit: Lucky's Big Adventure",
     studio: 'AHEARTFULOFGAMES',
     overview:
-      'A narrative, chill open world game based on the universe of Spirit where players have the opportunity to explore the wildlife of a valley while riding Spirit and uncover the secrets of an old treasure map related to Lucky´s mom.',
+      "A narrative, chill open world game based on the universe of Spirit where players have the opportunity to explore the wildlife of a valley while riding Spirit and uncover the secrets of an old treasure map related to Lucky's mom.",
     position: 'Producer & Game Designer',
     summary:
       ' I doubled as Game Designer and Producer while taking the production home and pushing through the COVID Pandemic with financial success. I handled localization, project tasks, external client meetings, UI tasks and level design as a whole.',
@@ -333,8 +333,8 @@ const data: ProjectDetails[] = [
       {
         task: 'The World Map',
         taskExecution: [
-          'Spirit has 25km^2 of map, which was one of the main challenges of the project. I was in charge of the feature, and decided this size because one of the mandates from the external client was that riding Spirit had to be an experience within nature, with sightseeing and enough space to roam. After some tests, we where very happy with the feeling of going through a real region with different biomes and cute corners, so we went with that.',
-          'However, this did not came for free: the Code team had to go for a partition of the map that loads and unloads chunks of terrain in real time. It ended up working on all platforms and allowed for better detailing but was a hindrance for some time. This was a very humbling lesson about the dangers of being very ambitious in pre-production.',
+          'Spirit has a 25 km² map, which was one of the main challenges of the project. I was in charge of the feature, and decided this size because one of the mandates from the external client was that riding Spirit had to be an experience within nature, with sightseeing and enough space to roam. After some tests, we were very happy with the feeling of going through a real region with different biomes and cute corners, so we went with that.',
+          'However, this did not come for free: the Code team had to go for a partition of the map that loads and unloads chunks of terrain in real time. It ended up working on all platforms and allowed for better detailing but was a hindrance for some time. This was a very humbling lesson about the dangers of being very ambitious in pre-production.',
         ],
         pageSize: 0,
         gifs: [
@@ -381,7 +381,7 @@ const data: ProjectDetails[] = [
     position: 'Associate Professor',
     highlights: [
       'Taught Advanced Experiences and Game Design, centered around VR video games and their interactions with real and virtual environments.',
-      'Took further the role-play in production, creating a sort of campaign where every student had to deal with a series of real life situations that happened around the production of a video game.',
+      'Extended the production role-play into a campaign where every student had to deal with a series of real-life situations that happen during the production of a video game.',
     ],
   },
   {
@@ -435,7 +435,7 @@ const data: ProjectDetails[] = [
     position: 'Game Designer',
     highlights: [
       'Helped to port Merchants into modern web technologies, streamlining UX and setting the bases for different projects.',
-      'Performed several production tasks, filling a necessary role that will point out the need for a full-time producer.',
+      'Performed several production tasks, filling a necessary role, which highlighted the need for a full-time producer.',
     ],
     other: true,
   },
@@ -469,13 +469,13 @@ const data: ProjectDetails[] = [
     publishingDate: '2014-11-20',
     name: 'Fútbol Stars',
     overview:
-      'My first professional project, were I churned out levels like crazy and got acquainted with Unity while being surrounded by 20y+ veterans.',
+      'My first professional project, where I churned out levels like crazy and got acquainted with Unity while surrounded by veterans with 20+ years of experience.',
     studio: 'Unusual Wonder',
     position: 'Intern',
     highlights: [
       'Developed nearly 280 levels in 6 months using Unity 4.6. 68 ended up in the final product.',
       'Performed QA duties during the release phase of the game.',
-      'Game published on Play Store and App Store on 2014. No longer available.',
+      'Game published on the Play Store and App Store in 2014. No longer available.',
     ],
     tech: ['Unity'],
     other: true,
@@ -492,7 +492,7 @@ const data: ProjectDetails[] = [
     name: 'The Developers',
     studio: 'Pelta Games',
     overview:
-      'Our shot at developing a game with an actual budget, creating a concept in an attempt to win an European grant. As we did not get the grant, the project was shelved indefinitely.',
+      'Our shot at developing a game with an actual budget, creating a concept in an attempt to win a European grant. As we did not get the grant, the project was shelved indefinitely.',
     position: 'Planner',
     highlights: [
       'Created the whole game concept and GDD.',
@@ -516,7 +516,7 @@ const data: ProjectDetails[] = [
       'Our second try was an adaptation of Crownless to the mobile market, in order to hone our skillset for mobile games.',
     position: 'Planner',
     highlights: [
-      'Created character arquetypes and game economy.',
+      'Created character archetypes and game economy.',
       'Set up the economy as a F2P.',
     ],
     tech: ['Unity', 'GitHub', 'SmartGit', 'Hack N Plan', 'Photoshop', 'GDocs'],

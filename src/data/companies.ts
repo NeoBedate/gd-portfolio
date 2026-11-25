@@ -24,7 +24,7 @@ const data: CompanyDetails[] = [
     startDate: '2022-09-19',
     endDate: '2024-01-12',
     name: 'CEU San Pablo',
-    description: `This private university gave me the chance to teach computer engineers and arquitects some basics about virtual environments through video games and level design, as well as some notions of game production.`,
+    description: `This private university gave me the chance to teach computer engineers and architects some basics about virtual environments through video games and level design, as well as some notions of game production.`,
   },
   {
     id: '04_utad',
@@ -50,7 +50,7 @@ const data: CompanyDetails[] = [
     startDate: '2013-07-18',
     endDate: '2015-10-29',
     name: 'Unusual Wonder',
-    description: `I started my journey in video games as an intern for 11 months, performing Level Designer tasks during most of that period. After that time, I was promoted to Junior Game Designer and started working on Fútbol Cuatro Fantasy (previously Epic Eleven) for the remainder of my time in the company, expanding further my responsibilites as designer and learning art and code from several seniors`,
+    description: `I started my journey in video games as an intern for 11 months, performing Level Designer tasks during most of that period. After that time, I was promoted to Junior Game Designer and started working on Fútbol Cuatro Fantasy (previously Epic Eleven) for the remainder of my time in the company, expanding further my responsibilities as designer and learning art and code from several seniors.`,
   },
   {
     id: '01_pelta',
