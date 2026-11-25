@@ -11,7 +11,7 @@ export interface CompanyDetails {
 const data: CompanyDetails[] = [
   {
     id: '06_ahog',
-    logo: '/images/complogo/aheartfulofgames_complogo.png',
+    logo: '/images/complogo/aheartfulofgames-complogo.webp',
     startDate: '2020-01-01',
     endDate: '2025-08-15',
     name: 'AHEARTFULOFGAMES',
@@ -20,7 +20,7 @@ const data: CompanyDetails[] = [
   {
     id: '05_ceu',
     url: 'https://www.uspceu.com',
-    logo: '/images/complogo/ceusanpablo_complogo.png',
+    logo: '/images/complogo/ceusanpablo-complogo.webp',
     startDate: '2022-09-19',
     endDate: '2024-01-12',
     name: 'CEU San Pablo',
@@ -29,7 +29,7 @@ const data: CompanyDetails[] = [
   {
     id: '04_utad',
     url: 'https://u-tad.com',
-    logo: '/images/complogo/utad_complogo.png',
+    logo: '/images/complogo/utad-complogo.webp',
     startDate: '2017-02-01',
     endDate: '2019-07-31',
     name: 'U-TAD',
@@ -38,7 +38,7 @@ const data: CompanyDetails[] = [
   {
     id: '03_gamelearn',
     url: 'https://gamestrategies.io/en/',
-    logo: '/images/complogo/gamelearn_complogo.png',
+    logo: '/images/complogo/gamelearn-complogo.webp',
     startDate: '2016-03-14',
     endDate: '2017-03-10',
     name: 'Gamelearn',
@@ -46,7 +46,7 @@ const data: CompanyDetails[] = [
   },
   {
     id: '02_unusualwonder',
-    logo: '/images/complogo/unusualwonder_complogo.png',
+    logo: '/images/complogo/unusualwonder-complogo.webp',
     startDate: '2013-07-18',
     endDate: '2015-10-29',
     name: 'Unusual Wonder',
@@ -54,7 +54,7 @@ const data: CompanyDetails[] = [
   },
   {
     id: '01_pelta',
-    logo: '/images/complogo/peltagames_complogo.png',
+    logo: '/images/complogo/peltagames-complogo.webp',
     startDate: '2012-09-14',
     endDate: '2018-10-29',
     name: 'Pelta Games',

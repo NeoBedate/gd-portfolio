@@ -41,6 +41,32 @@ global.ResizeObserver = vi.fn().mockImplementation(() => ({
   disconnect: vi.fn(),
 }));
 
+// jsdom has no IntersectionObserver or matchMedia; the project clips
+// (ProjectMedia) use both. Tests that care stub their own.
+class NoopIntersectionObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+  takeRecords() {
+    return [];
+  }
+}
+Object.defineProperty(window, 'IntersectionObserver', {
+  value: NoopIntersectionObserver,
+  writable: true,
+  configurable: true,
+});
+Object.defineProperty(window, 'matchMedia', {
+  value: (query: string) => ({
+    matches: false,
+    media: query,
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+  }),
+  writable: true,
+  configurable: true,
+});
+
 // Mock window.scrollTo for jsdom
 Object.defineProperty(window, 'scrollTo', {
   value: vi.fn(),

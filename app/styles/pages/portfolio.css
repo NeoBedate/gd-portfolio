@@ -341,12 +341,6 @@
   padding: 1rem;
 }
 
-/* Sections without a task image still render an empty <img>; once the
-   image is sized to the column it would show as a blank square. */
-.game-detail-section-taskImage:not(:has(img[src])) {
-  display: none;
-}
-
 .game-detail-section-taskText {
   width: 100%;
   padding: 1rem;
