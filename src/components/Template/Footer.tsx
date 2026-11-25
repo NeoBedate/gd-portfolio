@@ -66,6 +66,10 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      <p className="footer-legal">
+        All game titles, trademarks, footage and screenshots belong to their
+        respective owners and are shown here for portfolio purposes only.
+      </p>
     </footer>
   );
 }

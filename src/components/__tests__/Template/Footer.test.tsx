@@ -63,6 +63,14 @@ describe('Footer', () => {
     expect(screen.getByText('Connect')).toBeInTheDocument();
   });
 
+  it('credits game media to its owners', () => {
+    render(<Footer />);
+
+    expect(
+      screen.getByText(/belong to their respective owners/i),
+    ).toBeInTheDocument();
+  });
+
   it('has link to home from avatar', () => {
     render(<Footer />);
 
