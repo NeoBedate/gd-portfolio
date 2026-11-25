@@ -4,6 +4,7 @@ import companyData from '@/data/companies';
 import type { StudioJob } from '@/data/experience/work';
 import type { ProjectDetails } from '@/data/projects';
 import projectData from '@/data/projects';
+import { CREDITS_URL } from '@/lib/utils';
 import type { ProjectProps } from './Resume/Job';
 import CompanyExperience from './Resume/Job';
 
@@ -17,6 +18,12 @@ const Resume: React.FC<ResumeProps> = ({ data }) => (
     <div className="title">
       <h2>Resume</h2>
     </div>
+    <p className="resume-credits">
+      <a href={CREDITS_URL} target="_blank" rel="noopener noreferrer">
+        Full game credits on MobyGames
+        <span aria-hidden="true"> ↗</span>
+      </a>
+    </p>
     {data.map((item) => (
       <RenderDataFromStudioJob
         key={item.companyId}

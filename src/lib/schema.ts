@@ -3,6 +3,7 @@ import degrees from '@/data/experience/degrees';
 import {
   AUTHOR_NAME,
   AUTHOR_ROLE,
+  CREDITS_URL,
   SITE_DESCRIPTION,
   SITE_IMAGE_DIMENSIONS,
   SITE_IMAGE_PATH,
@@ -49,7 +50,8 @@ export const websiteRef = () => ({ '@id': WEBSITE_ID });
 export function personNode(): SchemaNode {
   const socialLinks = contact
     .filter((item) => !item.link.startsWith('mailto:'))
-    .map((item) => item.link);
+    .map((item) => item.link)
+    .concat(CREDITS_URL);
 
   const emailItem = contact.find((item) => item.link.startsWith('mailto:'));
   const email = emailItem?.link.replace('mailto:', '');

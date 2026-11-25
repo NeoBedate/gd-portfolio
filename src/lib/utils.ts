@@ -10,6 +10,8 @@ export const SITE_NAME = profile.siteName;
 export const AUTHOR_NAME = profile.name;
 export const AUTHOR_ROLE = profile.role_01;
 export const AUTHOR_PROYEARS = profile.professionalYears;
+/** Public game-credits profile, so recruiters can check shipped credits. */
+export const CREDITS_URL = profile.creditsUrl;
 /**
  * The portrait. Used for JSON-LD `image`, where the value should be a picture
  * of the person, not a designed card.
