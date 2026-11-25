@@ -1,5 +1,6 @@
 'use client';
 
+import dayjs from 'dayjs';
 import React, { useEffect, useRef } from 'react';
 import {
   CloseChevron,
@@ -214,8 +215,10 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
           <p className="game-detail-studio" id="game-detail-studio">
             {project.studio} ·{' '}
             <span className="game-detail-tag" id="game-detail-tag">
-              {project.dimensions} · {project.genre} · Publishing Date:{' '}
-              {project.publishingDate}
+              {project.dimensions} · {project.genre}
+              {project.publishingDate
+                ? ` · Released ${dayjs(project.publishingDate).format('MMM YYYY')}`
+                : ''}
             </span>
           </p>
           <div className="game-detail-tech">

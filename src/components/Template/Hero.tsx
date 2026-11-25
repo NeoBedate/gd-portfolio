@@ -14,7 +14,7 @@ export default function Hero() {
           </h1>
           <p className="hero-tagline">
             Professional {profile.role_01} for {profile.professionalYears}{' '}
-            years, holding responsibilites on several different roles while
+            years, holding responsibilities on several different roles while
             delivering results steadily. I helped to create several
             action-oriented, kid-friendly video games for all platforms in the
             last 5 years.
