@@ -57,6 +57,8 @@
 .game-detail-heading {
   display: flex;
   position: relative;
+  /* Keep a long title clear of the absolutely positioned close button. */
+  padding-right: 2.6rem;
 }
 
 .game-detail-title {
@@ -339,6 +341,12 @@
   padding: 1rem;
 }
 
+/* Sections without a task image still render an empty <img>; once the
+   image is sized to the column it would show as a blank square. */
+.game-detail-section-taskImage:not(:has(img[src])) {
+  display: none;
+}
+
 .game-detail-section-taskText {
   width: 100%;
   padding: 1rem;
@@ -476,4 +484,70 @@
 .game-detail-steam-link:hover {
   transform: scale(1.2);
   color: var(--accent);
+}
+
+/* Tablets and phones: one column. Side by side, the trailer shrank to a
+   thumbnail beside a narrow text column, and a section's text was squeezed
+   to about 200px next to its task image, even on a portrait tablet. */
+@media (max-width: 940px) {
+  .game-detail-responsibilities {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+  }
+
+  .game-detail-screenshots {
+    padding: 0;
+  }
+
+  .game-detail-section-body {
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+
+  .game-detail-section-taskText {
+    padding: var(--spacing-4) 0 0;
+  }
+
+  .game-detail-section-taskImage {
+    margin: 0;
+  }
+
+  .game-detail-section-taskImage-image {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* Phones: side by side, each GIF of a pair was about 110px wide. Here the
+   pair stacks at full width with its arrows on a row underneath. */
+@media (max-width: 640px) {
+  .game-detail-section-gifs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3);
+  }
+
+  .game-detail-section-gifs a {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  /* 44px touch targets, centred together on a row below the pair. */
+  .game-detail-section-gifs .game-detail-section-nav-btn {
+    grid-row: 3;
+    width: 2.75rem;
+    height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .game-detail-section-gifs .game-detail-section-nav-btn:first-child {
+    grid-column: 1;
+    justify-self: end;
+  }
+
+  .game-detail-section-gifs .game-detail-section-nav-btn:last-child {
+    grid-column: 2;
+    justify-self: start;
+  }
 }
