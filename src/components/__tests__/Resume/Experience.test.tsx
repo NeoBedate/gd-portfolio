@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 
 import companies from '@/data/companies';
 import work from '@/data/experience/work';
+import profile from '@/data/profile.json';
 
 import Resume from '../../Experience/Resume';
 
@@ -42,6 +43,18 @@ describe('Resume', () => {
     render(<Resume data={work} />);
 
     expect(document.getElementById('resume')).toBeInTheDocument();
+  });
+
+  it('links to the MobyGames credits profile in a new tab', () => {
+    render(<Resume data={work} />);
+
+    const link = screen.getByRole('link', { name: /credits on mobygames/i });
+    expect(link).toHaveAttribute('href', profile.creditsUrl);
+    expect(link.getAttribute('href')).toMatch(
+      /^https:\/\/www\.mobygames\.com\/person\/\d+\//,
+    );
+    expect(link).toHaveAttribute('target', '_blank');
+    expect(link).toHaveAttribute('rel', 'noopener noreferrer');
   });
 
   it('handles empty jobs array', () => {

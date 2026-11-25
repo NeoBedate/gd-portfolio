@@ -227,7 +227,7 @@ const data: ProjectDetails[] = [
     studio: 'AHEARTFULOFGAMES',
     overview:
       'A 3D platformer with isometric(ish) view where we take control of Thunder and explore vastly different realms while collecting new allies and fighting powerful dragons.',
-    position: 'Senior Level Designer',
+    position: 'Senior Level Designer & Production',
     summary:
       'Focused my professional path within the company on level design, assuming those responsibilities along with mentoring a junior level designer, while still carrying some aspects of project production. Furthermore, I took charge of localization efforts and coordinated with external Production to bring the game to 20+ languages.',
     highlights: [

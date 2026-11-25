@@ -265,6 +265,21 @@
   padding-top: 1.5rem;
 }
 
+/* Link to the public credits profile, tucked under the Resume rule so
+   anyone checking a credit finds it where the credits are listed. */
+.experience-content .resume .resume-credits {
+  margin: -1.75rem 0 2.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-ui);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 735px) {
+  .experience-content .resume .resume-credits {
+    text-align: center;
+  }
+}
+
 /* Printed resumes need contact details, which live in the footer on screen.
    Shown only by print.css. */
 .resume-print-contact {
