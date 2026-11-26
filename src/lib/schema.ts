@@ -137,11 +137,13 @@ interface PageNodeOptions {
   description?: string;
   /** Attaches a `breadcrumb` reference (the BreadcrumbList must also be emitted). */
   hasBreadcrumb?: boolean;
+  /** The page's language, when it isn't the site's default (English). */
+  inLanguage?: string;
 }
 
 function baseWebPage(
   type: string,
-  { url, name, description, hasBreadcrumb }: PageNodeOptions,
+  { url, name, description, hasBreadcrumb, inLanguage }: PageNodeOptions,
 ): SchemaNode {
   return {
     '@type': type,
@@ -149,7 +151,7 @@ function baseWebPage(
     url,
     name,
     isPartOf: websiteRef(),
-    inLanguage: SITE_LANGUAGE,
+    inLanguage: inLanguage ?? SITE_LANGUAGE,
     ...(description ? { description } : {}),
     ...(hasBreadcrumb ? { breadcrumb: { '@id': `${url}#breadcrumb` } } : {}),
   };

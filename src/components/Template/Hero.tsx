@@ -2,18 +2,23 @@ import Link from 'next/link';
 
 import { analyticsEvents } from '@/data/analytics';
 import contact from '@/data/contact';
-import { cvDownloads } from '@/data/cv';
-import { currently } from '@/data/home';
-import openToWork from '@/data/openToWork';
+import { t } from '@/data/i18n/ui';
+import { homeContent, openToWorkFor } from '@/data/localized';
 import profile from '@/data/profile.json';
+import { type Lang, localizePath } from '@/lib/i18n';
 import { AUTHOR_HEADLINE } from '@/lib/utils';
 
+import CvButton from './CvButton';
 import ThemePortrait from './ThemePortrait';
 import TrackedLink from './TrackedLink';
 
 const linkedIn = contact.find((item) => item.label === 'LinkedIn');
 
-export default function Hero() {
+export default function Hero({ lang = 'en' }: { lang?: Lang }) {
+  const text = t(lang);
+  const { heroTagline, currently } = homeContent(lang);
+  const openToWork = openToWorkFor(lang);
+
   return (
     <section className="hero">
       <div className="hero-grid">
@@ -23,16 +28,14 @@ export default function Hero() {
             <span className="hero-headline">{AUTHOR_HEADLINE}</span>
           </h1>
           <p className="hero-tagline">
-            I design action spaces for console games: traversal, combat arenas
-            and cameras. {profile.professionalYears} years in the industry, 3
-            console games shipped for DreamWorks and Nickelodeon IPs (published
-            by Outright Games), and I led the level design team that delivered
-            40 levels for <cite>TMNT: Mutants Unleashed</cite>.
+            {heroTagline.before}
+            <cite>{heroTagline.cite}</cite>
+            {heroTagline.after}
           </p>
 
           <div className="hero-status">
             <p className="hero-open">
-              <span className="hero-open-badge">Open to work</span>{' '}
+              <span className="hero-open-badge">{text.hero.openToWork}</span>{' '}
               <span className="hero-open-roles">{openToWork.roles}</span>
             </p>
             <ul className="hero-open-facts">
@@ -41,12 +44,16 @@ export default function Hero() {
               ))}
             </ul>
             <p className="hero-currently">
-              <span className="hero-currently-label">Currently</span>{' '}
+              <span className="hero-currently-label">
+                {text.hero.currently}
+              </span>{' '}
               {currently.map((item, index) => (
                 <span key={item.text}>
                   {index > 0 ? ' · ' : null}
                   {item.href ? (
-                    <Link href={item.href}>{item.text}</Link>
+                    <Link href={localizePath(item.href, lang)}>
+                      {item.text}
+                    </Link>
                   ) : (
                     item.text
                   )}
@@ -63,18 +70,20 @@ export default function Hero() {
 
       <div className="hero-bg" aria-hidden="true" />
       <div className="hero-cta">
-        <Link href="/portfolio" className="button button-primary">
-          See my work <span aria-hidden="true">→</span>
-        </Link>
-        <TrackedLink
-          href={cvDownloads[0].href}
-          className="button button-secondary"
-          download
-          event={analyticsEvents.cvDownload}
-          eventData={{ cv: cvDownloads[0].label, from: 'hero' }}
+        <Link
+          href={localizePath('/portfolio', lang)}
+          className="button button-primary"
         >
-          Download CV (PDF)
-        </TrackedLink>
+          {text.hero.seeWork} <span aria-hidden="true">→</span>
+        </Link>
+        <CvButton
+          lang={lang}
+          from="hero"
+          className="button button-secondary"
+          tooltipAlign="start"
+        >
+          {text.cv.download}
+        </CvButton>
         {linkedIn ? (
           <TrackedLink
             href={linkedIn.link}
@@ -84,7 +93,7 @@ export default function Hero() {
             event={analyticsEvents.linkedIn}
             eventData={{ from: 'hero' }}
           >
-            LinkedIn<span className="sr-only"> (opens in new tab)</span>
+            LinkedIn<span className="sr-only"> {text.opensInNewTab}</span>
           </TrackedLink>
         ) : null}
       </div>

@@ -1,7 +1,8 @@
 /**
  * Prints the CV PDFs in public/cv/ from src/data/cv.ts.
  *
- *   npm run cv                 # both PDFs
+ *   npm run cv                 # every PDF (Level Design and Production,
+ *                              # in English and Spanish)
  *   npm run cv -- --png <dir>  # also save a PNG preview of each page
  *
  * Uses Microsoft Edge (or the browser in CV_BROWSER) in headless mode, so
@@ -34,15 +35,8 @@ const EDGE =
 /** The site's light-theme accent (--color-accent in tokens/colors.css). */
 const ACCENT = '#1b2fbf';
 
-const {
-  cvContact,
-  cvEducation,
-  cvName,
-  cvPersonal,
-  cvTools,
-  cvVariants,
-  toolNames,
-} = await import(pathToFileURL(path.join(ROOT, 'src/data/cv.ts')).href);
+const { cvContact, cvLocales, cvName, cvTools, cvVariants, toolNames } =
+  await import(pathToFileURL(path.join(ROOT, 'src/data/cv.ts')).href);
 
 // ---------------------------------------------------------------------------
 // Icons
@@ -106,25 +100,13 @@ const escape = (text) =>
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;');
 
-const MONTHS = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
-
-/** '2020-01' → 'January ’20' */
-function month(yyyyMm) {
+/** '2020-01' → 'January ’20' in English, 'enero 2020' in Spanish. */
+function month(yyyyMm, lang) {
   const [year, monthNumber] = yyyyMm.split('-').map(Number);
-  return `${MONTHS[monthNumber - 1]} ’${String(year).slice(2)}`;
+  const name = cvLocales[lang].months[monthNumber - 1];
+  return lang === 'es'
+    ? `${name} ${year}`
+    : `${name} ’${String(year).slice(2)}`;
 }
 
 /**
@@ -141,8 +123,10 @@ for (const job of cvVariants.flatMap((variant) => variant.jobs)) {
   logos[job.logo] = `data:image/png;base64,${png.toString('base64')}`;
 }
 
-function renderJob(job) {
-  const dates = `${month(job.start)} – ${job.end ? month(job.end) : 'Present'}`;
+function renderJob(job, lang) {
+  const dates = `${month(job.start, lang)} – ${
+    job.end ? month(job.end, lang) : cvLocales[lang].present
+  }`;
   const projects = (job.projects ?? [])
     .map(
       (project) => `
@@ -174,6 +158,7 @@ function renderJob(job) {
 }
 
 function renderCv(variant, css) {
+  const locale = cvLocales[variant.lang];
   const contact = [
     [
       'email',
@@ -187,17 +172,14 @@ function renderCv(variant, css) {
       'linkedin',
       `<a href="${cvContact.linkedin.url}">${escape(cvContact.linkedin.label)}</a>`,
     ],
-    [
-      'site',
-      `<a href="${cvContact.site.url}">${escape(cvContact.site.label)}</a>`,
-    ],
-    ['location', escape(cvContact.location)],
+    ['site', `<a href="${locale.site.url}">${escape(locale.site.label)}</a>`],
+    ['location', escape(locale.location)],
   ]
     .map(([key, html]) => `<li>${contactIcons[key]}<span>${html}</span></li>`)
     .join('');
 
   return `<!doctype html>
-<html lang="en">
+<html lang="${variant.lang}">
 <head>
 <meta charset="utf-8">
 <title>${escape(`${cvName} · ${variant.title} · CV`)}</title>
@@ -214,29 +196,29 @@ ${css}</style>
   <ul class="cv-contact">${contact}</ul>
 
   <section>
-    <h2>Professional Overview</h2>
+    <h2>${escape(locale.headings.overview)}</h2>
     <p class="cv-overview">${escape(variant.overview)}</p>
   </section>
 
   <section>
-    <h2>Career</h2>
-    ${variant.jobs.map(renderJob).join('')}
+    <h2>${escape(locale.headings.career)}</h2>
+    ${variant.jobs.map((job) => renderJob(job, variant.lang)).join('')}
   </section>
 
   <div class="cv-bottom">
     <section>
-      <h2>Personal Information</h2>
-      ${cvPersonal.map((p) => `<p>${escape(p)}</p>`).join('')}
+      <h2>${escape(locale.headings.personal)}</h2>
+      ${locale.personal.map((p) => `<p>${escape(p)}</p>`).join('')}
     </section>
     <div>
       <section>
-        <h2>Education</h2>
-        <ul>${cvEducation
+        <h2>${escape(locale.headings.education)}</h2>
+        <ul>${locale.education
           .map((e) => `<li>${escape(e.years)} | ${escape(e.text)}</li>`)
           .join('')}</ul>
       </section>
       <section>
-        <h2>Production Software</h2>
+        <h2>${escape(locale.headings.tools)}</h2>
         <ul class="cv-tools">${cvTools
           .map((id) => `<li>${toolIcon(id)}${escape(toolNames[id])}</li>`)
           .join('')}</ul>
@@ -291,7 +273,7 @@ function assertFitsOnePage(htmlUrl, variant) {
   const dom = runBrowser(['--virtual-time-budget=3000', '--dump-dom', htmlUrl]);
   if (!dom.includes('data-fits="true"')) {
     console.error(
-      `✗ The ${variant.id} CV runs past one page. Shorten the text in src/data/cv.ts.`,
+      `✗ The ${variant.id} CV (${variant.lang}) runs past one page. Shorten the text in src/data/cv.ts.`,
     );
     process.exit(1);
   }
@@ -310,7 +292,8 @@ const buildDir = fs.mkdtempSync(path.join(os.tmpdir(), 'cv-html-'));
 fs.mkdirSync(OUT_DIR, { recursive: true });
 
 for (const variant of cvVariants) {
-  const htmlPath = path.join(buildDir, `${variant.id}.html`);
+  const name = `${variant.id}-${variant.lang}`;
+  const htmlPath = path.join(buildDir, `${name}.html`);
   fs.writeFileSync(htmlPath, renderCv(variant, css));
   const htmlUrl = pathToFileURL(htmlPath).href;
   assertFitsOnePage(htmlUrl, variant);
@@ -321,7 +304,7 @@ for (const variant of cvVariants) {
 
   if (pngDir) {
     fs.mkdirSync(pngDir, { recursive: true });
-    const pngPath = path.join(pngDir, `${variant.id}.png`);
+    const pngPath = path.join(pngDir, `${name}.png`);
     // A4 at 96 dpi is 794 × 1123 px; render it at twice that.
     runBrowser([
       '--window-size=794,1123',

@@ -2,14 +2,17 @@
 
 import React, { useEffect, useState } from 'react';
 
-const sections = [
-  { name: 'Skills', id: 'skills' },
-  { name: 'Resume', id: 'resume' },
-  { name: 'Education', id: 'education' },
-  { name: 'Courses', id: 'courses' },
-];
+import { t } from '@/data/i18n/ui';
+import type { Lang } from '@/lib/i18n';
 
-const ExperienceNav: React.FC = () => {
+const sections = [
+  { key: 'skills', id: 'skills' },
+  { key: 'resume', id: 'resume' },
+  { key: 'education', id: 'education' },
+  { key: 'courses', id: 'courses' },
+] as const;
+
+const ExperienceNav: React.FC<{ lang?: Lang }> = ({ lang = 'en' }) => {
   const [activeSection, setActiveSection] = useState('resume');
 
   useEffect(() => {
@@ -39,7 +42,7 @@ const ExperienceNav: React.FC = () => {
           href={`#${section.id}`}
           className={`experience-nav-link ${activeSection === section.id ? 'active' : ''}`}
         >
-          {section.name}
+          {t(lang).experience[section.key]}
         </a>
       ))}
     </nav>

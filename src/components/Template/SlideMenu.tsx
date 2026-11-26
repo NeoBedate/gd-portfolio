@@ -12,6 +12,8 @@ interface SlideMenuProps {
   onClose: () => void;
   children: ReactNode;
   position?: 'left' | 'right';
+  /** The dialog's accessible name. */
+  label?: string;
 }
 
 /**
@@ -26,6 +28,7 @@ export default function SlideMenu({
   onClose,
   children,
   position = 'right',
+  label = 'Navigation menu',
 }: SlideMenuProps) {
   const menuRef = useRef<HTMLDivElement>(null);
   const previousActiveElement = useRef<HTMLElement | null>(null);
@@ -120,7 +123,7 @@ export default function SlideMenu({
         id={id}
         role="dialog"
         aria-modal="true"
-        aria-label="Navigation menu"
+        aria-label={label}
         className={`slide-menu slide-menu--${position}${isOpen ? ' slide-menu--open' : ''}`}
         aria-hidden={!isOpen}
         inert={!isOpen}

@@ -1,7 +1,10 @@
 /**
  * Home page content below the hero. Every number here is backed by the
- * Experience or Portfolio pages; keep them in step.
+ * Experience or Portfolio pages; keep them in step. The Spanish version
+ * is in `es/home.ts`.
  */
+
+import profile from './profile.json';
 
 export interface FeaturedGame {
   /** Id in `projects.ts`: the tile takes the name and role from there. */
@@ -25,11 +28,24 @@ export interface Strength {
   body: string;
 }
 
+/** The hero's pitch, split around the cited game title. */
+export interface HeroTagline {
+  before: string;
+  cite: string;
+  after: string;
+}
+
 export interface CurrentItem {
   text: string;
   /** Optional link, e.g. to a devlog or case study once one exists. */
   href?: string;
 }
+
+export const heroTagline: HeroTagline = {
+  before: `I design action spaces for console games: traversal, combat arenas and cameras. ${profile.professionalYears} years in the industry, 3 console games shipped for DreamWorks and Nickelodeon IPs (published by Outright Games), and I led the level design team that delivered 40 levels for `,
+  cite: 'TMNT: Mutants Unleashed',
+  after: '.',
+};
 
 export const featuredGames: FeaturedGame[] = [
   {

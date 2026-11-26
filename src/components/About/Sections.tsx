@@ -7,6 +7,8 @@ import { extractLogMarker } from '@/lib/logEntry';
 
 interface AboutContentProps {
   markdown: string;
+  /** Accessible name of the section index. */
+  navLabel?: string;
 }
 
 const LOG_VARIANT = 'about-section--log';
@@ -69,6 +71,11 @@ const sectionVariants: Record<string, string> = {
   'Non-gaming stuff': 'about-section--compact',
   'Life inspirations': 'about-section--compact',
   'I get around': 'about-section--compact',
+  // The same sections in Spanish (src/data/es/about.ts).
+  'Mis batallitas': 'about-section--log',
+  'Más allá de los videojuegos': 'about-section--compact',
+  'Lo que me inspira': 'about-section--compact',
+  'Por el mundo': 'about-section--compact',
   //'Websites from People I Admire': 'about-section--links',
 };
 
@@ -134,7 +141,10 @@ function isLogSection(title: string) {
   return sectionVariants[title] === LOG_VARIANT;
 }
 
-export default function AboutContent({ markdown }: AboutContentProps) {
+export default function AboutContent({
+  markdown,
+  navLabel = 'About sections',
+}: AboutContentProps) {
   const { intro, sections } = splitAboutMarkdown(markdown);
 
   return (
@@ -145,7 +155,7 @@ export default function AboutContent({ markdown }: AboutContentProps) {
         </div>
       ) : null}
       {sections.length > 0 ? (
-        <nav className="about-section-nav" aria-label="About sections">
+        <nav className="about-section-nav" aria-label={navLabel}>
           {sections.map((section) => (
             <a
               key={section.id}

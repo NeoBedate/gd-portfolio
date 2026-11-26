@@ -1,11 +1,15 @@
-import { philosophy, strengths } from '@/data/home';
+import { t } from '@/data/i18n/ui';
+import { homeContent } from '@/data/localized';
+import type { Lang } from '@/lib/i18n';
 
-export default function WhatIBring() {
+export default function WhatIBring({ lang = 'en' }: { lang?: Lang }) {
+  const { philosophy, strengths } = homeContent(lang);
+
   return (
     <section className="home-section" aria-labelledby="home-strengths-title">
       <header className="home-section-header">
         <h2 id="home-strengths-title" className="home-section-kicker">
-          What I bring
+          {t(lang).home.whatIBring}
         </h2>
       </header>
 

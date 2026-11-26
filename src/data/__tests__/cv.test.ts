@@ -4,7 +4,7 @@ import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 import companies from '../companies';
-import { cvDownloads, cvTools, cvVariants } from '../cv';
+import { cvDownloads, cvDownloadsFor, cvTools, cvVariants } from '../cv';
 
 const PUBLIC_DIR = path.join(process.cwd(), 'public');
 
@@ -20,15 +20,37 @@ function publicFileExists(publicPath: string): boolean {
 const jobs = cvVariants.flatMap((variant) => variant.jobs);
 
 describe('CV data', () => {
-  it('has a Level Design and a Production CV, Level Design first', () => {
-    expect(cvVariants.map((v) => v.id)).toEqual(['level-design', 'production']);
-    expect(cvDownloads[0].label).toBe('Level Design');
+  it('has a Level Design and a Production CV in each language, Level Design first', () => {
+    expect(cvVariants.map((v) => `${v.id}/${v.lang}`)).toEqual([
+      'level-design/en',
+      'production/en',
+      'level-design/es',
+      'production/es',
+    ]);
+    expect(cvDownloadsFor('en')[0].label).toBe('Level Design');
+    expect(cvDownloadsFor('es')[0].label).toBe('Diseño de niveles');
+  });
+
+  it('keeps job titles in English in the Spanish CVs', () => {
+    for (const id of ['level-design', 'production'] as const) {
+      const [en, es] = (['en', 'es'] as const).map((lang) =>
+        cvVariants.find((v) => v.id === id && v.lang === lang),
+      );
+      expect(es?.title).toBe(en?.title);
+      const roles = (cv: typeof en) =>
+        cv?.jobs.flatMap((job) => [
+          job.role,
+          ...(job.projects ?? []).map((p) => p.role),
+        ]);
+      expect(roles(es)).toEqual(roles(en));
+    }
   });
 
   it('names each PDF after the person and the role, and has it built', () => {
     for (const cv of cvDownloads) {
+      const suffix = cv.lang === 'es' ? '_ES' : '';
       expect(cv.fileName).toMatch(
-        /^Santiago-Rodriguez-Bedate_[A-Za-z-]+_CV\.pdf$/,
+        new RegExp(`^Santiago-Rodriguez-Bedate_[A-Za-z-]+_CV${suffix}\\.pdf$`),
       );
       // Run `npm run cv` after editing src/data/cv.ts.
       expect(publicFileExists(cv.href)).toBe(true);

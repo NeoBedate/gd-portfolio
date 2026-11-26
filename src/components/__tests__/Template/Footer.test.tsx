@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-import { cvDownloads } from '@/data/cv';
+import { cvDownloadsFor } from '@/data/cv';
 import { AUTHOR_NAME, AUTHOR_ROLE } from '@/lib/utils';
 
 import Footer from '../../Template/Footer';
@@ -39,14 +39,32 @@ describe('Footer', () => {
     expect(time).toHaveTextContent(/^\d{1,2} [A-Z][a-z]+ \d{4}$/);
   });
 
-  it('links both CVs', () => {
+  it('links both English CVs', () => {
     render(<Footer />);
 
-    for (const cv of cvDownloads) {
+    expect(screen.getByText(/CV in English/)).toBeInTheDocument();
+    for (const cv of cvDownloadsFor('en')) {
       const link = screen.getByRole('link', { name: cv.label });
       expect(link).toHaveAttribute('href', cv.href);
       expect(link).toHaveAttribute('download');
     }
+  });
+
+  it('in Spanish, links the Spanish CVs and Spanish pages', () => {
+    render(<Footer lang="es" />);
+
+    expect(screen.getByText(/CV en español/)).toBeInTheDocument();
+    for (const cv of cvDownloadsFor('es')) {
+      expect(screen.getByRole('link', { name: cv.label })).toHaveAttribute(
+        'href',
+        cv.href,
+      );
+    }
+    expect(screen.getByRole('link', { name: 'Sobre mí' })).toHaveAttribute(
+      'href',
+      '/es/about',
+    );
+    expect(screen.getByText(/última actualización/i)).toBeInTheDocument();
   });
 
   it('renders navigation links', () => {

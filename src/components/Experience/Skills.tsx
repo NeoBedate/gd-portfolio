@@ -3,6 +3,9 @@
 import React, { useReducer } from 'react';
 
 import type { Category, Skill } from '@/data/experience/skills';
+import { t } from '@/data/i18n/ui';
+import { skillCategoryLabel } from '@/data/localized';
+import type { Lang } from '@/lib/i18n';
 
 import CategoryButton from './Skills/CategoryButton';
 import SkillTag from './Skills/SkillTag';
@@ -10,6 +13,7 @@ import SkillTag from './Skills/SkillTag';
 interface SkillsProps {
   skills: Skill[];
   categories: Category[];
+  lang?: Lang;
 }
 
 // React 19: Using useReducer for complex filter state management
@@ -43,7 +47,7 @@ const buttonReducer = (
   }
 };
 
-const Skills: React.FC<SkillsProps> = ({ skills, categories }) => {
+const Skills: React.FC<SkillsProps> = ({ skills, categories, lang = 'en' }) => {
   const initialButtons = Object.fromEntries(
     [['All', false]].concat(categories.map(({ name }) => [name, false])),
   );
@@ -58,6 +62,11 @@ const Skills: React.FC<SkillsProps> = ({ skills, categories }) => {
     Object.keys(buttons).map((key) => (
       <CategoryButton
         label={key}
+        text={
+          key === 'All'
+            ? t(lang).experience.allSkills
+            : skillCategoryLabel(key, lang)
+        }
         key={key}
         active={buttons}
         handleClick={handleChildClick}
@@ -103,7 +112,7 @@ const Skills: React.FC<SkillsProps> = ({ skills, categories }) => {
     <div className="skills">
       <div className="link-to" id="skills" />
       <div className="title">
-        <h2>Skills</h2>
+        <h2>{t(lang).experience.skills}</h2>
       </div>
       <div className="skill-button-container">{getButtons()}</div>
       <div className="skill-groups">
@@ -115,7 +124,7 @@ const Skills: React.FC<SkillsProps> = ({ skills, categories }) => {
                 className="skill-group-title"
                 style={{ color: category?.color }}
               >
-                {categoryName}
+                {skillCategoryLabel(categoryName, lang)}
               </h4>
               <div className="skill-tags">
                 {categorySkills.map((skill) => (

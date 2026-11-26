@@ -1,46 +1,13 @@
 import type { Metadata } from 'next';
-import ProjectList from '@/components/Projects/ProjectList';
-import { SchemaGraph } from '@/components/Schema';
-import PageWrapper from '@/components/Template/PageWrapper';
-import data from '@/data/projects';
-import { createPageMetadata } from '@/lib/metadata';
-import {
-  breadcrumbNode,
-  collectionPageNode,
-  HOME_URL,
-  SITE_URL,
-} from '@/lib/schema';
 
-const PORTFOLIO_URL = `${SITE_URL}/portfolio/`;
+import PortfolioPage, {
+  portfolioMetadata,
+} from '@/components/Pages/PortfolioPage';
 
-const PORTFOLIO_DESCRIPTION = `Selected video games where I contributed.`;
+// Content and metadata live in the component, shared with the page in the
+// other language (English at /…, Spanish at /es/…).
+export const metadata: Metadata = portfolioMetadata('en');
 
-export const metadata: Metadata = createPageMetadata({
-  title: 'Portfolio',
-  description: PORTFOLIO_DESCRIPTION,
-});
-
-export default function ProjectsPage() {
-  const selectedProjects = data.filter((p) => p.selected);
-
-  return (
-    <PageWrapper mainClassName="page-main--portfolio">
-      <SchemaGraph
-        nodes={[
-          collectionPageNode({
-            url: PORTFOLIO_URL,
-            name: 'Portfolio',
-            description: PORTFOLIO_DESCRIPTION,
-            hasBreadcrumb: true,
-          }),
-          breadcrumbNode(PORTFOLIO_URL, [
-            { name: 'Home', url: HOME_URL },
-            { name: 'Portfolio', url: PORTFOLIO_URL },
-          ]),
-        ]}
-      />
-
-      <ProjectList projects={selectedProjects} />
-    </PageWrapper>
-  );
+export default function Page() {
+  return <PortfolioPage lang="en" />;
 }

@@ -1,25 +1,34 @@
 import Link from 'next/link';
 
 import { portfolioHref } from '@/components/Projects/projectSlug';
-import { featuredGames } from '@/data/home';
+import { t } from '@/data/i18n/ui';
+import { homeContent, localizeProject } from '@/data/localized';
 import projects from '@/data/projects';
+import { type Lang, localizePath } from '@/lib/i18n';
 
-export default function FeaturedGames() {
+export default function FeaturedGames({ lang = 'en' }: { lang?: Lang }) {
+  const text = t(lang).home;
+  const { featuredGames } = homeContent(lang);
+
   return (
     <section className="home-section" aria-labelledby="home-featured-title">
       <header className="home-section-header">
         <h2 id="home-featured-title" className="home-section-kicker">
-          Selected work
+          {text.selectedWork}
         </h2>
-        <Link href="/portfolio" className="home-section-all">
-          All projects <span aria-hidden="true">→</span>
+        <Link
+          href={localizePath('/portfolio', lang)}
+          className="home-section-all"
+        >
+          {text.allProjects} <span aria-hidden="true">→</span>
         </Link>
       </header>
 
       <ul className="home-featured-list">
         {featuredGames.map((game) => {
-          const project = projects.find((p) => p.id === game.projectId);
-          if (!project) return null;
+          const found = projects.find((p) => p.id === game.projectId);
+          if (!found) return null;
+          const project = localizeProject(found, lang);
 
           return (
             <li key={game.projectId} className="home-featured-tile">
@@ -39,7 +48,7 @@ export default function FeaturedGames() {
               <h3 className="home-featured-name">
                 {/* The link covers the whole tile (see home.css). */}
                 <Link
-                  href={portfolioHref(project.id)}
+                  href={localizePath(portfolioHref(project.id), lang)}
                   className="home-featured-link"
                 >
                   {project.name.trim()}
