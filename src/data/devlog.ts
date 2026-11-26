@@ -19,7 +19,9 @@ export interface DevlogProject {
 const devlogProjects: DevlogProject[] = [
   {
     // Working id and name: settle both at kickoff, before the first update is
-    // published, because the id becomes part of every update's URL.
+    // published, because the id becomes part of every update's URL. Use the
+    // same value as the project's `slug` in projects.ts, so the updates at
+    // /devlog/<id>/ and the case study at /portfolio/<slug>/ match.
     id: 'ue5-level',
     name: 'UE5 personal level',
     description:
