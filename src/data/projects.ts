@@ -58,7 +58,7 @@ const data: ProjectDetails[] = [
     genre: 'Action platformer',
     startDate: '2022-03-15',
     endDate: '2024-08-15',
-    publishingDate: '2024-11-20',
+    publishingDate: '2024-10-18',
     name: 'Teenage Mutant Ninja Turtles: Mutants Unleashed',
     studio: 'AHEARTFULOFGAMES',
     overview:
