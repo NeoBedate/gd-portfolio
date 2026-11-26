@@ -268,12 +268,17 @@ const data: ProjectDetails[] = [
         taskImage: '/images/projects/11_dragons/traversal-mix.mp4',
         gifs: [
           [
-            '/images/projects/11_dragons/dragons-set-piece-01.mp4',
-            '/images/projects/11_dragons/dragons-set-piece-02.mp4',
+            '/images/projects/11_dragons/w01-04-set-piece-01.mp4',
+            '/images/projects/11_dragons/w02-04-set-piece-02.mp4',
+          ],
+          [
+            '/images/projects/11_dragons/w03-04-set-piece-03.mp4',
+            '/images/projects/11_dragons/w02-02-puzzle-01.mp4',
           ],
         ],
         captions: [
           '1. Set pieces with several gimmicks like lava or debris chasing the player, or freezing winds trying to stop them, were introduced to shake up the pacing.',
+          '2. Camera cuts were kept for key moments, like a hazard about to reach the player or a puzzle reveal that shows what a switch just unlocked.',
         ],
       },
       {
