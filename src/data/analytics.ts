@@ -5,7 +5,7 @@
  */
 export const umami = {
   scriptUrl: 'https://cloud.umami.is/script.js',
-  websiteId: 'add5fa02-9c8e-4678-9a57-64ff6703f0be',
+  websiteId: '4b1a1657-49ad-40f8-a6a3-9fcd3b58ca00',
   /** Count only the live site: local builds and Vercel previews are ignored. */
   domains: ['www.santibedate.com', 'santibedate.com'],
 } as const;
