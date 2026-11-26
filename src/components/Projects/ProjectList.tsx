@@ -7,16 +7,15 @@ import ProjectDetailWrap from '@/components/Projects/ProjectDetailWrap';
 import { projectSlug } from '@/components/Projects/projectSlug';
 import { t } from '@/data/i18n/ui';
 import type { ProjectDetails } from '@/data/projects';
-import type { Lang } from '@/lib/i18n';
+import { useLang } from '@/hooks/useLang';
 
 export interface ProjectsListWrap {
   /** The selected projects, already in the page's language. */
   projects: ProjectDetails[];
-  lang?: Lang;
 }
 
-const ProjectList: React.FC<ProjectsListWrap> = ({ projects, lang = 'en' }) => {
-  const text = t(lang).portfolio;
+const ProjectList: React.FC<ProjectsListWrap> = ({ projects }) => {
+  const text = t(useLang()).portfolio;
   const [selectedProject, setSelectedProject] = useState(
     projects.find((p) => p.id == '12_tmnt'),
   );
@@ -79,7 +78,7 @@ const ProjectList: React.FC<ProjectsListWrap> = ({ projects, lang = 'en' }) => {
         )}
       </section>
 
-      <ProjectDetailWrap project={selectedProject} lang={lang} />
+      <ProjectDetailWrap project={selectedProject} />
     </div>
   );
 };

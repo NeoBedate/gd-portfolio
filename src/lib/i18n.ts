@@ -69,10 +69,19 @@ function withTrailingSlash(pathname: string): string {
   return pathname.endsWith('/') ? pathname : `${pathname}/`;
 }
 
+/**
+ * Sections whose pages all exist in both languages, current and future:
+ * every `/portfolio/<slug>/` case study gets an `/es/portfolio/<slug>/` twin.
+ */
+const TRANSLATED_SECTIONS = ['/portfolio/'];
+
 /** Whether a page exists in both languages. */
 export function isTranslatedPath(pathname: string): boolean {
   const english = withTrailingSlash(stripLang(pathname));
-  return (TRANSLATED_PATHS as readonly string[]).includes(english);
+  return (
+    (TRANSLATED_PATHS as readonly string[]).includes(english) ||
+    TRANSLATED_SECTIONS.some((section) => english.startsWith(section))
+  );
 }
 
 /**

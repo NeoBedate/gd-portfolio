@@ -48,6 +48,10 @@ describe('i18n paths', () => {
     expect(switchLangPath('/devlog/ue5-level/', 'es')).toBe('/es/');
     expect(isTranslatedPath('/devlog/')).toBe(false);
     expect(isTranslatedPath('/es/archive/')).toBe(true);
+    // Case-study pages to come, each with a Spanish twin.
+    expect(switchLangPath('/portfolio/tmnt/', 'es')).toBe(
+      '/es/portfolio/tmnt/',
+    );
   });
 
   it('lists every language version of a page', () => {

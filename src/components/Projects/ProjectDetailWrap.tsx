@@ -11,11 +11,11 @@ import {
 import ProjectMedia from '@/components/Projects/ProjectMedia';
 import { t } from '@/data/i18n/ui';
 import type { ProjectDetails, ProjectResponsibilities } from '@/data/projects';
+import { useLang } from '@/hooks/useLang';
 import { DATE_LOCALE, type Lang } from '@/lib/i18n';
 
 export interface ProjectDetailProp {
   project: ProjectDetails | undefined;
-  lang?: Lang;
 }
 
 /** 'Oct 2024' in English, 'oct 2024' in Spanish. */
@@ -31,10 +31,8 @@ function releaseMonth(date: string, lang: Lang): string {
     .replace('.', '');
 }
 
-const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({
-  project,
-  lang = 'en',
-}) => {
+const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
+  const lang = useLang();
   const text = t(lang).portfolio;
   // A ref, not a plain variable, so re-renders don't reset it.
   const screenshotIdx = useRef(0);

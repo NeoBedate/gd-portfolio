@@ -50,7 +50,8 @@ export default function PortfolioPage({ lang }: { lang: Lang }) {
         ]}
       />
 
-      <ProjectList projects={selectedProjects} lang={lang} />
+      {/* The list reads the language from the URL (useLang). */}
+      <ProjectList projects={selectedProjects} />
     </PageWrapper>
   );
 }
