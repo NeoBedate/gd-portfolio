@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 
 import EmailLink from '@/components/Contact/EmailLink';
+import OpenToWork from '@/components/Contact/OpenToWork';
 import PageWrapper from '@/components/Template/PageWrapper';
+import contact from '@/data/contact';
 import profile from '@/data/profile.json';
 import { createPageMetadata } from '@/lib/metadata';
 
@@ -11,6 +13,8 @@ export const metadata: Metadata = createPageMetadata({
   path: '/contact/',
 });
 
+const linkedIn = contact.find((item) => item.label === 'LinkedIn');
+
 export default function ContactPage() {
   return (
     <PageWrapper hideFooter mainClassName="page-main--contact">
@@ -19,13 +23,25 @@ export default function ContactPage() {
           <h1 className="page-title">Get in Touch</h1>
         </header>
 
-        <h3 className="contact-hello"></h3>
-
         <div className="contact-content">
           <div className="contact-email-block">
             <EmailLink />
             <p className="contact-hint">Usually respond within 24 hours</p>
+            {linkedIn ? (
+              <p className="contact-alt">
+                Or find me on{' '}
+                <a
+                  href={linkedIn.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LinkedIn<span className="sr-only"> (opens in new tab)</span>
+                </a>
+              </p>
+            ) : null}
           </div>
+
+          <OpenToWork />
         </div>
       </section>
     </PageWrapper>
