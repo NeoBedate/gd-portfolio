@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 
+import { caseStudyPath, getCaseStudies } from '@/lib/caseStudies';
 import {
   DEVLOG_PATH,
   devlogEntryPath,
@@ -77,6 +78,21 @@ function translatedPages(): MetadataRoute.Sitemap {
   );
 }
 
+/** Each case study (`/portfolio/<slug>/`) in both languages. */
+function caseStudyPages(): MetadataRoute.Sitemap {
+  return LANGS.flatMap((lang) =>
+    getCaseStudies().map(({ slug }) => {
+      const path = caseStudyPath(slug);
+      return {
+        url: `${SITE_URL}${localizePath(path, lang)}`,
+        changeFrequency: 'monthly' as const,
+        priority: 0.9,
+        alternates: { languages: languageAlternates(SITE_URL, path) },
+      };
+    }),
+  );
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [...translatedPages(), ...devlogPages()];
+  return [...translatedPages(), ...caseStudyPages(), ...devlogPages()];
 }

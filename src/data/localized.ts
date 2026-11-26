@@ -69,7 +69,16 @@ export function localizeProject(
   lang: Lang,
 ): ProjectDetails {
   if (lang === 'en') return project;
-  return { ...project, ...projectsEs[project.id] };
+  const { videos, ...text } = projectsEs[project.id] ?? {};
+  return {
+    ...project,
+    ...text,
+    // Only the text is translated; the files come from the English entry.
+    videos: project.videos?.map((video, index) => ({
+      ...video,
+      ...videos?.[index],
+    })),
+  };
 }
 
 /** A company with its description in the given language. */

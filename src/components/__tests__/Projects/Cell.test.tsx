@@ -23,6 +23,15 @@ describe('Cell', () => {
     expect(link).toHaveClass('project-card-link');
   });
 
+  it('links to a page on the site instead, when given one', () => {
+    render(<Cell data={mockProject} href="/portfolio/test-project/" />);
+    const link = screen.getByRole('link');
+    // next/link drops the trailing slash in tests; the export adds it back
+    // (trailingSlash: true).
+    expect(link).toHaveAttribute('href', '/portfolio/test-project');
+    expect(link).toHaveClass('project-card-link');
+  });
+
   it('renders the project overview on the card', () => {
     render(<Cell data={mockProject} />);
     expect(screen.getByText(mockProject.overview)).toBeInTheDocument();

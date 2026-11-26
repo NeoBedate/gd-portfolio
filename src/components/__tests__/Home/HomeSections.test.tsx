@@ -9,7 +9,8 @@ import NumbersStrip from '../../Home/NumbersStrip';
 import WhatIBring from '../../Home/WhatIBring';
 
 describe('FeaturedGames', () => {
-  it('shows one tile per featured game, each linking to its own detail', () => {
+  // next/link drops the trailing slash in tests; the export adds it back.
+  it('shows one tile per featured game, each linking to its own page', () => {
     render(<FeaturedGames />);
 
     const tiles = document.querySelectorAll('.home-featured-tile');
@@ -17,14 +18,23 @@ describe('FeaturedGames', () => {
 
     expect(
       screen.getByRole('link', { name: /teenage mutant ninja turtles/i }),
-    ).toHaveAttribute('href', '/portfolio#tmnt');
+    ).toHaveAttribute('href', '/portfolio/tmnt-mutants-unleashed');
     expect(screen.getByRole('link', { name: /dragons/i })).toHaveAttribute(
       'href',
-      '/portfolio#dragons',
+      '/portfolio/dragons-legends-of-the-nine-realms',
     );
     expect(screen.getByRole('link', { name: /spirit/i })).toHaveAttribute(
       'href',
-      '/portfolio#spirit',
+      '/portfolio/spirit-luckys-big-adventure',
+    );
+  });
+
+  it('links each tile to the Spanish page on the Spanish home page', () => {
+    render(<FeaturedGames lang="es" />);
+
+    expect(screen.getByRole('link', { name: /dragons/i })).toHaveAttribute(
+      'href',
+      '/es/portfolio/dragons-legends-of-the-nine-realms',
     );
   });
 

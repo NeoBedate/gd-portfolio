@@ -35,6 +35,20 @@ describe('Spanish content', () => {
           project?.highlights.length ?? -1,
         );
       }
+      if (translation.videos) {
+        expect(translation.videos, id).toHaveLength(
+          project?.videos?.length ?? -1,
+        );
+      }
+    }
+  });
+
+  it('translates the text of every video', () => {
+    for (const project of projects) {
+      if (!project.videos) continue;
+      expect(projectsEs[project.id]?.videos, project.id).toHaveLength(
+        project.videos.length,
+      );
     }
   });
 

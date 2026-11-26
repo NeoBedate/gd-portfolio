@@ -10,10 +10,16 @@
  * many items as the English one.
  */
 
-import type { ProjectDetails } from '../projects';
+import type { ProjectDetails, ProjectVideo } from '../projects';
 
 export type ProjectTranslation = Partial<
-  Pick<ProjectDetails, 'name' | 'genre' | 'overview' | 'summary' | 'highlights'>
+  Pick<
+    ProjectDetails,
+    'name' | 'genre' | 'overview' | 'summary' | 'highlights'
+  > & {
+    /** The text of each of the project's `videos`, in the same order. */
+    videos: Array<Pick<ProjectVideo, 'title' | 'description'>>;
+  }
 >;
 
 const projects: Record<string, ProjectTranslation> = {
@@ -49,6 +55,13 @@ const projects: Record<string, ProjectTranslation> = {
       'Construí y mantuve las arenas de combate: colocación de enemigos, trampas y cámaras.',
       'Apoyé la creación de las mecánicas principales y de los flujos de desarrollo para integrarlas en los niveles.',
       'Me encargué de la localización, como enlace entre nuestros proveedores externos y el cliente externo, y de su implementación en el juego.',
+    ],
+    videos: [
+      {
+        title: 'Diario de desarrollo',
+        description:
+          'El diario de desarrollo oficial del juego (2022). Juan Raigada, CEO y director creativo del estudio, y yo contamos cómo se concibió y se hizo el juego. Salgo a partir del 0:35.',
+      },
     ],
   },
   '10_spirit': {

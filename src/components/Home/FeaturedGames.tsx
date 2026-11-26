@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
-import { portfolioHref } from '@/components/Projects/projectSlug';
 import { t } from '@/data/i18n/ui';
 import { homeContent, localizeProject } from '@/data/localized';
 import projects from '@/data/projects';
+import { caseStudyPath } from '@/lib/caseStudies';
 import { type Lang, localizePath } from '@/lib/i18n';
 
 export default function FeaturedGames({ lang = 'en' }: { lang?: Lang }) {
@@ -48,7 +48,10 @@ export default function FeaturedGames({ lang = 'en' }: { lang?: Lang }) {
               <h3 className="home-featured-name">
                 {/* The link covers the whole tile (see home.css). */}
                 <Link
-                  href={localizePath(portfolioHref(project.id), lang)}
+                  href={localizePath(
+                    project.slug ? caseStudyPath(project.slug) : '/portfolio/',
+                    lang,
+                  )}
                   className="home-featured-link"
                 >
                   {project.name.trim()}
