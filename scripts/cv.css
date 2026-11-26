@@ -226,7 +226,8 @@ h2 {
   font-weight: 400;
 }
 
-.project-name {
+/* Position first, then the project, as on the site's Experience page. */
+.project-role {
   font-family: var(--cv-condensed);
   font-stretch: condensed;
   font-size: 9.8pt;
@@ -234,7 +235,7 @@ h2 {
   color: #0e1116;
 }
 
-.project-role {
+.project-name {
   margin-left: 2.5mm;
   font-size: 9.6pt;
   font-weight: 300;

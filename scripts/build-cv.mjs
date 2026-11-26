@@ -131,8 +131,8 @@ function renderJob(job, lang) {
     .map(
       (project) => `
       <div class="project">
-        <h4><span class="project-name">${escape(project.name)}</span>
-          <span class="project-role">${escape(project.role)}</span></h4>
+        <h4><span class="project-role">${escape(project.role)}</span>
+          <span class="project-name">${escape(project.name)}</span></h4>
         <ul>${project.bullets.map((b) => `<li>${escape(b)}</li>`).join('')}</ul>
       </div>`,
     )

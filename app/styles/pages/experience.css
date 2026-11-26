@@ -60,6 +60,12 @@
 }
 
 @media (max-width: 735px) {
+  /* Justified text on a phone opens wide gaps around long words such as
+     AHEARTFULOFGAMES. */
+  .experience-summary {
+    text-align: start;
+  }
+
   .experience-page .courses .course-list {
     grid-template-columns: 1fr;
   }
