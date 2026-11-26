@@ -3,13 +3,26 @@ import Markdown from 'markdown-to-jsx';
 import React from 'react';
 import type { CompanyDetails } from '@/data/companies';
 import type { StudioJob } from '@/data/experience/work';
+import { t } from '@/data/i18n/ui';
 import type { ProjectDetails } from '@/data/projects';
+import { DATE_LOCALE, type Lang } from '@/lib/i18n';
 
 // ALL DATA
 interface JobProps {
   id: StudioJob;
   projectData: ProjectProps[];
   companyData: CompanyDetails;
+  lang?: Lang;
+}
+
+/** 'January 2020' in English, 'Enero de 2020' in Spanish. */
+function monthYear(date: string, lang: Lang): string {
+  if (lang === 'en') return dayjs(date).format('MMMM YYYY');
+  const label = new Date(`${date}T12:00:00Z`).toLocaleDateString(
+    DATE_LOCALE[lang],
+    { month: 'long', year: 'numeric', timeZone: 'UTC' },
+  );
+  return label.charAt(0).toUpperCase() + label.slice(1);
 }
 
 export interface ProjectProps {
@@ -39,6 +52,7 @@ const ProjectExperience: React.FC<ProjectProps> = ({ data }) => {
 const CompanyExperience: React.FC<JobProps> = ({
   companyData,
   projectData,
+  lang = 'en',
 }) => {
   const { logo, name, url, startDate, endDate, description } = companyData;
 
@@ -53,8 +67,8 @@ const CompanyExperience: React.FC<JobProps> = ({
         <h2 className="resume-daterange">
           <p className="daterange">
             {' '}
-            {dayjs(startDate).format('MMMM YYYY')} -{' '}
-            {endDate ? dayjs(endDate).format('MMMM YYYY') : 'Present'}
+            {monthYear(startDate, lang)} -{' '}
+            {endDate ? monthYear(endDate, lang) : t(lang).experience.present}
           </p>
         </h2>
       </div>

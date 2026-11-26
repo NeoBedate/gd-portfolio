@@ -1,11 +1,15 @@
-import { stats } from '@/data/home';
+import { t } from '@/data/i18n/ui';
+import { homeContent } from '@/data/localized';
+import type { Lang } from '@/lib/i18n';
 
-export default function NumbersStrip() {
+export default function NumbersStrip({ lang = 'en' }: { lang?: Lang }) {
+  const { stats } = homeContent(lang);
+
   return (
     <section className="home-section" aria-labelledby="home-stats-title">
       <header className="home-section-header">
         <h2 id="home-stats-title" className="home-section-kicker">
-          By the numbers
+          {t(lang).home.byTheNumbers}
         </h2>
       </header>
 

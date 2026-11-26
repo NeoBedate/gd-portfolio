@@ -2,7 +2,9 @@ import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
 import contact from '@/data/contact';
-import { cvDownloads } from '@/data/cv';
+import { cvDownloads, cvDownloadsFor } from '@/data/cv';
+import * as homeEs from '@/data/es/home';
+import openToWorkEs from '@/data/es/openToWork';
 import { currently } from '@/data/home';
 import openToWork from '@/data/openToWork';
 import profile from '@/data/profile.json';
@@ -68,6 +70,21 @@ describe('Hero', () => {
     expect(linkedIn).toHaveAttribute('href', linkedInUrl);
     expect(linkedIn).toHaveAttribute('target', '_blank');
     expect(linkedIn).toHaveAttribute('rel', 'noopener noreferrer');
+  });
+
+  it('in Spanish, shows the Spanish text and offers the Spanish CV', () => {
+    render(<Hero lang="es" />);
+
+    expect(screen.getByText('Disponible')).toBeInTheDocument();
+    expect(screen.getByText(openToWorkEs.roles)).toBeInTheDocument();
+    for (const item of homeEs.currently) {
+      expect(screen.getByText(item.text)).toBeInTheDocument();
+    }
+
+    const [portfolio, cv] = document.querySelectorAll('.hero-cta a');
+    expect(portfolio).toHaveAttribute('href', '/es/portfolio');
+    expect(cv).toHaveAttribute('href', cvDownloadsFor('es')[0].href);
+    expect(cv).toHaveTextContent('Descargar CV (PDF)');
   });
 
   it('has decorative background elements', () => {

@@ -2,7 +2,8 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { analyticsEvents } from '@/data/analytics';
-import { cvDownloads } from '@/data/cv';
+import { cvDownloadsFor } from '@/data/cv';
+import { LANGS } from '@/lib/i18n';
 
 import ContactIcons from '../../Contact/ContactIcons';
 import CvLinks from '../../Template/CvLinks';
@@ -73,13 +74,16 @@ describe('TrackedLink', () => {
     ).not.toThrow();
   });
 
-  it('counts each CV download with its version and place', () => {
-    render(<CvLinks from="footer" />);
+  it.each(
+    LANGS,
+  )('counts each CV download with its version, language and place (%s)', (lang) => {
+    render(<CvLinks from="footer" lang={lang} />);
 
-    for (const cv of cvDownloads) {
+    for (const cv of cvDownloadsFor(lang)) {
       fireEvent.click(screen.getByRole('link', { name: cv.label }));
       expect(track).toHaveBeenLastCalledWith('CV download', {
         cv: cv.label,
+        lang,
         from: 'footer',
       });
     }

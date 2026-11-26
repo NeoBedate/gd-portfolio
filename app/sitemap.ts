@@ -7,6 +7,12 @@ import {
   getAllDevlogEntries,
   getDevlogProjects,
 } from '@/lib/devlog';
+import {
+  LANGS,
+  languageAlternates,
+  localizePath,
+  type TRANSLATED_PATHS,
+} from '@/lib/i18n';
 import { SITE_URL } from '@/lib/utils';
 
 export const dynamic = 'force-static';
@@ -41,38 +47,36 @@ function devlogPages(): MetadataRoute.Sitemap {
   ];
 }
 
+/** The pages that exist in English and Spanish, with their weights. */
+const TRANSLATED_PAGES: Array<{
+  path: (typeof TRANSLATED_PATHS)[number];
+  changeFrequency: 'monthly' | 'yearly';
+  priority: number;
+}> = [
+  { path: '/', changeFrequency: 'monthly', priority: 1 },
+  { path: '/about/', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/experience/', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/portfolio/', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/archive/', changeFrequency: 'yearly', priority: 0.5 },
+  { path: '/contact/', changeFrequency: 'yearly', priority: 0.5 },
+];
+
+/**
+ * Each page in both languages. Every entry lists all its language versions,
+ * which is how search engines learn that `/about/` and `/es/about/` are the
+ * same page.
+ */
+function translatedPages(): MetadataRoute.Sitemap {
+  return LANGS.flatMap((lang) =>
+    TRANSLATED_PAGES.map(({ path, changeFrequency, priority }) => ({
+      url: `${SITE_URL}${localizePath(path, lang)}`,
+      changeFrequency,
+      priority,
+      alternates: { languages: languageAlternates(SITE_URL, path) },
+    })),
+  );
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: `${SITE_URL}/`,
-      changeFrequency: 'monthly',
-      priority: 1,
-    },
-    {
-      url: `${SITE_URL}/about/`,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/experience/`,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/portfolio/`,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/archive/`,
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
-    {
-      url: `${SITE_URL}/contact/`,
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
-    ...devlogPages(),
-  ];
+  return [...translatedPages(), ...devlogPages()];
 }

@@ -4,8 +4,8 @@ import Script from 'next/script';
 import { SiteSchema } from '@/components/Schema';
 import Analytics from '@/components/Template/Analytics';
 import Navigation from '@/components/Template/Navigation';
-import { MAIN_CONTENT_ID } from '@/components/Template/PageWrapper';
 import ScrollToTop from '@/components/Template/ScrollToTop';
+import SkipLink from '@/components/Template/SkipLink';
 import { sharedOpenGraph } from '@/lib/metadata';
 import {
   AUTHOR_NAME,
@@ -67,19 +67,16 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* CSP-safe theme initialization - prevents flash on load */}
+        {/* CSP-safe theme initialization - prevents flash on load. It also
+            marks Spanish pages (/es/…) as such: the root layout is shared by
+            both languages, so the static <html lang> is the English default. */}
         <Script id="theme-init" strategy="beforeInteractive">
-          {`(function(){try{var t=window.localStorage.getItem('theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t)}else if(window.matchMedia('(prefers-color-scheme:dark)').matches){document.documentElement.setAttribute('data-theme','dark')}else{document.documentElement.setAttribute('data-theme','light')}}catch(e){}})();`}
+          {`(function(){try{var p=window.location.pathname;if(p==='/es'||p.indexOf('/es/')===0){document.documentElement.lang='es'}}catch(e){}try{var t=window.localStorage.getItem('theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t)}else if(window.matchMedia('(prefers-color-scheme:dark)').matches){document.documentElement.setAttribute('data-theme','dark')}else{document.documentElement.setAttribute('data-theme','light')}}catch(e){}})();`}
         </Script>
         <SiteSchema />
       </head>
       <body>
-        {/* First focusable element on the page. The About and Resume pages
-            are thousands of pixels long, so tabbing past the nav to reach
-            content is otherwise the only route in. */}
-        <a href={`#${MAIN_CONTENT_ID}`} className="skip-link">
-          Skip to content
-        </a>
+        <SkipLink />
         <ScrollToTop />
         <div className="site-wrapper">
           <Navigation />

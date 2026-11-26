@@ -3,8 +3,11 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import { MoonIcon, SunIcon } from '@/components/Icons';
+import { t } from '@/data/i18n/ui';
+import { useLang } from '@/hooks/useLang';
 
 export default function ThemeToggle() {
+  const text = t(useLang()).theme;
   const [isDark, setIsDark] = useState<boolean | null>(null);
 
   useEffect(() => {
@@ -38,8 +41,8 @@ export default function ThemeToggle() {
       type="button"
       className="theme-toggle"
       onClick={toggle}
-      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-      title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      aria-label={isDark ? text.toLight : text.toDark}
+      title={isDark ? text.toLight : text.toDark}
     >
       <span className="theme-toggle-icon">
         {isDark ? <SunIcon /> : <MoonIcon />}

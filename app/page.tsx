@@ -1,31 +1,11 @@
 import type { Metadata } from 'next';
 
-import FeaturedGames from '@/components/Home/FeaturedGames';
-import NumbersStrip from '@/components/Home/NumbersStrip';
-import WhatIBring from '@/components/Home/WhatIBring';
-import { SchemaGraph } from '@/components/Schema';
-import Hero from '@/components/Template/Hero';
-import PageWrapper from '@/components/Template/PageWrapper';
-import { HOME_URL, profilePageNode } from '@/lib/schema';
-import { AUTHOR_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/utils';
+import HomePage, { homeMetadata } from '@/components/Pages/HomePage';
 
-export const metadata: Metadata = {
-  description: SITE_DESCRIPTION,
-  // The homepage builds its openGraph in the root layout, so it only needs
-  // the canonical here. `trailingSlash: true` makes `/` the canonical form.
-  alternates: { canonical: `${SITE_URL}/` },
-};
+// Content and metadata live in the component, shared with the page in the
+// other language (English at /…, Spanish at /es/…).
+export const metadata: Metadata = homeMetadata('en');
 
-export default function HomePage() {
-  return (
-    <PageWrapper mainClassName="page-main--hero">
-      <SchemaGraph
-        nodes={[profilePageNode({ url: HOME_URL, name: AUTHOR_NAME })]}
-      />
-      <Hero />
-      <FeaturedGames />
-      <NumbersStrip />
-      <WhatIBring />
-    </PageWrapper>
-  );
+export default function Page() {
+  return <HomePage lang="en" />;
 }

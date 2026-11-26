@@ -9,13 +9,31 @@ import {
   RightChevron,
 } from '@/components/Icons';
 import ProjectMedia from '@/components/Projects/ProjectMedia';
+import { t } from '@/data/i18n/ui';
 import type { ProjectDetails, ProjectResponsibilities } from '@/data/projects';
+import { useLang } from '@/hooks/useLang';
+import { DATE_LOCALE, type Lang } from '@/lib/i18n';
 
 export interface ProjectDetailProp {
   project: ProjectDetails | undefined;
 }
 
+/** 'Oct 2024' in English, 'oct 2024' in Spanish. */
+function releaseMonth(date: string, lang: Lang): string {
+  if (lang === 'en') return dayjs(date).format('MMM YYYY');
+  return new Date(`${date}T12:00:00Z`)
+    .toLocaleDateString(DATE_LOCALE[lang], {
+      month: 'short',
+      year: 'numeric',
+      timeZone: 'UTC',
+    })
+    .replace(' de ', ' ')
+    .replace('.', '');
+}
+
 const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
+  const lang = useLang();
+  const text = t(lang).portfolio;
   // A ref, not a plain variable, so re-renders don't reset it.
   const screenshotIdx = useRef(0);
   const initializedProjectId = useRef<string | undefined>(undefined);
@@ -194,7 +212,12 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
             <h3 className="game-detail-title" id="game-detail-title">
               {project.name}
             </h3>
-            <button className="game-detail-close" onClick={closeGameDetail}>
+            <button
+              type="button"
+              className="game-detail-close"
+              onClick={closeGameDetail}
+              aria-label={text.close}
+            >
               <CloseChevron />
             </button>
           </div>
@@ -203,12 +226,12 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
             <span className="game-detail-tag" id="game-detail-tag">
               {project.dimensions} · {project.genre}
               {project.publishingDate
-                ? ` · Released ${dayjs(project.publishingDate).format('MMM YYYY')}`
+                ? ` · ${text.released} ${releaseMonth(project.publishingDate, lang)}`
                 : ''}
             </span>
           </p>
           <div className="game-detail-tech">
-            <p className="game-detail-tech-label">Tech:</p>
+            <p className="game-detail-tech-label">{text.tech}</p>
             {project.tech?.map((t) => (
               <span key={t} className="tech-tag">
                 {t}
@@ -263,7 +286,9 @@ const ProjectDetailWrap: React.FC<ProjectDetailProp> = ({ project }) => {
                 {project.summary}
               </p>
               <div>
-                <p className="game-detail-tasks-label">Responsibilities</p>
+                <p className="game-detail-tasks-label">
+                  {text.responsibilities}
+                </p>
                 <ul className="game-detail-tasks" id="game-detail-tasks">
                   {project.highlights.map((highlight, idx) => (
                     <li key={idx}>{highlight}</li>

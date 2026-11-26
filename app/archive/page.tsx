@@ -1,60 +1,11 @@
 import type { Metadata } from 'next';
-import ArchiveList from '@/components/Archive/ArchiveList';
-import { SchemaGraph } from '@/components/Schema';
-import PageWrapper from '@/components/Template/PageWrapper';
-import data from '@/data/projects';
-import { createPageMetadata } from '@/lib/metadata';
-import {
-  breadcrumbNode,
-  collectionPageNode,
-  HOME_URL,
-  SITE_URL,
-} from '@/lib/schema';
-import { AUTHOR_NAME } from '@/lib/utils';
 
-const ARCHIVE_URL = `${SITE_URL}/archive/`;
+import ArchivePage, { archiveMetadata } from '@/components/Pages/ArchivePage';
 
-const ARCHIVE_DESCRIPTION = `Early professional and amateur projects from ${AUTHOR_NAME} (2017 and earlier).`;
+// Content and metadata live in the component, shared with the page in the
+// other language (English at /…, Spanish at /es/…).
+export const metadata: Metadata = archiveMetadata('en');
 
-export const metadata: Metadata = createPageMetadata({
-  title: 'Archive',
-  description: ARCHIVE_DESCRIPTION,
-  path: '/archive/',
-});
-
-export default function ProjectsPage() {
-  const otherProjects = data.filter((p) => p.other);
-  const learningProjects = data.filter((p) => p.learning);
-
-  return (
-    <PageWrapper mainClassName="page-main--archive">
-      <SchemaGraph
-        nodes={[
-          collectionPageNode({
-            url: ARCHIVE_URL,
-            name: 'Archive',
-            description: ARCHIVE_DESCRIPTION,
-            hasBreadcrumb: true,
-          }),
-          breadcrumbNode(ARCHIVE_URL, [
-            { name: 'Home', url: HOME_URL },
-            { name: 'Archive', url: ARCHIVE_URL },
-          ]),
-        ]}
-      />
-      <section className="projects-archive-page">
-        <header className="projects-archive-header">
-          <h1 className="page-title">Archive</h1>
-          <p className="page-subtitle">
-            Other professional and amateur projects.
-          </p>
-        </header>
-
-        <ArchiveList
-          otherProjects={otherProjects}
-          learningProjects={learningProjects}
-        />
-      </section>
-    </PageWrapper>
-  );
+export default function Page() {
+  return <ArchivePage lang="en" />;
 }

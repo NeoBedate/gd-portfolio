@@ -31,6 +31,7 @@ export const AUTHOR_HEADLINE = [
 
 // Canonical one-line bio, shared across page metadata, OpenGraph, and JSON-LD.
 export const SITE_DESCRIPTION = `${profile.role_01}, ${profile.role_02} and ${profile.role_03}. ${profile.professionalYears} years in games and 3 console games for DreamWorks and Nickelodeon IPs, including TMNT: Mutants Unleashed.`;
+export const SITE_DESCRIPTION_ES = `${profile.role_01}, ${profile.role_02} y ${profile.role_03}. ${profile.professionalYears} años en la industria y 3 juegos de consola con licencias de DreamWorks y Nickelodeon, entre ellos TMNT: Mutants Unleashed.`;
 
 /** When this build ran: the footer's "last updated" date. */
 export const SITE_UPDATED = new Date();

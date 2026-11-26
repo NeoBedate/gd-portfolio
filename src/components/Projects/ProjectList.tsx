@@ -5,20 +5,23 @@ import Cell from '@/components/Projects/Cell';
 import { openProjectDetail } from '@/components/Projects/openProjectDetail';
 import ProjectDetailWrap from '@/components/Projects/ProjectDetailWrap';
 import { projectSlug } from '@/components/Projects/projectSlug';
+import { t } from '@/data/i18n/ui';
 import type { ProjectDetails } from '@/data/projects';
-import data from '@/data/projects';
+import { useLang } from '@/hooks/useLang';
 
 export interface ProjectsListWrap {
+  /** The selected projects, already in the page's language. */
   projects: ProjectDetails[];
 }
 
 const ProjectList: React.FC<ProjectsListWrap> = ({ projects }) => {
+  const text = t(useLang()).portfolio;
   const [selectedProject, setSelectedProject] = useState(
-    data.find((p) => p.id == '12_tmnt'),
+    projects.find((p) => p.id == '12_tmnt'),
   );
 
   function UpdateProjectFromID(id: string) {
-    var project = data.find((p) => p.id == id);
+    var project = projects.find((p) => p.id == id);
     const wrap = document.getElementById('game-detail-wrap');
     if (!wrap) return;
     openProjectDetail(wrap);
@@ -55,15 +58,13 @@ const ProjectList: React.FC<ProjectsListWrap> = ({ projects }) => {
     <div>
       <section className="portfolio-page">
         <header className="portfolio-header">
-          <h1 className="page-title">Portfolio</h1>
-          <p className="page-subtitle">
-            A selection of video games I helped to create.
-          </p>
+          <h1 className="page-title">{text.title}</h1>
+          <p className="page-subtitle">{text.subtitle}</p>
         </header>
 
         {projects.length > 0 && (
           <section className="portfolio-projects">
-            <h2 className="projects-section-title">Selected Projects</h2>
+            <h2 className="projects-section-title">{text.selectedProjects}</h2>
             <div className="projects-grid projects-grid-selected">
               {projects.map((project) => (
                 <Cell

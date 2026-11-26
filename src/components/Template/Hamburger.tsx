@@ -5,14 +5,20 @@ import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import routes from '../../data/routes';
-import { isActiveRoute } from '../../lib/routes';
+import { t } from '@/data/i18n/ui';
+import routes, { routeLabel } from '@/data/routes';
+import { langFromPath, localizePath, stripLang } from '@/lib/i18n';
+import { isActiveRoute } from '@/lib/routes';
+
 import SlideMenu from './SlideMenu';
 
 const MENU_ID = 'mobile-nav-menu';
 
 export default function Hamburger() {
   const pathname = usePathname();
+  const lang = langFromPath(pathname);
+  const englishPath = stripLang(pathname ?? '/');
+  const text = t(lang).nav;
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -24,14 +30,20 @@ export default function Hamburger() {
   const closeMenu = useCallback(() => setOpen(false), []);
 
   const slideMenu = (
-    <SlideMenu id={MENU_ID} isOpen={open} onClose={closeMenu} position="right">
+    <SlideMenu
+      id={MENU_ID}
+      isOpen={open}
+      onClose={closeMenu}
+      position="right"
+      label={text.menu}
+    >
       {/* The trap keeps focus inside the dialog, so it needs a way out that
           is not the Escape key alone. */}
       <button
         type="button"
         className="slide-menu-close"
         onClick={closeMenu}
-        aria-label="Close navigation menu"
+        aria-label={text.closeMenu}
       >
         <span aria-hidden="true">×</span>
       </button>
@@ -39,20 +51,20 @@ export default function Hamburger() {
         {routes
           .filter((l) => l.primary !== false)
           .map((l) => {
-            const active = isActiveRoute(pathname, l.path);
+            const active = isActiveRoute(englishPath, l.path);
 
             return (
-              <li key={l.label}>
+              <li key={l.path}>
                 {/* Navigation labels, not document sections — these were <h3>,
                   which put six phantom headings into the outline. */}
                 <Link
-                  href={l.path}
+                  href={localizePath(l.path, lang)}
                   onClick={closeMenu}
                   className={active ? 'active' : undefined}
                   aria-current={active ? 'page' : undefined}
                 >
                   <span className={l.index ? 'index-li' : undefined}>
-                    {l.label}
+                    {routeLabel(l, lang)}
                   </span>
                 </Link>
               </li>
@@ -72,9 +84,7 @@ export default function Hamburger() {
                 type="button"
                 onClick={toggleMenu}
                 className="hamburger-button"
-                aria-label={
-                  open ? 'Close navigation menu' : 'Open navigation menu'
-                }
+                aria-label={open ? text.closeMenu : text.openMenu}
                 aria-expanded={open}
                 aria-controls={MENU_ID}
               >
