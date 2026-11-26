@@ -1,0 +1,115 @@
+<!doctype html>
+<!--
+  The link-preview image, public/images/og-image.png (1200 × 630), shown by
+  LinkedIn, WhatsApp, Slack… when the site is shared. Same text in both
+  languages: the name, job titles and game names don't change.
+
+  After editing, regenerate it in PowerShell from the repo root (needs
+  internet for the fonts), then check it stays under 300 KB, as WhatsApp
+  drops larger images:
+
+  & "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --headless=new --user-data-dir="$env:TEMP\og-card-edge" --hide-scrollbars --window-size=1200,630 --force-device-scale-factor=1 --virtual-time-budget=5000 --screenshot="$PWD\public\images\og-image.png" "file:///$PWD/scripts/og-card.html"
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,wght@1,400&display=block"
+    />
+    <style>
+      /* The site's light theme: app/styles/tokens/colors.css. */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+      }
+      body {
+        background: #fcfbf9;
+        color: #23272e;
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 64px;
+        align-items: center;
+        padding: 0 80px;
+        border-top: 14px solid #1b2fbf;
+      }
+      .label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 21px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #1b2fbf;
+      }
+      h1 {
+        font-family: 'Bricolage Grotesque', sans-serif;
+        font-weight: 700;
+        font-size: 74px;
+        line-height: 0.98;
+        letter-spacing: -0.02em;
+        color: #0e1116;
+        margin: 22px 0 34px;
+      }
+      ul {
+        list-style: none;
+        border-top: 1px solid rgba(35, 39, 46, 0.14);
+        padding-top: 26px;
+      }
+      li {
+        font-family: 'Newsreader', serif;
+        font-style: italic;
+        font-size: 31px;
+        line-height: 1.3;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      li::before {
+        content: '';
+        width: 10px;
+        height: 10px;
+        background: #1b2fbf;
+        flex: none;
+      }
+      .site {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 22px;
+        color: #545a63;
+        margin-top: 30px;
+      }
+      .portrait {
+        width: 300px;
+        height: 300px;
+        border: 1px solid rgba(35, 39, 46, 0.24);
+        padding: 10px;
+        background: #f2f1ec;
+      }
+      .portrait img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p class="label">Lead Level Designer · Game Designer · Producer</p>
+      <h1>Santiago<br />Rodríguez Bedate</h1>
+      <ul>
+        <li>TMNT: Mutants Unleashed</li>
+        <li>DreamWorks Dragons: Legends of the Nine Realms</li>
+        <li>DreamWorks Spirit: Lucky's Big Adventure</li>
+      </ul>
+      <p class="site">santibedate.com</p>
+    </div>
+    <div class="portrait"><img src="../public/images/me.png" alt="" /></div>
+  </body>
+</html>
