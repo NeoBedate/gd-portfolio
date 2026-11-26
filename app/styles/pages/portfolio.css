@@ -33,37 +33,41 @@
 }
 
 /* ========================================
-   PROJECT DETAIL WRAP COMPONENTS
-   Project detail wrap that collapses and shows
-   different information for each project.
+   CASE STUDY PAGES (/portfolio/<slug>/)
+   One page per game. The game-detail-* names
+   come from the panel these pages replaced.
    ======================================== */
-
-.game-detail-wrap {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.45s ease;
-}
-
-.game-detail-wrap.open {
-  grid-template-rows: 1fr;
-  padding-top: 3rem;
-  scroll-margin-top: calc(var(--header-height));
-}
-
-.game-detail {
-  overflow: hidden;
-}
-
-.game-detail-heading {
-  display: flex;
-  position: relative;
-  /* Keep a long title clear of the absolutely positioned close button. */
-  padding-right: 2.6rem;
-}
 
 .game-detail-title {
   font-family: var(--font-mono);
   text-transform: uppercase;
+}
+
+.case-study-title {
+  font-size: var(--text-2xl);
+}
+
+.case-study-header {
+  margin-bottom: var(--spacing-6);
+}
+
+.case-study-back {
+  font-family: var(--font-mono);
+  font-size: var(--text-ui);
+  letter-spacing: 0.04em;
+}
+
+.case-study-back--top {
+  margin-bottom: var(--spacing-6);
+}
+
+/* A 44px touch target. The gap spaces the arrow: inside a flex box, a
+   trailing space in the arrow's span would collapse. */
+.case-study-back a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  min-height: 2.75rem;
 }
 
 .game-detail-studio {
@@ -174,17 +178,17 @@
   transition: transform 0.15s;
 }
 
-.game-detail-play-btn:hover .game-detail-play-btn-icon {
+.game-detail-play-btn:hover .game-detail-play-btn-icon,
+.game-detail-play-btn:focus-visible .game-detail-play-btn-icon {
   transform: scale(1.2);
 }
 
-#game-detail-video {
+.game-detail-video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   border: none;
-  display: none;
 }
 
 .game-detail-img-nav {
@@ -212,7 +216,8 @@
   pointer-events: all;
 }
 
-.game-detail-img-btn:hover {
+.game-detail-img-btn:hover,
+.game-detail-img-btn:focus-visible {
   transform: scale(1.2);
   color: var(--color-accent);
 }
@@ -220,10 +225,6 @@
 .game-detail-img-btn:disabled {
   opacity: 0;
   pointer-events: none;
-}
-
-#game-detail-main-img {
-  cursor: pointer;
 }
 
 .game-detail-role {
@@ -252,11 +253,15 @@
   margin-bottom: 0;
 }
 
+/* An h2 for the outline, sized like the label it used to be. */
 .game-detail-tasks-label {
   font-family: var(--font-mono);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: normal;
+  line-height: inherit;
   color: var(--color-accent);
   margin-bottom: 0.5rem;
-  color: var(--color-accent);
 }
 
 .game-detail-tasks {
@@ -347,12 +352,15 @@
 }
 
 .game-detail-section-nav-btn {
+  flex-shrink: 0;
   width: 2.2rem;
   height: 2.2rem;
   background: var(--surface);
   color: var(--color-accent-border);
   cursor: pointer;
   display: flex;
+  align-items: center;
+  justify-content: center;
   transition:
     background 0.2s,
     color 0.2s;
@@ -384,7 +392,8 @@
   margin-top: 0.6rem;
 }
 
-.game-detail-section-nav-btn:hover {
+.game-detail-section-nav-btn:hover,
+.game-detail-section-nav-btn:focus-visible {
   transform: scale(1.2);
   color: var(--color-accent);
 }
@@ -445,25 +454,84 @@
   opacity: 1;
 }
 
-.game-detail-close {
-  position: absolute;
-  right: 0;
-  background: none;
-  color: var(--color-text);
-  width: 2.6rem;
-  height: 2.6rem;
-  cursor: pointer;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
+/* Full videos with sound (e.g. a developer diary). */
+.case-study-video-player {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  background: var(--color-bg-alt);
 }
 
-.game-detail-close:hover {
-  transform: scale(1.2);
-  border-color: var(--color-accent);
+.case-study-video-caption {
+  margin-top: var(--spacing-3);
+  font-size: var(--text-base);
+  color: var(--color-text);
+}
+
+.case-study-video-credit {
+  font-size: var(--text-sm);
+  font-style: italic;
+  color: var(--color-fg-light);
+}
+
+/* Previous / next case study, like the devlog's pager. */
+.case-study-footer {
+  margin-top: var(--spacing-10);
+  padding-top: 1.5rem;
+  border-top: var(--rule) solid var(--color-border);
+}
+
+.case-study-pager {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.case-study-pager-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-height: 2.75rem;
+  background-image: none;
+}
+
+.case-study-pager-next {
+  grid-column: 2;
+  text-align: right;
+}
+
+.case-study-pager-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-fg-light);
+}
+
+.case-study-pager-title {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-fg-bold);
+  line-height: var(--leading-snug);
+  transition: color var(--duration-instant) var(--ease-out);
+}
+
+.case-study-pager-link:hover .case-study-pager-title,
+.case-study-pager-link:focus-visible .case-study-pager-title {
   color: var(--color-accent-hover);
+}
+
+@media (max-width: 736px) {
+  .case-study-pager {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .case-study-pager-next {
+    grid-column: 1;
+    text-align: left;
+  }
 }
 
 .game-detail-steam-link {

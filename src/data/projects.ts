@@ -1,5 +1,10 @@
 export interface ProjectDetails {
   id: string;
+  /**
+   * The project's page: `/portfolio/<slug>/`. Projects without one have no
+   * page (see `src/lib/caseStudies.ts`).
+   */
+  slug?: string;
   url?: string;
   steamUrl?: string;
   coverImage: string;
@@ -16,7 +21,11 @@ export interface ProjectDetails {
   highlights: string[];
   quote?: string;
   images?: string[];
+  /** Alt text for each of `images`, in the same order. */
+  imageAlts?: string[];
   trailer?: string;
+  /** Videos shown in full, with sound and controls (not looping clips). */
+  videos?: ProjectVideo[];
   sections?: ProjectResponsibilities[];
   tech?: string[];
   selected?: boolean;
@@ -24,13 +33,25 @@ export interface ProjectDetails {
   learning?: boolean;
 }
 
+export interface ProjectVideo {
+  title: string;
+  description: string;
+  src: string;
+  poster: string;
+  width: number;
+  height: number;
+}
+
 export interface ProjectResponsibilities {
   task: string;
   taskExecution: string[];
   pageSize: number;
   taskImage?: string;
+  taskImageAlt?: string;
   taskCaption?: string;
   gifs: string[][];
+  /** Alt text for each clip or still in `gifs`, in the same shape. */
+  alts?: string[][];
   captions: string[];
 }
 
@@ -50,7 +71,7 @@ const data: ProjectDetails[] = [
   },
   {
     id: '12_tmnt',
-    url: '#game-detail-wrap',
+    slug: 'tmnt-mutants-unleashed',
     steamUrl:
       'https://store.steampowered.com/app/2460130/Teenage_Mutant_Ninja_Turtles_Mutants_Unleashed/',
     coverImage: '/images/projects/project-card-10-tmnt.webp',
@@ -80,6 +101,15 @@ const data: ProjectDetails[] = [
       '/images/projects/12_tmnt/mutants-pc-20240119-175746x4.webp',
       '/images/projects/12_tmnt/mutants-pc-20240119-200232x4.webp',
       '/images/projects/12_tmnt/mutants-pc-20240122-140023x4.webp',
+    ],
+    imageAlts: [
+      'Teenage Mutant Ninja Turtles: Mutants Unleashed logo.',
+      'A turtle in a misty subway station.',
+      'Leo and Raph fighting enemies in a sewer hideout strung with lights.',
+      'A turtle on a neon-lit Uptown street at dusk.',
+      'A turtle on a street corner below a neon Coffee Shop sign.',
+      'Donnie swinging his staff at a large mutant in a floodlit stadium.',
+      'A turtle running out of a round sewer pipe.',
     ],
     sections: [
       {
@@ -117,6 +147,32 @@ const data: ProjectDetails[] = [
             '/images/projects/12_tmnt/bridge-jumps.mp4',
           ],
         ],
+        alts: [
+          [
+            'Blockout: Leo riding wind gusts past spinning fans.',
+            'Leo crossing a rooftop wind-gust jump by a water tower.',
+          ],
+          [
+            "Blockout of The Mall's circular atrium, with ring-shaped floors.",
+            'Another view of The Mall blockout, its round balconies around a central void.',
+          ],
+          [
+            'Leo running up a staircase in The Mall blockout.',
+            'Leo running up a staircase in The Mall, with final art.',
+          ],
+          [
+            'Blockout: Donnie climbing a long staircase.',
+            'Leo grinding down the rail of a graffiti-covered staircase.',
+          ],
+          [
+            'Blockout: a turtle walking down a corridor into the stadium.',
+            'Leo walking down a dark passage, with final art.',
+          ],
+          [
+            'The four turtles walking onto the bridge.',
+            "A turtle jumping along the bridge's cables.",
+          ],
+        ],
         captions: [
           '1. Our blockout process let us model traversal puzzles quickly, which helped the pacing of levels.',
           '2. Some screenshots of BK_05, later known in-game as The Mall, with a circular structure that was hard to honor with camera work and had to be ditched.',
@@ -136,6 +192,8 @@ const data: ProjectDetails[] = [
         ],
         pageSize: 1,
         taskImage: '/images/projects/12_tmnt/mt-04-pre.webp',
+        taskImageAlt:
+          'Planning sheet for the Midtown metro level: a layout diagram with portals, quest routes and reference photos.',
         taskCaption:
           'Planning for Midtown metro level, with portals marked and quests running through the level highlighted.',
         gifs: [
@@ -150,6 +208,20 @@ const data: ProjectDetails[] = [
           [
             '/images/projects/12_tmnt/bk-02-upview.webp',
             '/images/projects/12_tmnt/bk-02-final.webp',
+          ],
+        ],
+        alts: [
+          [
+            'Leo running across a rooftop with skylights.',
+            'A turtle fighting on a rooftop among barrels and skylights.',
+          ],
+          [
+            'The turtles running along a rooftop beside the railway tracks.',
+            'A turtle racing down a street full of debris.',
+          ],
+          [
+            'Top-down view of the BK_02 blockout.',
+            'Top-down view of BK_02 with its arenas and portals marked in red.',
           ],
         ],
         captions: [
@@ -168,6 +240,8 @@ const data: ProjectDetails[] = [
         ],
         pageSize: 1,
         taskImage: '/images/projects/12_tmnt/map-hud-04.webp',
+        taskImageAlt:
+          "Illustrated map of New York's boroughs: Uptown, Midtown, Hell's Kitchen, Downtown, the Bronx, Queens, Brooklyn and Staten Island.",
         taskCaption:
           'The Five Boroughs, with Manhattan partitioned into several recognizable pieces.',
         gifs: [
@@ -178,6 +252,16 @@ const data: ProjectDetails[] = [
           [
             '/images/projects/12_tmnt/map-03.webp',
             '/images/projects/12_tmnt/map-04.webp',
+          ],
+        ],
+        alts: [
+          [
+            'Diagram of the city map and level typology, with the levels grouped by borough.',
+            'Level connection diagram for Downtown, Brooklyn and Staten Island.',
+          ],
+          [
+            "Connection diagram of Brooklyn's levels, with the Streets level highlighted.",
+            'Layout diagram of BK_02 with its numbered portals to other levels.',
           ],
         ],
         captions: [
@@ -227,7 +311,7 @@ const data: ProjectDetails[] = [
   },
   {
     id: '11_dragons',
-    url: '#game-detail-wrap',
+    slug: 'dragons-legends-of-the-nine-realms',
     steamUrl:
       'https://store.steampowered.com/app/1721440/DreamWorks_Dragons_Legends_of_The_Nine_Realms/',
     coverImage: '/images/projects/project-card-09-dragons.webp',
@@ -256,6 +340,23 @@ const data: ProjectDetails[] = [
       '/images/projects/11_dragons/ice-realm.webp',
       '/images/projects/11_dragons/crystal-realm.webp',
     ],
+    imageAlts: [
+      'DreamWorks Dragons: Legends of the Nine Realms logo.',
+      'A rocky path between pools of lava in the fire realm.',
+      'Ice spires and a frozen arch in the ice realm.',
+      'A cavern wall of crystals and twisted roots.',
+    ],
+    videos: [
+      {
+        title: 'Developer diary',
+        description:
+          "The game's official developer diary (2022). Juan Raigada, the studio's CEO and Creative Director, and I talk about how the game was conceived and made. I'm on screen from 0:35.",
+        src: '/images/projects/11_dragons/dragons-dev-diary.mp4',
+        poster: '/images/projects/11_dragons/dragons-dev-diary-poster.webp',
+        width: 1280,
+        height: 720,
+      },
+    ],
     sections: [
       {
         task: 'Camera work & set pieces',
@@ -266,6 +367,8 @@ const data: ProjectDetails[] = [
         ],
         pageSize: 0,
         taskImage: '/images/projects/11_dragons/traversal-mix.mp4',
+        taskImageAlt:
+          'A montage of the dragons traversing caverns in several realms, seen from the isometric camera.',
         gifs: [
           [
             '/images/projects/11_dragons/w01-04-set-piece-01.mp4',
@@ -274,6 +377,16 @@ const data: ProjectDetails[] = [
           [
             '/images/projects/11_dragons/w03-04-set-piece-03.mp4',
             '/images/projects/11_dragons/w02-02-puzzle-01.mp4',
+          ],
+        ],
+        alts: [
+          [
+            'Set piece: Thunder racing through a dark cavern.',
+            'Set piece: Plowhorn crossing a frozen cavern.',
+          ],
+          [
+            'A camera cut to rising lava, with the line "Watch out, Thunder! That doesn\'t look good!"',
+            'Puzzle: Plowhorn among ice and fire crystals.',
           ],
         ],
         captions: [
@@ -300,6 +413,16 @@ const data: ProjectDetails[] = [
             '/images/projects/11_dragons/w03-01-puzzle-01.mp4',
           ],
         ],
+        alts: [
+          [
+            'Thunder crossing a cavern path, with the hint "The dragons must keep moving".',
+            'Thunder flying across a wide cavern.',
+          ],
+          [
+            'Puzzle: a movable block next to a crystal-blocked path.',
+            'Puzzle: a movable block beside a lava pool in the fire realm.',
+          ],
+        ],
         captions: [
           '1. We pulled back on the camera every time we could in order to make the levels feel bigger and richer.',
           '2. Traversal puzzles imply tracking blocks and the crystals involved in activating/unlocking them.',
@@ -319,6 +442,7 @@ const data: ProjectDetails[] = [
   },
   {
     id: '10_spirit',
+    slug: 'spirit-luckys-big-adventure',
     steamUrl:
       'https://store.steampowered.com/app/1270720/DreamWorks_Spirit_Luckys_Big_Adventure/',
     coverImage: '/images/projects/project-card-08-spirit.webp',
@@ -347,6 +471,13 @@ const data: ProjectDetails[] = [
       '/images/projects/10_spirit/showcase-03.webp',
       '/images/projects/10_spirit/showcase-04.webp',
     ],
+    imageAlts: [
+      "DreamWorks Spirit: Lucky's Big Adventure logo.",
+      'Three riders on horseback overlooking a valley of blossoming trees.',
+      'Lucky greeting Spirit in a meadow.',
+      'Lucky riding Spirit on the lake shore.',
+      'Horses and riders gathered in a forest clearing.',
+    ],
     sections: [
       {
         task: 'The World Map',
@@ -367,6 +498,20 @@ const data: ProjectDetails[] = [
           [
             '/images/projects/10_spirit/early-corner-01.webp',
             '/images/projects/10_spirit/early-corner-02.webp',
+          ],
+        ],
+        alts: [
+          [
+            'Riding Spirit across the valley at night, toward a quest marker.',
+            'Riding Spirit along a dirt path, toward a quest marker.',
+          ],
+          [
+            'Riding past the lake, toward a quest marker.',
+            'Riding through a rocky canyon at sunset.',
+          ],
+          [
+            'A stream running past rocks and ferns.',
+            'A forest path between rocks and trees.',
           ],
         ],
         captions: [

@@ -33,6 +33,9 @@ function mediaPaths(): string[] {
   for (const project of projects) {
     if (project.coverImage) paths.push(project.coverImage);
     paths.push(...(project.images ?? []));
+    for (const video of project.videos ?? []) {
+      paths.push(video.src, video.poster);
+    }
     for (const section of project.sections ?? []) {
       if (section.taskImage) paths.push(section.taskImage);
       for (const group of section.gifs) paths.push(...group);
@@ -123,6 +126,39 @@ describe('projects data', () => {
     for (const project of projects) {
       for (const section of project.sections ?? []) {
         expect(section.captions.length).toBe(section.gifs.length);
+      }
+    }
+  });
+
+  it('gives every selected project its own page slug', () => {
+    const slugs = projects.filter((p) => p.selected).map((p) => p.slug);
+
+    for (const slug of slugs) {
+      expect(slug).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/);
+    }
+    expect(new Set(slugs).size).toBe(slugs.length);
+  });
+
+  it('describes every image and clip on a case study in alt text', () => {
+    const hasText = (alt: string | undefined) =>
+      typeof alt === 'string' && alt.trim().length > 0;
+
+    for (const project of projects.filter((p) => p.slug)) {
+      const images = project.images ?? [];
+      expect(project.imageAlts?.length ?? 0, project.id).toBe(images.length);
+      expect(project.imageAlts?.every(hasText) ?? true, project.id).toBe(true);
+
+      for (const section of project.sections ?? []) {
+        const where = `${project.id}: ${section.task}`;
+        if (section.taskImage) {
+          expect(hasText(section.taskImageAlt), where).toBe(true);
+        }
+        expect(section.alts?.length, where).toBe(section.gifs.length);
+        section.gifs.forEach((pair, index) => {
+          const alts = section.alts?.[index] ?? [];
+          expect(alts.length, `${where} #${index + 1}`).toBe(pair.length);
+          expect(alts.every(hasText), `${where} #${index + 1}`).toBe(true);
+        });
       }
     }
   });
