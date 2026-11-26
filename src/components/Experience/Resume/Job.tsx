@@ -47,11 +47,9 @@ const CompanyExperience: React.FC<JobProps> = ({
   return (
     <div className="resume-container">
       <div className="resume-company">
-        {logo ? (
-          <div className="resume-compLogo">
-            <img className="logo" src={logo} alt="" />
-          </div>
-        ) : null}
+        <div className="resume-compLogo">
+          <img className="logo" src={logo} alt="" />
+        </div>
         <h2 className="resume-daterange">
           <p className="daterange">
             {' '}

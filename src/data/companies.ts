@@ -1,8 +1,7 @@
 export interface CompanyDetails {
   id: string;
   url?: string;
-  /** Omit for roles with no company logo, such as freelance work. */
-  logo?: string;
+  logo: string;
   startDate: string;
   /** Omit while the role is ongoing; the résumé shows "Present". */
   endDate?: string;
@@ -13,6 +12,7 @@ export interface CompanyDetails {
 const data: CompanyDetails[] = [
   {
     id: '07_freelance',
+    logo: '/images/complogo/freelance-complogo.webp',
     startDate: '2025-12-01',
     name: 'Freelance',
     description: 'Consulting on an unannounced 3D action game under NDA.',

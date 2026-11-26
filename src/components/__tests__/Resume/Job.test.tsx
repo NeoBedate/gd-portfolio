@@ -73,20 +73,13 @@ describe('Job', () => {
     expect(screen.getByText(/january 2020 - present/i)).toBeInTheDocument();
   });
 
-  it('renders the company logo when there is one', () => {
+  it('renders the company logo', () => {
     const { container } = renderJob();
 
     expect(container.querySelector('.resume-compLogo img')).toHaveAttribute(
       'src',
       company.logo,
     );
-  });
-
-  it('renders no empty logo for a role without one', () => {
-    const { container } = renderJob({ company: { logo: undefined } });
-
-    expect(container.querySelector('.resume-compLogo')).toBeNull();
-    expect(container.querySelector('img')).toBeNull();
   });
 
   it('renders the company description as markdown', () => {
