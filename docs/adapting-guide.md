@@ -15,13 +15,7 @@ You may wish to fork this repository or remove my remote origin and add your own
 
 1. Run the project before making any modifications by following the setup and running instructions in the main [README.md](https://github.com/mldangelo/personal-site#-setup-and-running).
 2. Change `homepage` in `package.json` to reflect where you plan to host the site. This is important for static exporting. This also changes your path when developing locally. For example, a homepage of `mldangelo.com` places the site at `localhost:3000` and a homepage of `https://mldangelo.github.io/personal-site/` places the site at `localhost:3000/personal-site/`. If you plan to host on a path such as `https://[your-github-username].github.io/[your-repo-name]`, you should set this now so that your development environment mirrors your production environment.
-3. Create a `.env.local` file. To do this, run:
-
-   ```bash
-   cp .env.example .env.local
-   ```
-
-   and set values as appropriate. Most people will only need to update the Google Analytics tracking ID.
+3. Set up analytics. The site uses [Umami Cloud](https://cloud.umami.is), which is cookieless, so it needs no consent banner. Put your own website ID in `src/data/analytics.ts`, or remove `<Analytics />` from `app/layout.tsx`. No environment variables are needed.
 
 ### Adapt Content
 
@@ -71,9 +65,9 @@ Here are answers to questions I've been asked at least twice. I've attempted to 
 
    GitHub decided to rename the default branch of all of their repositories from master to main, and so did I. See their reasoning [here](https://github.com/github/renaming). If you're trying to pull in recent changes, consider renaming your own branch, or just create a merge commit from my main.
 
-4. Google Analytics Warnings when building.
+4. Where do the analytics go?
 
-   Either set up Google Analytics 4 or remove the `<GoogleAnalytics />` component from `app/layout.tsx`. The site now uses the official `@next/third-parties` package for GA4 integration.
+   To Umami Cloud, configured in `src/data/analytics.ts`. It only counts visits on the domains listed there, so local builds and Vercel previews don't show up. CV downloads, LinkedIn and email clicks are sent as events through `TrackedLink`.
 
 5. How do I configure git? What is nano?
 

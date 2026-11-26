@@ -19,7 +19,7 @@ This site has been a work in progress since 2014, evolving to reflect current be
 - Migrated from ESLint to Biome
 - Replaced react-burger-menu with native slide menu
 - TypeScript strict mode throughout
-- Google Analytics 4 via @next/third-parties
+- Cookieless analytics via Umami Cloud (replaced Google Analytics 4)
 - SEO: sitemap, Open Graph, structured metadata
 
 ## Future Direction

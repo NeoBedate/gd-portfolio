@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { analyticsEvents } from '@/data/analytics';
 import { cvDownloads } from '@/data/cv';
 import profile from '@/data/profile.json';
 import routes from '@/data/routes';
@@ -10,6 +11,7 @@ import { AUTHOR_NAME } from '@/lib/utils';
 
 import Hamburger from './Hamburger';
 import ThemeToggle from './ThemeToggle';
+import TrackedLink from './TrackedLink';
 
 // Websites Navbar, displays routes defined in 'src/data/routes'
 export default function Navigation() {
@@ -42,14 +44,16 @@ export default function Navigation() {
 
       <div className="nav-actions">
         {/* The CV is one click away on every page, phones included. */}
-        <a
+        <TrackedLink
           href={cvDownloads[0].href}
           className="nav-cv"
           download
           aria-label="Download CV (PDF)"
+          event={analyticsEvents.cvDownload}
+          eventData={{ cv: cvDownloads[0].label, from: 'header' }}
         >
           CV <span aria-hidden="true">↓</span>
-        </a>
+        </TrackedLink>
         <ThemeToggle />
         <Hamburger />
       </div>

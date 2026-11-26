@@ -4,6 +4,8 @@ import EmailLink from '@/components/Contact/EmailLink';
 import OpenToWork from '@/components/Contact/OpenToWork';
 import CvLinks from '@/components/Template/CvLinks';
 import PageWrapper from '@/components/Template/PageWrapper';
+import TrackedLink from '@/components/Template/TrackedLink';
+import { analyticsEvents } from '@/data/analytics';
 import contact from '@/data/contact';
 import profile from '@/data/profile.json';
 import { createPageMetadata } from '@/lib/metadata';
@@ -31,16 +33,18 @@ export default function ContactPage() {
             {linkedIn ? (
               <p className="contact-alt">
                 Or find me on{' '}
-                <a
+                <TrackedLink
                   href={linkedIn.link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  event={analyticsEvents.linkedIn}
+                  eventData={{ from: 'contact' }}
                 >
                   LinkedIn<span className="sr-only"> (opens in new tab)</span>
-                </a>
+                </TrackedLink>
               </p>
             ) : null}
-            <CvLinks className="contact-alt" />
+            <CvLinks className="contact-alt" from="contact" />
           </div>
 
           <OpenToWork />

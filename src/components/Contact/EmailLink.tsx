@@ -1,3 +1,5 @@
+import TrackedLink from '@/components/Template/TrackedLink';
+import { analyticsEvents } from '@/data/analytics';
 import Profile from '@/data/profile.json';
 
 /**
@@ -10,9 +12,14 @@ import Profile from '@/data/profile.json';
 export default function EmailLink() {
   return (
     <div className="contact-email-container">
-      <a href={`mailto:${Profile.email}`} className="contact-email-link">
+      <TrackedLink
+        href={`mailto:${Profile.email}`}
+        className="contact-email-link"
+        event={analyticsEvents.email}
+        eventData={{ from: 'contact' }}
+      >
         <span className="contact-email-domain">{Profile.email}</span>
-      </a>
+      </TrackedLink>
     </div>
   );
 }

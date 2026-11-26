@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 
 import { SiteSchema } from '@/components/Schema';
-import GoogleAnalytics from '@/components/Template/GoogleAnalytics';
+import Analytics from '@/components/Template/Analytics';
 import Navigation from '@/components/Template/Navigation';
 import { MAIN_CONTENT_ID } from '@/components/Template/PageWrapper';
 import ScrollToTop from '@/components/Template/ScrollToTop';
@@ -85,7 +85,7 @@ export default function RootLayout({
           <Navigation />
           {children}
         </div>
-        <GoogleAnalytics />
+        <Analytics />
       </body>
     </html>
   );

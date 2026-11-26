@@ -78,7 +78,7 @@ export default function Footer() {
               Connect
             </span>
             <ContactIcons />
-            <CvLinks className="footer-cv" />
+            <CvLinks className="footer-cv" from="footer" />
           </div>
         </div>
       </div>

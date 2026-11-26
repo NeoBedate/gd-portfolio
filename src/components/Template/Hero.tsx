@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import { analyticsEvents } from '@/data/analytics';
 import contact from '@/data/contact';
 import { cvDownloads } from '@/data/cv';
 import { currently } from '@/data/home';
@@ -8,6 +9,7 @@ import profile from '@/data/profile.json';
 import { AUTHOR_HEADLINE } from '@/lib/utils';
 
 import ThemePortrait from './ThemePortrait';
+import TrackedLink from './TrackedLink';
 
 const linkedIn = contact.find((item) => item.label === 'LinkedIn');
 
@@ -64,22 +66,26 @@ export default function Hero() {
         <Link href="/portfolio" className="button button-primary">
           See my work <span aria-hidden="true">→</span>
         </Link>
-        <a
+        <TrackedLink
           href={cvDownloads[0].href}
           className="button button-secondary"
           download
+          event={analyticsEvents.cvDownload}
+          eventData={{ cv: cvDownloads[0].label, from: 'hero' }}
         >
           Download CV (PDF)
-        </a>
+        </TrackedLink>
         {linkedIn ? (
-          <a
+          <TrackedLink
             href={linkedIn.link}
             className="button button-secondary"
             target="_blank"
             rel="noopener noreferrer"
+            event={analyticsEvents.linkedIn}
+            eventData={{ from: 'hero' }}
           >
             LinkedIn<span className="sr-only"> (opens in new tab)</span>
-          </a>
+          </TrackedLink>
         ) : null}
       </div>
     </section>
