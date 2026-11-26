@@ -22,9 +22,15 @@ export const SITE_IMAGE_DIMENSIONS = {
   height: 256,
 } as const;
 
+/** The site's headline: the three roles, most important first. */
+export const AUTHOR_HEADLINE = [
+  profile.role_01,
+  profile.role_02,
+  profile.role_03,
+].join(' · ');
+
 // Canonical one-line bio, shared across page metadata, OpenGraph, and JSON-LD.
-export const SITE_DESCRIPTION =
-  'Design lead with 13+ years of experience working with Unity, both in academic and professional environments.';
+export const SITE_DESCRIPTION = `${profile.role_01}, ${profile.role_02} and ${profile.role_03}. ${profile.professionalYears} years in games and 3 console games for DreamWorks and Nickelodeon IPs, including TMNT: Mutants Unleashed.`;
 
 // Image dimension constants
 export const PROJECT_IMAGE = {

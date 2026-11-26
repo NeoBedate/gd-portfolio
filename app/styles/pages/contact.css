@@ -1,0 +1,77 @@
+/* ========================================
+   CONTACT PAGE — LinkedIn and "Open to work"
+   The email block lives in content.css.
+   ======================================== */
+
+.contact-alt {
+  margin: 1rem 0 0;
+  font-size: var(--text-sm);
+  color: var(--color-fg-light);
+}
+
+/* Open to work — a short spec sheet: label on the left, value on the right. */
+.contact-open {
+  width: 100%;
+  max-width: 36rem;
+  margin: 0 auto;
+  padding-top: 1rem;
+  border-top: var(--rule-strong) solid var(--color-fg-bold);
+  text-align: left;
+}
+
+/* A live status, so it takes the signal colour, like the badge in the hero. */
+.contact-open-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-ui);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-signal);
+}
+
+.contact-open-title::before {
+  content: '';
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--radius-full);
+  background: var(--color-signal-mark);
+}
+
+.contact-open-list {
+  margin: 0;
+}
+
+.contact-open-row {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: var(--rule) solid var(--color-border);
+}
+
+.contact-open-row dt {
+  padding-top: 0.2rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-fg-light);
+}
+
+.contact-open-row dd {
+  margin: 0;
+  font-size: var(--text-base);
+  line-height: var(--leading-snug);
+  color: var(--color-fg-bold);
+}
+
+@media (max-width: 480px) {
+  .contact-open-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.25rem;
+  }
+}

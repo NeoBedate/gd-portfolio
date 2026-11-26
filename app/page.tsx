@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
 
+import FeaturedGames from '@/components/Home/FeaturedGames';
+import NumbersStrip from '@/components/Home/NumbersStrip';
+import WhatIBring from '@/components/Home/WhatIBring';
 import { SchemaGraph } from '@/components/Schema';
 import Hero from '@/components/Template/Hero';
 import PageWrapper from '@/components/Template/PageWrapper';
@@ -20,6 +23,9 @@ export default function HomePage() {
         nodes={[profilePageNode({ url: HOME_URL, name: AUTHOR_NAME })]}
       />
       <Hero />
+      <FeaturedGames />
+      <NumbersStrip />
+      <WhatIBring />
     </PageWrapper>
   );
 }

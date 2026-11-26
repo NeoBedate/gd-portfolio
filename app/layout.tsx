@@ -9,6 +9,7 @@ import ScrollToTop from '@/components/Template/ScrollToTop';
 import { sharedOpenGraph } from '@/lib/metadata';
 import {
   AUTHOR_NAME,
+  AUTHOR_ROLE,
   SITE_DESCRIPTION,
   SITE_NAME,
   SITE_URL,
@@ -18,7 +19,7 @@ import './tailwind.css';
 
 export const metadata: Metadata = {
   title: {
-    default: AUTHOR_NAME,
+    default: `${AUTHOR_NAME} · ${AUTHOR_ROLE}`,
     template: `%s | ${AUTHOR_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: `${SITE_URL}/`,
     siteName: SITE_NAME,
-    title: AUTHOR_NAME,
+    title: `${AUTHOR_NAME} · ${AUTHOR_ROLE}`,
     description: SITE_DESCRIPTION,
   },
   robots: {
