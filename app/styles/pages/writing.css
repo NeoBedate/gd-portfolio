@@ -418,3 +418,33 @@
   border-radius: var(--radius-sm);
   margin: 1.5rem 0;
 }
+
+/* Tables: weekly numbers in the devlog, comparisons in articles. Wide ones
+   scroll inside their own box rather than widening the page on a phone. */
+.prose table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.prose th,
+.prose td {
+  padding: 0.5rem 1rem 0.5rem 0;
+  border-bottom: var(--rule) solid var(--color-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose th {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-fg-light);
+  border-bottom-color: var(--color-fg-bold);
+}

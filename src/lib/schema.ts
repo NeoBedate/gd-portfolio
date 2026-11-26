@@ -1,5 +1,6 @@
 import contact from '@/data/contact';
 import degrees from '@/data/experience/degrees';
+import type { DevlogEntry } from '@/lib/devlog';
 import {
   AUTHOR_NAME,
   AUTHOR_ROLE,
@@ -173,6 +174,28 @@ export function collectionPageNode(options: PageNodeOptions): SchemaNode {
 /** A plain WebPage, used for individual article pages. */
 export function webPageNode(options: PageNodeOptions): SchemaNode {
   return baseWebPage('WebPage', options);
+}
+
+/**
+ * A weekly devlog update. `url` is the update's absolute URL; the WebPage
+ * node for the same URL must also be emitted, since this points at it.
+ */
+export function devlogPostingNode(
+  entry: Pick<DevlogEntry, 'title' | 'summary' | 'date'>,
+  url: string,
+): SchemaNode {
+  return {
+    '@type': 'BlogPosting',
+    '@id': `${url}#blogposting`,
+    url,
+    mainEntityOfPage: { '@id': `${url}#webpage` },
+    headline: entry.title,
+    description: entry.summary,
+    inLanguage: SITE_LANGUAGE,
+    datePublished: entry.date,
+    author: personRef(),
+    publisher: personRef(),
+  };
 }
 
 /** Wraps nodes into a single `@graph` JSON-LD document. */

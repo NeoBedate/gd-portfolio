@@ -2,17 +2,11 @@
 
 import { useEffect, useRef } from 'react';
 
-const VIDEO_EXTENSION = /\.(mp4|webm)$/i;
+import { isVideo, posterFor } from '@/lib/media';
 
-/** True for the looping clips that replaced the old GIFs. */
-export function isVideo(src: string): boolean {
-  return VIDEO_EXTENSION.test(src);
-}
-
-/** Each clip has a first-frame poster next to it: `clip.mp4` → `clip-poster.webp`. */
-export function posterFor(src: string): string {
-  return src.replace(VIDEO_EXTENSION, '-poster.webp');
-}
+// Re-exported so existing client-side and test imports keep working; server
+// code should import them from '@/lib/media'.
+export { isVideo, posterFor };
 
 interface ProjectMediaProps {
   src: string;
