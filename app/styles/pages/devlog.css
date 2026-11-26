@@ -1,0 +1,194 @@
+/* ========================================
+   DEVLOG
+   Weekly updates on projects in progress. Lists reuse the Writing rows
+   (writing.css) and updates reuse the post layout and prose; this file
+   only adds what a dated weekly diary needs on top.
+   ======================================== */
+
+.devlog-header {
+  margin-bottom: var(--spacing-10);
+}
+
+/* Project / week trail above an update's title, set like a file path. */
+.devlog-kicker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin: 0 0 0.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-ui);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-fg-light);
+}
+
+.devlog-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  margin: 1rem 0 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-fg-light);
+}
+
+/* Only ever seen on previews, so it can be loud. */
+.devlog-draft {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0 0.4rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-signal);
+  border: var(--rule) solid var(--color-signal);
+  border-radius: var(--radius-xs);
+}
+
+.devlog-empty {
+  color: var(--color-fg-light);
+}
+
+/* ---------- Lists ---------- */
+
+.devlog-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* The base list-item indent would push the rows off the header's edge. */
+.devlog-list > li {
+  margin: 0;
+  padding: 0;
+}
+
+/* writing.css draws the heavy top rule on the first row; here each row sits
+   inside an <li>, so it has to be placed on the first item's row instead. */
+.devlog-list .writing-item:first-child {
+  border-top: 0;
+}
+
+.devlog-list > li:first-child .writing-item {
+  border-top: var(--rule) solid var(--color-fg-bold);
+}
+
+.devlog-week {
+  color: var(--color-fg-bold);
+}
+
+.devlog-list-project {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-fg-light);
+}
+
+.writing-section-label a {
+  color: inherit;
+}
+
+/* ---------- Media inside an update ---------- */
+
+.devlog-media {
+  display: block;
+  margin: 1.75rem 0;
+}
+
+.devlog-media-link {
+  display: block;
+  background-image: none;
+}
+
+.prose .devlog-media-asset {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-subtle);
+}
+
+.devlog-media-caption {
+  display: block;
+  margin-top: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-fg-light);
+}
+
+/* ---------- Previous / next ---------- */
+
+.devlog-pager {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 2rem;
+  margin-top: var(--spacing-10);
+  padding-top: 1.5rem;
+  border-top: var(--rule) solid var(--color-border);
+}
+
+.devlog-pager-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-height: 2.75rem;
+  background-image: none;
+}
+
+.devlog-pager-next {
+  grid-column: 2;
+  text-align: right;
+}
+
+.devlog-pager-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-fg-light);
+}
+
+.devlog-pager-title {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-fg-bold);
+  line-height: var(--leading-snug);
+  transition: color var(--duration-instant) var(--ease-out);
+}
+
+.devlog-pager-link:hover .devlog-pager-title,
+.devlog-pager-link:focus-visible .devlog-pager-title {
+  color: var(--color-accent-hover);
+}
+
+.devlog-back {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-top: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-ui);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 736px) {
+  .devlog-pager {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .devlog-pager-next {
+    grid-column: 1;
+    text-align: left;
+  }
+}

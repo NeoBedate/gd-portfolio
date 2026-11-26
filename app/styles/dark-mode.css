@@ -120,3 +120,12 @@
 [data-theme='dark'] .prose p a:hover {
   background-image: none;
 }
+
+/* The dark accent is translucent (about 3.3:1 on the page), too faint for
+   body-size link text. Prose links keep the accent underline and take the
+   text colour, as links elsewhere already do. */
+[data-theme='dark'] .prose a,
+[data-theme='dark'] .prose p a,
+[data-theme='dark'] .prose li a {
+  color: var(--color-text);
+}
