@@ -18,11 +18,20 @@ interface PageMetadataOptions {
 }
 
 /**
- * The OpenGraph block every page needs (the title and description that
- * LinkedIn, WhatsApp, Slack… show when a link is shared).
- *
- * No share image is set: none exists in `public/`, and pointing at a missing
- * file gives a broken preview. Add an `images` entry here if one is made.
+ * The link-preview image, the same in both languages. Its source is
+ * `scripts/og-card.html`; keep the file under 300 KB, or WhatsApp drops it
+ * and shows no preview at all.
+ */
+export const SHARE_IMAGE = {
+  url: '/images/og-image.png',
+  width: 1200,
+  height: 630,
+  alt: `${AUTHOR_NAME}: Lead Level Designer, Game Designer and Producer. TMNT: Mutants Unleashed, DreamWorks Dragons: Legends of the Nine Realms and DreamWorks Spirit: Lucky's Big Adventure.`,
+};
+
+/**
+ * The OpenGraph block every page needs (the title, description and image
+ * that LinkedIn, WhatsApp, Slack… show when a link is shared).
  *
  * A route-level `openGraph` object replaces the inherited one wholesale
  * rather than merging, so anything omitted here vanishes from that page.
@@ -30,6 +39,7 @@ interface PageMetadataOptions {
 export const sharedOpenGraph: Metadata['openGraph'] = {
   locale: 'en_US',
   siteName: AUTHOR_NAME,
+  images: [SHARE_IMAGE],
 };
 
 /**
