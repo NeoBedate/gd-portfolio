@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 import EmailLink from '@/components/Contact/EmailLink';
 import OpenToWork from '@/components/Contact/OpenToWork';
+import CvLinks from '@/components/Template/CvLinks';
 import PageWrapper from '@/components/Template/PageWrapper';
 import contact from '@/data/contact';
 import profile from '@/data/profile.json';
@@ -39,6 +40,7 @@ export default function ContactPage() {
                 </a>
               </p>
             ) : null}
+            <CvLinks className="contact-alt" />
           </div>
 
           <OpenToWork />

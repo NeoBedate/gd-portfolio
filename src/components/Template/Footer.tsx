@@ -2,9 +2,21 @@ import Link from 'next/link';
 
 import ContactIcons from '@/components/Contact/ContactIcons';
 import routes from '@/data/routes';
-import { AUTHOR_NAME, AUTHOR_ROLE } from '@/lib/utils';
+import { AUTHOR_NAME, AUTHOR_ROLE, SITE_UPDATED } from '@/lib/utils';
 
+import CvLinks from './CvLinks';
 import ThemePortrait from './ThemePortrait';
+
+// The footer renders at build time, so this is the date of the deploy.
+const updatedLabel = SITE_UPDATED.toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'Europe/Madrid',
+}); // e.g. '26 November 2026'
+const updatedIso = SITE_UPDATED.toLocaleDateString('en-CA', {
+  timeZone: 'Europe/Madrid',
+}); // e.g. '2026-11-26'
 
 export default function Footer() {
   const currentRole = `${AUTHOR_ROLE}`;
@@ -31,6 +43,9 @@ export default function Footer() {
                 Source
                 <span className="sr-only"> (opens in new tab)</span>
               </a>
+            </p>
+            <p className="footer-updated">
+              Last updated <time dateTime={updatedIso}>{updatedLabel}</time>
             </p>
           </div>
         </div>
@@ -63,6 +78,7 @@ export default function Footer() {
               Connect
             </span>
             <ContactIcons />
+            <CvLinks className="footer-cv" />
           </div>
         </div>
       </div>
