@@ -10,9 +10,10 @@ import { LANG_TAG, type Lang, localizePath } from '@/lib/i18n';
 import { createPageMetadata } from '@/lib/metadata';
 import { breadcrumbNode, collectionPageNode, SITE_URL } from '@/lib/schema';
 
+/** Shown in search results and link previews, so it names the games. */
 const DESCRIPTION: Record<Lang, string> = {
-  en: 'Selected video games where I contributed.',
-  es: 'Una selección de los videojuegos en los que he trabajado.',
+  en: "Level design and production on 3 console games: TMNT: Mutants Unleashed, DreamWorks Dragons: Legends of the Nine Realms and DreamWorks Spirit: Lucky's Big Adventure.",
+  es: "Diseño de niveles y producción en 3 juegos de consola: TMNT: Mutants Unleashed, DreamWorks Dragons: Legends of the Nine Realms y DreamWorks Spirit: Lucky's Big Adventure.",
 };
 
 export function portfolioMetadata(lang: Lang): Metadata {
