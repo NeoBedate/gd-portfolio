@@ -67,6 +67,21 @@ describe('Job', () => {
     expect(screen.getByText(/present/i)).toBeInTheDocument();
   });
 
+  it('shows Present for an ongoing role with no end date', () => {
+    renderJob({ company: { endDate: undefined } });
+
+    expect(screen.getByText(/january 2020 - present/i)).toBeInTheDocument();
+  });
+
+  it('renders the company logo', () => {
+    const { container } = renderJob();
+
+    expect(container.querySelector('.resume-compLogo img')).toHaveAttribute(
+      'src',
+      company.logo,
+    );
+  });
+
   it('renders the company description as markdown', () => {
     renderJob();
 

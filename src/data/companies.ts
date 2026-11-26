@@ -3,12 +3,20 @@ export interface CompanyDetails {
   url?: string;
   logo: string;
   startDate: string;
-  endDate: string;
+  /** Omit while the role is ongoing; the résumé shows "Present". */
+  endDate?: string;
   name: string;
   description: string;
 }
 
 const data: CompanyDetails[] = [
+  {
+    id: '07_freelance',
+    logo: '/images/complogo/freelance-complogo.webp',
+    startDate: '2025-12-01',
+    name: 'Freelance',
+    description: 'Consulting on an unannounced 3D action game under NDA.',
+  },
   {
     id: '06_ahog',
     logo: '/images/complogo/aheartfulofgames-complogo.webp',

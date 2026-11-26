@@ -48,7 +48,7 @@ const CompanyExperience: React.FC<JobProps> = ({
     <div className="resume-container">
       <div className="resume-company">
         <div className="resume-compLogo">
-          <img className="logo" src={logo} />
+          <img className="logo" src={logo} alt="" />
         </div>
         <h2 className="resume-daterange">
           <p className="daterange">

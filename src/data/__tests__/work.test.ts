@@ -39,11 +39,36 @@ describe('work data', () => {
   it('company dates are valid and in order', () => {
     for (const company of companies) {
       const start = new Date(company.startDate);
-      const end = new Date(company.endDate);
 
       expect(Number.isNaN(start.getTime())).toBe(false);
+      // No end date means the role is ongoing.
+      if (company.endDate === undefined) continue;
+
+      const end = new Date(company.endDate);
       expect(Number.isNaN(end.getTime())).toBe(false);
       expect(end.getTime()).toBeGreaterThan(start.getTime());
     }
+  });
+
+  it('only the most recent role is ongoing, and nothing starts in the future', () => {
+    const ongoing = companies.filter((c) => c.endDate === undefined);
+    const latestStart = Math.max(
+      ...companies.map((c) => new Date(c.startDate).getTime()),
+    );
+
+    expect(ongoing.length).toBeLessThanOrEqual(1);
+    for (const company of ongoing) {
+      expect(new Date(company.startDate).getTime()).toBe(latestStart);
+    }
+    expect(latestStart).toBeLessThanOrEqual(Date.now());
+  });
+
+  it('lists the most recent role first', () => {
+    const first = companies.find((c) => c.id === work[0].companyId);
+    const latestStart = Math.max(
+      ...companies.map((c) => new Date(c.startDate).getTime()),
+    );
+
+    expect(new Date(first?.startDate ?? '').getTime()).toBe(latestStart);
   });
 });

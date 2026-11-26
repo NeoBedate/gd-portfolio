@@ -36,6 +36,19 @@ export interface ProjectResponsibilities {
 
 const data: ProjectDetails[] = [
   {
+    // Under NDA: describe the work, never the game, until it's announced.
+    id: '13_freelanceNda',
+    coverImage: '',
+    startDate: '2025-12-01',
+    name: 'Unannounced 3D action game (under NDA)',
+    overview: '',
+    position: 'Game & Level Design Consultant',
+    highlights: [
+      'Designing traversal metrics, level flowcharts and blockout rules for an unannounced 3D action game.',
+      'Level design consulting: creating and setting up workflows for a team of 3 level designers.',
+    ],
+  },
+  {
     id: '12_tmnt',
     url: '#game-detail-wrap',
     steamUrl:
