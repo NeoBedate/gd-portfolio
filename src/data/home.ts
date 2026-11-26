@@ -67,14 +67,14 @@ export const featuredGames: FeaturedGame[] = [
     image: '/images/home/featured-spirit.webp',
     ip: 'DreamWorks',
     publisher: 'Outright Games',
-    facts: ['25 km² open world', 'Shipped through COVID with a junior team'],
+    facts: ['5 km² open world', 'Shipped through COVID with a junior team'],
   },
 ];
 
 export const stats: Stat[] = [
   { value: '40', label: 'levels on TMNT, with a team of 4' },
   { value: '3', label: 'console games shipped' },
-  { value: '25 km²', label: 'open world on Spirit' },
+  { value: '5 km²', label: 'open world on Spirit' },
   { value: '20+', label: 'languages localized on Dragons' },
   { value: '6 → 31', label: 'people: how my last studio grew' },
   { value: '300+', label: 'university students taught' },

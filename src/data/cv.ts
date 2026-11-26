@@ -229,7 +229,7 @@ const lines = {
     dragonsMentor:
       "Authored 60% of the game's levels while mentoring a junior level designer.",
     spiritMap:
-      'Owned the 25 km² world map from concept to final implementation, plus its traversal puzzles and collectibles.',
+      'Owned the 5 km² world map from concept to final implementation, plus its traversal puzzles and collectibles.',
     spiritOps:
       'Built production workflows and led day-to-day operations, milestones and client communication.',
     spiritOpsProduction:
@@ -277,7 +277,7 @@ const lines = {
     dragonsMentor:
       'Diseñé el 60 % de los niveles del juego y fui mentor de un level designer junior.',
     spiritMap:
-      'Responsable del mapa del mundo de 25 km² de principio a fin, con sus puzles de traversal y coleccionables.',
+      'Responsable del mapa del mundo de 5 km² de principio a fin, con sus puzles de traversal y coleccionables.',
     spiritOps:
       'Creé los flujos de producción y dirigí el día a día, los hitos y la comunicación con el cliente.',
     spiritOpsProduction:
