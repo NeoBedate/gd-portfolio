@@ -137,6 +137,30 @@
   color: var(--color-accent);
 }
 
+.footer-updated {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-fg-light);
+  margin: 0.25rem 0 0;
+}
+
+.footer-cv {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-fg-light);
+}
+
+.footer-cv a {
+  color: var(--color-fg);
+}
+
+.footer-cv a:hover {
+  color: var(--color-accent);
+}
+
 /* Ownership notice for the game media shown on the site. Spans the footer
    under both columns, aligned with them. */
 .footer-legal {

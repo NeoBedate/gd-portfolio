@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
 import contact from '@/data/contact';
+import { cvDownloads } from '@/data/cv';
 import { currently } from '@/data/home';
 import openToWork from '@/data/openToWork';
 import profile from '@/data/profile.json';
@@ -49,15 +50,19 @@ describe('Hero', () => {
     }
   });
 
-  it('leads with the portfolio, then LinkedIn', () => {
+  it('leads with the portfolio, then the CV, then LinkedIn', () => {
     render(<Hero />);
 
     const links = document.querySelectorAll('.hero-cta a');
-    expect(links).toHaveLength(2);
+    expect(links).toHaveLength(3);
 
-    const [portfolio, linkedIn] = links;
+    const [portfolio, cv, linkedIn] = links;
     expect(portfolio).toHaveAttribute('href', '/portfolio');
     expect(portfolio).toHaveClass('button-primary');
+
+    expect(cv).toHaveAttribute('href', cvDownloads[0].href);
+    expect(cv).toHaveAttribute('download');
+    expect(cv).toHaveTextContent(/download cv/i);
 
     const linkedInUrl = contact.find((c) => c.label === 'LinkedIn')?.link;
     expect(linkedIn).toHaveAttribute('href', linkedInUrl);

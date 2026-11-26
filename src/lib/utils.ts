@@ -32,6 +32,9 @@ export const AUTHOR_HEADLINE = [
 // Canonical one-line bio, shared across page metadata, OpenGraph, and JSON-LD.
 export const SITE_DESCRIPTION = `${profile.role_01}, ${profile.role_02} and ${profile.role_03}. ${profile.professionalYears} years in games and 3 console games for DreamWorks and Nickelodeon IPs, including TMNT: Mutants Unleashed.`;
 
+/** When this build ran: the footer's "last updated" date. */
+export const SITE_UPDATED = new Date();
+
 // Image dimension constants
 export const PROJECT_IMAGE = {
   width: 600,

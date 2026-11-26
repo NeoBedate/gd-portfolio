@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
+import { cvDownloads } from '@/data/cv';
 import { AUTHOR_NAME, AUTHOR_ROLE } from '@/lib/utils';
 
 import Footer from '../../Template/Footer';
@@ -27,6 +28,25 @@ describe('Footer', () => {
     expect(
       screen.getByText(new RegExp(`© ${currentYear}`)),
     ).toBeInTheDocument();
+  });
+
+  it('says when the site was last updated', () => {
+    render(<Footer />);
+
+    const time = document.querySelector('.footer-updated time');
+    expect(screen.getByText(/last updated/i)).toBeInTheDocument();
+    expect(time?.getAttribute('datetime')).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(time).toHaveTextContent(/^\d{1,2} [A-Z][a-z]+ \d{4}$/);
+  });
+
+  it('links both CVs', () => {
+    render(<Footer />);
+
+    for (const cv of cvDownloads) {
+      const link = screen.getByRole('link', { name: cv.label });
+      expect(link).toHaveAttribute('href', cv.href);
+      expect(link).toHaveAttribute('download');
+    }
   });
 
   it('renders navigation links', () => {

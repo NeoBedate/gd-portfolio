@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { cvDownloads } from '@/data/cv';
+
 import Navigation from '../../Template/Navigation';
 
 // Mock usePathname to control active state
@@ -82,5 +84,13 @@ describe('Navigation', () => {
     // Theme toggle should be present (placeholder initially due to SSR)
     const navActions = document.querySelector('.nav-actions');
     expect(navActions).toBeInTheDocument();
+  });
+
+  it('offers the CV on every page', () => {
+    render(<Navigation />);
+
+    const cv = screen.getByRole('link', { name: 'Download CV (PDF)' });
+    expect(cv).toHaveAttribute('href', cvDownloads[0].href);
+    expect(cv).toHaveAttribute('download');
   });
 });

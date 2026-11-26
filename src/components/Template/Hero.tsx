@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import contact from '@/data/contact';
+import { cvDownloads } from '@/data/cv';
 import { currently } from '@/data/home';
 import openToWork from '@/data/openToWork';
 import profile from '@/data/profile.json';
@@ -63,6 +64,13 @@ export default function Hero() {
         <Link href="/portfolio" className="button button-primary">
           See my work <span aria-hidden="true">→</span>
         </Link>
+        <a
+          href={cvDownloads[0].href}
+          className="button button-secondary"
+          download
+        >
+          Download CV (PDF)
+        </a>
         {linkedIn ? (
           <a
             href={linkedIn.link}

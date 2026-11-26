@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { cvDownloads } from '@/data/cv';
 import profile from '@/data/profile.json';
 import routes from '@/data/routes';
 import { isActiveRoute } from '@/lib/routes';
@@ -40,6 +41,15 @@ export default function Navigation() {
       </nav>
 
       <div className="nav-actions">
+        {/* The CV is one click away on every page, phones included. */}
+        <a
+          href={cvDownloads[0].href}
+          className="nav-cv"
+          download
+          aria-label="Download CV (PDF)"
+        >
+          CV <span aria-hidden="true">↓</span>
+        </a>
         <ThemeToggle />
         <Hamburger />
       </div>

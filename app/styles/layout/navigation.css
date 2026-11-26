@@ -97,6 +97,41 @@
   gap: 0.75rem;
 }
 
+/* CV download — a small labelled switch beside the theme toggle,
+   on every page and every width. */
+.nav-cv {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  height: 2.25rem;
+  padding: 0 0.75rem;
+  border: var(--rule) solid var(--color-control-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--text-ui);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-fg-bold);
+  text-decoration: none;
+  background-image: none;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.nav-cv:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background-image: none;
+}
+
+.nav-cv:focus-visible {
+  outline: var(--rule-strong) solid var(--color-accent);
+  outline-offset: 2px;
+}
+
 /* Theme Toggle */
 .theme-toggle {
   display: flex;
