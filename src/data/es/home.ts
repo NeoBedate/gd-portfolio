@@ -22,7 +22,7 @@ export const featuredFacts: Record<string, string[]> = {
     'Más de 20 idiomas',
   ],
   '10_spirit': [
-    'Mundo abierto de 25 km²',
+    'Mundo abierto de 5 km²',
     'Lanzado en plena COVID con un equipo junior',
   ],
 };
@@ -30,7 +30,7 @@ export const featuredFacts: Record<string, string[]> = {
 export const stats: Stat[] = [
   { value: '40', label: 'niveles en TMNT, con un equipo de 4' },
   { value: '3', label: 'juegos de consola lanzados' },
-  { value: '25 km²', label: 'de mundo abierto en Spirit' },
+  { value: '5 km²', label: 'de mundo abierto en Spirit' },
   { value: '20+', label: 'idiomas localizados en Dragons' },
   { value: '6 → 31', label: 'personas: así creció mi último estudio' },
   { value: '300+', label: 'alumnos universitarios' },

@@ -351,7 +351,7 @@ const data: ProjectDetails[] = [
       {
         task: 'The World Map',
         taskExecution: [
-          'Spirit has a 25 km² map, which was one of the main challenges of the project. I was in charge of the feature, and decided this size because one of the mandates from the external client was that riding Spirit had to be an experience within nature, with sightseeing and enough space to roam. After some tests, we were very happy with the feeling of going through a real region with different biomes and cute corners, so we went with that.',
+          'Spirit has a 5 km² map, which was one of the main challenges of the project. I was in charge of the feature, and decided this size because one of the mandates from the external client was that riding Spirit had to be an experience within nature, with sightseeing and enough space to roam. After some tests, we were very happy with the feeling of going through a real region with different biomes and cute corners, so we went with that.',
           'However, this did not come for free: the Code team had to go for a partition of the map that loads and unloads chunks of terrain in real time. It ended up working on all platforms and allowed for better detailing but was a hindrance for some time. This was a very humbling lesson about the dangers of being very ambitious in pre-production.',
         ],
         pageSize: 0,
