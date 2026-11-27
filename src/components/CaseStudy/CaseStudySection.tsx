@@ -1,6 +1,7 @@
 import ProjectMedia from '@/components/Projects/ProjectMedia';
 import type { ProjectResponsibilities } from '@/data/projects';
 
+import { LightboxLink } from './Lightbox';
 import SectionGallery from './SectionGallery';
 
 interface CaseStudySectionProps {
@@ -27,14 +28,13 @@ export default function CaseStudySection({
               className="game-detail-section-task"
               key={paragraph}
               // Our own data, with <b> for emphasis.
-              // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted, hand-written project text
               dangerouslySetInnerHTML={{ __html: paragraph }}
             />
           ))}
         </div>
         {section.taskImage && (
           <figure className="game-detail-section-taskImage">
-            <a href={section.taskImage} target="_blank" rel="noopener">
+            <LightboxLink src={section.taskImage}>
               <ProjectMedia
                 src={section.taskImage}
                 alt={section.taskImageAlt ?? ''}
@@ -42,7 +42,7 @@ export default function CaseStudySection({
                 height={512}
                 className="game-detail-section-taskImage-image"
               />
-            </a>
+            </LightboxLink>
             {section.taskCaption && (
               <figcaption className="game-detail-section-caption">
                 {section.taskCaption}
