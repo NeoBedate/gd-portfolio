@@ -39,6 +39,9 @@ function mediaPaths(): string[] {
     for (const section of project.sections ?? []) {
       if (section.taskImage) paths.push(section.taskImage);
       for (const group of section.gifs) paths.push(...group);
+      for (const comparison of section.comparisons ?? []) {
+        paths.push(comparison.before, comparison.after);
+      }
     }
   }
   for (const company of companies) {
@@ -162,6 +165,11 @@ describe('projects data', () => {
 
       for (const section of project.sections ?? []) {
         const where = `${project.id}: ${section.task}`;
+        for (const comparison of section.comparisons ?? []) {
+          expect(hasText(comparison.beforeAlt), where).toBe(true);
+          expect(hasText(comparison.afterAlt), where).toBe(true);
+          expect(hasText(comparison.caption), where).toBe(true);
+        }
         if (section.taskImage) {
           expect(hasText(section.taskImageAlt), where).toBe(true);
         }

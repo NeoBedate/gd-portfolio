@@ -120,6 +120,9 @@ describe('Spanish content', () => {
           text?.alts?.map((row) => row.length),
           `${at}.alts`,
         ).toEqual(section.alts?.map((row) => row.length));
+        expect(text?.comparisons?.length ?? 0, `${at}.comparisons`).toBe(
+          section.comparisons?.length ?? 0,
+        );
       });
     }
   });

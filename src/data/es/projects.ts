@@ -13,6 +13,7 @@
  */
 
 import type {
+  Comparison,
   ProjectDetails,
   ProjectResponsibilities,
   ProjectVideo,
@@ -28,7 +29,15 @@ export type SectionTranslation = Partial<
     | 'taskImageAlt'
     | 'captions'
     | 'alts'
-  >
+  > & {
+    /** The text of each of the section's `comparisons`, in the same order. */
+    comparisons: Array<
+      Pick<
+        Comparison,
+        'beforeLabel' | 'afterLabel' | 'beforeAlt' | 'afterAlt' | 'caption'
+      >
+    >;
+  }
 >;
 
 export type ProjectTranslation = Partial<
@@ -206,6 +215,17 @@ const projects: Record<string, ProjectTranslation> = {
           '1. Aunque intentamos mantener el movimiento vectorial en pantalla, a veces optamos por una sensación más cinematográfica durante el combate',
           '2. Además del dressing artístico, el equipo de diseño de niveles llenó las secciones de traversal y las arenas de props interactivos para mantener la imagen vibrante de una Nueva York en crisis',
           '3. Después de decidir cómo se conecta el nivel con los demás, colocamos un primer layout con los portales a otros niveles y recorrimos todas las misiones que lo atravesarían.',
+        ],
+        comparisons: [
+          {
+            beforeLabel: 'Blockout',
+            afterLabel: 'Propuesta',
+            beforeAlt: 'Vista cenital del blockout de BK_02.',
+            afterAlt:
+              'La misma vista con la propuesta dibujada encima en líneas rojas, naranjas y azules.',
+            caption:
+              'BK_02 desde arriba: el blockout y la propuesta dibujada encima. En rojo, la parte del nivel jugable en conjunto; en naranja, los bloques de geometría recolocados; en azul, los portales recolocados dentro del nivel.',
+          },
         ],
       },
       {
