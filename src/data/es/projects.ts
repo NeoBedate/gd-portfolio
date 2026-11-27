@@ -249,10 +249,25 @@ const projects: Record<string, ProjectTranslation> = {
             'Diagrama de conexiones entre los niveles de Brooklyn, con el nivel Streets resaltado.',
             'Diagrama del layout de BK_02 con sus portales numerados a otros niveles.',
           ],
+          [
+            'Los muelles de HK_01 en la tercera pasada: un gran contenedor verde en el centro de la arena, junto a una furgoneta blanca.',
+            'Los mismos muelles en la versión final, con el suelo ya decorado: el centro queda despejado, con un contenedor metálico más pequeño a la izquierda y la furgoneta a la derecha.',
+          ],
+          [
+            'DT_06 en la segunda pasada: Donnie peleando en una plaza redonda elevada, con el suelo gris liso.',
+            'La plaza redonda en la versión final, pintada con una gran calavera mexicana y adornada con banderines, con Leo peleando en ella.',
+          ],
+          [
+            'BK_05 en la primera pasada: Leo entre mesas de cafetería y jardineras, con una iluminación azul plana.',
+            'La misma zona de cafetería en la versión final: Leo peleando contra un enemigo junto a la escalera mecánica, entre mesas, una columna y escaparates.',
+          ],
         ],
         captions: [
           '1. Los niveles se concibieron primero como parte de la ciudad y sus distritos.',
           '2. Después de decidir cómo se conecta el nivel con los demás, colocamos un primer layout con los portales a otros niveles y todas las misiones que lo atravesarían.',
+          '3. HK_01, los muelles, en la tercera pasada y en la versión final, tras una pasada de arte posterior. El contenedor del centro era interesante, pero acabó dando muchos problemas de cámara.',
+          '4. DT_06 en la segunda pasada y en la versión final. Su plaza redonda funcionó como un espacio abierto poco habitual para el primer combate contra el hipopótamo.',
+          '5. BK_05, The Mall, en la primera pasada y en la versión final. Los personajes se leen mucho mejor en la versión final, en un nivel que se presta a lanzar objetos a los enemigos.',
         ],
       },
     ],

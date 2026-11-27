@@ -394,6 +394,18 @@ const data: ProjectDetails[] = [
             '/images/projects/12_tmnt/map-03.webp',
             '/images/projects/12_tmnt/map-04.webp',
           ],
+          [
+            '/images/projects/12_tmnt/hk-01-pass-3.webp',
+            '/images/projects/12_tmnt/hk-01-final.webp',
+          ],
+          [
+            '/images/projects/12_tmnt/dt-06-pass-2.webp',
+            '/images/projects/12_tmnt/dt-06-final.webp',
+          ],
+          [
+            '/images/projects/12_tmnt/bk-05-pass-1.webp',
+            '/images/projects/12_tmnt/bk-05-final.webp',
+          ],
         ],
         alts: [
           [
@@ -404,10 +416,25 @@ const data: ProjectDetails[] = [
             "Connection diagram of Brooklyn's levels, with the Streets level highlighted.",
             'Layout diagram of BK_02 with its numbered portals to other levels.',
           ],
+          [
+            'HK_01 docks in pass 3: a large green container in the middle of the arena, next to a white van.',
+            'The same docks in the final, with dressed ground: the middle is clear, with a smaller metal container to the left and the van to the right.',
+          ],
+          [
+            'DT_06 in pass 2: Donnie fighting on a round raised plaza with plain grey ground.',
+            'The round plaza in the final, painted with a large sugar skull and hung with bunting, with Leo fighting on it.',
+          ],
+          [
+            'BK_05 in pass 1: Leo among café tables and planters under flat blue lighting.',
+            'The same café area in the final: Leo fighting an enemy beside the escalator, among tables, a pillar and shop windows.',
+          ],
         ],
         captions: [
           '1. Levels were first envisioned as part of the city and its boroughs.',
           '2. After we decide how the level connects to others, we placed an early layout with portals to other levels and all the quests that will cross the level.',
+          '3. HK_01, the docks, in pass 3 and in the final, after a later art pass. The container in the middle was interesting, but it ended up causing a lot of camera issues.',
+          '4. DT_06 in pass 2 and in the final. Its round plaza worked as a rare open space for the first fight against the hippo.',
+          '5. BK_05, The Mall, in pass 1 and in the final. The characters read far more clearly in the final, in a level that suits throwing objects at enemies.',
         ],
       },
       // {
