@@ -233,7 +233,7 @@ const projects: Record<string, ProjectTranslation> = {
         taskExecution: [
           'Nuestro objetivo principal era <b>agilizar el diseño de niveles</b> y poder producir al menos el doble o el triple de los niveles necesarios, para ofrecer a Dirección Creativa una selección de ideas, así que trabajamos a 3 niveles de profundidad.',
           '<b>A alto nivel</b>, partimos de un objetivo («de 40 a 50 niveles en total, además de set pieces y jefes: la mayoría interconectados para las misiones»), así que creamos un <b>mapa de los distritos</b> (que acabó siendo el mapa del juego) y buscamos lugares interesantes en cada uno. También estudiamos entornos comunes (azoteas, calles, alcantarillas y túneles de metro) para ayudar a los calendarios de producción de arte y gameplay.',
-          '<b>A nivel intermedio</b>, seguimos un enfoque de 3 pasadas pensado para iterar rápido: bioma y foco de gameplay; colocación de cámaras y arenas; y correcciones de arte y colisiones. Estas pasadas, de las que la segunda era la más crucial pero también la que más tiempo llevaba, nos ayudaron a encontrar un tema para cada nivel sin perder la cohesión entre los espacios jugables.',
+          '<b>A nivel intermedio</b>, seguimos un enfoque de 3 pasadas pensado para iterar rápido: bioma y foco de gameplay; colocación de cámaras y arenas; y correcciones de arte y colisiones. En la práctica, solían servir para probar la geometría y la cámara: según el feedback de producción de Outright Games, metimos en el calendario tantas pasadas como nos pidieron, perfeccionando primero la geometría y la cámara de las rutas. Estas pasadas, de las que la segunda era la más crucial pero también la que más tiempo llevaba, nos ayudaron a encontrar un tema para cada nivel sin perder la cohesión entre los espacios jugables.',
           '<b>A bajo nivel</b>, nos centramos primero en resolver los bloques de acción (retos de traversal, diseño de arenas y momentos narrativos), dejando espacio a la integración del arte por la identidad visual única de la franquicia. Los blockouts se sustituían por assets finales, y las superficies por texturas, con una herramienta de reemplazo.',
         ],
         taskImageAlt:
@@ -249,10 +249,25 @@ const projects: Record<string, ProjectTranslation> = {
             'Diagrama de conexiones entre los niveles de Brooklyn, con el nivel Streets resaltado.',
             'Diagrama del layout de BK_02 con sus portales numerados a otros niveles.',
           ],
+          [
+            'Los muelles de HK_01 en la tercera pasada: un gran contenedor verde en el centro de la arena, junto a una furgoneta blanca.',
+            'Los mismos muelles en la versión final, con el suelo ya decorado: el centro queda despejado, con un contenedor metálico más pequeño a la izquierda y la furgoneta a la derecha.',
+          ],
+          [
+            'DT_06 en la segunda pasada: Donnie peleando en una plaza redonda elevada, con el suelo gris liso.',
+            'La plaza redonda en la versión final, pintada con una gran calavera mexicana y adornada con banderines, con Leo peleando en ella.',
+          ],
+          [
+            'BK_05 en la primera pasada: Leo entre mesas de cafetería y jardineras, con una iluminación azul plana.',
+            'La misma zona de cafetería en la versión final: Leo peleando contra un enemigo junto a la escalera mecánica, entre mesas, una columna y escaparates.',
+          ],
         ],
         captions: [
           '1. Los niveles se concibieron primero como parte de la ciudad y sus distritos.',
           '2. Después de decidir cómo se conecta el nivel con los demás, colocamos un primer layout con los portales a otros niveles y todas las misiones que lo atravesarían.',
+          '3. HK_01, los muelles, en la tercera pasada y en la versión final, tras una pasada de arte posterior. El contenedor del centro era interesante, pero acabó dando muchos problemas de cámara.',
+          '4. DT_06 en la segunda pasada y en la versión final. Su plaza redonda funcionó como un espacio abierto poco habitual para el primer combate contra el hipopótamo.',
+          '5. BK_05, The Mall, en la primera pasada y en la versión final. Los personajes se leen mucho mejor en la versión final, en un nivel que se presta a lanzar objetos a los enemigos.',
         ],
       },
     ],
