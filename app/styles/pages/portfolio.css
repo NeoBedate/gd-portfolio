@@ -51,6 +51,98 @@
   margin-bottom: var(--spacing-6);
 }
 
+/* The credits block: studio, publisher, platforms, release… */
+.case-study-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: var(--spacing-4) var(--spacing-6);
+  margin: var(--spacing-5) 0 var(--spacing-4);
+  padding: var(--spacing-4) 0;
+  border-block: var(--rule) solid var(--color-border);
+}
+
+/* Long values get two columns, which on a phone is the whole row. */
+.case-study-fact--wide {
+  grid-column: span 2;
+}
+
+.case-study-fact {
+  min-width: 0;
+}
+
+.case-study-fact dt {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.case-study-fact dd {
+  margin: 0.2rem 0 0;
+  overflow-wrap: anywhere;
+  font-size: var(--text-base);
+  color: var(--color-text);
+}
+
+.case-study-role-detail {
+  margin: -0.25rem 0 0.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-fg-light);
+}
+
+.case-study-links {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  gap: var(--spacing-3);
+  margin-top: var(--spacing-5);
+}
+
+/* Full-width lists (context, results, lessons): keep the square markers
+   inside the column. */
+.case-study-list-items {
+  display: flex;
+  max-width: var(--measure-read);
+  padding-left: 1.25rem;
+}
+
+/* Problem → decision → outcome cards. */
+.case-study-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--spacing-4);
+  list-style: none;
+  padding: 0;
+}
+
+.case-study-card {
+  padding: var(--spacing-5);
+  border: var(--rule) solid var(--color-border);
+  border-top: var(--rule-strong) solid var(--color-accent);
+  background: var(--color-surface-subtle);
+}
+
+.case-study-card dt {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.case-study-card dd {
+  margin: 0.25rem 0 var(--spacing-4);
+  font-size: var(--text-base);
+  color: var(--color-text);
+}
+
+.case-study-card dd:last-child {
+  margin-bottom: 0;
+}
+
 .case-study-back {
   font-family: var(--font-mono);
   font-size: var(--text-ui);

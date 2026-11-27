@@ -77,11 +77,23 @@ describe('projects data', () => {
     }
   });
 
-  it('links are absolute URLs or in-page anchors when present', () => {
+  it('links are absolute URLs with a label', () => {
     for (const project of projects) {
-      for (const link of [project.url, project.steamUrl, project.trailer]) {
-        if (link) {
-          expect(link).toMatch(/^(https?:\/\/.+|#.+)$/);
+      for (const link of project.links ?? []) {
+        expect(link.href, project.id).toMatch(/^https:\/\/.+/);
+        expect(link.label.trim(), project.id).not.toBe('');
+      }
+      if (project.trailer) {
+        expect(project.trailer, project.id).toMatch(/^https:\/\/.+/);
+      }
+    }
+  });
+
+  it('gives the case-study cards all three parts', () => {
+    for (const project of projects) {
+      for (const card of project.problems ?? []) {
+        for (const part of [card.problem, card.decision, card.outcome]) {
+          expect(part.trim(), project.id).not.toBe('');
         }
       }
     }

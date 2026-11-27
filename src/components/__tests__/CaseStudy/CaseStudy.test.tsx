@@ -119,6 +119,76 @@ describe('CaseStudyPage', () => {
   });
 });
 
+describe('CaseStudyPage: the template', () => {
+  it('lists the facts the data has, and leaves out the rest', () => {
+    render(<CaseStudyPage slug={TMNT} lang="en" />);
+
+    const facts = screen.getByLabelText('Project facts');
+    const fact = (label: string) =>
+      within(facts).getByText(label).nextElementSibling?.textContent;
+
+    expect(fact('Publisher')).toBe('Outright Games');
+    expect(fact('Engine')).toBe('Unity');
+    expect(fact('Released')).toBe('Oct 2024');
+    expect(fact('On the project')).toBe('Mar 2022 – Aug 2024');
+    expect(fact('Platforms')).toContain('Nintendo Switch');
+  });
+
+  it('states what I owned instead of the responsibilities, when known', () => {
+    render(<CaseStudyPage slug={TMNT} lang="en" />);
+
+    const owned = screen.getByRole('heading', { name: 'What I owned' });
+    expect(owned.nextElementSibling).toHaveTextContent(
+      '12 of the 40 levels end-to-end',
+    );
+    expect(
+      screen.queryByRole('heading', { name: 'Responsibilities' }),
+    ).toBeNull();
+  });
+
+  it('falls back to the responsibilities, and skips empty sections', () => {
+    render(<CaseStudyPage slug={DRAGONS} lang="en" />);
+
+    expect(
+      screen.getByRole('heading', { name: 'Responsibilities' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole('heading', { name: 'Problems, decisions, outcomes' }),
+    ).toBeNull();
+    expect(
+      screen.queryByRole('heading', { name: "What I'd do differently" }),
+    ).toBeNull();
+  });
+
+  it('shows the problem cards, results and lessons', () => {
+    render(<CaseStudyPage slug={TMNT} lang="en" />);
+
+    const cards = screen
+      .getByRole('heading', { name: 'Problems, decisions, outcomes' })
+      .closest('section') as HTMLElement;
+    expect(within(cards).getAllByRole('listitem')).toHaveLength(3);
+    expect(within(cards).getAllByText('Decision')).toHaveLength(3);
+
+    for (const title of ['Context and constraints', 'Results']) {
+      expect(screen.getByRole('heading', { name: title })).toBeInTheDocument();
+    }
+    expect(
+      screen.getByText(/Polish the camera feel later/),
+    ).toBeInTheDocument();
+  });
+
+  it('opens the store page in a new tab', () => {
+    render(<CaseStudyPage slug={TMNT} lang="en" />);
+
+    const steam = screen.getByRole('link', { name: /^Steam/ });
+    expect(steam).toHaveAttribute(
+      'href',
+      expect.stringContaining('store.steampowered.com'),
+    );
+    expect(steam).toHaveAttribute('target', '_blank');
+  });
+});
+
 describe('ScreenshotViewer', () => {
   const images = ['/a.webp', '/b.webp', '/c.webp'];
   const alts = ['Logo.', 'A rooftop.', 'A sewer.'];

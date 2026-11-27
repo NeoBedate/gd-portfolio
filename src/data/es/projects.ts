@@ -15,7 +15,18 @@ import type { ProjectDetails, ProjectVideo } from '../projects';
 export type ProjectTranslation = Partial<
   Pick<
     ProjectDetails,
-    'name' | 'genre' | 'overview' | 'summary' | 'highlights'
+    | 'name'
+    | 'genre'
+    | 'overview'
+    | 'summary'
+    | 'highlights'
+    | 'team'
+    | 'roleDetail'
+    | 'ownership'
+    | 'context'
+    | 'problems'
+    | 'results'
+    | 'lessons'
   > & {
     /** The text of each of the project's `videos`, in the same order. */
     videos: Array<Pick<ProjectVideo, 'title' | 'description'>>;

@@ -1,12 +1,15 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
+import type { ProjectDetails } from '@/data/projects';
+
 import Cell from '../../Projects/Cell';
 
 describe('Cell', () => {
-  const mockProject = {
+  const url = 'https://www.coolcompany.com';
+  const mockProject: ProjectDetails = {
     id: 'xx_test',
-    url: 'https://www.coolcompany.com',
+    links: [{ label: 'Website', href: url, kind: 'other' }],
     coverImage: '/images/test.jpg',
     publishingDate: '2026',
     name: 'Test Project',
@@ -16,11 +19,16 @@ describe('Cell', () => {
     highlights: ['Test Array of Highlights'],
   };
 
-  it('renders project as a clickable card with link', () => {
+  it("links the card to the project's first link", () => {
     render(<Cell data={mockProject} />);
     const link = screen.getByRole('link');
-    expect(link).toHaveAttribute('href', mockProject.url);
+    expect(link).toHaveAttribute('href', url);
     expect(link).toHaveClass('project-card-link');
+  });
+
+  it('renders no link when the project has none', () => {
+    render(<Cell data={{ ...mockProject, links: undefined }} />);
+    expect(screen.queryByRole('link')).toBeNull();
   });
 
   it('links to a page on the site instead, when given one', () => {
@@ -39,7 +47,7 @@ describe('Cell', () => {
 
   it('renders project date in correct format', () => {
     render(<Cell data={mockProject} />);
-    expect(screen.getByText(mockProject.publishingDate)).toBeInTheDocument();
+    expect(screen.getByText('2026')).toBeInTheDocument();
   });
 
   it('renders project image with alt text', () => {

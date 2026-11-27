@@ -2,10 +2,13 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
+import CaseStudyFacts from '@/components/CaseStudy/CaseStudyFacts';
+import CaseStudyList from '@/components/CaseStudy/CaseStudyList';
 import CaseStudyPager from '@/components/CaseStudy/CaseStudyPager';
 import CaseStudySection from '@/components/CaseStudy/CaseStudySection';
+import ProblemCards from '@/components/CaseStudy/ProblemCards';
+import ProjectLinks from '@/components/CaseStudy/ProjectLinks';
 import ProjectVideoPlayer from '@/components/CaseStudy/ProjectVideoPlayer';
-import { releaseMonth } from '@/components/CaseStudy/releaseMonth';
 import ScreenshotViewer from '@/components/CaseStudy/ScreenshotViewer';
 import { SchemaGraph } from '@/components/Schema';
 import PageWrapper from '@/components/Template/PageWrapper';
@@ -105,15 +108,10 @@ export default function CaseStudyPage({
 
         <header className="case-study-header">
           <h1 className="game-detail-title case-study-title">{name}</h1>
-          <p className="game-detail-studio">
-            {project.studio} ·{' '}
-            <span className="game-detail-tag">
-              {project.dimensions} · {project.genre}
-              {project.publishingDate
-                ? ` · ${text.portfolio.released} ${releaseMonth(project.publishingDate, lang)}`
-                : ''}
-            </span>
+          <p className="game-detail-tag">
+            {[project.dimensions, project.genre].filter(Boolean).join(' · ')}
           </p>
+          <CaseStudyFacts project={project} lang={lang} />
           {project.tech && project.tech.length > 0 && (
             <div className="game-detail-tech">
               <p className="game-detail-tech-label">{text.portfolio.tech}</p>
@@ -133,21 +131,34 @@ export default function CaseStudyPage({
             alts={project.imageAlts}
             trailer={project.trailer}
           />
-          <div>
+          <div className="case-study-role">
+            <p className="game-detail-tasks-label">{text.portfolio.myRole}</p>
             <p className="game-detail-role">{project.position}</p>
+            {project.roleDetail && (
+              <p className="case-study-role-detail">{project.roleDetail}</p>
+            )}
             {project.summary && (
               <p className="game-detail-overview">{project.summary.trim()}</p>
             )}
             <h2 className="game-detail-tasks-label">
-              {text.portfolio.responsibilities}
+              {project.ownership
+                ? text.portfolio.owned
+                : text.portfolio.responsibilities}
             </h2>
             <ul className="game-detail-tasks">
-              {project.highlights.map((highlight) => (
-                <li key={highlight}>{highlight}</li>
+              {(project.ownership ?? project.highlights).map((item) => (
+                <li key={item}>{item}</li>
               ))}
             </ul>
+            <ProjectLinks links={project.links ?? []} lang={lang} />
           </div>
         </div>
+
+        <CaseStudyList
+          id="context"
+          title={text.portfolio.context}
+          items={project.context}
+        />
 
         {project.videos?.map((video, index) => (
           <ProjectVideoPlayer
@@ -165,6 +176,18 @@ export default function CaseStudyPage({
             index={index}
           />
         ))}
+
+        <ProblemCards cards={project.problems} lang={lang} />
+        <CaseStudyList
+          id="results"
+          title={text.portfolio.results}
+          items={project.results}
+        />
+        <CaseStudyList
+          id="lessons"
+          title={text.portfolio.lessons}
+          items={project.lessons}
+        />
 
         <CaseStudyPager previous={previous} next={next} lang={lang} />
       </article>
