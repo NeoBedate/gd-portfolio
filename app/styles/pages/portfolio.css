@@ -893,7 +893,7 @@ video.lightbox-media {
 .lightbox-step {
   top: 50%;
   transform: translateY(-50%);
-  color: var(--color-fg-light);
+  color: var(--color-accent-border);
 }
 
 .lightbox-step--previous {
