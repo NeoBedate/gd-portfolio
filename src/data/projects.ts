@@ -428,6 +428,61 @@ const data: ProjectDetails[] = [
     ],
     publisher: 'Outright Games',
     engine: 'Unity',
+    platforms: [
+      'PC',
+      'PlayStation 4',
+      'PlayStation 5',
+      'Xbox One',
+      'Xbox Series X|S',
+      'Nintendo Switch',
+    ],
+    team: 'About 13 people, plus contractors',
+    ownership: [
+      '15 of the 25 levels, with their arenas, puzzles and cameras.',
+      'Mentoring a junior level designer.',
+      'Localization into 20+ languages: implementing it in the engine, and keeping in touch with the localization company hired by our publisher, so translations reached the studio on time.',
+    ],
+    context: [
+      'A 3D action platformer for kids on a DreamWorks license, published by Outright Games.',
+      'A 12-month production for about 13 people, plus a couple of contractors.',
+      '25 levels: 5 realms with 5 levels each (3 core levels, 1 set piece and 1 boss fight).',
+      'Hand-placed isometric cameras, for quick-paced action with several dragons on screen.',
+      'New paths open on earlier levels as the player gathers four dragons, so levels had to support backtracking.',
+    ],
+    problems: [
+      {
+        problem:
+          '25 levels in 12 months, with traversal abilities that bugged out easily on imprecise geometry.',
+        decision:
+          'We built levels with a modular kit the studio bought, following level design rules we wrote as a team.',
+        outcome:
+          'Traversal and combat sections closed much quicker, with 10-minute levels done in under 2 weeks. But learning the kit and working around its bugs kept us chasing our schedule.',
+      },
+      {
+        problem:
+          'Puzzles had to read clearly for kids, from a fixed isometric camera.',
+        decision:
+          'We tilted the camera slightly to put keys and locks in frame.',
+        outcome:
+          "Puzzles were easier for kids to understand, but we couldn't hide solutions or use complex layouts to encourage exploration.",
+      },
+      {
+        problem:
+          'Every realm is underground, yet the caverns had to feel big under a fixed camera.',
+        decision:
+          "With the time the modular kit saved, we worked with art on several layers of visualization matched to the camera's field of view.",
+        outcome:
+          'Big, complex-looking caverns. Balancing them with clear gameplay was tricky, but it worked.',
+      },
+    ],
+    results: [
+      'Shipped on 23 September 2022 on PC, PlayStation 4 and 5, Xbox One, Xbox Series X|S and Nintendo Switch.',
+      '25 levels across 5 realms, 15 of them mine.',
+      'Localized into 20+ languages.',
+    ],
+    lessons: [
+      "Leave time to learn a new tool. The modular kit was a good idea, but in a 12-month project we couldn't learn it fully or fix the bugs that plagued it, and we chased our own schedule for most of the project.",
+    ],
     coverImage: '/images/projects/project-card-09-dragons.webp',
     dimensions: '3D',
     genre: 'Action',

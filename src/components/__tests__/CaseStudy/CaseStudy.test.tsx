@@ -147,7 +147,7 @@ describe('CaseStudyPage: the template', () => {
   });
 
   it('falls back to the responsibilities, and skips empty sections', () => {
-    render(<CaseStudyPage slug={DRAGONS} lang="en" />);
+    render(<CaseStudyPage slug={SPIRIT} lang="en" />);
 
     expect(
       screen.getByRole('heading', { name: 'Responsibilities' }),
