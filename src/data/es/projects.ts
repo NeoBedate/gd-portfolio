@@ -15,7 +15,18 @@ import type { ProjectDetails, ProjectVideo } from '../projects';
 export type ProjectTranslation = Partial<
   Pick<
     ProjectDetails,
-    'name' | 'genre' | 'overview' | 'summary' | 'highlights'
+    | 'name'
+    | 'genre'
+    | 'overview'
+    | 'summary'
+    | 'highlights'
+    | 'team'
+    | 'roleDetail'
+    | 'ownership'
+    | 'context'
+    | 'problems'
+    | 'results'
+    | 'lessons'
   > & {
     /** The text of each of the project's `videos`, in the same order. */
     videos: Array<Pick<ProjectVideo, 'title' | 'description'>>;
@@ -69,7 +80,7 @@ const projects: Record<string, ProjectTranslation> = {
     overview:
       'Un juego de mundo abierto narrativo y relajado, basado en el universo de Spirit, en el que los jugadores exploran la fauna de un valle a lomos de Spirit y descubren los secretos de un antiguo mapa del tesoro relacionado con la madre de Lucky.',
     summary:
-      'Hice a la vez de Game Designer y Producer mientras nos llevábamos la producción a casa y sacábamos adelante el proyecto durante la pandemia de COVID, con éxito económico. Me ocupé de la localización, las tareas del proyecto, las reuniones con el cliente externo, la UI y todo el diseño de niveles.',
+      'Hice a la vez de Game Designer y Producer mientras nos llevábamos la producción a casa y sacábamos adelante el proyecto durante la pandemia de COVID. Me ocupé de la localización, las tareas del proyecto, las reuniones con el cliente externo, la UI y, junto a otro diseñador, el diseño de niveles.',
     highlights: [
       'Creé los flujos de producción y dirigí el día a día del equipo, gestionando los hitos y el reporting a stakeholders internos y externos.',
       'Fui mentor de artistas y game designers, generé confianza con los equipos de Arte y Programación y ayudé a cultivar una cultura sana en la empresa.',

@@ -9,15 +9,15 @@ interface CellProps {
   data: ProjectDetails;
   /**
    * A page on this site the card opens (a case study). Without it, the card
-   * links to the project's external `url`, or links nowhere.
+   * opens the project's first link, or links nowhere.
    */
   href?: string;
 }
 
 const Cell: React.FC<CellProps> = ({ data, href }) => {
+  const url = data.links?.[0]?.href;
   const {
     id,
-    url,
     coverImage,
     dimensions,
     genre,

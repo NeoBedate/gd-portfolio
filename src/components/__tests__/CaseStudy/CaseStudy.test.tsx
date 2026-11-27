@@ -1,12 +1,16 @@
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
+import CaseStudyList from '@/components/CaseStudy/CaseStudyList';
+import CaseStudyRole from '@/components/CaseStudy/CaseStudyRole';
+import ProblemCards from '@/components/CaseStudy/ProblemCards';
 import ScreenshotViewer from '@/components/CaseStudy/ScreenshotViewer';
 import SectionGallery from '@/components/CaseStudy/SectionGallery';
 import CaseStudyPage, {
   caseStudyMetadata,
   caseStudyStaticParams,
 } from '@/components/Pages/CaseStudyPage';
+import type { ProjectDetails } from '@/data/projects';
 import { caseStudyNeighbours, getCaseStudies } from '@/lib/caseStudies';
 
 const TMNT = 'tmnt-mutants-unleashed';
@@ -116,6 +120,86 @@ describe('CaseStudyPage', () => {
         element.getAttribute('alt') ?? element.getAttribute('aria-label');
       expect(label, element.outerHTML).toBeTruthy();
     }
+  });
+});
+
+describe('CaseStudyPage: the template', () => {
+  it('lists the facts the data has, and leaves out the rest', () => {
+    render(<CaseStudyPage slug={TMNT} lang="en" />);
+
+    const facts = screen.getByLabelText('Project facts');
+    const fact = (label: string) =>
+      within(facts).getByText(label).nextElementSibling?.textContent;
+
+    expect(fact('Publisher')).toBe('Outright Games');
+    expect(fact('Engine')).toBe('Unity');
+    expect(fact('Released')).toBe('Oct 2024');
+    expect(fact('On the project')).toBe('Mar 2022 – Aug 2024');
+    expect(fact('Platforms')).toContain('Nintendo Switch');
+  });
+
+  it('states what I owned instead of the responsibilities, when known', () => {
+    render(<CaseStudyPage slug={TMNT} lang="en" />);
+
+    const owned = screen.getByRole('heading', { name: 'What I owned' });
+    expect(owned.nextElementSibling).toHaveTextContent(
+      '12 of the 40 levels end-to-end',
+    );
+    expect(
+      screen.queryByRole('heading', { name: 'Responsibilities' }),
+    ).toBeNull();
+  });
+
+  it('falls back to the responsibilities, and skips empty sections', () => {
+    const project: ProjectDetails = {
+      id: 'xx_test',
+      coverImage: '',
+      name: 'Test Game',
+      overview: '',
+      position: 'Level Designer',
+      highlights: ['Built the levels.'],
+    };
+    const { container } = render(
+      <>
+        <CaseStudyRole project={project} lang="en" />
+        <ProblemCards cards={project.problems} lang="en" />
+        <CaseStudyList id="lessons" title="Lessons" items={project.lessons} />
+      </>,
+    );
+
+    expect(
+      screen.getByRole('heading', { name: 'Responsibilities' }),
+    ).toBeInTheDocument();
+    expect(screen.getByText('Built the levels.')).toBeInTheDocument();
+    expect(container.querySelectorAll('section')).toHaveLength(0);
+  });
+
+  it('shows the problem cards, results and lessons', () => {
+    render(<CaseStudyPage slug={TMNT} lang="en" />);
+
+    const cards = screen
+      .getByRole('heading', { name: 'Problems, decisions, outcomes' })
+      .closest('section') as HTMLElement;
+    expect(within(cards).getAllByRole('listitem')).toHaveLength(3);
+    expect(within(cards).getAllByText('Decision')).toHaveLength(3);
+
+    for (const title of ['Context and constraints', 'Results']) {
+      expect(screen.getByRole('heading', { name: title })).toBeInTheDocument();
+    }
+    expect(
+      screen.getByText(/Polish the camera feel later/),
+    ).toBeInTheDocument();
+  });
+
+  it('opens the store page in a new tab', () => {
+    render(<CaseStudyPage slug={TMNT} lang="en" />);
+
+    const steam = screen.getByRole('link', { name: /^Steam/ });
+    expect(steam).toHaveAttribute(
+      'href',
+      expect.stringContaining('store.steampowered.com'),
+    );
+    expect(steam).toHaveAttribute('target', '_blank');
   });
 });
 

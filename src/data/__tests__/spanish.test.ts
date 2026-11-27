@@ -40,6 +40,21 @@ describe('Spanish content', () => {
           project?.videos?.length ?? -1,
         );
       }
+      // Case-study lists are optional in Spanish, but a translated list
+      // must match the English one item for item.
+      for (const key of [
+        'ownership',
+        'context',
+        'problems',
+        'results',
+        'lessons',
+      ] as const) {
+        if (translation[key]) {
+          expect(translation[key], `${id}.${key}`).toHaveLength(
+            project?.[key]?.length ?? -1,
+          );
+        }
+      }
     }
   });
 

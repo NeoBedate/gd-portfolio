@@ -1,3 +1,25 @@
+export type ProjectLinkKind =
+  | 'steam'
+  | 'itch'
+  | 'youtube'
+  | 'doc'
+  | 'press'
+  | 'other';
+
+/** A link out: a store page, a video, a document, press coverage… */
+export interface ProjectLink {
+  label: string;
+  href: string;
+  kind: ProjectLinkKind;
+}
+
+/** One problem → decision → outcome card on a case study. */
+export interface ProblemCard {
+  problem: string;
+  decision: string;
+  outcome: string;
+}
+
 export interface ProjectDetails {
   id: string;
   /**
@@ -5,8 +27,30 @@ export interface ProjectDetails {
    * page (see `src/lib/caseStudies.ts`).
    */
   slug?: string;
-  url?: string;
-  steamUrl?: string;
+  /** Absent means released. */
+  status?: 'released' | 'in-progress';
+  /** The first link is where the project's card leads when it has no page. */
+  links?: ProjectLink[];
+  publisher?: string;
+  platforms?: string[];
+  engine?: string;
+  /** The whole team, e.g. '31 people'. */
+  team?: string;
+  /** Shown after the role, e.g. 'Level design team of 4, including me'. */
+  roleDetail?: string;
+  /**
+   * What was mine, stated plainly. When present, the case study shows it
+   * instead of `highlights`.
+   */
+  ownership?: string[];
+  /** Case study: context and constraints. */
+  context?: string[];
+  /** Case study: problem → decision → outcome cards. */
+  problems?: ProblemCard[];
+  /** Case study: what shipped and how it went. */
+  results?: string[];
+  /** Case study: what I'd do differently. */
+  lessons?: string[];
   coverImage: string;
   dimensions?: string;
   genre?: string;
@@ -72,8 +116,71 @@ const data: ProjectDetails[] = [
   {
     id: '12_tmnt',
     slug: 'tmnt-mutants-unleashed',
-    steamUrl:
-      'https://store.steampowered.com/app/2460130/Teenage_Mutant_Ninja_Turtles_Mutants_Unleashed/',
+    links: [
+      {
+        label: 'Steam',
+        href: 'https://store.steampowered.com/app/2460130/Teenage_Mutant_Ninja_Turtles_Mutants_Unleashed/',
+        kind: 'steam',
+      },
+    ],
+    publisher: 'Outright Games',
+    platforms: [
+      'PC',
+      'PlayStation 4',
+      'PlayStation 5',
+      'Xbox One',
+      'Xbox Series X|S',
+      'Nintendo Switch',
+    ],
+    engine: 'Unity',
+    team: '31 people',
+    roleDetail: 'Level design team of 4, including me',
+    ownership: [
+      '12 of the 40 levels end-to-end, and direct supervision of the other 28.',
+      "The level design team's guidelines, processes and deadlines.",
+      'A documentation system for feedback between the level design team and internal and external clients.',
+    ],
+    context: [
+      'A 10+ hour action platformer on a Nickelodeon license, published by Outright Games.',
+      'The target: 40 to 50 levels, plus set pieces and bosses, most of them connected for quests.',
+      'Spaces had to be built tightly around several traversal feats and combat abilities.',
+      "The franchise's unique visual identity meant leaving room for art in every level.",
+      'An 18-month production for 31 people.',
+    ],
+    problems: [
+      {
+        problem:
+          'The Mall was built around a circular structure that was hard to honor with camera work.',
+        decision:
+          'We ditched the circular layout and rebuilt the level from the ground up.',
+        outcome:
+          'The rebuilt spaces worked better on camera and for traversal.',
+      },
+      {
+        problem:
+          'Portals were built as both entry and exit, but once the story went from a rogue-like structure to a linear one, they were rarely used both ways.',
+        decision:
+          'Quests went linear: one point of entry, one path, one point of exit.',
+        outcome:
+          'It built anticipation and fit the gameplay constraints, but raised production overhead on levels heavy on narrative beats.',
+      },
+      {
+        problem:
+          '40 to 50 levels, plus set pieces and bosses, for a level design team of 4.',
+        decision:
+          'We split the levels among ourselves, and each of us also took a feature present in every level (camera work, blockouts, arenas, set pieces), playing to our strengths. I talked with QA every day.',
+        outcome:
+          'A flexible, reliable team that delivered more, and better, than expected in production and post-production.',
+      },
+    ],
+    results: [
+      'Shipped on 18 October 2024 on PC, PlayStation 4 and 5, Xbox One, Xbox Series X|S and Nintendo Switch.',
+      '40 levels delivered, 12 of them mine end-to-end.',
+    ],
+    lessons: [
+      'Polish the camera feel later. We spent a lot of time on it too early, and it cost us time.',
+      "Don't design around features that aren't ready. We designed around interactables and props we were still waiting for, which caused a lot of back and forth.",
+    ],
     coverImage: '/images/projects/project-card-10-tmnt.webp',
     dimensions: '3D',
     genre: 'Action platformer',
@@ -312,8 +419,70 @@ const data: ProjectDetails[] = [
   {
     id: '11_dragons',
     slug: 'dragons-legends-of-the-nine-realms',
-    steamUrl:
-      'https://store.steampowered.com/app/1721440/DreamWorks_Dragons_Legends_of_The_Nine_Realms/',
+    links: [
+      {
+        label: 'Steam',
+        href: 'https://store.steampowered.com/app/1721440/DreamWorks_Dragons_Legends_of_The_Nine_Realms/',
+        kind: 'steam',
+      },
+    ],
+    publisher: 'Outright Games',
+    engine: 'Unity',
+    platforms: [
+      'PC',
+      'PlayStation 4',
+      'PlayStation 5',
+      'Xbox One',
+      'Xbox Series X|S',
+      'Nintendo Switch',
+    ],
+    team: 'About 13 people, plus contractors',
+    ownership: [
+      '15 of the 25 levels, with their arenas, puzzles and cameras.',
+      'Mentoring a junior level designer.',
+      'Localization into 20+ languages: implementing it in the engine, and keeping in touch with the localization company hired by our publisher, so translations reached the studio on time.',
+    ],
+    context: [
+      'A 3D action platformer for kids on a DreamWorks license, published by Outright Games.',
+      'A 12-month production for about 13 people, plus a couple of contractors.',
+      '25 levels: 5 realms with 5 levels each (3 core levels, 1 set piece and 1 boss fight).',
+      'Hand-placed isometric cameras, for quick-paced action with several dragons on screen.',
+      'New paths open on earlier levels as the player gathers four dragons, so levels had to support backtracking.',
+    ],
+    problems: [
+      {
+        problem:
+          '25 levels in 12 months, with traversal abilities that bugged out easily on imprecise geometry.',
+        decision:
+          'We built levels with a modular kit the studio bought, following level design rules we wrote as a team.',
+        outcome:
+          'Traversal and combat sections closed much quicker, with 10-minute levels done in under 2 weeks. But learning the kit and working around its bugs kept us chasing our schedule.',
+      },
+      {
+        problem:
+          'Puzzles had to read clearly for kids, from a fixed isometric camera.',
+        decision:
+          'We tilted the camera slightly to put keys and locks in frame.',
+        outcome:
+          "Puzzles were easier for kids to understand, but we couldn't hide solutions or use complex layouts to encourage exploration.",
+      },
+      {
+        problem:
+          'Every realm is underground, yet the caverns had to feel big under a fixed camera.',
+        decision:
+          "With the time the modular kit saved, we worked with art on several layers of visualization matched to the camera's field of view.",
+        outcome:
+          'Big, complex-looking caverns. Balancing them with clear gameplay was tricky, but it worked.',
+      },
+    ],
+    results: [
+      'Shipped on 23 September 2022 on PC, PlayStation 4 and 5, Xbox One, Xbox Series X|S and Nintendo Switch.',
+      '25 levels across 5 realms, 15 of them mine.',
+      'Localized into 20+ languages.',
+    ],
+    lessons: [
+      "Leave time to learn a new tool. The modular kit was a good idea, but in a 12-month project we couldn't learn it fully or fix the bugs that plagued it, and we chased our own schedule for most of the project.",
+    ],
     coverImage: '/images/projects/project-card-09-dragons.webp',
     dimensions: '3D',
     genre: 'Action',
@@ -443,8 +612,61 @@ const data: ProjectDetails[] = [
   {
     id: '10_spirit',
     slug: 'spirit-luckys-big-adventure',
-    steamUrl:
-      'https://store.steampowered.com/app/1270720/DreamWorks_Spirit_Luckys_Big_Adventure/',
+    links: [
+      {
+        label: 'Steam',
+        href: 'https://store.steampowered.com/app/1270720/DreamWorks_Spirit_Luckys_Big_Adventure/',
+        kind: 'steam',
+      },
+    ],
+    publisher: 'Outright Games',
+    engine: 'Unity',
+    platforms: [
+      'PC',
+      'PlayStation 4',
+      'Xbox One',
+      'Xbox Series X|S',
+      'Nintendo Switch',
+      'Stadia',
+      'Amazon Luna',
+    ],
+    team: '11 core members',
+    ownership: [
+      'The world map, from concept to final implementation, including its 5 km² size.',
+      'Level design, shared with another designer: traversal puzzles, animals and collectibles across the map.',
+      'Production: workflows, milestones, day-to-day operations, and reporting to internal and external stakeholders.',
+      'Localization, UI tasks and meetings with the external client.',
+    ],
+    context: [
+      'A narrative open-world game on a DreamWorks license, published by Outright Games.',
+      'The external client asked for riding Spirit to feel like an experience within nature, with sightseeing and room to roam.',
+      'A core team of 11, taking the production home through the COVID pandemic.',
+      'Seven platforms, including cloud streaming on Stadia and Amazon Luna.',
+    ],
+    problems: [
+      {
+        problem:
+          'Riding Spirit had to feel like a journey through nature, with sightseeing and room to roam.',
+        decision:
+          'After some tests, I set the world map at 5 km², with different biomes around a central lake.',
+        outcome:
+          'It felt like riding through a real region. The Code team had to stream the terrain in chunks, which worked on every platform and allowed more detail, but held us back for a while.',
+      },
+      {
+        problem: 'The COVID pandemic sent the production home mid-project.',
+        decision:
+          'I built production workflows and ran day-to-day operations, managing milestones and reporting to internal and external stakeholders.',
+        outcome: 'We pushed through and shipped on seven platforms.',
+      },
+    ],
+    results: [
+      'Shipped in June 2021 on PC, PlayStation 4, Xbox One, Xbox Series X|S, Nintendo Switch, Stadia and Amazon Luna.',
+      'A 5 km² world map, streamed in chunks on every platform.',
+    ],
+    lessons: [
+      'Watch ambition in pre-production. The 5 km² map needed terrain streamed in chunks, which ended up working on every platform but held us back for some time.',
+      'Start UI early. It mattered far more to our publisher than to us, and on the next projects we started on it earlier.',
+    ],
     coverImage: '/images/projects/project-card-08-spirit.webp',
     dimensions: '3D',
     genre: 'Open World',
@@ -457,7 +679,7 @@ const data: ProjectDetails[] = [
       "A narrative, chill open world game based on the universe of Spirit where players have the opportunity to explore the wildlife of a valley while riding Spirit and uncover the secrets of an old treasure map related to Lucky's mom.",
     position: 'Producer & Game Designer',
     summary:
-      ' I doubled as Game Designer and Producer while taking the production home and pushing through the COVID Pandemic with financial success. I handled localization, project tasks, external client meetings, UI tasks and level design as a whole.',
+      'I doubled as Game Designer and Producer while taking the production home and pushing through the COVID Pandemic. I handled localization, project tasks, external client meetings, UI tasks and, with another designer, level design.',
     highlights: [
       'Built production workflows and led day to day operations within the team, managing milestones and reporting to internal and external stakeholders.',
       'Mentored artists and game designers alike, built trust with the Art & Code teams and helped to nurture a healthy culture within the company.',
@@ -563,7 +785,13 @@ const data: ProjectDetails[] = [
   },
   {
     id: '07_2100',
-    url: 'https://gamestrategies.io/en/catalog/2100-a-customer-service-course-for-companies/',
+    links: [
+      {
+        label: 'Course page',
+        href: 'https://gamestrategies.io/en/catalog/2100-a-customer-service-course-for-companies/',
+        kind: 'other',
+      },
+    ],
     coverImage: '/images/projects/project-card-07-2100.webp',
     dimensions: '2D',
     genre: 'Training course',
@@ -584,7 +812,13 @@ const data: ProjectDetails[] = [
   },
   {
     id: '06_merchants2',
-    url: 'https://gamestrategies.io/en/catalog/merchants-mastering-negotiation-and-closing-deals/',
+    links: [
+      {
+        label: 'Course page',
+        href: 'https://gamestrategies.io/en/catalog/merchants-mastering-negotiation-and-closing-deals/',
+        kind: 'other',
+      },
+    ],
     coverImage: '/images/projects/project-card-06-merchants.webp',
     dimensions: '2D',
     genre: 'Graphic Adventure / Training course',
@@ -623,7 +857,13 @@ const data: ProjectDetails[] = [
   },
   {
     id: '04_futbolstars',
-    url: 'https://vimeo.com/87581171',
+    links: [
+      {
+        label: 'Video',
+        href: 'https://vimeo.com/87581171',
+        kind: 'other',
+      },
+    ],
     coverImage: '/images/projects/project-card-04-futbolstars.webp',
     dimensions: '3D',
     genre: 'Sports Puzzle',
@@ -645,7 +885,6 @@ const data: ProjectDetails[] = [
   },
   {
     id: '03_developers',
-    url: '',
     coverImage: '/images/projects/project-card-03-developers.webp',
     dimensions: '3D',
     genre: 'Game Tycoon',
@@ -666,7 +905,6 @@ const data: ProjectDetails[] = [
   },
   {
     id: '02_mercenaries',
-    url: '',
     coverImage: '/images/projects/project-card-02-daredevils.webp',
     dimensions: '3D',
     genre: 'Strategy RPG',
@@ -687,7 +925,6 @@ const data: ProjectDetails[] = [
   },
   {
     id: '01_crownless',
-    url: '',
     coverImage: '/images/projects/project-card-01-crownless.webp',
     dimensions: '3D',
     genre: 'Action RPG',
