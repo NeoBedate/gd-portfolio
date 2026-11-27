@@ -7,6 +7,8 @@ import ProjectMedia from '@/components/Projects/ProjectMedia';
 import { t } from '@/data/i18n/ui';
 import { useLang } from '@/hooks/useLang';
 
+import { LightboxLink } from './Lightbox';
+
 interface SectionGalleryProps {
   /** Pairs of clips or stills, shown one pair at a time. */
   pairs: string[][];
@@ -18,7 +20,7 @@ interface SectionGalleryProps {
 
 /**
  * A case-study section's media: one pair at a time with its caption, and
- * arrows that wrap around. Each item opens full size in a new tab.
+ * arrows that wrap around. Each item opens large in the lightbox.
  */
 export default function SectionGallery({
   pairs,
@@ -49,15 +51,14 @@ export default function SectionGallery({
           </button>
         )}
         {pairs[index].map((src, slot) => (
-          <a href={src} target="_blank" rel="noopener" key={src}>
+          <LightboxLink src={src} key={src}>
             <ProjectMedia
               src={src}
               alt={alts?.[index]?.[slot] ?? ''}
               width={640}
               height={360}
             />
-            <span className="sr-only"> {text.opensInNewTab}</span>
-          </a>
+          </LightboxLink>
         ))}
         {count > 1 && (
           <button

@@ -705,3 +705,226 @@
     justify-self: start;
   }
 }
+
+/* The screenshot opens in the lightbox: the link fills the frame. */
+.game-detail-main > a {
+  display: block;
+}
+
+/* ========================================
+   ON THIS PAGE (sticky table of contents)
+   Same look as the About page's section index.
+   ======================================== */
+
+.case-study-toc {
+  position: sticky;
+  top: var(--header-height);
+  z-index: var(--z-sticky);
+  margin-top: var(--spacing-8);
+  overflow-x: auto;
+  scrollbar-width: none;
+  background-color: color-mix(in srgb, var(--color-bg-alt) 97%, transparent);
+  border-top: var(--rule) solid var(--color-border);
+  border-bottom: var(--rule) solid var(--color-border);
+}
+
+.case-study-toc::-webkit-scrollbar {
+  display: none;
+}
+
+/* Wide screens: the links wrap, so all of them show at once. */
+.case-study-toc ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.75rem;
+  margin: 0;
+  padding: 0.75rem 0;
+  list-style: none;
+}
+
+.case-study-toc-link {
+  position: relative;
+  display: inline-block;
+  padding: 0.25rem 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-ui);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-fg-light);
+  background-image: none;
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.case-study-toc-link:hover {
+  color: var(--color-fg-bold);
+}
+
+.case-study-toc-link[aria-current] {
+  color: var(--color-accent);
+}
+
+.case-study-toc-link[aria-current]::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--rule-strong);
+  background: var(--color-accent);
+}
+
+/* A section reached from the table of contents lands below the site
+   header and the bar. */
+.case-study .game-detail-section-title {
+  scroll-margin-top: calc(var(--header-height) + 4rem);
+}
+
+/* Phones: one row that scrolls sideways under a thumb, keeping the bar
+   short; the current link is scrolled into view (CaseStudyToc). */
+@media (max-width: 735px) {
+  .case-study-toc {
+    top: var(--header-height-mobile);
+  }
+
+  .case-study-toc ol {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
+
+  .case-study .game-detail-section-title {
+    scroll-margin-top: calc(var(--header-height-mobile) + 4rem);
+  }
+}
+
+/* ========================================
+   LIGHTBOX
+   A native modal <dialog> over the whole screen.
+   ======================================== */
+
+.lightbox {
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: var(--spacing-6) var(--spacing-16);
+  border: none;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.lightbox[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox::backdrop {
+  background: var(--color-overlay-darker);
+}
+
+.lightbox-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-3);
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+}
+
+.lightbox-media {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100dvh - 9rem);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border: var(--rule) solid var(--color-border);
+  background: var(--color-bg-alt);
+}
+
+video.lightbox-media {
+  width: min(100%, 64rem);
+}
+
+.lightbox-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  max-width: var(--measure-read);
+  font-size: var(--text-sm);
+  font-style: italic;
+  text-align: center;
+  color: var(--color-fg-light);
+}
+
+.lightbox-counter {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-style: normal;
+  letter-spacing: var(--tracking-label);
+  color: var(--color-accent);
+}
+
+.lightbox-close,
+.lightbox-step {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.lightbox-close {
+  top: var(--spacing-4);
+  right: var(--spacing-4);
+  color: var(--color-text);
+}
+
+.lightbox-step {
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-accent-border);
+}
+
+.lightbox-step--previous {
+  left: var(--spacing-4);
+}
+
+.lightbox-step--next {
+  right: var(--spacing-4);
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus-visible,
+.lightbox-step:hover,
+.lightbox-step:focus-visible {
+  color: var(--color-accent);
+}
+
+/* Phones: the media takes the full width, with the arrows on the bottom
+   corners, where thumbs are. */
+@media (max-width: 640px) {
+  .lightbox {
+    padding: var(--spacing-16) var(--spacing-3) var(--spacing-16);
+  }
+
+  .lightbox-media {
+    max-height: calc(100dvh - 12rem);
+  }
+
+  .lightbox-step {
+    top: auto;
+    bottom: var(--spacing-4);
+    transform: none;
+  }
+}

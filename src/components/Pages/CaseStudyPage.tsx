@@ -7,6 +7,12 @@ import CaseStudyList from '@/components/CaseStudy/CaseStudyList';
 import CaseStudyPager from '@/components/CaseStudy/CaseStudyPager';
 import CaseStudyRole from '@/components/CaseStudy/CaseStudyRole';
 import CaseStudySection from '@/components/CaseStudy/CaseStudySection';
+import CaseStudyToc from '@/components/CaseStudy/CaseStudyToc';
+import {
+  lightboxItems,
+  tocEntries,
+} from '@/components/CaseStudy/caseStudyOutline';
+import { LightboxProvider } from '@/components/CaseStudy/Lightbox';
 import ProblemCards from '@/components/CaseStudy/ProblemCards';
 import ProjectVideoPlayer from '@/components/CaseStudy/ProjectVideoPlayer';
 import ScreenshotViewer from '@/components/CaseStudy/ScreenshotViewer';
@@ -24,6 +30,9 @@ import {
 import { LANG_TAG, type Lang, localizePath } from '@/lib/i18n';
 import { createPageMetadata } from '@/lib/metadata';
 import { breadcrumbNode, SITE_URL, webPageNode } from '@/lib/schema';
+
+/** The table of contents shows on pages with at least this many sections. */
+const MIN_TOC_ENTRIES = 4;
 
 /** One page per project with a slug, in each language. */
 export function caseStudyStaticParams(): Array<{ slug: string }> {
@@ -71,6 +80,7 @@ export default function CaseStudyPage({
   const { previous, next } = caseStudyNeighbours(slug);
 
   const portfolioPath = localizePath('/portfolio/', lang);
+  const toc = tocEntries(project, text.portfolio);
   const url = `${SITE_URL}${localizePath(caseStudyPath(slug), lang)}`;
 
   return (
@@ -98,79 +108,85 @@ export default function CaseStudyPage({
         ]}
       />
 
-      <article className="game-detail case-study">
-        <p className="case-study-back case-study-back--top">
-          <Link href={portfolioPath}>
-            <span aria-hidden="true">←</span>
-            {text.portfolio.allProjects}
-          </Link>
-        </p>
-
-        <header className="case-study-header">
-          <h1 className="game-detail-title case-study-title">{name}</h1>
-          <p className="game-detail-tag">
-            {[project.dimensions, project.genre].filter(Boolean).join(' · ')}
+      {/* Every image and clip on the page opens in one lightbox. */}
+      <LightboxProvider items={lightboxItems(project)}>
+        <article className="game-detail case-study">
+          <p className="case-study-back case-study-back--top">
+            <Link href={portfolioPath}>
+              <span aria-hidden="true">←</span>
+              {text.portfolio.allProjects}
+            </Link>
           </p>
-          <CaseStudyFacts project={project} lang={lang} />
-          {project.tech && project.tech.length > 0 && (
-            <div className="game-detail-tech">
-              <p className="game-detail-tech-label">{text.portfolio.tech}</p>
-              {project.tech.map((tool) => (
-                <span key={tool} className="tech-tag">
-                  {tool}
-                </span>
-              ))}
-            </div>
-          )}
-        </header>
 
-        <div className="game-detail-responsibilities">
-          <ScreenshotViewer
-            name={name}
-            images={project.images ?? []}
-            alts={project.imageAlts}
-            trailer={project.trailer}
+          <header className="case-study-header">
+            <h1 className="game-detail-title case-study-title">{name}</h1>
+            <p className="game-detail-tag">
+              {[project.dimensions, project.genre].filter(Boolean).join(' · ')}
+            </p>
+            <CaseStudyFacts project={project} lang={lang} />
+            {project.tech && project.tech.length > 0 && (
+              <div className="game-detail-tech">
+                <p className="game-detail-tech-label">{text.portfolio.tech}</p>
+                {project.tech.map((tool) => (
+                  <span key={tool} className="tech-tag">
+                    {tool}
+                  </span>
+                ))}
+              </div>
+            )}
+          </header>
+
+          <div className="game-detail-responsibilities">
+            <ScreenshotViewer
+              name={name}
+              images={project.images ?? []}
+              alts={project.imageAlts}
+              trailer={project.trailer}
+            />
+            <CaseStudyRole project={project} lang={lang} />
+          </div>
+
+          {/* Short pages don't need one. */}
+          {toc.length >= MIN_TOC_ENTRIES && <CaseStudyToc entries={toc} />}
+
+          <CaseStudyList
+            id="context"
+            title={text.portfolio.context}
+            items={project.context}
           />
-          <CaseStudyRole project={project} lang={lang} />
-        </div>
 
-        <CaseStudyList
-          id="context"
-          title={text.portfolio.context}
-          items={project.context}
-        />
+          {project.videos?.map((video, index) => (
+            <ProjectVideoPlayer
+              key={video.src}
+              video={video}
+              index={index}
+              lang={lang}
+            />
+          ))}
 
-        {project.videos?.map((video, index) => (
-          <ProjectVideoPlayer
-            key={video.src}
-            video={video}
-            index={index}
-            lang={lang}
+          {project.sections?.map((section, index) => (
+            <CaseStudySection
+              key={section.task}
+              section={section}
+              index={index}
+            />
+          ))}
+
+          <ProblemCards cards={project.problems} lang={lang} />
+          <CaseStudyList
+            id="results"
+            title={text.portfolio.results}
+            items={project.results}
           />
-        ))}
-
-        {project.sections?.map((section, index) => (
-          <CaseStudySection
-            key={section.task}
-            section={section}
-            index={index}
+          <CaseStudyList
+            id="lessons"
+            title={text.portfolio.lessons}
+            items={project.lessons}
           />
-        ))}
 
-        <ProblemCards cards={project.problems} lang={lang} />
-        <CaseStudyList
-          id="results"
-          title={text.portfolio.results}
-          items={project.results}
-        />
-        <CaseStudyList
-          id="lessons"
-          title={text.portfolio.lessons}
-          items={project.lessons}
-        />
-
-        <CaseStudyPager previous={previous} next={next} lang={lang} />
-      </article>
+          <CaseStudyPager previous={previous} next={next} lang={lang} />
+        </article>
+      </LightboxProvider>
     </PageWrapper>
   );
 }

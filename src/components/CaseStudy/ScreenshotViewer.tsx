@@ -6,6 +6,8 @@ import { LeftChevron, PlayChevron, RightChevron } from '@/components/Icons';
 import { t } from '@/data/i18n/ui';
 import { useLang } from '@/hooks/useLang';
 
+import { LightboxLink } from './Lightbox';
+
 interface ScreenshotViewerProps {
   name: string;
   images: string[];
@@ -60,14 +62,16 @@ export default function ScreenshotViewer({
             referrerPolicy="strict-origin-when-cross-origin"
           />
         ) : (
-          // biome-ignore lint/performance/noImgElement: static export, images are pre-optimized WebP
-          <img
-            src={images[index]}
-            alt={alts?.[index] ?? ''}
-            width={1280}
-            height={720}
-            decoding="async"
-          />
+          <LightboxLink src={images[index]}>
+            {/* biome-ignore lint/performance/noImgElement: static export, images are pre-optimized WebP */}
+            <img
+              src={images[index]}
+              alt={alts?.[index] ?? ''}
+              width={1280}
+              height={720}
+              decoding="async"
+            />
+          </LightboxLink>
         )}
 
         {images.length > 1 && (
