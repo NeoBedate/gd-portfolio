@@ -35,6 +35,9 @@
   /* Frames and arrows around the case-study media: the accent at 35%, the
      same strength as dark mode's rgba(197, 110, 200, 0.35). */
   --color-accent-border: color-mix(in srgb, var(--color-accent) 35%, transparent);
+  /* The fill of the chevron, play and close icons: the accent at 16%, like
+     dark mode's rgba(197, 110, 200, 0.16). */
+  --color-accent-dim: color-mix(in srgb, var(--color-accent) 16%, transparent);
 
   /* ===================
      SIGNAL — amber
