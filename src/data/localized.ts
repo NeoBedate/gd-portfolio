@@ -69,7 +69,7 @@ export function localizeProject(
   lang: Lang,
 ): ProjectDetails {
   if (lang === 'en') return project;
-  const { videos, ...text } = projectsEs[project.id] ?? {};
+  const { videos, sections, ...text } = projectsEs[project.id] ?? {};
   return {
     ...project,
     ...text,
@@ -77,6 +77,10 @@ export function localizeProject(
     videos: project.videos?.map((video, index) => ({
       ...video,
       ...videos?.[index],
+    })),
+    sections: project.sections?.map((section, index) => ({
+      ...section,
+      ...sections?.[index],
     })),
   };
 }
