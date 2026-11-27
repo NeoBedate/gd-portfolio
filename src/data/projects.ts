@@ -97,6 +97,25 @@ export interface ProjectResponsibilities {
   /** Alt text for each clip or still in `gifs`, in the same shape. */
   alts?: string[][];
   captions: string[];
+  /** The same view at two stages, compared with a slider. */
+  comparisons?: Comparison[];
+}
+
+/**
+ * Two images of exactly the same view (same camera, same crop), e.g. a
+ * blockout and its final art, shown one over the other with a divider.
+ */
+export interface Comparison {
+  before: string;
+  after: string;
+  beforeLabel: string;
+  afterLabel: string;
+  beforeAlt: string;
+  afterAlt: string;
+  caption: string;
+  /** Size of both images, for the frame's aspect ratio. */
+  width: number;
+  height: number;
 }
 
 const data: ProjectDetails[] = [
@@ -335,6 +354,21 @@ const data: ProjectDetails[] = [
           '1. While we tried to preserve vector movement on screen, sometimes we went for a more cinematic feel during combat',
           '2. Aside from art dressing, Level Design populated traversal sections and arenas with interactive props to keep a vibrant picture of a New York on a crisis',
           '3. After we decide how the level connects to others, we placed an early layout with portals to other levels and we ran through all the quests that will cross the level.',
+        ],
+        comparisons: [
+          {
+            before: '/images/projects/12_tmnt/bk-02-upview.webp',
+            after: '/images/projects/12_tmnt/bk-02-proposal-aligned.webp',
+            beforeLabel: 'Blockout',
+            afterLabel: 'Proposal',
+            beforeAlt: 'Top-down view of the BK_02 blockout.',
+            afterAlt:
+              'The same view with the proposal drawn over it in red, orange and blue lines.',
+            caption:
+              'BK_02 from above: the blockout, and the proposal drawn over it. Red marks the part of the level that is playable as a whole, orange the blocks of geometry that were relocated, and blue the portals relocated within the level.',
+            width: 1181,
+            height: 664,
+          },
         ],
       },
       {

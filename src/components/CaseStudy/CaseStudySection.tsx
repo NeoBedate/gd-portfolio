@@ -1,6 +1,7 @@
 import ProjectMedia from '@/components/Projects/ProjectMedia';
 import type { ProjectResponsibilities } from '@/data/projects';
 
+import BeforeAfterSlider from './BeforeAfterSlider';
 import { LightboxLink } from './Lightbox';
 import SectionGallery from './SectionGallery';
 
@@ -51,6 +52,9 @@ export default function CaseStudySection({
           </figure>
         )}
       </div>
+      {section.comparisons?.map((comparison) => (
+        <BeforeAfterSlider key={comparison.after} comparison={comparison} />
+      ))}
       <SectionGallery
         pairs={section.gifs}
         alts={section.alts}

@@ -78,10 +78,17 @@ export function localizeProject(
       ...video,
       ...videos?.[index],
     })),
-    sections: project.sections?.map((section, index) => ({
-      ...section,
-      ...sections?.[index],
-    })),
+    sections: project.sections?.map((section, index) => {
+      const { comparisons, ...sectionText } = sections?.[index] ?? {};
+      return {
+        ...section,
+        ...sectionText,
+        comparisons: section.comparisons?.map((comparison, i) => ({
+          ...comparison,
+          ...comparisons?.[i],
+        })),
+      };
+    }),
   };
 }
 
