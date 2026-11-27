@@ -17,6 +17,7 @@ import projectsEs from '../es/projects';
 import courses from '../experience/courses';
 import { categories } from '../experience/skills';
 import * as homeEn from '../home';
+import { localizeProject } from '../localized';
 import openToWorkEn from '../openToWork';
 import projects from '../projects';
 
@@ -65,6 +66,78 @@ describe('Spanish content', () => {
         project.videos.length,
       );
     }
+  });
+
+  it('translates every case study fully, section by section', () => {
+    const bold = (text?: string) => text?.match(/<b>/g)?.length ?? 0;
+
+    for (const project of projects.filter((p) => p.slug)) {
+      const es = projectsEs[project.id];
+      const lists = [
+        'ownership',
+        'context',
+        'problems',
+        'results',
+        'lessons',
+        'imageAlts',
+      ] as const;
+      for (const key of lists) {
+        const english = project[key];
+        if (!english) continue;
+        expect(es?.[key], `${project.id}.${key}`).toHaveLength(english.length);
+      }
+      if (project.team) expect(es?.team, `${project.id}.team`).toBeTruthy();
+      if (project.roleDetail) {
+        expect(es?.roleDetail, `${project.id}.roleDetail`).toBeTruthy();
+      }
+
+      const sections = project.sections ?? [];
+      expect(es?.sections ?? [], `${project.id}.sections`).toHaveLength(
+        sections.length,
+      );
+      sections.forEach((section, i) => {
+        const at = `${project.id}.sections[${i}]`;
+        const text = es?.sections?.[i];
+        expect(text?.task, `${at}.task`).toBeTruthy();
+        expect(text?.taskExecution, `${at}.taskExecution`).toHaveLength(
+          section.taskExecution.length,
+        );
+        section.taskExecution.forEach((paragraph, j) => {
+          expect(bold(text?.taskExecution?.[j]), `${at} <b> in ${j}`).toBe(
+            bold(paragraph),
+          );
+        });
+        expect(text?.captions, `${at}.captions`).toHaveLength(
+          section.captions.length,
+        );
+        expect(Boolean(text?.taskCaption), `${at}.taskCaption`).toBe(
+          Boolean(section.taskCaption),
+        );
+        expect(Boolean(text?.taskImageAlt), `${at}.taskImageAlt`).toBe(
+          Boolean(section.taskImageAlt),
+        );
+        expect(
+          text?.alts?.map((row) => row.length),
+          `${at}.alts`,
+        ).toEqual(section.alts?.map((row) => row.length));
+      });
+    }
+  });
+
+  it('keeps the English media when a case study is translated', () => {
+    const tmnt = projects.find((p) => p.id === '12_tmnt');
+    if (!tmnt?.sections) throw new Error('TMNT has no sections');
+    const es = localizeProject(tmnt, 'es');
+
+    expect(es.sections?.[0].task).toBe('Soluciones de traversal y combate');
+    expect(es.sections?.map((s) => s.gifs)).toEqual(
+      tmnt.sections.map((s) => s.gifs),
+    );
+    expect(es.sections?.map((s) => s.taskImage)).toEqual(
+      tmnt.sections.map((s) => s.taskImage),
+    );
+    expect(es.images).toEqual(tmnt.images);
+    expect(es.position).toBe(tmnt.position);
   });
 
   it('has the highlights of every project shown on Experience', () => {
