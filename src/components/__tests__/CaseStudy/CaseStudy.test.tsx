@@ -1,12 +1,16 @@
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
+import CaseStudyList from '@/components/CaseStudy/CaseStudyList';
+import CaseStudyRole from '@/components/CaseStudy/CaseStudyRole';
+import ProblemCards from '@/components/CaseStudy/ProblemCards';
 import ScreenshotViewer from '@/components/CaseStudy/ScreenshotViewer';
 import SectionGallery from '@/components/CaseStudy/SectionGallery';
 import CaseStudyPage, {
   caseStudyMetadata,
   caseStudyStaticParams,
 } from '@/components/Pages/CaseStudyPage';
+import type { ProjectDetails } from '@/data/projects';
 import { caseStudyNeighbours, getCaseStudies } from '@/lib/caseStudies';
 
 const TMNT = 'tmnt-mutants-unleashed';
@@ -147,17 +151,27 @@ describe('CaseStudyPage: the template', () => {
   });
 
   it('falls back to the responsibilities, and skips empty sections', () => {
-    render(<CaseStudyPage slug={SPIRIT} lang="en" />);
+    const project: ProjectDetails = {
+      id: 'xx_test',
+      coverImage: '',
+      name: 'Test Game',
+      overview: '',
+      position: 'Level Designer',
+      highlights: ['Built the levels.'],
+    };
+    const { container } = render(
+      <>
+        <CaseStudyRole project={project} lang="en" />
+        <ProblemCards cards={project.problems} lang="en" />
+        <CaseStudyList id="lessons" title="Lessons" items={project.lessons} />
+      </>,
+    );
 
     expect(
       screen.getByRole('heading', { name: 'Responsibilities' }),
     ).toBeInTheDocument();
-    expect(
-      screen.queryByRole('heading', { name: 'Problems, decisions, outcomes' }),
-    ).toBeNull();
-    expect(
-      screen.queryByRole('heading', { name: "What I'd do differently" }),
-    ).toBeNull();
+    expect(screen.getByText('Built the levels.')).toBeInTheDocument();
+    expect(container.querySelectorAll('section')).toHaveLength(0);
   });
 
   it('shows the problem cards, results and lessons', () => {

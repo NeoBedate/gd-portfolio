@@ -5,9 +5,9 @@ import { notFound } from 'next/navigation';
 import CaseStudyFacts from '@/components/CaseStudy/CaseStudyFacts';
 import CaseStudyList from '@/components/CaseStudy/CaseStudyList';
 import CaseStudyPager from '@/components/CaseStudy/CaseStudyPager';
+import CaseStudyRole from '@/components/CaseStudy/CaseStudyRole';
 import CaseStudySection from '@/components/CaseStudy/CaseStudySection';
 import ProblemCards from '@/components/CaseStudy/ProblemCards';
-import ProjectLinks from '@/components/CaseStudy/ProjectLinks';
 import ProjectVideoPlayer from '@/components/CaseStudy/ProjectVideoPlayer';
 import ScreenshotViewer from '@/components/CaseStudy/ScreenshotViewer';
 import { SchemaGraph } from '@/components/Schema';
@@ -131,27 +131,7 @@ export default function CaseStudyPage({
             alts={project.imageAlts}
             trailer={project.trailer}
           />
-          <div className="case-study-role">
-            <p className="game-detail-tasks-label">{text.portfolio.myRole}</p>
-            <p className="game-detail-role">{project.position}</p>
-            {project.roleDetail && (
-              <p className="case-study-role-detail">{project.roleDetail}</p>
-            )}
-            {project.summary && (
-              <p className="game-detail-overview">{project.summary.trim()}</p>
-            )}
-            <h2 className="game-detail-tasks-label">
-              {project.ownership
-                ? text.portfolio.owned
-                : text.portfolio.responsibilities}
-            </h2>
-            <ul className="game-detail-tasks">
-              {(project.ownership ?? project.highlights).map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-            <ProjectLinks links={project.links ?? []} lang={lang} />
-          </div>
+          <CaseStudyRole project={project} lang={lang} />
         </div>
 
         <CaseStudyList

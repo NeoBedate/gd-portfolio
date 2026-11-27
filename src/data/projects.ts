@@ -621,6 +621,52 @@ const data: ProjectDetails[] = [
     ],
     publisher: 'Outright Games',
     engine: 'Unity',
+    platforms: [
+      'PC',
+      'PlayStation 4',
+      'Xbox One',
+      'Xbox Series X|S',
+      'Nintendo Switch',
+      'Stadia',
+      'Amazon Luna',
+    ],
+    team: '11 core members',
+    ownership: [
+      'The world map, from concept to final implementation, including its 5 km² size.',
+      'Level design, shared with another designer: traversal puzzles, animals and collectibles across the map.',
+      'Production: workflows, milestones, day-to-day operations, and reporting to internal and external stakeholders.',
+      'Localization, UI tasks and meetings with the external client.',
+    ],
+    context: [
+      'A narrative open-world game on a DreamWorks license, published by Outright Games.',
+      'The external client asked for riding Spirit to feel like an experience within nature, with sightseeing and room to roam.',
+      'A core team of 11, taking the production home through the COVID pandemic.',
+      'Seven platforms, including cloud streaming on Stadia and Amazon Luna.',
+    ],
+    problems: [
+      {
+        problem:
+          'Riding Spirit had to feel like a journey through nature, with sightseeing and room to roam.',
+        decision:
+          'After some tests, I set the world map at 5 km², with different biomes around a central lake.',
+        outcome:
+          'It felt like riding through a real region. The Code team had to stream the terrain in chunks, which worked on every platform and allowed more detail, but held us back for a while.',
+      },
+      {
+        problem: 'The COVID pandemic sent the production home mid-project.',
+        decision:
+          'I built production workflows and ran day-to-day operations, managing milestones and reporting to internal and external stakeholders.',
+        outcome: 'We pushed through and shipped on seven platforms.',
+      },
+    ],
+    results: [
+      'Shipped in June 2021 on PC, PlayStation 4, Xbox One, Xbox Series X|S, Nintendo Switch, Stadia and Amazon Luna.',
+      'A 5 km² world map, streamed in chunks on every platform.',
+    ],
+    lessons: [
+      'Watch ambition in pre-production. The 5 km² map needed terrain streamed in chunks, which ended up working on every platform but held us back for some time.',
+      'Start UI early. It mattered far more to our publisher than to us, and on the next projects we started on it earlier.',
+    ],
     coverImage: '/images/projects/project-card-08-spirit.webp',
     dimensions: '3D',
     genre: 'Open World',
@@ -633,7 +679,7 @@ const data: ProjectDetails[] = [
       "A narrative, chill open world game based on the universe of Spirit where players have the opportunity to explore the wildlife of a valley while riding Spirit and uncover the secrets of an old treasure map related to Lucky's mom.",
     position: 'Producer & Game Designer',
     summary:
-      ' I doubled as Game Designer and Producer while taking the production home and pushing through the COVID Pandemic with financial success. I handled localization, project tasks, external client meetings, UI tasks and level design as a whole.',
+      'I doubled as Game Designer and Producer while taking the production home and pushing through the COVID Pandemic. I handled localization, project tasks, external client meetings, UI tasks and, with another designer, level design.',
     highlights: [
       'Built production workflows and led day to day operations within the team, managing milestones and reporting to internal and external stakeholders.',
       'Mentored artists and game designers alike, built trust with the Art & Code teams and helped to nurture a healthy culture within the company.',
